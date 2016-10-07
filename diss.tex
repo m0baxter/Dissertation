@@ -1,0 +1,116 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+
+\documentclass[letterpaper, 11 pt]{article}
+
+\usepackage[T2A, T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ellipsis}
+\usepackage{microtype}
+\usepackage[ocgcolorlinks]{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+%change link colours:
+\hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
+             citecolor=blue, filecolor=blue, urlcolor=blue }
+
+%Bibliography stuff:
+\bibliographystyle{ieeetr}
+\usepackage{etoolbox}
+\apptocmd{\thebibliography}{\raggedright}{}{}
+
+\title{Dissertation: early version}
+\author{Matthew Baxter}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{section}{Introduction \label{sec:intro}}
+
+\end{section}
+
+\begin{section}{Density Functional Theory \label{sec:dft}}
+
+   \begin{itemize}
+
+      \item Introduce ground state DFT~\cite[p. 61]{dft-engel}.
+
+      \item Hohenberg–Kohn~\cite{hk-theorem}, extension to spin-polarized
+         systems~\cite{spin-dep1, spin-dep2}. KS system~\cite{ks-eq}, non-interacting
+         v-representability~\cite{nonint1, nonint2}, KS with spin:~\cite{spin-dep1, spin-dep3}.
+
+      \item $E_\mathrm{xc}[n]$ is a universal functional~\cite{dft-engel}.
+
+      \item Discuss some details of how things are determined: LDA, GGAs, et cetera
+         ({\color{red}{still need this}}).
+
+      \item Topics of $v$-representability (lattice~\cite{vrep-lat}) (general~\cite{vrep-levy1,
+         vrep-levy2, vrep-lieb}, review:~\cite{vrep-rev}). References include stuff about domain of
+         definition of the functionals (where functional derivatives exist and such).
+
+      \item TDDFT~\cite{rgt, tddft, marques-1}, extension to spin-polarized systems:~\cite{td-spindep}.
+
+      \item Runge-Gross~\cite{rgt}.
+
+      \item QM action:~\cite{qmaction}, causality problems:~\cite{tddft-causality},
+         various solutions:~\cite{caus-sol1, caus-sol2}, action functional well
+         defined:~\cite{td-welldef}, 
+
+      \item TDDFT v-rep~\cite{td-vrep}.
+
+      \item Various xc-potentials {\color{red}{Add some refs?}}.
+
+      \item OPM: DTF~\cite{opm1, opm2} other derivations:~\cite{opm3, opm4, opm5, opm-rev} and
+         KLI: various derivations~\cite{kli1, kli2, kli3},
+         Various applications:~\cite[p. 254]{dft-engel},
+         TD-OPM:~\cite{tdopm}, TD-KLI:~\cite{tdkli1, tdkli2, tdkli3}, Various problems with
+         TD-KLI:~\cite[p. 134-135]{tddft}.
+
+   \end{itemize}
+
+\end{section}
+
+\begin{section}{Observables \label{sec:obs}}
+   
+   \begin{itemize}
+      
+      \item Introduce observable problem: $p$-He, He\textsuperscript{2+}-He.
+
+      \item Discuss observables of interest in the present case.
+
+      \item IEM.
+
+      \item WB model~\cite{wb}.
+
+      \item expansion.
+
+      \item Details: p-b and/or p-z plots, contour plot of density difference et cetera.
+
+      \item Results/discussion.
+
+   \end{itemize}
+
+\end{section}
+
+\begin{section}{He\textsuperscript{+}-He \label{sec:hep-he}}
+
+\end{section}
+
+\begin{section}{Conclusion \label{sec:con}}
+
+\end{section}
+
+\begin{section}*{Appendices}
+
+\end{section}
+
+\bibliography{diss.bib}
+
+\end{document}
+
