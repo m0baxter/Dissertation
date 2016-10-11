@@ -11,6 +11,7 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{braket}
 \usepackage{ellipsis}
 \usepackage{microtype}
 \usepackage[ocgcolorlinks]{hyperref}
@@ -39,7 +40,7 @@
 
 \begin{section}{Density Functional Theory \label{chap:dft}}
 
-   \begin{subsection}{Ground state DFT \label{sec:dft}}
+   \begin{subsection}{DFT and TDDFT Existence Theorems \label{sec:dft}}
 
       In the standard treatment of many-body quantum mechanics a system is described by a wavefunction
       $\Psi$ which, depending upon the situation, is determined by either time-dependent Sch\"{o}dinger
@@ -75,6 +76,131 @@
       \begin{equation} \label{eq:Vext}
          \hat{V}_\mathrm{ext} = \sum\limits^{n}_{i = 1} v_\mathrm{ext} (\mathbf{r}_i, \sigma_i, t).
       \end{equation}
+      %
+      The function $\hat{V}_\mathrm{ext}$ contains all of the one-body interactions, including the
+      nuclear and any external potentials.
+
+      Given the one-particle electronic density
+      %
+      \begin{equation} \label{eq:dendef1}
+         n(\mathbf{r}, t) = N \sum\limits_{\sigma_i} \int \mathrm{d}^3 r_2 \dots \mathrm{d}^3 r_N
+                            \left| \Psi(\mathbf{r}, \sigma_1, \mathbf{r}_2, \sigma_2, \dots,
+                                   \mathbf{r}_N, \sigma_N) \right|^2
+      \end{equation}
+      %
+      the Hohenberg–Kohn theorem~\cite{hk-theorem} in the stationary case and the Runge-Gross
+      theorem~\cite{rgt} in the time-dependent case establish a one-to-one mapping between the
+      one-particle density $n$ and the external potential $\hat{V}_\mathrm{ext}$. The potential is
+      then a unique functional of the one-particle density
+      %
+      \begin{equation} \label{eq:vext-func}
+         \hat{V}_\mathrm{ext} = \hat{V}_\mathrm{ext} [n].
+      \end{equation}
+      %
+      It should be noted that for time-dependent systems this mapping is unique only up to the addition
+      of an arbitrary time-dependent function, as this serves only to introduce a phase into the
+      associated wave function $\Psi[\hat{V}_\mathrm{ext}]$ it can be safely ignored in all future
+      discussions.
+
+      We have formulated the density-potential mapping for an explicitly spin-dependent system, it
+      then be noted that the original existence theorems we not formulated in such general terms.
+      Luckily, generalizations for both the stationary~\cite{spin-dep1, spin-dep2} and
+      time-dependent~\cite{td-spindep} to spin-polarized systems exist.
+
+   \end{subsection}
+
+   \begin{subsection}{The Kohn-Sham Equations \label{sec:ks}}
+
+      In practice the correspondence between the density and potential is used to map the interacting
+      many-body SSE or TDSE onto an auxiliary non-interacting system. The density-potential mappings
+      discussed in the previous section allow one to rewrite the interacting system in terms of
+      an auxiliary system of non-interacting particles by the functions $\varphi_{i\sigma}$ ($i = 1,
+      \dots, N$) with
+      %
+      \begin{equation} \label{eq:dendef2}
+         n = \sum\limits_{\sigma} \sum\limits_{i = 1}^N
+                           \left| \varphi_{i\sigma} \right|^2,
+      \end{equation}
+      %
+      where $n$ is the one-particle density of the fully interacting system. The orbitals $\phi_i$ are
+      determined through the stationary or time-dependent Kohn-Sham equations~\cite{ks-eq, spin-dep1,
+      spin-dep3} (SKS, TDKS respectively)
+      %
+      \begin{equation} \label{eq:sks}
+         \left( -\frac{\Delta}{2} + v^\sigma_\mathrm{KS}[n_\uparrow, n_\downarrow](\mathbf{r}) \right)
+          \varphi_{i\sigma}(\mathbf{r}) = \epsilon_i \varphi_{i \sigma}(\mathbf{r}),
+      \end{equation}
+      %
+      \begin{equation} \label{eq:tdks}
+         i \frac{\partial}{\partial t} \varphi_{i\sigma} = 
+            \left( -\frac{\Delta}{2} + v^\sigma_\mathrm{KS}[n_\uparrow, n_\downarrow](\mathbf{r},t)
+            \right) \varphi_{i\sigma}(\mathbf{r},t),
+      \end{equation}
+      %
+      where the $\epsilon_i$ appearing in Eq.\ \eqref{eq:sks} are the Kohn-Sham eigenvalues and the
+      quantities $n_\uparrow$, $n_\downarrow$ are the spin-up/down one-particle densities defined by
+      %
+      \begin{equation} \label{eq:spinden}
+         n_\sigma = \sum\limits_{i=1}^{N} \left| \phi_{i\sigma} \right|^2.
+      \end{equation}
+
+      The potential in Eqs.\ \eqref{eq:sks} and \eqref{eq:tdks} is know as the Kohn-Sham potential. This
+      potential may be simplified by splitting it into a series of less complex objects
+      %
+      \begin{equation} \label{eq:vks}
+         v^\sigma_\mathrm{KS}[n_\uparrow, n_\downarrow] = v_\mathrm{ext} + v_\mathrm{H}
+            + v_\mathrm{xc}[n_\uparrow, n_\downarrow].
+      \end{equation}
+      %
+      The first term in this expression is the external potential, which is essentially the same as the
+      potential $\hat{V}_\mathrm{ext}$ of Eqs.\ \eqref{eq:sse} and \eqref{eq:tdse}. The next term is
+      the Hartree screening potential
+      %
+      \begin{equation} \label{eq:vh}
+         v_\mathrm{H}(\mathbf{r},t) = \int \frac{n(\mathbf{r}^\prime, t)}
+            {\left| \mathbf{r} - \mathbf{r}^\prime\right|} \, \mathrm{d}^3 r^\prime.
+      \end{equation}
+      %
+      The last term is the exchange-correlation potential which encodes the complicated
+      electron-electron interaction potential into the language of the non-interacting system. For
+      convenience this is often further broken down into separate exchange and correlation potentials
+      %
+      \begin{equation} \label{eq:vxc}
+         v_\mathrm{xc} = v_\mathrm{x} + v_\mathrm{c}.
+      \end{equation}
+
+   \end{subsection}
+
+   \begin{subsection}{Observables \label{sec:obs}}
+
+      In the standard treatment of many body quantum mechanics there is a well established process for
+      calculating observables from the full many body wave function describing the system. For any
+      solution $\Psi$, unique up to a phase factor, of the SSE or TDSE and any observable $\hat{O}$ we
+      immediately have the unique functional
+      %
+      \begin{equation} \label{eq:obsfunc1}
+         O[\Psi] = \braket{\Psi| \hat{O} | \Psi},
+      \end{equation}
+      %
+      so long as $\hat{O}$ contains no time derivative terms.
+
+      The density-potential mappings of Sec.\ \ref{sec:dft} provide the relation
+      %
+      \begin{equation} \label{eq:denpot}
+         n \mapsto \hat{V}_\mathrm{ext}[n] + c(t).
+      \end{equation}
+      %
+      As the function $c$ only serves to introduce another phase factor we may use the uniqueness of
+      solutions of the SSE/TDSE to define a map
+      %
+      \begin{equation} \label{eq:obsfunc2}
+         n \mapsto \hat{V}_\mathrm{ext} \mapsto \Psi \mapsto O
+      \end{equation}
+      %
+      or, $O = O[n]$; the observable is a functional of the one-particle density.
+
+      In principle all observables are functionals of the one-particle density. However, in practice the
+      exact functional is only known in a handful of cases \cite[p. 211-213]{obs_exac}.
 
    \end{subsection}
 
@@ -82,9 +208,7 @@
 
       \item Introduce ground state DFT~\cite[p. 61]{dft-engel}.
 
-      \item Hohenberg–Kohn~\cite{hk-theorem}, extension to spin-polarized
-         systems~\cite{spin-dep1, spin-dep2}. KS system~\cite{ks-eq}, non-interacting
-         v-representability~\cite{nonint1, nonint2}, KS with spin:~\cite{spin-dep1, spin-dep3}.
+      \item non-interacting v-representability~\cite{nonint1, nonint2}.
 
       \item $E_\mathrm{xc}[n]$ is a universal functional~\cite{dft-engel}.
 
@@ -95,9 +219,7 @@
          vrep-levy2, vrep-lieb}, review:~\cite{vrep-rev}). References include stuff about domain of
          definition of the functionals (where functional derivatives exist and such).
 
-      \item TDDFT~\cite{rgt, tddft, marques-1}, extension to spin-polarized systems:~\cite{td-spindep}.
-
-      \item Runge-Gross~\cite{rgt}.
+      \item TDDFT~\cite{rgt, tddft, marques-1}.
 
       \item QM action:~\cite{qmaction}, causality problems:~\cite{tddft-causality},
          various solutions:~\cite{caus-sol1, caus-sol2}, action functional well
@@ -117,7 +239,7 @@
 
 \end{section}
 
-\begin{section}{Observables \label{sec:obs}}
+\begin{section}{Observables \label{sec:p-he2p-he}}
    
    \begin{itemize}
       
