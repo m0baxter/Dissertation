@@ -2,7 +2,7 @@
 
 \RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass[letterpaper, 11 pt]{article}
+\documentclass[letterpaper, 12 pt]{report}
 
 \usepackage[T2A, T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -24,6 +24,7 @@
 %Bibliography stuff:
 \bibliographystyle{ieeetr}
 \usepackage{etoolbox}
+\renewcommand\bibname{References}
 \apptocmd{\thebibliography}{\raggedright}{}{}
 
 \title{Dissertation: early version}
@@ -32,15 +33,55 @@
 
 \begin{document}
 
-\maketitle
+\pagenumbering{alph}
 
-\begin{section}{Introduction \label{sec:intro}}
+\begin{titlepage}
+   
+   \maketitle
+   \thispagestyle{empty}
 
-\end{section}
+\end{titlepage}
 
-\begin{section}{Density Functional Theory \label{chap:dft}}
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abstract}
 
-   \begin{subsection}{DFT and TDDFT Existence Theorems \label{sec:dft}}
+\begin{abstract}
+   
+   \thispagestyle{plain}
+   \pagenumbering{roman}
+   \setcounter{page}{2}
+
+\end{abstract}
+
+\setcounter{page}{3}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\newpage
+
+\pagenumbering{arabic}
+
+\begin{chapter}{Introduction \label{chap:intro}}
+
+\end{chapter}
+
+\begin{chapter}{Density Functional Theory \label{chap:dft}}
+
+   \begin{section}{DFT and TDDFT Existence Theorems \label{sec:dft}}
 
       In the standard treatment of many-body quantum mechanics a system is described by a wavefunction
       $\Psi$ which, depending upon the situation, is determined by either time-dependent Sch\"{o}dinger
@@ -107,9 +148,9 @@
       Luckily, generalizations for both the stationary~\cite{spin-dep1, spin-dep2} and
       time-dependent~\cite{td-spindep} to spin-polarized systems exist.
 
-   \end{subsection}
+   \end{section}
 
-   \begin{subsection}{The Kohn-Sham Equations \label{sec:ks}}
+   \begin{section}{The Kohn-Sham Equations \label{sec:ks}}
 
       In practice the correspondence between the density and potential is used to map the interacting
       many-body SSE or TDSE onto an auxiliary non-interacting system. The density-potential mappings
@@ -148,7 +189,7 @@
       potential may be simplified by splitting it into a series of less complex objects
       %
       \begin{equation} \label{eq:vks}
-         v^\sigma_\mathrm{KS}[n_\uparrow, n_\downarrow] = v_\mathrm{ext} + v_\mathrm{H}
+         v^\sigma_\mathrm{KS}[n_\uparrow, n_\downarrow] = v_\mathrm{ext} + v_\mathrm{H}[n]
             + v_\mathrm{xc}[n_\uparrow, n_\downarrow].
       \end{equation}
       %
@@ -169,9 +210,9 @@
          v_\mathrm{xc} = v_\mathrm{x} + v_\mathrm{c}.
       \end{equation}
 
-   \end{subsection}
+   \end{section}
 
-   \begin{subsection}{Observables \label{sec:obs}}
+   \begin{section}{Observables \label{sec:obs}}
 
       In the standard treatment of many body quantum mechanics there is a well established process for
       calculating observables from the full many body wave function describing the system. For any
@@ -202,7 +243,46 @@
       In principle all observables are functionals of the one-particle density. However, in practice the
       exact functional is only known in a handful of cases \cite[p. 211-213]{obs_exac}.
 
-   \end{subsection}
+   \end{section}
+
+   \begin{section}{xc-potential \label{sec:xcpot}}
+
+      Consider the energy functional for the interacting system
+      %
+      \begin{equation} \label{eq:efunc}
+         E[n] = \braket{\Psi[n] | \hat{H} | \Psi[n] }= T[n] + E_{ee}[n] + E_\mathrm{ext}[n]
+      \end{equation}
+      %
+      where the energies on the right hand side are the contributes from the constituent operators
+      Eq.\ \eqref{eq:Top}-\eqref{eq:Vext}. Similarly, we may define the energy functional for the
+      non-interacting, KS, system as
+      %
+      \begin{equation} \label{eq:esfunc}
+         E_s[n] =  T_s[n] + E_\mathrm{xc}[n] + E_\mathrm{H}[n] + E_\mathrm{ext}[n].
+      \end{equation}
+      %
+      Making use of the fact that the energy is a unique functional of the density it follows that
+      %
+      \begin{equation} \label{eq:exc}
+         E_\mathrm{xc} = T - T_s + E_{ee} - E_\mathrm{H}.
+      \end{equation}
+      %
+      Finally making use of the fact that the ground-state one-particle density will minimize the action
+      it follows that
+      %
+      \begin{equation} \label{eq:vxc-der}
+         \frac{\delta E_\mathrm{xc}[n]}{\delta n(\mathbf{r})} = v_\mathrm{xc}[n](\mathbf{r}).
+      \end{equation}
+
+      \begin{subsection}{Optimized Potential Method \label{sec:opm}}
+
+      \end{subsection}
+
+      \begin{subsection}{KLI \label{sec:kli}}
+
+      \end{subsection}
+
+   \end{section}
 
    \begin{itemize}
 
@@ -237,9 +317,9 @@
 
    \end{itemize}
 
-\end{section}
+\end{chapter}
 
-\begin{section}{Observables \label{sec:p-he2p-he}}
+\begin{chapter}{Observables \label{chap:p-he2p-he}}
    
    \begin{itemize}
       
@@ -259,19 +339,23 @@
 
    \end{itemize}
 
-\end{section}
+\end{chapter}
 
-\begin{section}{\texorpdfstring{He\textsuperscript{+}}{He+}-He \label{sec:hep-he}}
+\begin{chapter}{\texorpdfstring{He\textsuperscript{+}}{He+}-He \label{chap:hep-he}}
 
-\end{section}
+\end{chapter}
 
-\begin{section}{Conclusion \label{sec:con}}
+\begin{chapter}{Conclusion \label{chap:con}}
 
-\end{section}
+\end{chapter}
 
-\begin{section}*{Appendices}
+\begin{chapter}*{Appendices}
 
-\end{section}
+\end{chapter}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
 
 \bibliography{diss.bib}
 
