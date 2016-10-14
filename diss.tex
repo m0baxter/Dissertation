@@ -81,6 +81,16 @@
 
 \begin{chapter}{Density Functional Theory \label{chap:dft}}
 
+   This chapter concerns itself with a brief introduction to the world of density-functional theory,
+   both ground-state~\cite{dft-engel} (DFT) and time-dependent~\cite{tddft, marques-1} (TDDFT). This
+   discussion begins with a discussion of various existence theorems central to density functional
+   theory (Sec.\ \ref{sec:dft}). Next the Kohn-Sham equations are introduced in Sec.\ \ref{sec:ks}.
+   More practical matters are considered when the two main problems of density functional theory,
+   the observable problem (Sec.\ \ref{sec:obs}) and the determination of the exchange-correlation
+   potential (Sec.\ \ref{sec:xcpot}) are introduced. The discussion of the xc-potential is focused on
+   the optimized potential method (Sec.\ \ref{sec:opm}) and the Krieger-Li-Iafrate approximation
+   (Sec.\ \ref{sec:kli}).
+
    \begin{section}{DFT and TDDFT Existence Theorems \label{sec:dft}}
 
       In the standard treatment of many-body quantum mechanics a system is described by a wavefunction
@@ -273,6 +283,38 @@
       \begin{equation} \label{eq:vxc-der}
          \frac{\delta E_\mathrm{xc}[n]}{\delta n(\mathbf{r})} = v_\mathrm{xc}[n](\mathbf{r}).
       \end{equation}
+      %
+      The universality of the xc-functional~\cite{dft-engel} means that once an approximation to
+      $E_\mathrm{xc}$ has been found we may apply the resulting potential to any system. Of course,
+      some approximations will be better suited to certain situations.
+
+      There are a few caveats to apply Eq.\ \eqref{eq:vxc-der}. First, the functional in only defined
+      for the set of ground-state $v$-representable densities, those densities which arise as solutions
+      of the SSE for some potential $v$. The second problem follows from the first, due to the fact
+      that not all densities are $v$-representable~\cite{not-vrep1, not-vrep2, not-vrep3}. For densities
+      defined on a lattice~\cite{vrep-lat} as well as the general case~\cite{nonint1, nonint2,
+      vrep-levy1, vrep-levy2, vrep-lieb, vrep-rev} both the issue of $v$-representability and the
+      existance of the functional derivatives of the energy functional have been addressed.
+
+      In the case of TDDFT one can no longer rely upon minimizing the energy functional when seeking
+      solutions. Instead one looks for stationary points of the quantum mechanical
+      action~\cite{qmaction} 
+      %
+      \begin{equation} \label{eq:qmact}
+         A[n] = \int^{t_f}_{t_i} \mathrm{d}t
+            \braket{\Psi[n] |i\frac{\partial}{\partial t} -\hat{H}(t) | \Psi[n]}.
+      \end{equation}
+      
+      In addition to similar issues of $v$-representability and functional differentiability the action
+      Eq.\ \eqref{eq:qmact} does not distinguish the direction of time and thus its naive use may lead
+      to violations of causality~\cite{tddft-causality}. The existance of functional derivatives has
+      been established in a similar style as in the stationary case~\cite{td-welldef}. The problem of
+      which densities are $v$-representable has also been solve~\cite{td-vrep}. The causality problem
+      may be solve in several ways including extending the time domain to the Keldysh
+      contour~\cite{caus-sol1} and relaxing the boundary condition on one end point of the time
+      interval~\cite{caus-sol2}.
+
+      Various xc-potentials: LDA, GGAs, et cetera {\color{red}{Add some refs?}}.
 
       \begin{subsection}{Optimized Potential Method \label{sec:opm}}
 
@@ -285,29 +327,6 @@
    \end{section}
 
    \begin{itemize}
-
-      \item Introduce ground state DFT~\cite[p. 61]{dft-engel}.
-
-      \item non-interacting v-representability~\cite{nonint1, nonint2}.
-
-      \item $E_\mathrm{xc}[n]$ is a universal functional~\cite{dft-engel}.
-
-      \item Discuss some details of how things are determined: LDA, GGAs, et cetera
-         ({\color{red}{still need this}}).
-
-      \item Topics of $v$-representability (lattice~\cite{vrep-lat}) (general~\cite{vrep-levy1,
-         vrep-levy2, vrep-lieb}, review:~\cite{vrep-rev}). References include stuff about domain of
-         definition of the functionals (where functional derivatives exist and such).
-
-      \item TDDFT~\cite{rgt, tddft, marques-1}.
-
-      \item QM action:~\cite{qmaction}, causality problems:~\cite{tddft-causality},
-         various solutions:~\cite{caus-sol1, caus-sol2}, action functional well
-         defined:~\cite{td-welldef}, 
-
-      \item TDDFT v-rep~\cite{td-vrep}.
-
-      \item Various xc-potentials {\color{red}{Add some refs?}}.
 
       \item OPM: DTF~\cite{opm1, opm2} other derivations:~\cite{opm3, opm4, opm5, opm-rev} and
          KLI: various derivations~\cite{kli1, kli2, kli3},
