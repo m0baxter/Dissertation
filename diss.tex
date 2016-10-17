@@ -304,7 +304,15 @@
          A[n] = \int^{t_f}_{t_i} \mathrm{d}t
             \braket{\Psi[n] |i\frac{\partial}{\partial t} -\hat{H}(t) | \Psi[n]}.
       \end{equation}
-      
+      %
+      In analogy to the ground state case the exchange correlation part of the action may be defined in
+      terms of the difference between the actions for the interacting and non-interacting systems. We
+      then find at a stationary point that
+      %
+      \begin{equation} \label{eq:tdvxc-der}
+         \frac{\delta A_\mathrm{xc}[n]}{\delta n(\mathbf{r},t)} = v_\mathrm{xc}[n](\mathbf{r},t).
+      \end{equation}
+
       In addition to similar issues of $v$-representability and functional differentiability the action
       Eq.\ \eqref{eq:qmact} does not distinguish the direction of time and thus its naive use may lead
       to violations of causality~\cite{tddft-causality}. The existance of functional derivatives has
@@ -314,9 +322,18 @@
       contour~\cite{caus-sol1} and relaxing the boundary condition on one end point of the time
       interval~\cite{caus-sol2}.
 
-      Various xc-potentials: LDA, GGAs, et cetera {\color{red}{Add some refs?}}.
+      The simplest explicit density fucntional is the local density approximation~\cite{ks-eq}. Taking
+      things further one is led to the hierarchy of increasingly complex generalized gradient
+      approximations and hybrid functionals~\cite{gga+}. For time-dependent systems one may simply apply
+      one of the many DFT functionals to arrive at an adiabatic approximation. Going beyond the
+      adiabatic approximation is possible, however such functionals are much more complex. As an example
+      the fully time-dependent version of the LDA, the local deformation approximation~\cite{TDLDefA1,
+      TDLDefA2} (TDLDefA).
 
       \begin{subsection}{Optimized Potential Method \label{sec:opm}}
+
+         An alternate approach to the explicit density functionals mentioned above is to employ an
+         implicit density functional. Then using the chain rule 
 
       \end{subsection}
 
@@ -330,6 +347,7 @@
 
       \item OPM: DTF~\cite{opm1, opm2} other derivations:~\cite{opm3, opm4, opm5, opm-rev} and
          KLI: various derivations~\cite{kli1, kli2, kli3},
+         OPM: add correlation~\cite{opm5, tdopm}
          Various applications:~\cite[p. 254]{dft-engel},
          TD-OPM:~\cite{tdopm}, TD-KLI:~\cite{tdkli1, tdkli2, tdkli3}, Various problems with
          TD-KLI:~\cite[p. 134-135]{tddft}.
