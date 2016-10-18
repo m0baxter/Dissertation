@@ -310,7 +310,8 @@
       then find at a stationary point that
       %
       \begin{equation} \label{eq:tdvxc-der}
-         \frac{\delta A_\mathrm{xc}[n]}{\delta n(\mathbf{r},t)} = v_\mathrm{xc}[n](\mathbf{r},t).
+         \frac{\delta A_\mathrm{xc}[n]}{\delta n_\sigma(\mathbf{r},t)}
+            = v^\sigma_\mathrm{xc}[n](\mathbf{r},t).
       \end{equation}
 
       In addition to similar issues of $v$-representability and functional differentiability the action
@@ -322,7 +323,7 @@
       contour~\cite{caus-sol1} and relaxing the boundary condition on one end point of the time
       interval~\cite{caus-sol2}.
 
-      The simplest explicit density fucntional is the local density approximation~\cite{ks-eq}. Taking
+      The simplest explicit density functional is the local density approximation~\cite{ks-eq}. Taking
       things further one is led to the hierarchy of increasingly complex generalized gradient
       approximations and hybrid functionals~\cite{gga+}. For time-dependent systems one may simply apply
       one of the many DFT functionals to arrive at an adiabatic approximation. Going beyond the
@@ -333,7 +334,60 @@
       \begin{subsection}{Optimized Potential Method \label{sec:opm}}
 
          An alternate approach to the explicit density functionals mentioned above is to employ an
-         implicit density functional. Then using the chain rule 
+         implicit density functional. Then the xc-potential may be determined in directly from the
+         KS-orbitals, and their eigenvalues, through a procedure known as the optimized potential
+         method~\cite{opm1, opm2} (OPM) for which there are several derivations~\cite{opm1, opm2, opm3,
+         opm4, opm5, opm-rev}.
+
+         Without getting reproducing too many long equations one may use Eq.\ \eqref{eq:vxc-der} and
+         several applications of the chain rule for functional derivatives
+         %
+         \begin{equation} \label{eq:opm1}
+            \begin{split}
+               v^\sigma_\mathrm{xc} & = \int \mathrm{d}^3 r^\prime
+                  \frac{\delta v^\sigma_\mathrm{KS}(\mathbf{r^\prime})}{\delta n_\sigma(\mathbf{r}) } \\
+                                    & \times \sum\limits_{j} \int \mathrm{d}^3 r^{\prime\prime}
+               \left\{ \left[ 
+               \frac{\delta E_\mathrm{xc}}{\delta \varphi_{j\sigma}(\mathbf{r^{\prime\prime}}) }
+               \frac{\delta \varphi_{j\sigma}(\mathbf{r^{\prime\prime}}) }
+                    {\delta v^\sigma_\mathrm{KS}(\mathbf{r^{\prime}}) }
+               + c.c.
+            \right]
+            + \frac{\delta \epsilon_k}{\delta v^\sigma_\mathrm{KS}(\mathbf{r^{\prime}})}
+              \frac{\partial E_\mathrm{xc}}{\partial \epsilon_k}
+            \right\}
+            \end{split}
+         \end{equation}
+         %
+         from which the OPM integral equation is then derived. A similar derivation for the
+         time-dependent case leads to the time-dependent OPM equation~\cite{tdopm}. In either situation
+         an appropriate choice of $E_\mathrm{xc}$ or $A_\mathrm{xc}$ can include both exchange and
+         effects~\cite{opm5, tdopm}. With that said the OPM is typically used to calculate exact
+         exchange using the functional
+         %
+         \begin{equation} \label{eq:xfunc}
+            \begin{split}
+               A_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r},t)]
+                 = & E_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r})] \\
+                = & -\frac{1}{2} \sum\limits_\sigma \sum\limits_{j,k}
+                    \int\mathrm{d}^3 r \mathrm{d}^3 r^\prime
+                    \frac{ \varphi^*_{j\sigma}(\mathbf{r},t) \varphi^*_{k\sigma}(\mathbf{r}^\prime,t)
+                   \varphi_{j\sigma}(\mathbf{r}^\prime,t) \varphi_{k\sigma}(\mathbf{r},t)}
+                   {\left| \mathbf{r} -\mathbf{r}^\prime \right|}.
+            \end{split}
+         \end{equation}
+
+         The solution of the full OPM integral equation can be quite difficult. To aid in this process
+         the Krieger-Li-Iafrate approximation~\cite{kli1} (KLI) may be used. This approximation turns
+         the complex OPM integral equation into a much simpler linear system of equations. It should
+         be noted that while several variations of the KLI exist~\cite{kli1, kli2, kli3} they differ
+         by only a term proportional to $\partial E_\mathrm{xc} / \partial \epsilon_k$ which, for
+         functionals such as the exact exchange functional that do not depend on the KS eigenvalues,
+         is not a problem. As one might expect the KLI approximation is also valid in the time-dependent
+         regime~\cite{tdkli1, tdkli2, tdkli3}.
+         %
+         \\ {\color{red}{Should I add more detail?}} %nnnote
+
 
       \end{subsection}
 
@@ -345,12 +399,8 @@
 
    \begin{itemize}
 
-      \item OPM: DTF~\cite{opm1, opm2} other derivations:~\cite{opm3, opm4, opm5, opm-rev} and
-         KLI: various derivations~\cite{kli1, kli2, kli3},
-         OPM: add correlation~\cite{opm5, tdopm}
-         Various applications:~\cite[p. 254]{dft-engel},
-         TD-OPM:~\cite{tdopm}, TD-KLI:~\cite{tdkli1, tdkli2, tdkli3}, Various problems with
-         TD-KLI:~\cite[p. 134-135]{tddft}.
+      \item Various applications:~\cite[p. 254]{dft-engel},
+         Various problems with TD-KLI:~\cite[p. 134-135]{tddft}.
 
    \end{itemize}
 
