@@ -16,6 +16,8 @@
 \usepackage{microtype}
 \usepackage[ocgcolorlinks]{hyperref}
 \usepackage[numbers,sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
 
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
@@ -402,7 +404,7 @@
    \begin{itemize}
 
       \item Various applications:~\cite[p. 254]{dft-engel},
-         Various problems with TD-KLI:~\cite[p. 134-135]{tddft}.
+         Various problems with TD-KLI:~\cite[p. 135-136]{tddft}.
 
       \item {\color{red}{Should I add more detail?}} %nnnote
 
@@ -411,8 +413,144 @@
 \end{chapter}
 
 \begin{chapter}{Observables \label{chap:p-he2p-he}}
+
+%pbarhe and phe:
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/pbarhe/pbarhe-+.eps}
+   \caption[Total cross section for one-electron removal from helium by protons and antiprotons.]
+           {Total cross section for one-electron removal from helium by protons and
+            antiprotons. Protons: dotted IEM, dashed WB (theory); {\color{blue}{$\blacktriangle$}}
+            \cite{DTR84}, {\color{blue}{$+$}} \cite{Sol62}, {\color{blue}{$\bullet$}} \cite{SG89},
+            {\color{blue}{$\blacklozenge$}} \cite{SG85}, {\color{blue}{$\blacktriangleright$}}
+            \cite{PM70}, {\color{blue}{$\blacktriangledown$}} \cite{Wex64},
+            {\color{blue}{$\blacksquare$}} \cite{KAH84} (experiment).
+            Antiprotons: dashed-dotted IEM, solid WB (theory); {\color{red}{$\Box$}} \cite{KKT08},
+            {\color{red}{$\circ$}} \cite{HKM94}, {\color{red}{$\times$}} \cite{AHK90} (experiment).
+            \label{fig:he+}}
+\end{figure}
    
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/pbarhe/pbarhe-++.eps}
+   \caption[Total cross section for two-electron removal from helium atoms as a function of impact
+            energy]{Total cross section for two-electron removal from helium atoms as a function
+            of impact energy. Protons: dotted IEM, dashed WB (theory); {\color{blue}{$\blacktriangle$}}
+            \cite{DTR84}, {\color{blue}{$+$}} \cite{Sol62}, {\color{blue}{$\bullet$}} \cite{SG89},
+            {\color{blue}{$\blacklozenge$}} \cite{SG85}, {\color{blue}{$\blacktriangleright$}}
+            \cite{PM70}, {\color{blue}{$\blacktriangledown$}} \cite{Wex64},
+            {\color{blue}{$\blacksquare$}} \cite{KAH84} (experiment).
+            Antiprotons: dashed-dotted IEM, solid WB (theory); {\color{red}{$\circ$}} \cite{HKM94},
+            {\color{red}{$\triangleleft$}} \cite{KKT09} (experiment). \label{fig:he++}}
+\end{figure}
+
+%phe:
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/phe/phe-TP.eps}
+   \caption[Total cross section for single capture in proton-helium collisions.]
+           {Total cross section for single capture in proton-helium collisions.
+            Theoretical results: AO-MO model of Kimura \textit{et al}.\ \cite{KL-86} and DW-4B (post
+            form) of Jana \textit{et al}.\ \cite{JMP-15}. Experimental Data:
+            {\color{OliveGreen}{$\bullet$}} \cite{SG89} and {\color{blue}{$\blacklozenge$}}
+            \cite{SG85}. \label{fig:phe-tp}}
+\end{figure}
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/phe/phe-IP.eps}
+   \caption[Total cross section for transfer ionization in proton-helium collisions.]
+           {Total cross section for transfer ionization in proton-helium collisions.
+            Theoretical results: Second order Born approximation of Godunov \textit{et al}.\
+            \cite{Godunov-06}. Experimental data: {\color{OliveGreen}{$\bullet$}} \cite{SG89} and
+            {\color{blue}{$\blacklozenge$}} \cite{SG85}. \label{fig:phe-ip}}
+\end{figure}
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/phe/phe-II.eps}
+   \caption[Total cross section for double ionization of helium by proton impact.]
+           {Total cross section for double ionization of helium by proton impact.
+            Theoretical results: FIM of Ford \textit{et al}.\ \cite{FR-94}
+            Experimental data: {\color{OliveGreen}{$\bullet$}} \cite{SG89} and
+            {\color{blue}{$\blacklozenge$}} \cite{SG85}. \label{fig:phe-ii}}
+\end{figure}
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/phe/phe-TI.eps}
+   \caption[Total cross section for single ionization of helium by proton impact.]
+           {Total cross section for single ionization of helium by proton impact.
+            Theoretical results: Slim \textit{et al}.\ \cite{SHBF-91}, Winter \cite{Winter-91}
+            D\'{i}az \textit{et al}.\ \cite{DMS-00}
+            Experimental data: {\color{OliveGreen}{$\bullet$}} \cite{SG89} and
+            {\color{blue}{$\blacklozenge$}} \cite{SG85}. \label{fig:phe-ti}}
+\end{figure}
+
+%he2phe:
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/he2phe/he2phe-TI.eps}
+   \caption[Total cross section for single ionization of helium by He\textsuperscript{2+}
+            impact.]{Total cross section for single ionization of helium by He\textsuperscript{2+}
+            impact. Theoretical results: Gramlich \textit{et al}.\ \cite{GGS-89}, Barna \textit{et al}.\
+            \cite{BTB-05}, Pindzola \textit{et al}.\ \cite{PRC-07}.
+            Experimental data: {\color{blue}{$\blacklozenge$}} \cite{SG85},
+            {\color{OliveGreen}{$\bullet$}} \cite{SG89},
+            {\color{RedViolet}{$\blacktriangledown$}} \cite{Dubois87},
+            {\color{GreenYellow}$\blacktriangle$} \cite{KAH84}. \label{fig:he2phe-ti}}
+\end{figure}
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/he2phe/he2phe-II.eps}
+   \caption[Total cross section for double ionization of helium by He\textsuperscript{2+}
+            impact.]{Total cross section for double ionization of helium by He\textsuperscript{2+}
+            impact. Theoretical results: Singal \textit{et al}.\ \cite{SL-91}, Barna \textit{et al}.\
+            \cite{BTB-05}, Pindzola \textit{et al}.\ \cite{PRC-07}
+            Experimental data: {\color{blue}{$\blacklozenge$}} \cite{SG85},
+            {\color{RedViolet}{$\blacktriangledown$}} \cite{Dubois87},
+            {\color{GreenYellow}$\blacktriangle$} \cite{KAH84}. \label{fig:he2phe-ii}}
+\end{figure}
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/he2phe/he2phe-IP.eps}
+   \caption[Total cross section for transfer ionization in He\textsuperscript{2+}-He
+            Collisions.]{Total cross section for transfer ionization in He\textsuperscript{2+}-He
+            Collisions. Theoretical results: Belki\'{c} \textit{et al}.\ \cite{BMM-97}.
+            Experimental data: {\color{blue}{$\blacklozenge$}} \cite{SG85},
+            {\color{OliveGreen}{$\bullet$}} \cite{SG89}, {\color{RedViolet}{$\blacktriangledown$}}
+            \cite{Dubois87}. \label{fig:he2phe-ip}}
+\end{figure}
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/he2phe/he2phe-TP.eps}
+   \caption[Total cross section for single capture in He\textsuperscript{2+}-He
+            collisions.]{Total cross section for single capture in He\textsuperscript{2+}-He
+            collisions. Theoretical results: Fritsch \cite{Fritsch-94} and DW-4B of Jana
+            \textit{et al}.\ \cite{JMP-15}.
+            Experimental data: {\color{blue}{$\blacklozenge$}} \cite{SG85},
+            {\color{OliveGreen}{$\bullet$}} \cite{SG89}, {\color{RedViolet}{$\blacktriangledown$}}
+            \cite{Dubois87}, {\color{red}$\blacksquare$} \cite{Rudd85}. \label{fig:he2phe-tp}}
+\end{figure}
+
+\begin{figure}[htp]
+   \centering
+   \includegraphics[width = \linewidth]{./images/he2phe/he2phe-PP.eps}
+   \caption[Total cross section for double capture in He\textsuperscript{2+}-He
+            collisions.]{Total cross section for double capture in He\textsuperscript{2+}-He
+            collisions.
+            Theoretical results: Fritsch \cite{Fritsch-94} and Ghosh \textit{et al}.\ \cite{GDMP-08}.
+            Experimental data: {\color{RedViolet}{$\blacktriangledown$}}
+            \cite{Dubois87}, {\color{red}$\blacksquare$} \cite{Rudd85}
+            {\color{TealBlue}$\times$} \cite{SG74}. \label{fig:he2phe-pp}}
+\end{figure}
+
    \begin{itemize}
+
+      \item Mention~\cite{pbarhe} and~\cite{p-he2p-he}.
       
       \item Introduce observable problem: $p$-He, He\textsuperscript{2+}-He.
 
