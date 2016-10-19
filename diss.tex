@@ -377,6 +377,10 @@
             \end{split}
          \end{equation}
 
+      \end{subsection}
+
+      \begin{subsection}{KLI \label{sec:kli}}
+
          The solution of the full OPM integral equation can be quite difficult. To aid in this process
          the Krieger-Li-Iafrate approximation~\cite{kli1} (KLI) may be used. This approximation turns
          the complex OPM integral equation into a much simpler linear system of equations. It should
@@ -385,13 +389,11 @@
          functionals such as the exact exchange functional that do not depend on the KS eigenvalues,
          is not a problem. As one might expect the KLI approximation is also valid in the time-dependent
          regime~\cite{tdkli1, tdkli2, tdkli3}.
-         %
-         \\ {\color{red}{Should I add more detail?}} %nnnote
-
-
-      \end{subsection}
-
-      \begin{subsection}{KLI \label{sec:kli}}
+         
+         For a wide range of systems KLI and the full OPM produce very similar results~\cite{opm-rev}.
+         This is not to say that the KLI is perfect, it is still an aproximation. For the purposes of 
+         this work we will highlight the failure of KLI to respect the zero-force theorem which may lead
+         to autoexcitations~\cite{kli-zero-force}.
 
       \end{subsection}
 
@@ -401,6 +403,8 @@
 
       \item Various applications:~\cite[p. 254]{dft-engel},
          Various problems with TD-KLI:~\cite[p. 134-135]{tddft}.
+
+      \item {\color{red}{Should I add more detail?}} %nnnote
 
    \end{itemize}
 
