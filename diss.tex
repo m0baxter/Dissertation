@@ -2,7 +2,7 @@
 
 \RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass[letterpaper, 12 pt]{report}
+\documentclass[letterpaper, 11 pt]{report}
 
 \usepackage[T2A, T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -796,65 +796,184 @@
 
    \end{section}
 
+   \begin{section}{Details \label{sec:phe2p-det}}
+
+      \begin{itemize}
+
+         \item Add a p-z plot to show oscillations.
+
+         \item Put averaging process details here.
+
+         \item Put discussion of the density differences here.
+
+      \end{itemize}
+
+      We can get a sense of how well the adiabatic density approximates the true time-dependent density
+      by considering the distance between them. Owing to the fact that one-particle densities are 
+      necessarily $L^1$ functions (i.e.\ integrable functions) it is most natural to use the metric
+      induced by the $L^1$-norm defined for any $f \in L^1\left(\mathbb{R}\right)$ by
+      %
+      \begin{equation}
+         \left| f \right|_1 = \int \mathrm{d}^3 r \; \left| f(\mathbf{r}) \right|
+         \label{eq:l1rorm}
+      \end{equation}
+      %
+      for measuring this distance.
+      
+      Fig.\ \ref{fig:l1} displays $\left| n\left(t_f\right) - n_A\left(t_f\right) \right|_1$, the
+      difference between the adiabatic ($n_A$) and exact ($n$) densities at the final time $t_f$ for the
+      antiproton-helium system\footnote{All integrals were performed with the aid of the CUBA numerical
+      integration package~\cite{cuba}.}. While it is possible to perform such an analysis for the $p$-He
+      system as well added complications brought on by having to deal with a two centered system make it
+      much more difficult to produce and analyze such data. Intuitively one would expect that the
+      difference between the two densities would scale with the single-particle probability $p_T$. This
+      belief is supported by the easily derived relation 
+      %
+      \begin{equation}
+         \left| n(t_f) - n_A(t_f) \right|_1 \leq 4 p_T.
+         \label{eq:diff-bound}
+      \end{equation}
+      %
+      While Fig.~\ref{fig:p-ic} demonstrates monotonic increase in $p_T = 1 - p$ with increasing impact
+      parameter, a general trend for all impact energies, Fig.~\ref{fig:l1} contains additional
+      structures. Also of note is the minimum that appears along the impact energy axis between 200 and
+      300 keV/amu. These unexpected features must be attributed to the fact that $n_A$ contains only
+      trivial angular dependence which makes a proper description of excitation and partial removal of
+      electronic density impossible. This provides indications of t he limitaions of the WB model.
+
+   \end{section}
+
    \begin{section}{Results \label{sec:phe2p-res}}
 
-      \begin{subsection}{Details \label{sec:phe2p-det}}
+      In the following subsections we present several plots of total cross sections for a variety of
+      collision processes. Given an outcome probability $p_\mathrm{outcome}$ the total cross section
+      associated with this probability is determined according to
+      %
+      \begin{equation}
+         \sigma_\mathrm{outcome} = \int \mathrm{d}^2 b \, p_\mathrm{outcome} (\mathbf{b})
+         = 2 \pi \int^\infty_0 \mathrm{d}b \; b \, p_\mathrm{outcome} (b).
+         \label{eq:tcs}
+      \end{equation}
+   
+      We will refer to our results using the acronyms IEM and WB corresponding to probabilities
+      calculated using Eq.~\eqref{eq:prob-iem} and Eq.~\eqref{eq:prob-ic} using the WB model
+      respectively. In both cases the dynamics include the frozen MCHF ground-state correlation
+      potential.
 
-         \begin{itemize}
+      The figures presented below where generated with several criteria in mind. First, a minimal number
+      of older calculations was selected with the aim of covering as much of the impact energy range as
+      possible while avoiding over burdening the figures with multiple overlapping curves. Second, works
+      chosen must be the product of calculations that go beyond an IEM description of the collision
+      process with preference given to fully correlated two-electron calculations. If one is interested
+      in some of the calculations excluded from these comparisons there exist a plethora of independent
+      electron, independent event, or related models~\cite{SLD-83, DMR-84, SLD-85, GM-86, CM-87, GM-87,
+      JLF-89, DC-90, DC-91a, DC-91b, DG-91, SKG-91, SL-91, Kuang-92, MLC-93, CM-94, CSR-95, BDM-96,
+      MBGH-97, McCartney-97, Mccartney-99, GAMRF-02, GFS-02, AMRF-04, BLMC-04, FRBJG-06, FJG-07,
+      GIFK-08, ZK-09, G-11, LFG-11, GG-12}, classical trajectory Monte Carlo calculations~\cite{ZM-85,
+      OWM-86, MO-87, WO-88, MS-89, Cohen-96, TH-96, MMTH-02, DAKW-04, GEP-09}, and other classical
+      statistical models such as the Bohr-Lindhard model~\cite{DYC-08,Ding-12}. 
 
-            \item Add a p-z plot to show oscillations.
+      \begin{subsection}{ \texorpdfstring{$\bar{p}$}{pbar}-He Vs. \texorpdfstring{$p$}{p}-He Collisions
+                         \label{sec:pbarhe-res}}
 
-            \item Put averaging process details here.
+         \begin{figure}[ht]
+            \begin{minipage}{.49\linewidth}
+               
+               \centering
+               \includegraphics[width = \linewidth]{./images/pbarhe/pbarhe-+.eps}
+               \caption[Total cross section for one-electron removal from helium by protons and
+                        antiprotons.]
+                       {Total cross section for one-electron removal from helium by protons and
+                        antiprotons. Protons: dotted IEM, dashed WB (theory);
+                        {\color{blue}{$\blacktriangle$}}~\cite{DTR84}, {\color{blue}{$+$}}~\cite{Sol62},
+                        {\color{blue}{$\bullet$}}~\cite{SG89},
+                        {\color{blue}{$\blacklozenge$}}~\cite{SG85},
+                        {\color{blue}{$\blacktriangleright$}}~\cite{PM70},
+                        {\color{blue}{$\blacktriangledown$}}~\cite{Wex64},
+                        {\color{blue}{$\blacksquare$}}~\cite{KAH84} (experiment).
+                        Antiprotons: dashed-dotted IEM, solid WB (theory);
+                        {\color{red}{$\Box$}}~\cite{KKT08}, {\color{red}{$\circ$}}~\cite{HKM94},
+                        {\color{red}{$\times$}}~\cite{AHK90} (experiment). \label{fig:he+}}
+            \end{minipage} \hspace{0.04\linewidth} %
+            \begin{minipage}{.49\linewidth}
 
-            \item Put discussion of the density differences here.
-
-         \end{itemize}
-
-      \end{subsection}
-
-      \begin{subsection}{pbarhe \label{sec:pbarhe-res}}
-         
-         \begin{figure}[htp]
-            \centering
-            \includegraphics[width = \linewidth]{./images/pbarhe/pbarhe-+.eps}
-            \caption[Total cross section for one-electron removal from helium by protons and
-                     antiprotons.]
-                    {Total cross section for one-electron removal from helium by protons and
-                     antiprotons. Protons: dotted IEM, dashed WB (theory);
-                     {\color{blue}{$\blacktriangle$}}~\cite{DTR84}, {\color{blue}{$+$}}~\cite{Sol62},
-                     {\color{blue}{$\bullet$}}~\cite{SG89}, {\color{blue}{$\blacklozenge$}}~\cite{SG85},
-                     {\color{blue}{$\blacktriangleright$}}~\cite{PM70},
-                     {\color{blue}{$\blacktriangledown$}}~\cite{Wex64},
-                     {\color{blue}{$\blacksquare$}}~\cite{KAH84} (experiment).
-                     Antiprotons: dashed-dotted IEM, solid WB (theory);
-                     {\color{red}{$\Box$}}~\cite{KKT08}, {\color{red}{$\circ$}}~\cite{HKM94},
-                     {\color{red}{$\times$}}~\cite{AHK90} (experiment). \label{fig:he+}}
+               \centering
+               \includegraphics[width = \linewidth]{./images/pbarhe/pbarhe-++.eps}
+               \caption[Total cross section for two-electron removal from helium atoms as a function of
+                        impact energy]
+                       {Total cross section for two-electron removal from helium atoms as a function
+                        of impact energy. Protons: dotted IEM, dashed WB (theory);
+                        {\color{blue}{$\blacktriangle$}}~\cite{DTR84}, {\color{blue}{$+$}}~\cite{Sol62},
+                        {\color{blue}{$\bullet$}}~\cite{SG89},
+                        {\color{blue}{$\blacklozenge$}}~\cite{SG85},
+                       {\color{blue}{$\blacktriangleright$}}~\cite{PM70},
+                       {\color{blue}{$\blacktriangledown$}}~\cite{Wex64},
+                       {\color{blue}{$\blacksquare$}}~\cite{KAH84} (experiment).
+                       Antiprotons: dashed-dotted IEM, solid WB (theory);
+                       {\color{red}{$\circ$}}~\cite{HKM94}, {\color{red}{$\triangleleft$}}~\cite{KKT09}
+                       (experiment). \label{fig:he++}}
+            \end{minipage}
          \end{figure}
-         
-         \begin{figure}[htp]
-            \centering
-            \includegraphics[width = \linewidth]{./images/pbarhe/pbarhe-++.eps}
-            \caption[Total cross section for two-electron removal from helium atoms as a function of
-                     impact energy]
-                    {Total cross section for two-electron removal from helium atoms as a function
-                     of impact energy. Protons: dotted IEM, dashed WB (theory);
-                     {\color{blue}{$\blacktriangle$}}~\cite{DTR84}, {\color{blue}{$+$}}~\cite{Sol62},
-                     {\color{blue}{$\bullet$}}~\cite{SG89}, {\color{blue}{$\blacklozenge$}}~\cite{SG85},
-                    {\color{blue}{$\blacktriangleright$}}~\cite{PM70},
-                    {\color{blue}{$\blacktriangledown$}}~\cite{Wex64},
-                    {\color{blue}{$\blacksquare$}}~\cite{KAH84} (experiment).
-                    Antiprotons: dashed-dotted IEM, solid WB (theory);
-                    {\color{red}{$\circ$}}~\cite{HKM94}, {\color{red}{$\triangleleft$}}~\cite{KKT09}
-                    (experiment). \label{fig:he++}}
-         \end{figure}
+
+         We begin the analysis of results with a comparison of proton and antiproton collisions with
+         helium. To facilitate juxtaposition we will consider the zero-, one-, and two-electron removal
+         processes in aggregate. The probabilities for these outcomes are given respectively by
+         %
+         \begin{subequations}
+            \begin{equation}
+               p_0 = (1 - p)^2 + \tfrac{1}{2} I^{TT}_\mathrm{c} = p^{TT},
+               \label{eq:rem-0}
+            \end{equation}
+            %
+            \begin{equation}
+               p_+ = 2 p (1-p) - I^{TT}_\mathrm{c} = p^{TI} + p^{TP},
+               \label{eq:rem-1}
+            \end{equation}
+            %
+            \begin{equation}
+               p_{++} = p^2 + \tfrac{1}{2} I^{TT}_\mathrm{c} = p^{II} + p^{IP} + p^{PP},
+               \label{eq:rem-2}
+            \end{equation}
+            \label{eq:remove}
+         \end{subequations}
+         %
+         where the single-particle removal probability is given by
+         %
+         \begin{equation}
+            p = 1 - \tfrac{1}{2} \int_T \mathrm{d}^3 r \; n(\mathbf{r},t_f)
+            = 1 - p_T = p_P + p_I.
+            \label{eq:p-rem}
+         \end{equation}
+         %
+         For the $\bar{p}$-He system these are simply the probabilities presented in
+         Eq.~\eqref{eq:prob-pbarhe} making this choice of observables ideal for contrasting with the
+         $p$-He system.
+
+         Figures~\ref{fig:he+} and~\ref{fig:he++} present the total cross sections for one- and
+         two-electron removal as functions of impact energy. These plots compare only the current
+         proton-helium collision results to an updated version (described above in
+         Sec.~\ref{sec:phe2p-det}) of the antiproton-helium results of~\cite{pbarhe} and to
+         experimental data. For a comparison with other theoretical work see~\cite{pbarhe}
+         and~\cite{new-pbarhe} ($\bar{p}$-He) and Sec.~\ref{sec:phe-res} ($p$-He).
+   
+         For one-electron removal, Fig.~\ref{fig:he+}, the WB model provides an increase for both protons
+         and antiprotons over the IEM except at higher energies where the correlation integral tends to
+         be small in magnitude as indicated by Fig.~\ref{fig:p-ic}. In the case of proton-helium
+         collisions this increase is an obvious improvement. The spread of the experimental data for
+         antiproton-helium collisions makes it difficult to ascertain whether the enhancement in the
+         cross section is preferable.
+   
+         The two-electron removal cross sections, Fig.~\ref{fig:he++}, for both proton and antiproton
+         collisions are reduced significantly by the WB model. These reductions represent a clear
+         improvement in either case. While the antiproton results are in fair agreement with experiment
+         through the entire range explored the proton-helium results still differ notably below impact
+         energies of 100 keV/amu. This is an indication that the WB model begins to display problems as
+         capture becomes more important. These issues will be discussed in greater detail in the
+         proceeding subsections.
 
          \begin{itemize}
 
             \item p-b and Ic plots for pbar- and p-he systems.
-
-            \item plots of electron loss and single/double ionization.
-
-            \item discussion of results.
 
          \end{itemize}
 
