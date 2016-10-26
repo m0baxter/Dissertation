@@ -31,6 +31,7 @@
 
 %\usepackage{setspace}
 %\doublespacing
+%\onehalfspacing
 
 \title{Dissertation: early version}
 \author{Matthew Baxter}
@@ -801,16 +802,40 @@
    \end{section}
 
    \begin{section}{Details \label{sec:phe2p-det}}
+      
+      \begin{figure}[ht]
+         \begin{minipage}{.49\linewidth}
+            
+            \centering
+            \includegraphics[width = \linewidth]{./images/poz.eps}
+            \caption[Probabilities as a function of nuclear separation separation.]{$p^{II}$ as a
+                     function of $z$ an impact energy of 50 keV and impact parameter of 1 a.u. for:
+                     (a) $p$-He, (b) He\textsuperscript{2+}, (c) $\bar{p}$-He. \label{fig:poz}}
+         \end{minipage} \hspace{0.04\linewidth} %
+         \begin{minipage}{.49\linewidth}
+            
+            \centering
+            \includegraphics[width = \linewidth]{./images/dendiff.eps}
+            \caption[Density difference]
+                   {$\left| n_A\left(t_f \right) - n\left(t_f\right)\right|_1$ for the antiproton
+                    helium collision system. \label{fig:l1}}
+         \end{minipage}
+      \end{figure}
 
-      \begin{itemize}
-
-         \item Add a p-z plot to show oscillations.
-
-         \item Put averaging process details here.
-
-         \item Put discussion of the density differences here.
-
-      \end{itemize}
+      As has been discussed in previous works, for example~\cite{microresp,pbarhe}, fluctuations in the
+      density persist after the collision process has completed if the Kohn-Sham potential is explicitly
+      density dependent. Due to this fact the values of observables must be averaged over some range of
+      $t_f$. The added complexity of the proton-helium collision system compared to that for
+      antiproton-helium restricts the range through which the calculations may be run. Due to this fact
+      an insufficient range of $t_f$ is available for averaging to produce a curve as smooth as in the
+      $\bar{p}$-He system (see Fig.~\ref{fig:he++}). More explicitly, letting $z_f = V t_f$ be the final
+      target-projectile separation for impact velocity $V$, $\bar{p}$-He collisions may be run to a
+      final separation of 45 a.u., whereas $p$-He collisions run to a maximum inter-center distance of
+      around 35 a.u.
+      
+      Figure~\ref{fig:poz}, which depicts the values of $p^{II}$ as a function of $z$ for the a
+      prototypical choice of impact energy and parameter, makes these more apparent. Also of note is the
+      larger variances increase by about a factor of two between each of the collision systems.
 
       We can get a sense of how well the adiabatic density approximates the true time-dependent density
       by considering the distance between them. Owing to the fact that one-particle densities are 
@@ -996,12 +1021,6 @@
          energies of 100 keV/amu. This is an indication that the WB model begins to display problems as
          capture becomes more important. These issues will be discussed in greater detail in the
          proceeding subsections.
-
-         \begin{itemize}
-
-            \item p-b and Ic plots for pbar- and p-he systems.
-
-         \end{itemize}
 
       \end{subsection}
 
@@ -1353,6 +1372,8 @@
    \begin{itemize}
       
       \item detailed balance \cite[p. 143--152]{scattering}
+
+      \item Experimental data:~\cite{DT-88, Dub-89, FTFHLP-95, SSMSM-11}
 
    \end{itemize}
 
