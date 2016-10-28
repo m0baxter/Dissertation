@@ -14,8 +14,7 @@
 \usepackage{braket}
 \usepackage{ellipsis}
 \usepackage{microtype}
-\usepackage[ocgcolorlinks]{hyperref}
-\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
 
@@ -24,10 +23,38 @@
              citecolor=blue, filecolor=blue, urlcolor=blue }
 
 %Bibliography stuff:
-\bibliographystyle{ieeetr}
+\usepackage[doi=false, url=false, isbn=false,
+            sorting=none, backend=bibtex, firstinits=true]{biblatex} %nnnote: maxbibnames=99
+\addbibresource{diss.bib}
+
 \usepackage{etoolbox}
 \renewcommand\bibname{References}
 \apptocmd{\thebibliography}{\raggedright}{}{}
+
+%Make titles a link:
+\newbibmacro{string+doiurlisbn}[1]{%
+   \iffieldundef{doi}{%
+      \iffieldundef{url}{%
+         \iffieldundef{isbn}{%
+            \iffieldundef{issn}{%
+               #1%
+            }{%
+               \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+            }%
+         }{%
+            \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+         }%
+      }{%
+         \href{\thefield{url}}{#1}%
+      }%
+   }{%
+      \href{http://dx.doi.org/\thefield{doi}}{#1}%
+   }%
+}
+
+\DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article,incollection]{title}%
+   {\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
 
 %\usepackage{setspace}
 %\doublespacing
@@ -1448,7 +1475,8 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{References}
 
-\bibliography{diss.bib} %nnnote: check references for accuracy.
+\printbibliography
+%\bibliography{diss.bib} %nnnote: check references for accuracy.
 
 \end{document}
 
