@@ -4,11 +4,14 @@
 
 \documentclass[letterpaper, 10 pt]{report}
 
-\usepackage[sc]{mathpazo}
-\linespread{1.05}
+%\usepackage[sc]{mathpazo}
+%\linespread{1.05}
+
+\usepackage{garamondx}
+\usepackage[garamondx,cmbraces]{newtxmath}
+
 \usepackage[T2A, T1]{fontenc}
 \usepackage[utf8]{inputenc}
-%\usepackage{lmodern}
 \usepackage{CJKutf8}
 \usepackage{amsfonts}
 \usepackage{amsmath}
@@ -16,20 +19,23 @@
 \usepackage{braket}
 \usepackage{ellipsis}
 \usepackage{microtype}
-\usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{setspace}
 \usepackage[sc]{titlesec}
+\usepackage[doi = false, url = false, isbn = false,
+            maxbibnames = 99, sorting = none, backend = bibtex,
+            giveninits = true, style = numeric-comp]{biblatex}
+\usepackage[colorlinks, breaklinks=true]{hyperref}
+
+
+%\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge}
 
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
              citecolor=blue, filecolor=blue, urlcolor=blue }
 
 %Bibliography stuff:
-\usepackage[doi = false, url = false, isbn = false,
-            maxbibnames = 99, sorting = none, backend = bibtex,
-            giveninits = true, style = numeric-comp]{biblatex}
 \addbibresource{diss.bib}
 
 %Make titles a link:
@@ -70,28 +76,26 @@
 
    \centering
    
-   \begin{Large}
-      Title\dots
-   \end{Large}
+   {\Large Title\dots}
    
    \vspace{2 cm}
    
-   MATTHEW BAXTER
+   \textsc{matthew baxter}
    
    \vspace{2 cm}
    
-   A THESIS SUBMITTED TO THE FACULTY OF GRADUATE STUDIES IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR
-   THE DEGREE OF MASTER OF SCIENCE
+   \textsc{a thesis submitted to the faculty of graduate studies in partial fulfillment of the
+           requirements for the degree of master of science}
    
    \vspace{2 cm}
    
-   GRADUATE PROGRAMME IN THE DEPARTMENT OF PHYSICS AND ASTRONOMY
+   \textsc{graduate programme in the department of physics and astronomy}
    
-   YORK UNIVERSITY
+   \textsc{york university}
    
-   TORONTO ONTARIO
+   \textsc{toronto ontario}
    
-   December 2012
+   Month Year
    
    \vspace{3.5 cm}
    
@@ -960,7 +964,7 @@
       independent electron, independent event, or related models~\cite{SLD-83, DMR-84, SLD-85, GM-86,
       CM-87, GM-87, JLF-89, DC-90, DC-91a, DC-91b, DG-91, SKG-91, SL-91, Kuang-92, MLC-93, CM-94,
       CSR-95, BDM-96, MBGH-97, McCartney-97, Mccartney-99, GAMRF-02, GFS-02, AMRF-04, BLMC-04, FRBJG-06,
-      FJG-07, GIFK-08, ZK-09, G-11, LFG-11, GG-12}, classical trajectory Monte Carlo
+      FJG-07, GIFK-08, ZK-09, G-11, LFG-11, GG-12a}, classical trajectory Monte Carlo
       calculations~\cite{ZM-85, OWM-86, MO-87, WO-88, MS-89, Cohen-96, TH-96, MMTH-02, DAKW-04, GEP-09},
       and other classical statistical models such as the Bohr-Lindhard model~\cite{DYC-08,Ding-12} for
       one to consider at their own leisure.
@@ -1461,6 +1465,9 @@
 
       \item Experimental data:~\cite{DT-88, Dub-89, FTFHLP-95, SSMSM-11}
 
+      \item Other calculations: Monte Carlo~\cite{CC-07}, Bohr–Lindhard~\cite{DYC-08, DLZ-12},
+         independent event model~\cite{SM-03}, perturbation theory~\cite{Mancev-07, MG-10, GG-12b}.
+
    \end{itemize}
 
 \end{chapter}
@@ -1531,7 +1538,6 @@
 \addcontentsline{toc}{chapter}{References}
 
 \singlespacing
-\linespread{1.05}
 
 \printbibliography[title=References] %nnnote: check references for accuracy.
 
