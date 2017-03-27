@@ -19,4 +19,5 @@ PhD dissertation
   * `graphicx`
   * `xcolor`
   * `etoolbox`
+  * `showlabels` (for current draft version, may be removed in final.)
 
