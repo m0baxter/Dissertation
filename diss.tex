@@ -28,6 +28,8 @@
             giveninits = true, style = numeric-comp]{biblatex}
 \usepackage[colorlinks, breaklinks=true]{hyperref}
 
+\usepackage{showlabels}
+
 
 %\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge}
 
@@ -138,7 +140,7 @@
 
 \pagenumbering{arabic}
 
-\onehalfspacing
+\onehalfspacing  %spacing here
 
 \begin{chapter}{Introduction \label{chap:intro}}
 
@@ -318,7 +320,7 @@
       or, $O = O[n]$; the observable is a functional of the one-particle density.
 
       In principle all observables are functionals of the one-particle density. However, in practice the
-      exact functional is only known in a handful of cases~\cite[p. 211-213]{obs_exac}.
+      exact functional is only known in a handful of cases~\cite[p.\ 211-213]{obs_exac}.
 
    \end{section}
 
@@ -474,8 +476,8 @@
 
       \item Cite/mention difference between $\hat{T}$ and $\hat{T}_s$?
 
-      \item Various applications:~\cite[p. 254]{dft-engel},
-         Various problems with TD-KLI:~\cite[p. 135-136]{tddft}.
+      \item Various applications:~\cite[p.\ 254]{dft-engel},
+         Various problems with TD-KLI:~\cite[p.\ 135-136]{tddft}.
 
       \item {\color{red}{?`Should I add more detail?}} %nnnote
 
@@ -494,16 +496,17 @@
    used in the determination of observables. This so called functional correlation is the main focus of
    this chapter. The exploration of this topic begins in Sec.~\ref{sec:phe2p-obs} were several
    observable functional approximations are introduced. The results of application of these models to
-   p-He, He\textsuperscript{2+}-He, as well as $\bar{p}$-He collisions are presented and discussed in
+   $p$-He, He\textsuperscript{2+}-He, as well as $\bar{p}$-He collisions are presented and discussed in
    Sec.~\ref{sec:phe2p-res}.
 
    The analysis presented in this chapter closely follows that of~\cite{p-he2p-he}.
 
    \begin{section}{Collision System \label{sec:p-he2p-he-sys}}
 
-      For the current systems of interest, $p$-He and He\textsuperscript{2+}-He collisions,
-      \textsc{tdks} [Eq.~\eqref{eq:tdks}] is greatly simplified. First, the initial state of the helium
-      atom will be a spin-singlet. As a result of this we need only consider one \textsc{ks}-orbital
+      For the current systems of interest, $\bar{p}$-He, $p$-He, and He\textsuperscript{2+}-He
+      collisions, the \textsc{tdks} [Eq.~\eqref{eq:tdks}] are greatly simplified. First, the initial
+      state of the helium atom will be a spin-singlet. As a result of this we need only consider one
+      \textsc{ks}-orbital
       %
       \begin{equation} \label{eq:oneorb}
          \varphi = \varphi_{1\uparrow} = \varphi_{1\downarrow}.
@@ -533,8 +536,9 @@
       %
       where $Q_T$ and $Q_P$ are the charges of the target and projectile nuclei and
       $\mathbf{R}(t) = (b,0,V t)$ is the straight-line trajectory of the projectile with velocity $V$ and
-      impact parameter (distance of closest approach) $b$. In the current work we consider protons and
-      He\textsuperscript{2+} ions incident on helium atoms, thus $Q_T = 2$ and $Q_P = 1,2$ respectively.
+      impact parameter (distance of closest approach) $b$. In the current work we consider antiprotons,
+      protons, and He\textsuperscript{2+} ions incident on helium atoms, thus $Q_T = 2$ and
+      $Q_P = -1$, 1, and 2 respectively.
 
       The \textsc{tdks} equation described above was solved with the basis generator method~\cite{bgm}
       (\textsc{bgm}) using a basis similar to the one employed in~\cite{keim-ihe}. As in~\cite{pbarhe}
@@ -723,8 +727,8 @@
       As in~\cite{pbarhe} we may proceed in one of two ways\footnote{A third model, the frozen
       correlation model, was also discussed in~\cite{pbarhe} but was shown to essentially reproduce
       \textsc{iem} results.}. The first and simplest method is to ignore correlation in the functionals
-      for observables. This may be done by setting $I^{V_1 V_2} = 0$ for $V_1,V_2 \in \{T,P\}$ and leads
-      to an independent electron model (\textsc{iem}) description
+      for observables. This is equivalent to setting $I^{V_1 V_2} = 0$ for $V_1,V_2 \in \{T,P\}$ and
+      leads to an independent electron model (\textsc{iem}) description
       %
       \begin{subequations} \label{eq:prob-iem}
          \begin{equation} \label{eq:ptt-iem}
@@ -753,16 +757,17 @@
       \end{subequations}
 
       The second option is to explicitly deal with the correlation integrals by employing the adiabatic
-      model of Wilken and Bauer~\cite{wb} (\textsc{wb}). In this model the one- and two-particle
+      model of Wilken and Bauer~\cite{wb} (\textsc{wb}). In this approach the one- and two-particle
       densities appearing in Eq.~\eqref{eq:gc} are approximated by, the so-called, adiabatic densities,
       which are modelled by linear interpolations between the ground-state densities for the given
-      centre, hydrogen or helium, with no, one, or two electrons bound (for example the one-particle
-      densities will be $n_0$, $ n_1,$ and $n_2$ respectively). We then have
+      centre, hydrogen or helium, with no, one, or two electrons bound. Labeling the various densities
+      with a subscript denoting the number of bound electrons, for example the one-particle densities
+      will be $n_0$, $ n_1,$ and $n_2$ respectively, We then have
       %
       \begin{equation} \label{eq:n1a}
          n^{A} (t_f) = \begin{cases}
-         N_V n_1 & N_V(t_f) \in [0,1] \\
-         \left[ 2-N_V \right] n_1 + \left[ N_V-1 \right] n_2 & N_V(t_f) \in [1,2]
+         N_V n_1 & N_V \in [0,1] \\
+         \left[ 2-N_V \right] n_1 + \left[ N_V-1 \right] n_2 & N_V \in [1,2]
          \end{cases}
       \end{equation}
       %
@@ -771,20 +776,20 @@
       \begin{equation} \label{eq:p2a}
          \rho^{A} (t_f) =
          \begin{cases}
-            0 & N_V(t_f) \in [0,1] \\
-            \left[ N_V-1 \right] \rho_2 & N_V(t_f) \in [1,2],
+            0 & N_V \in [0,1] \\
+            \left[ N_V-1 \right] \rho_2 & N_V \in [1,2],
          \end{cases}
       \end{equation}
       %
       where
       %
       \begin{equation} \label{eq:Nv}
-         N_V(t_f) = \int_V \mathrm{d}^3 r \; n(\mathbf{r},t_f)
+         N_V(t_f) = N_V(t_f) = \int_V \mathrm{d}^3 r \; n(\mathbf{r},t_f)
       \end{equation}
       %
       for $V \in \{T,P\}$. 
 
-      The quantity $I_\mathrm{c}^{TT}$ will then be handled identically to~\cite{pbarhe},
+      The quantity $I_\mathrm{c}^{TT}$ will then be handled as it was in~\cite{pbarhe},
       $I_\mathrm{c}^{PP}$ is treated analogously with constituent parts appropriately replaced by their
       projectile counterparts. $I_\mathrm{c}^{TP}$ must be handled with more care. As there is no clear
       generalization of the \textsc{wb} model to an explicit two-centre situation a different
@@ -804,7 +809,7 @@
       The satisfaction of Eq.~\eqref{eq:sum} is guaranteed by the form of Eq.~\eqref{eq:prob-ic}
       regardless of the models chosen for the correlation integrals.
 
-      By regarding the probabilities as functions of the correlation integrals and single-particle
+      By considering the probabilities to be functions of the correlation integrals and single-particle
       probabilities,
       %
       \begin{equation} \label{eq:thing}
@@ -859,13 +864,14 @@
       \end{equation}
 
       It can be shown that as the single-particle ionization probability ($p_I = 1 - p_P - p_T$)
-      approaches zero the upper and lower bounds converge. Additionally, when below this limit we found
-      that the viable $I_\mathrm{c}^{TP}$ range is small. For $p$-He collisions the interval is at most
-      approximately 0.1 and is at least one order of magnitude less than this through the majority of the
-      impact energy and parameter space considered. For the He\textsuperscript{2+}-He system the largest
+      approaches zero the upper and lower bounds converge. Additionally, In all cases he viable
+      $I_\mathrm{c}^{TP}$ range is small. For $p$-He collisions the interval is at most approximately
+      0.1 and is at least one order of magnitude less than this through the majority of the impact
+      energy and parameter space considered. For the He\textsuperscript{2+}-He system the largest
       interval is around 0.25. The gap remains on this order for a much larger range of the impact
       energies considered. As mentioned above the interval width approaches zero rapidly as impact
-      parameter increases. Thus little is lost by always choosing the midpoint of this interval.
+      parameter increases. Thus there is little actual choice available for the value of
+      $I_\mathrm{c}^{TP}$, and not much is lost by always choosing the midpoint of this interval.
 
    \end{section}
 
@@ -906,9 +912,10 @@
       variances increase by about a factor of two between each of the collision systems.
 
       We can get a sense of how well the adiabatic density approximates the true time-dependent density
-      by considering the distance between them. Owing to the fact that one-particle densities are 
-      necessarily $L^1$ functions (i.e.\ integrable functions) it is most natural to use the metric
-      induced by the $L^1$-norm defined for any $f \in L^1\left(\mathbb{R}\right)$ by
+      at $t_f$ by considering there seperation in function space between them. Owing to the fact that
+      one-particle densities are necessarily $L^1$ functions (i.e.\ integrable functions) it is most
+      natural to use the metric induced by the $L^1$-norm defined for any
+      $f \in L^1\left(\mathbb{R}\right)$ by
       %
       \begin{equation} \label{eq:l1rorm}
          \left| f \right|_1 = \int \mathrm{d}^3 r \; \left| f(\mathbf{r}) \right|
@@ -916,7 +923,7 @@
       %
       for measuring this distance.
       
-      Fig.~\ref{fig:l1} displays $\left| n\left(t_f\right) - n_A\left(t_f\right) \right|_1$, the
+      Fig.~\ref{fig:l1} displays $\left| n(t_f) - n_A(t_f) \right|_1$, the
       difference between the adiabatic ($n_A$) and exact ($n$) densities at the final time $t_f$ for the
       antiproton-helium system\footnote{All integrals were performed with the aid of the \textsc{cuba} 
       numerical integration package~\cite{cuba}.}. While it is possible to perform such an analysis for
@@ -929,13 +936,13 @@
          \left| n(t_f) - n_A(t_f) \right|_1 \leq 4 p_T.
       \end{equation}
       %
-      While Fig.~\ref{fig:p-ic} demonstrates monotonic increase in $p_T = 1 - p$ with increasing impact
-      parameter, a general trend for all impact energies, Fig.~\ref{fig:l1} contains additional
-      structures. Also of note is the minimum that appears along the impact energy axis between 200 and
-      300~keV/amu. These unexpected features must be attributed to the fact that $n_A$ contains only
-      trivial angular dependence which makes a proper description of excitation and partial removal of
-      electronic density impossible. This provides indications of the limitations of the \textsc{wb}
-      model.
+      While Fig.~\ref{fig:p-ic} (which will be discussed in next section) demonstrates monotonic
+      increase in $p_T = 1 - p$ with increasing impact parameter, a general trend for all impact
+      energies, Fig.~\ref{fig:l1} contains additional structures. Also of note is the minimum that
+      appears along the impact energy axis between 200 and 300~keV/amu. These unexpected features must
+      be attributed to the fact that $n_A$ contains only trivial angular dependence which makes a proper
+      description of excitation and partial removal of electronic density impossible. This provides
+      indications of the limitations of the \textsc{wb} model.
 
    \end{section}
 
@@ -1073,7 +1080,7 @@
          of~\cite{pbarhe} and to experimental data. For a comparison with other theoretical work
          see~\cite{pbarhe} and~\cite{new-pbarhe} ($\bar{p}$-He) and Sec.~\ref{sec:phe-res} ($p$-He).
  
-         For one-electron removal, Fig.~\ref{fig:he+}, the \textsc{Wb} model provides an increase for
+         For one-electron removal, Fig.~\ref{fig:he+}, the \textsc{wb} model provides an increase for
          both protons and antiprotons over the \textsc{iem} except at higher energies where the
          correlation integral tends to be small in magnitude as indicated by Fig.~\ref{fig:p-ic}. In the
          case of proton-helium collisions this increase is an obvious improvement. The spread of the
@@ -1426,25 +1433,44 @@
 
 \begin{chapter}{\texorpdfstring{He\textsuperscript{+}}{He+}-He Collisions \label{chap:hephe}}
 
-   \begin{section}{Collision System \label{sec:hephe-sys}}
+   The investigations of the previous chapter began with the simplest possible multi-electron collision
+   system, one where a positively-charged projectile is incedent on a heloum like target. The situation
+   was then complicated by allowing the projectile to be negative, thus forcing one to consider elctron
+   transfer in addition to ionization processes.
 
-   \end{section}
+   In this chapter the system of interest is expanded further by the inclusion of an active electron on
+   the projectile. More specifically, the remainder of this work concerns itself primarily with the
+   He-He\textsuperscript{+} collision system.
+
+   While the external potential, $v_\mathrm{ext}$, maintains the form of Eq.~\eqref{eq:phe2p-ext} and the
+   spin-polarized nature of the collision system means that the spin-free description utilized in the
+   previous chapter is no longer applicable, the full spin-dependenent \textsc{tdks} presented in
+   Eq.~\eqref{eq:tdks}.
+
+   The determination of a spin-dependent exchange-correlation potential forms the bulk of this chapter
+   (Sec.~\ref{sec:pot}). This is followed by a brief discussion of the method used to extract cross
+   sections from the one-particle density (Sec.~\ref{sec:hephe-det}) before presenting results in
+   Sec.~\ref{sec:hephe-res}.
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
 
    \end{section}
 
-   \begin{section}{ \label{sec:hephe-det}}
+   \begin{section}{How the sausage is made\dots \label{sec:hephe-det}}
 
    \end{section}
 
-   \begin{section}{ \label{sec:hephe-res}}
+   \begin{section}{Results I Guess? \label{sec:hephe-res}}
 
    \end{section}
 
    \begin{itemize}
+
+      \item Determinental analysis~\cite{inc-prob}.
+
+      \item Spline error bounds~\cite{spline-err}, numerical derivatives~\cite{numdiff1, numdiff2}
       
-      \item detailed balance~\cite[p. 143--152]{scattering}
+      \item detailed balance~\cite[p.\ 143--152]{scattering}
 
       \item Experimental data:~\cite{DT-88, Dub-89, FTFHLP-95, SSMSM-11}
 
