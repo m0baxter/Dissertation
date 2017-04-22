@@ -4,11 +4,11 @@
 
 \documentclass[letterpaper, 10 pt]{report}
 
-%\usepackage[sc]{mathpazo}
-%\linespread{1.05}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
 
-\usepackage{garamondx}
-\usepackage[garamondx,cmbraces]{newtxmath}
+%\usepackage{garamondx}
+%\usepackage[garamondx,cmbraces]{newtxmath}
 
 \usepackage[T2A, T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -20,6 +20,8 @@
 \usepackage{ellipsis}
 \usepackage{microtype}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{setspace}
 \usepackage[sc]{titlesec}
@@ -27,6 +29,7 @@
             maxbibnames = 99, sorting = none, backend = bibtex,
             giveninits = true, style = numeric-comp]{biblatex}
 \usepackage[colorlinks, breaklinks=true]{hyperref}
+\usepackage[toc,page]{appendix}
 
 \usepackage{showlabels}
 
@@ -162,13 +165,13 @@
 
       In the standard treatment of many-body quantum mechanics a system is described by a wavefunction
       $\Psi$ which, depending upon the situation, is determined by either the time-dependent
-      Sch\"{o}dinger equation (\textsc{tdse})
+      Schr\"{o}dinger equation (\textsc{tdse})
       %
       \begin{equation} \label{eq:tdse}
          \hat{H}(t) \Psi(t) = i \frac{\mathrm{d} \Psi(t)}{\mathrm{d} t},
       \end{equation}
       %
-      or the stationary Sch\"{o}dinger equation (\textsc{sse})
+      or the stationary Schr\"{o}dinger equation (\textsc{sse})
       %
       \begin{equation} \label{eq:sse}
          \hat{H} \Psi = E \Psi.
@@ -760,7 +763,7 @@
       model of Wilken and Bauer~\cite{wb} (\textsc{wb}). In this approach the one- and two-particle
       densities appearing in Eq.~\eqref{eq:gc} are approximated by, the so-called, adiabatic densities,
       which are modelled by linear interpolations between the ground-state densities for the given
-      centre, hydrogen or helium, with no, one, or two electrons bound. Labeling the various densities
+      centre, hydrogen or helium, with no, one, or two electrons bound. Labelling the various densities
       with a subscript denoting the number of bound electrons, for example the one-particle densities
       will be $n_0$, $ n_1,$ and $n_2$ respectively, We then have
       %
@@ -912,7 +915,7 @@
       variances increase by about a factor of two between each of the collision systems.
 
       We can get a sense of how well the adiabatic density approximates the true time-dependent density
-      at $t_f$ by considering there seperation in function space between them. Owing to the fact that
+      at $t_f$ by considering there separation in function space between them. Owing to the fact that
       one-particle densities are necessarily $L^1$ functions (i.e.\ integrable functions) it is most
       natural to use the metric induced by the $L^1$-norm defined for any
       $f \in L^1\left(\mathbb{R}\right)$ by
@@ -1434,8 +1437,8 @@
 \begin{chapter}{\texorpdfstring{He\textsuperscript{+}}{He+}-He Collisions \label{chap:hephe}}
 
    The investigations of the previous chapter began with the simplest possible multi-electron collision
-   system, one where a positively-charged projectile is incedent on a heloum like target. The situation
-   was then complicated by allowing the projectile to be negative, thus forcing one to consider elctron
+   system, one where a positively-charged projectile is incident on a helium like target. The situation
+   was then complicated by allowing the projectile to be negative, thus forcing one to consider electron
    transfer in addition to ionization processes.
 
    In this chapter the system of interest is expanded further by the inclusion of an active electron on
@@ -1444,7 +1447,7 @@
 
    While the external potential, $v_\mathrm{ext}$, maintains the form of Eq.~\eqref{eq:phe2p-ext} and the
    spin-polarized nature of the collision system means that the spin-free description utilized in the
-   previous chapter is no longer applicable, the full spin-dependenent \textsc{tdks} presented in
+   previous chapter is no longer applicable, the full spin-dependent \textsc{tdks} presented in
    Eq.~\eqref{eq:tdks}.
 
    The determination of a spin-dependent exchange-correlation potential forms the bulk of this chapter
@@ -1492,7 +1495,7 @@
       expanding the correlation integral model of Wilken and Bauer~\cite{wb} applied previously to the
       antiproton-helium system~\cite{pbarhe} we have produced total cross sections for single, double,
       and transfer ionization as well as single and double capture. In order to incorporate electron
-      capture processes into the \textsc{wb} model two additional correlation integrals, one cented on
+      capture processes into the \textsc{wb} model two additional correlation integrals, one centred on
       the projectile ($I^{PP}_\mathrm{c}$) and the other two-centred ($I^{TP}_\mathrm{c}$), were
       introduced. While $I^{PP}_\mathrm{c}$ was dealt with using straight forward modification of the
       original \textsc{wb} model. $I^{TP}_\mathrm{c}$ was determined based on the values of the other
@@ -1527,13 +1530,13 @@
       Second, the \textsc{wb} model itself appears to distribute probabilities among the six outcome
       channels in unphysical ways (for example causing double and transfer ionization in $p$-He
       collisions to be equal). While the precise origin of these issues is not currently known at least
-      some blame must be taken by the piecewise nature of the adiabatic approximation which causes only
+      some blame must be taken by the piece-wise nature of the adiabatic approximation which causes only
       one of $I^{TT}_\mathrm{c}$ or $I^{PP}_\mathrm{c}$ to be nontrivial at any given impact parameter.
       Another source of poor probability partitioning is the model chosen for $I^{TP}_\mathrm{c}$ which,
       as mentioned above, causes $p_{II} = p_{IP}$. Regardless of the provenance of these issues further
       applications of the \textsc{wb} model in the context of capture are inadvisable. This should,
       however, not be interpreted as a criticism of correlation-integral models in general merely a
-      reflexion of the \textsc{wb} model's apparent limitations. Work in this vein can be made easier
+      reflection of the \textsc{wb} model's apparent limitations. Work in this vein can be made easier
       provided more correlated two-electron calculations become available.
 
    \end{section}
@@ -1543,6 +1546,80 @@
    \end{section}
 
 \end{chapter}
+
+\begin{appendices}
+   \begin{chapter}{Non-Rectangular Coordinate Systems \label{chap:coords}}
+      
+
+      This appendix contains the fundamentals of some non-rectangular coordinate systems used in the
+      text. This discussion focuses on the lesser know coordinate systems. For more detail the reader
+      is referred to any mathematical handbook for physics, for example~\cite{coord1, coord2}.
+
+      \begin{section}{Elliptical Coordinates \label{sec:elliptic}}
+         \begin{figure}[htp]
+            \centering
+            \begin{subfigure}{.5\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/appendix/xieta.eps}
+               \caption{$\xi$-$\eta$ space. \label{fig:xieta}}
+            \end{subfigure}%
+            \begin{subfigure}{.5\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/appendix/eliptical.eps}
+               \caption{$x$-$y$ space. \label{fig:xy}}
+            \end{subfigure}
+            \caption[Coordinate chart of elliptical coordinates]{The coordinate mapping of
+                     Eq.~\eqref{eq:elipdef} is demonstrated by the correspondence between
+                     coloured grid lines.\label{fig:elliptic}}
+         \end{figure}
+
+         Elliptical coordinates are formed by the intersection of series of confocal ellipses and
+         hyperbole. If we let $(\xi, \eta)$ denote the elliptic and hyperbolic grid lines and $a > 0$
+         their focal length we can cover the plane with two charts. The first is given by
+         %
+         \begin{equation} \label{eq:elipdef}
+            \left\{
+            \begin{array}{l}
+               x   = a \xi \eta \\
+               y^2 = a \left( \xi^2 - 1 \right) \left( 1 - \eta^2 \right),
+            \end{array}
+            \right.
+         \end{equation}
+         %
+         while the second is defined similarly and covers the lower half space ($(\xi,\eta) \mapsto
+         (x,-y)$). Both charts are defined for $(\xi,\eta) \in [1, \infty] \times [-1,1]$.
+
+         This mapping is demonstrated in Fig.~\ref{fig:elliptic}. The coloured lines in the left panel represent a
+         selection of $\xi$ (blues and greens) and $\eta$ (reds and oranges) grid lines. Grid lines are mapped by
+         Eq.~\eqref{eq:elipdef} to lines of corresponding colour in the right panel.
+
+      \end{section}
+
+      \begin{section}{Prolate Speroidal Coordinates \label{sec:prolate}}
+
+         Prolate spheroidal coordinates are a three-dimensional coordinate system that result from rotating the
+         upper half space elliptical coordinates (defined in the proceeding section) around the line running
+         through the co-foci of the elliptic and hyperbolic grid lines.
+
+         While several conventions exist, throughout this work prolate spheroidal coordinates are defined as
+         %
+         \begin{equation} \label{eq:psc}
+            \left\{
+            \begin{array}{l}
+               x = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \sin \phi, \\
+               y = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \cos \phi, \\
+               z = a \xi \eta.
+            \end{array}
+            \right.
+         \end{equation}
+
+         One says that a function $f: \mathbb{R}^3 \rightarrow \mathbf{R}$ is cylindrically symmetric if it has no
+         $\phi$ dependence, i.e.\ if $f(\xi,\eta,\phi) = f(\xi,\eta)$.
+
+      \end{section}
+
+   \end{chapter}
+\end{appendices}
 
 \cleardoublepage
 \phantomsection

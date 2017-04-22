@@ -4,9 +4,10 @@ PhD dissertation
 - To use the `makefile` requires the `latexmk` command.
 - List of required packages:
   * `nag`
+  * `garamondx`
+  * `newtxmath`
   * `fontenc`
   * `inputenc`
-  * `lmodern`
   * `CJKutf8`
   * `amsfonts`
   * `amsmath`
