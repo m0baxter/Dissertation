@@ -549,7 +549,7 @@
       that reflects the incorporation of the ground-state correlation potential. In the \textsc{bgm} we
       expand the time-dependent orbital in terms of the basis functions
       %
-      \begin{equation}
+      \begin{equation} \label{eq:bgmbasis}
          \chi^{KJ}_k (\mathbf{r},t)
          = W_T(r,\epsilon_T)^K W_P( \mathbf{r},t, \epsilon_P)^J \chi^{00}_k (\mathbf{r}),
       \end{equation}
@@ -1448,14 +1448,114 @@
    While the external potential, $v_\mathrm{ext}$, maintains the form of Eq.~\eqref{eq:phe2p-ext} and the
    spin-polarized nature of the collision system means that the spin-free description utilized in the
    previous chapter is no longer applicable, the full spin-dependent \textsc{tdks} presented in
-   Eq.~\eqref{eq:tdks}.
+   Eq.~\eqref{eq:tdks} must be solved.
 
    The determination of a spin-dependent exchange-correlation potential forms the bulk of this chapter
-   (Sec.~\ref{sec:pot}). This is followed by a brief discussion of the method used to extract cross
-   sections from the one-particle density (Sec.~\ref{sec:hephe-det}) before presenting results in
+   (Sec.~\ref{sec:pot}) in which a procedure for calculating an accurate exchange potential within the
+   x-only approximation is discussed. This is followed by a brief discussion of the method used to extract
+   cross sections from the one-particle density (Sec.~\ref{sec:hephe-det}) before presenting results in
    Sec.~\ref{sec:hephe-res}.
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
+
+      An accurate exchange-potential is essential for a precise description of the He\textsuperscript{+}-He
+      collision system. The spin polarized nature of the system, which emphasizes exchange effects (i.e
+      manifestations of Fermi statistics), make this fact indisputable.
+
+      As discussed in Sec.~\ref{sec:opm}, within the x-only approximation, the exchange-potential may be
+      determine exactly via the \textsc{opm}. As this process is prohibitively expensive the \textsc{kli}
+      approximation which, as has been mentioned in Sec.~\ref{sec:kli}, produces similar results was used in
+      its stead.
+
+      At any instant of time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic molecule
+      with an internuclear distance $R_\mathrm{int}(t) = \sqrt{b^2 + z(t)^2}$, where $b$ and $z$ are the impact
+      parameter and $z$ position of the projectile (as described in Chap.~\ref{chap:p-he2p-he}). The \textsc{dft}
+      molecular structure package \texttt{DIAMOL} has been designed precisely for such situations
+      ({\color{red}{not sure how to cite this}}). If at each time-step of the \texttt{BGM} (the software package
+      which implements the \textsc{bgm}) the time-dependent \textsc{ks}-orbitals,
+      $\varphi_{\sigma j}(\mathbf{r},t)$ is fed into \texttt{DIAMOL} the \textsc{ks}-potential,
+      $v^{\sigma}_\textsc{ks}[\varphi_{\sigma j};t]$, may be calculated at each $t$, effectively giving one the
+      time-dependent \textsc{ks}-potential $v^{\sigma}_\textsc{ks}[\varphi_{\sigma j}](t)$.
+
+      Limitations of \texttt{DIMAOL} complicate this procedure. Whereas $\varphi_{\sigma j}$ have no enforced
+      symmetry, \texttt{DIAMOL} assumes that the orbitals are cylindrically symmetric about the internuclear
+      axis. To avoid conflicts only a cylindrically symmetric portion of the \textsc{ks}-orbitals can be fed
+      into \texttt{DIAMOL}. In order to describe a work around to this problem one must first understand how
+      the \textsc{ks}-orbitals are represented within the \textsc{bgm}.
+
+      Each \textsc{ks}-orbital is represented as a sum
+      %
+      \begin{equation} \label{eq:bgmexp}
+         \varphi_{\sigma j}(\mathbf{r},t) = \sum d_{c k L M}^{\sigma j} \tilde{\chi}^{LM}_{c k},
+      \end{equation}
+      %
+      where $c$ labels the centres, target ($T$) and projectile ($P$), and the remaining indices are identical
+      to the ones described in Eq.~\eqref{eq:bgmbasis}. The functions $\tilde{\chi}^{00}_{c k}$ are given by
+      %
+      \begin{equation} \label{eq:etfbasis}
+         \tilde{\chi}^{00}_{ck} =
+            \begin{cases}
+               e^{i \mathbf{v}_T \cdot \mathbf{r}} {\chi}^{00}_{c k} & c = T, \\
+               e^{i \mathbf{v}_P \cdot \mathbf{r}} {\chi}^{00}_{c k} & c = p,
+            \end{cases}
+      \end{equation}
+      %
+      where $\chi^{00}_{c k}$ are, once again, the eigenstates of the undisterbed centres, helium \textsc{opm}
+      ground-state orbitals on the target and hydrogen-like states on the projectile. The difference is the 
+      inclusion of the  electron translation factors (\textsc{etf}).
+
+      Leaving aside the \textsc{etf}'s for the time being, it is immediately clear that the simplest way to
+      maintain cylindrical symmetry is to only pass the $1s$ contributions on each centre to \texttt{DIAMOL}.
+      We must then define the new orbitals
+      %
+      \begin{equation} \label{eq:1sonly}
+         \tilde{\varphi}_{\sigma j} = \tilde{d}^{\sigma j}_T \tilde{\chi}^{00}_{T1} +
+                                      \tilde{d}^{\sigma j}_P \tilde{\chi}^{00}_{P1},
+      \end{equation}
+      %
+      where the coefficients $\tilde{d}^{\sigma j}_c$ are ddefined in terms of the projection operator,
+      %
+      \begin{equation} \label{eq:proj}
+         \hat{P} = \sum\limits_{c_1, c_2 \in \{T,P\}} \tilde{S}^{-1}_{c_1 c_2}
+                                                      \ket{\tilde{\chi}^{00}_{c_1 1}}
+                                                      \bra{\tilde{\chi}^{00}_{c_2 1}}
+      \end{equation}
+      %
+      with $\tilde{S}^{-1}_{c_1 c_2}$ the inverse of the overlap mattrix
+      %
+      \begin{equation}
+         \tilde{S}_{c_1 c_2} = \braket{\tilde{\chi}^{00}_{c_1 1} | \tilde{\chi}^{00}_{c_2 1}},
+      \end{equation}
+      %
+      by
+      %
+      \begin{equation} \label{eq:ceofproj}
+         \tilde{d}^{\sigma j}_c = \braket{\tilde{\chi}^{00}_{c 1} | \hat{P} |\tilde{\varphi}_{\sigma j}}.
+      \end{equation}
+
+      It can be easily shown that the \textsc{etf}'s introduce addition asymmetries. Working in the rotating
+      centre of mass frame, the coordinate system used by \texttt{DIAMOL}, the \textsc{etf}'s become
+      %
+      \begin{subequations} \label{eq:etf}
+         \begin{equation} \label{eq:etfT}
+            e^{i \mathbf{v}_T \cdot \mathbf{r}} =
+             e^{\frac{i v_\mathrm{rel}}{2} (x \sin \theta - z \cos \theta)},
+         \end{equation}
+         %
+         \begin{equation} \label{eq:etfP}
+            e^{i \mathbf{v}_P \cdot \mathbf{r}} =
+             e^{\frac{i v_\mathrm{rel}}{2} (z \cos \theta - x \sin \theta)},
+         \end{equation}
+      \end{subequations}
+      %
+      where $v_\mathrm{rel}$ is the relative velocity of the centres and $\theta = \arctan b/z$. The
+      explicit $\phi$ dependence introduced by the $x$-components of the \textsc{etf}'s break cylindrical
+      symmetry (refer to Sec.~\ref{sec:prolate}). To preserve cylindrical symmetry there are two options.
+      
+      The obvious first option is to ignore the \textsc{etf}'s or, equivalently, set them to 1. The second
+      option is to include only the $z$-components. It should be noted that as $z$ approches 0 the two options
+      become equivalent, thus any benefit derived from a partial \textsc{etf} will be lost near the cloest
+      approach.
 
    \end{section}
 
