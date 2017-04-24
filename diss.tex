@@ -4,11 +4,11 @@
 
 \documentclass[letterpaper, 10 pt]{report}
 
-\usepackage[sc]{mathpazo}
-\linespread{1.05}
+%\usepackage[sc]{mathpazo}
+%\linespread{1.05}
 
-%\usepackage{garamondx}
-%\usepackage[garamondx,cmbraces]{newtxmath}
+\usepackage{garamondx}
+\usepackage[garamondx,cmbraces]{newtxmath}
 
 \usepackage[T2A, T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -1452,36 +1452,38 @@
 
    The determination of a spin-dependent exchange-correlation potential forms the bulk of this chapter
    (Sec.~\ref{sec:pot}) in which a procedure for calculating an accurate exchange potential within the
-   x-only approximation is discussed. This is followed by a brief discussion of the method used to extract
-   cross sections from the one-particle density (Sec.~\ref{sec:hephe-det}) before presenting results in
-   Sec.~\ref{sec:hephe-res}.
+   x-only approximation is discussed. This is followed by a brief discussion of the method used to
+   extract cross sections from the one-particle density (Sec.~\ref{sec:hephe-det}) before presenting
+   results in Sec.~\ref{sec:hephe-res}.
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
 
-      An accurate exchange-potential is essential for a precise description of the He\textsuperscript{+}-He
-      collision system. The spin polarized nature of the system, which emphasizes exchange effects (i.e
-      manifestations of Fermi statistics), make this fact indisputable.
+      An accurate exchange-potential is essential for a precise description of the
+      He\textsuperscript{+}-He collision system. The spin polarized nature of the system, which
+      emphasizes exchange effects (i.e manifestations of Fermi statistics), make this fact indisputable.
 
       As discussed in Sec.~\ref{sec:opm}, within the x-only approximation, the exchange-potential may be
       determine exactly via the \textsc{opm}. As this process is prohibitively expensive the \textsc{kli}
-      approximation which, as has been mentioned in Sec.~\ref{sec:kli}, produces similar results was used in
-      its stead.
+      approximation which, as has been mentioned in Sec.~\ref{sec:kli}, produces similar results was
+      used in its stead.
 
-      At any instant of time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic molecule
-      with an internuclear distance $R_\mathrm{int}(t) = \sqrt{b^2 + z(t)^2}$, where $b$ and $z$ are the impact
-      parameter and $z$ position of the projectile (as described in Chap.~\ref{chap:p-he2p-he}). The \textsc{dft}
-      molecular structure package \texttt{DIAMOL} has been designed precisely for such situations
-      ({\color{red}{not sure how to cite this}}). If at each time-step of the \texttt{BGM} (the software package
-      which implements the \textsc{bgm}) the time-dependent \textsc{ks}-orbitals,
-      $\varphi_{\sigma j}(\mathbf{r},t)$ is fed into \texttt{DIAMOL} the \textsc{ks}-potential,
-      $v^{\sigma}_\textsc{ks}[\varphi_{\sigma j};t]$, may be calculated at each $t$, effectively giving one the
-      time-dependent \textsc{ks}-potential $v^{\sigma}_\textsc{ks}[\varphi_{\sigma j}](t)$.
+      At any instant of time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic
+      molecule with an internuclear distance $R_\mathrm{int}(t) = \sqrt{b^2 + z(t)^2}$, where $b$ and
+      $z$ are the impact parameter and $z$ position of the projectile (as described in
+      Chap.~\ref{chap:p-he2p-he}). The \textsc{dft} molecular structure package \texttt{DIAMOL} has been
+      designed precisely for such situations ({\color{red}{not sure how to cite this}}). If at each
+      time-step of the \texttt{BGM} (the software package which implements the \textsc{bgm}) the
+      time-dependent \textsc{ks}-orbitals, $\varphi_{\sigma j}(\mathbf{r},t)$ is fed into
+      \texttt{DIAMOL} the exchange-potential, $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j};t]$, may be
+      calculated at each $t$, effectively giving one the
+      time-dependent exchange-potential $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j}](t)$.
 
-      Limitations of \texttt{DIMAOL} complicate this procedure. Whereas $\varphi_{\sigma j}$ have no enforced
-      symmetry, \texttt{DIAMOL} assumes that the orbitals are cylindrically symmetric about the internuclear
-      axis. To avoid conflicts only a cylindrically symmetric portion of the \textsc{ks}-orbitals can be fed
-      into \texttt{DIAMOL}. In order to describe a work around to this problem one must first understand how
-      the \textsc{ks}-orbitals are represented within the \textsc{bgm}.
+      Limitations of \texttt{DIMAOL} complicate this procedure. Whereas $\varphi_{\sigma j}$ have no
+      enforced symmetry, \texttt{DIAMOL} assumes that the orbitals are cylindrically symmetric about the
+      internuclear axis. To avoid conflicts only a cylindrically symmetric portion of the
+      \textsc{ks}-orbitals can be fed into \texttt{DIAMOL}. In order to describe a work around to this
+      problem one must first understand how the \textsc{ks}-orbitals are represented within the
+      \textsc{bgm}.
 
       Each \textsc{ks}-orbital is represented as a sum
       %
@@ -1489,8 +1491,9 @@
          \varphi_{\sigma j}(\mathbf{r},t) = \sum d_{c k L M}^{\sigma j} \tilde{\chi}^{LM}_{c k},
       \end{equation}
       %
-      where $c$ labels the centres, target ($T$) and projectile ($P$), and the remaining indices are identical
-      to the ones described in Eq.~\eqref{eq:bgmbasis}. The functions $\tilde{\chi}^{00}_{c k}$ are given by
+      where $c$ labels the centres, target ($T$) and projectile ($P$), and the remaining indices are
+      identical to the ones described in Eq.~\eqref{eq:bgmbasis}. The functions
+      $\tilde{\chi}^{00}_{c k}$ are given by
       %
       \begin{equation} \label{eq:etfbasis}
          \tilde{\chi}^{00}_{ck} =
@@ -1500,20 +1503,20 @@
             \end{cases}
       \end{equation}
       %
-      where $\chi^{00}_{c k}$ are, once again, the eigenstates of the undisterbed centres, helium \textsc{opm}
-      ground-state orbitals on the target and hydrogen-like states on the projectile. The difference is the 
-      inclusion of the  electron translation factors (\textsc{etf}).
+      where $\chi^{00}_{c k}$ are, once again, the eigenstates of the undisturbed centres, helium
+      \textsc{opm} ground-state orbitals on the target and hydrogen-like states on the projectile. The
+      difference is the inclusion of the  electron translation factors (\textsc{etf}).
 
-      Leaving aside the \textsc{etf}'s for the time being, it is immediately clear that the simplest way to
-      maintain cylindrical symmetry is to only pass the $1s$ contributions on each centre to \texttt{DIAMOL}.
-      We must then define the new orbitals
+      Leaving aside the \textsc{etf}'s for the time being, it is immediately clear that the simplest way
+      to maintain cylindrical symmetry is to only pass the $1s$ contributions on each centre to
+      \texttt{DIAMOL}. We must then define the new orbitals
       %
       \begin{equation} \label{eq:1sonly}
          \tilde{\varphi}_{\sigma j} = \tilde{d}^{\sigma j}_T \tilde{\chi}^{00}_{T1} +
                                       \tilde{d}^{\sigma j}_P \tilde{\chi}^{00}_{P1},
       \end{equation}
       %
-      where the coefficients $\tilde{d}^{\sigma j}_c$ are ddefined in terms of the projection operator,
+      where the coefficients $\tilde{d}^{\sigma j}_c$ are defined in terms of the projection operator,
       %
       \begin{equation} \label{eq:proj}
          \hat{P} = \sum\limits_{c_1, c_2 \in \{T,P\}} \tilde{S}^{-1}_{c_1 c_2}
@@ -1521,7 +1524,7 @@
                                                       \bra{\tilde{\chi}^{00}_{c_2 1}}
       \end{equation}
       %
-      with $\tilde{S}^{-1}_{c_1 c_2}$ the inverse of the overlap mattrix
+      with $\tilde{S}^{-1}_{c_1 c_2}$ the inverse of the overlap matrix
       %
       \begin{equation}
          \tilde{S}_{c_1 c_2} = \braket{\tilde{\chi}^{00}_{c_1 1} | \tilde{\chi}^{00}_{c_2 1}},
@@ -1533,8 +1536,9 @@
          \tilde{d}^{\sigma j}_c = \braket{\tilde{\chi}^{00}_{c 1} | \hat{P} |\tilde{\varphi}_{\sigma j}}.
       \end{equation}
 
-      It can be easily shown that the \textsc{etf}'s introduce addition asymmetries. Working in the rotating
-      centre of mass frame, the coordinate system used by \texttt{DIAMOL}, the \textsc{etf}'s become
+      It can be easily shown that the \textsc{etf}'s introduce addition asymmetries. Working in the
+      rotating centre of mass frame, the coordinate system used by \texttt{DIAMOL}, the \textsc{etf}'s
+      become
       %
       \begin{subequations} \label{eq:etf}
          \begin{equation} \label{eq:etfT}
@@ -1549,13 +1553,40 @@
       \end{subequations}
       %
       where $v_\mathrm{rel}$ is the relative velocity of the centres and $\theta = \arctan b/z$. The
-      explicit $\phi$ dependence introduced by the $x$-components of the \textsc{etf}'s break cylindrical
-      symmetry (refer to Sec.~\ref{sec:prolate}). To preserve cylindrical symmetry there are two options.
+      explicit $\phi$ dependence introduced by the $x$-components of the \textsc{etf}'s break
+      cylindrical symmetry (refer to Sec.~\ref{sec:prolate}). To preserve cylindrical symmetry there are
+      two options.
       
-      The obvious first option is to ignore the \textsc{etf}'s or, equivalently, set them to 1. The second
-      option is to include only the $z$-components. It should be noted that as $z$ approches 0 the two options
-      become equivalent, thus any benefit derived from a partial \textsc{etf} will be lost near the cloest
-      approach.
+      The obvious first option is to ignore the \textsc{etf}'s or, equivalently, set them to 1. The
+      second option is to include only the $z$-components. It should be noted that as $z$ approaches 0
+      the two options become equivalent, thus any benefit derived from a partial \textsc{etf} will be
+      lost near the closet approach.
+
+      Any investigation of the impact of the \textsc{etf}'s is best carried out in an isolated
+      environment. To achieve this we may introduce a no-response model. In such a model the initial
+      occupations of the orbitals passed to \texttt{DIAMOL} will be frozen and the full orbitals will
+      be propagated in the resulting potential. To be more concrete, if we have two spin-up and one
+      spin-down electron the coefficients be given the fixed values
+      %
+      \begin{equation} \label{eq:noresp}
+         \tilde{d}^{\uparrow 1}_T = \tilde{d}^{\uparrow 2}_P = \tilde{d}^{\downarrow 1}_T  = 1
+         ~~~ \mbox{and} ~~~
+         \tilde{d}^{\uparrow 1}_P = \tilde{d}^{\uparrow 2}_T = \tilde{d}^{\downarrow 1}_P  = 0.
+      \end{equation}
+      %
+      In this way the only phase information entering \texttt{DIAMOL} will arise directly from the
+      \textsc{etf}'s.
+
+      Regardless of which orbitals are passed to \texttt{DIAMOL} it is important that the same orbitals
+      used to calculate $v_\mathrm{x}$ are used in the determination of $v_\mathrm{H}$. As one of the
+      primary functions of the exchange-potential is the  cancellation of the self-interaction present
+      in the Hartree potential they must both be constructed consistently with each other lest the
+      self-interaction remain. For this reason, and for ease of future discussion, we will define a
+      combine electron-electron potential
+      %
+      \begin{equation} \label{eq:vee}
+         v_\mathrm{ee} = v_\mathrm{x} + v_\mathrm{H}.
+      \end{equation}
 
    \end{section}
 
@@ -1648,6 +1679,7 @@
 \end{chapter}
 
 \begin{appendices}
+
    \begin{chapter}{Non-Rectangular Coordinate Systems \label{chap:coords}}
       
 
@@ -1656,6 +1688,7 @@
       is referred to any mathematical handbook for physics, for example~\cite{coord1, coord2}.
 
       \begin{section}{Elliptical Coordinates \label{sec:elliptic}}
+
          \begin{figure}[htp]
             \centering
             \begin{subfigure}{.5\textwidth}
@@ -1689,36 +1722,41 @@
          while the second is defined similarly and covers the lower half space ($(\xi,\eta) \mapsto
          (x,-y)$). Both charts are defined for $(\xi,\eta) \in [1, \infty] \times [-1,1]$.
 
-         This mapping is demonstrated in Fig.~\ref{fig:elliptic}. The coloured lines in the left panel represent a
-         selection of $\xi$ (blues and greens) and $\eta$ (reds and oranges) grid lines. Grid lines are mapped by
-         Eq.~\eqref{eq:elipdef} to lines of corresponding colour in the right panel.
+         This mapping is demonstrated in Fig.~\ref{fig:elliptic}. The coloured lines in the left panel
+         represent a selection of $\xi$ (blues and greens) and $\eta$ (reds and oranges) grid lines.
+         Grid lines are mapped by Eq.~\eqref{eq:elipdef} to lines of corresponding colour in the right
+         panel.
 
       \end{section}
 
       \begin{section}{Prolate Speroidal Coordinates \label{sec:prolate}}
 
-         Prolate spheroidal coordinates are a three-dimensional coordinate system that result from rotating the
-         upper half space elliptical coordinates (defined in the proceeding section) around the line running
-         through the co-foci of the elliptic and hyperbolic grid lines.
+         Prolate spheroidal coordinates are a three-dimensional coordinate system that result from
+         rotating the upper half space elliptical coordinates (defined in the proceeding section) around
+         the line running through the co-foci of the elliptic and hyperbolic grid lines.
 
-         While several conventions exist, throughout this work prolate spheroidal coordinates are defined as
+         While several conventions exist, throughout this work prolate spheroidal coordinates are
+         defined as
          %
          \begin{equation} \label{eq:psc}
             \left\{
             \begin{array}{l}
                x = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \sin \phi, \\
                y = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \cos \phi, \\
-               z = a \xi \eta.
+               z = a \xi \eta,
             \end{array}
             \right.
          \end{equation}
+         %
+         for $(\xi, \eta, \phi) \in [1, \infty) \times [-1,1] \times [0,2\pi)$.
 
-         One says that a function $f: \mathbb{R}^3 \rightarrow \mathbf{R}$ is cylindrically symmetric if it has no
-         $\phi$ dependence, i.e.\ if $f(\xi,\eta,\phi) = f(\xi,\eta)$.
+         One says that a function $f: \mathbb{R}^3 \rightarrow \mathbf{R}$ is cylindrically symmetric if
+         it has no $\phi$ dependence, i.e.\ if $f(\xi,\eta,\phi) = f(\xi,\eta)$.
 
       \end{section}
 
    \end{chapter}
+
 \end{appendices}
 
 \cleardoublepage
