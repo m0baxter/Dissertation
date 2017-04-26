@@ -33,7 +33,6 @@
 
 \usepackage{showlabels}
 
-
 %\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge}
 
 %change link colours:
@@ -1590,11 +1589,86 @@
 
    \end{section}
 
-   \begin{section}{How the sausage is made\dots \label{sec:hephe-det}}
-
-   \end{section}
-
    \begin{section}{Results I Guess? \label{sec:hephe-res}}
+
+      \begin{subsection}{1\textit{s}-only Toy Model \label{sec:toy}}
+
+         \begin{figure}[htp]
+            \centering
+            \begin{subfigure}{.5\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/toymodel/dNorm-1s-20.eps}
+               \caption{$E_P = 20 \mathrm{keV}/\mathrm{amu}$. \label{fig:toy20}}
+            \end{subfigure}%
+            \begin{subfigure}{.5\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/toymodel/dNorm-1s-1000.eps}
+               \caption{$E_P = 1000 \mathrm{keV}/\mathrm{amu}$. \label{fig:toy1000}}
+            \end{subfigure}
+            \caption[Number of particles as a function of \textit{z} in 1\textit{s}-only toy model]
+                    {Number of particles as a function of $z$ in 1$s$-only toy model for $b = 1.0
+                    \mathrm{au}$. In both panels; solid line: \textsc{etf} off, dashed line:
+                    \textsc{etf} on. \label{fig:toy}}
+         \end{figure}
+
+         Before presenting the results for the full system some of the details of a simplified toy model
+         will be discussed. In this model only the $1s$ target and projectile states are included in
+         the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynmaics
+         code are the same as those passed into \texttt{DIAMOL}.
+
+         A useful quantity to monitor is the norm of the one-particle density,
+         %
+         \begin{equation}
+            N(t) = \int \mathrm{d}^3 r \, n(\mathbf{r},t).
+         \end{equation}
+         %
+         Ionization having been excluded by construction within this model one should find $N(t) = 3$
+         for all time, major violations of this can only be associated with the \textsc{etf}'s.
+
+         Figures~\ref{fig:toy20} and \ref{fig:toy1000} display $N$ as a function of $z$ for collisions
+         with impact energy of 20 keV/amu and 1000 keV/amu respectively. Both calcualtions use an impact
+         parameter of 1 au. While both the curves representing calculations including and excluding the
+         partial \textsc{etf}'s show sizable norm violations the inclusion of a partial \textsc{etf}
+         offers clear benefits. The \textsc{etf}'s reduce the overall size of the vioaltions and reduce
+         the range of time overwhich these violations occur, this can bee seen most clearly in
+         Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more slowwly and
+         reattaches more quickly. Additionally including \textsc{etf}'s corrects the unexpected asymetry
+         about $z = 0$.
+
+         The slight loss of norm noticable in the tails of all four curves is on the order of $0.002$.
+         One can consider the small violation as a limit on the accuracy of calculations. This error is
+         on the order of $0.06 \%$.
+
+         The origins of the norm violations is easy to trace. According to Eq.~\eqref{eq:dendef2} the
+         one-particle density may be written
+         %
+         \begin{equation} \label{eq:toyden}
+            n(\mathbf{r},t) = \left| \varphi_{\uparrow 1}\right|^2
+                            + \left| \varphi_{\uparrow 2}\right|^2
+                            + \left| \varphi_{\downarrow 1}\right|^2.
+         \end{equation}
+         %
+         Each orbital in the above expression is normalized to 1 and takes the form
+         %
+         \begin{equation}
+            \varphi = d_T e^{i \mathbf{v}_T \cdot \mathbf{r}} \chi_T
+                    + d_C e^{-i \mathbf{v}_T \cdot \mathbf{r}} \chi_C.
+         \end{equation}
+         %
+         Every orbital then contributes
+         %
+         \begin{equation}
+            \int \mathrm{d}^3 r \, \left| \varphi \right|^2 = \left| d_T \right|^2 
+                                                            + \left| d_P \right|^2
+            + \Re \left[ {d_T}^* d_P \tilde{S}_{TP} \right]
+         \end{equation}
+         %
+         to $N$, where $\tilde{S}_{TP}$ are the matrix elements of the overlap matrix (including
+         \textsc{etf}'s). It can then be seen that norm violations are due to the fact that
+         \texttt{DIAMOL} cannot fully account for the overlaps of the \textsc{ks}-orbitals, a direct
+         consequence of its inability to deal with non-cylindrically symmetric orbitals.
+
+      \end{subsection}
 
    \end{section}
 
