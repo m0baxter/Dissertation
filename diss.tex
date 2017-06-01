@@ -2,7 +2,7 @@
 
 \RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass[letterpaper, 10 pt]{report}
+\documentclass[letterpaper, 11 pt]{report}
 
 %\usepackage[sc]{mathpazo}
 %\linespread{1.05}
@@ -32,8 +32,6 @@
 \usepackage[toc,page]{appendix}
 
 \usepackage{showlabels}
-
-%\titleformat{\chapter}{\normalfont\huge}{\thechapter.}{20pt}{\huge}
 
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
@@ -145,6 +143,77 @@
 \onehalfspacing  %spacing here
 
 \begin{chapter}{Introduction \label{chap:intro}}
+
+   Atomic collision systems are of interest both theoretically, on their own merits, and for there
+   potential in applications. In particular the He\textsuperscript-He collision system, a focus of a
+   large portion of the present work, is applicable in such diverse areas as fusion
+   reactors~\cite{fusion1, fusion2}, astrophysics~\cite{astro1, astro2}, and dark matter
+   detection~\cite{dmdet}.
+
+   From the point of view of theory, Atomic collision systems are often explored as test-beds for
+   few-electron quantum dynamics. A helium-like target, consisting of two electrons and a nucleus, and a
+   bare projectile represent the archetypal few-electron collision system. The simplest example of such
+   a system uses an antiproton, the negatively charged antiparticle of the proton, as the projectile.
+   With a negative projectile the collision may be treated as an effective one-centred system which
+   involves electron excitation and ionization.
+
+   One might envision more complex systems by simply increasing the number of electrons on the target
+   however, a more useful course is to replace the negatively charged projectile with one that is
+   positively charged. With a positive projectile one must consider electron transfer in addition to
+   ionization processes.
+
+   Even more complex collision systems may be created by adding active electrons to the projectile. With
+   this addition one must consider various combinations of ionization from both centres as well as
+   transfers between target and projectile.
+
+   This chain of accruing complexity essentially describes the path of this work in which a series of
+   increasingly involved collision systems are investigated. This sequence begins with a negative
+   projectile with an antiproton-helium system. Following this two systems, proton-helium
+   (\textit{p}-He) and fully stripped helium ions on helium (He\textsuperscript{2+}-He), involving
+   positively charged projectiles are investigated. Finally, singly charged helium ions incident on
+   helium atoms (He\textsuperscript{+}-He), a system which contains one electron on the projectile and
+   two on the target, was studied.
+
+   Solving the Schr\"{o}dinger equation describing a system of more than two particles is
+   computationally taxing, even for a small number of particles (three or more). Thus, the so called
+   few-body problem, tests the limits of current computational power.
+
+   In the standard treatment of many-body quantum mechanics there is a well-established process for
+   calculating observables from the full many-body wave function describing the system. In
+   time-dependent density functional theory~\cite{tddft, ullrich} (\textsc{tddft}) one does not
+   necessarily know the full wave function, instead one works with the one-particle density. This
+   method is, in principle, just as accurate as the standard wave function treatment while, at the
+   same time being far more computationally efficient.
+
+   One down side is that, unlike in standard quantum mechanics, observables are not readily calculable,
+   as they are from the many-electron wave function. While the Runge-Gross theorem~\cite{rgt} guarantees
+   that all observables are expressible as functionals of the one-particle density, exact expressions
+   are only available in a limited number of cases~\cite{obs_exac}. In most situations one is then
+   forced to work with approximate observable functionals.
+
+   Additionally, when working within the context of \textsc{tddft} one typically determines the
+   one-particle density via an auxiliary system of non-interacting particles. To obtain this a new
+   potential, the Kohn-Sham potential (\textsc{ks}), which encodes the interacting system into the
+   language of non-interacting particles, must be introduced. As with the observables, mentioned above,
+   this potential is an unknown functional of the one-particle density and, as such, must also be
+   approximated. These issues will be laid out in greater detail in Chap.~\ref{chap:dft} where the
+   relevant \textsc{dft} background material is presented.
+
+   This discussion is followed in Chap.~\ref{chap:p-he2p-he} where the antiproton-, proton-, and
+   He\textsuperscript{+2}-He collision systems are investigated. The chapter focuses on exploring the
+   observable problem through an application of a correlation integral model~\cite{wb} to the
+   aforementioned collision systems. The second of the main problems of \textsc{dft} is explored in
+   Chap.~\ref{chap:hephe} where a procedure for accurately approximating the Kohn-Sham potential is
+   implemented and applied to the He\textsuperscript{+}-He collision system. Finally, A summary of the
+   results and conclusions of this work are given in Chap.~\ref{chap:con}.
+
+   Atomic units ($\hbar = m_e = e = 1$) are used throughout unless otherwise stated.
+
+   \begin{itemize}
+
+         \item
+
+   \end{itemize}
 
 \end{chapter}
 
@@ -1296,7 +1365,7 @@
                      {\color{GreenYellow}$\blacktriangle$}~\cite{KAH84}. \label{fig:he2phe-ii}}
          \end{figure}
 
-         \begin{figure}[ht]
+         \begin{figure}[t]
             \centering
             \includegraphics[width = 0.95 \linewidth]{./images/he2phe/he2phe-IP.eps}
             \caption[Total cross section for transfer ionization in He\textsuperscript{2+}-He
@@ -1308,7 +1377,7 @@
                      {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87}. \label{fig:he2phe-ip}}
          \end{figure}
 
-         \begin{figure}[ht]
+         \begin{figure}[t]
             \centering
             \includegraphics[width = 0.95 \linewidth]{./images/he2phe/he2phe-TP.eps}
             \caption[Total cross section for single capture in He\textsuperscript{2+}-He
@@ -1321,7 +1390,7 @@
                      {\color{red}$\blacksquare$}~\cite{Rudd85}. \label{fig:he2phe-tp}}
          \end{figure}
  
-         \begin{figure}[htp]
+         \begin{figure}[h]
             \centering
             \includegraphics[width = 0.95 \linewidth]{./images/he2phe/he2phe-PP.eps}
             \caption[Total cross section for double capture in He\textsuperscript{2+}-He
@@ -1584,7 +1653,7 @@
       combine electron-electron potential
       %
       \begin{equation} \label{eq:vee}
-         v_\mathrm{ee} = v_\mathrm{x} + v_\mathrm{H}.
+         v^\sigma_\mathrm{ee} = v^\sigma_\mathrm{x} + v_\mathrm{H}.
       \end{equation}
 
    \end{section}
@@ -1593,7 +1662,22 @@
 
       \begin{subsection}{1\textit{s}-only Toy Model \label{sec:toy}}
 
-         \begin{figure}[htp]
+
+         Before presenting the results for the full system some of the details of a simplified toy model
+         will be discussed. In this model only the $1s$ target and projectile states are included in
+         the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynmaics
+         code are the same as those passed into \texttt{DIAMOL}.
+
+         A useful quantity to monitor is the norm of the one-particle density,
+         %
+         \begin{equation}
+            N(t) = \int \mathrm{d}^3 r \, n(\mathbf{r},t).
+         \end{equation}
+         %
+         Ionization having been excluded by construction within this model one should find $N(t) = 3$
+         for all time, major violations of this can only be associated with the \textsc{etf}'s.
+
+         \begin{figure}[t]
             \centering
             \begin{subfigure}{.5\textwidth}
                \centering
@@ -1610,20 +1694,6 @@
                     \mathrm{au}$. In both panels; solid line: \textsc{etf} off, dashed line:
                     \textsc{etf} on. \label{fig:toy}}
          \end{figure}
-
-         Before presenting the results for the full system some of the details of a simplified toy model
-         will be discussed. In this model only the $1s$ target and projectile states are included in
-         the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynmaics
-         code are the same as those passed into \texttt{DIAMOL}.
-
-         A useful quantity to monitor is the norm of the one-particle density,
-         %
-         \begin{equation}
-            N(t) = \int \mathrm{d}^3 r \, n(\mathbf{r},t).
-         \end{equation}
-         %
-         Ionization having been excluded by construction within this model one should find $N(t) = 3$
-         for all time, major violations of this can only be associated with the \textsc{etf}'s.
 
          Figures~\ref{fig:toy20} and \ref{fig:toy1000} display $N$ as a function of $z$ for collisions
          with impact energy of 20 keV/amu and 1000 keV/amu respectively. Both calcualtions use an impact
@@ -1652,7 +1722,7 @@
          %
          \begin{equation}
             \varphi = d_T e^{i \mathbf{v}_T \cdot \mathbf{r}} \chi_T
-                    + d_C e^{-i \mathbf{v}_T \cdot \mathbf{r}} \chi_C.
+                    + d_P e^{-i \mathbf{v}_T \cdot \mathbf{r}} \chi_P.
          \end{equation}
          %
          Every orbital then contributes
@@ -1754,7 +1824,7 @@
 
 \begin{appendices}
 
-   \begin{chapter}{Non-Rectangular Coordinate Systems \label{chap:coords}}
+   \begin{chapter}{Coordinate Systems \label{chap:coords}}
       
 
       This appendix contains the fundamentals of some non-rectangular coordinate systems used in the
@@ -1763,7 +1833,7 @@
 
       \begin{section}{Elliptical Coordinates \label{sec:elliptic}}
 
-         \begin{figure}[htp]
+         \begin{figure}[t]
             \centering
             \begin{subfigure}{.5\textwidth}
                \centering
@@ -1803,7 +1873,7 @@
 
       \end{section}
 
-      \begin{section}{Prolate Speroidal Coordinates \label{sec:prolate}}
+      \begin{section}{Prolate Spheroidal Coordinates \label{sec:prolate}}
 
          Prolate spheroidal coordinates are a three-dimensional coordinate system that result from
          rotating the upper half space elliptical coordinates (defined in the proceeding section) around
