@@ -215,9 +215,9 @@
 
    This chapter concerns itself with a brief introduction to the world of density-functional theory,
    both ground-state~\cite{dft-engel} (\textsc{dft}) and time-dependent~\cite{tddft, marques-1}
-   (\textsc{tddft}). This discussion begins with a discussion of various existence theorems central to
+   (\textsc{tddft}). This discussion begins with an overview  of various existence theorems central to
    density functional theory (Sec.~\ref{sec:dft}). Next the Kohn-Sham equations are introduced in
-   Sec.~\ref{sec:ks}. More practical matters are considered when the two main problems of density
+   Sec.~\ref{sec:ks}. More practical matters are considered when two of the main problems of density
    functional theory, the observable problem (Sec.~\ref{sec:obs}) and the determination of the
    exchange-correlation potential (Sec.~\ref{sec:xcpot}) are introduced. The discussion of the
    xc-potential is focused on the optimized potential method (Sec.~\ref{sec:opm}) and the
@@ -226,8 +226,8 @@
    \begin{section}{\textsc{dft} and \textsc{tddft} Existence Theorems \label{sec:dft}}
 
       In the standard treatment of many-body quantum mechanics a system is described by a wavefunction
-      $\Psi$ which, depending upon the situation, is determined by either the time-dependent
-      Schr\"{o}dinger equation (\textsc{tdse})
+      $\Psi$ which, depending upon the situation, is determined by either the time-dependent,
+      non-relativistic, Schr\"{o}dinger equation (\textsc{tdse})
       %
       \begin{equation} \label{eq:tdse}
          \hat{H}(t) \Psi(t) = i \frac{\mathrm{d} \Psi(t)}{\mathrm{d} t},
@@ -239,7 +239,7 @@
          \hat{H} \Psi = E \Psi.
       \end{equation}
       %
-      If the system in question consists of $N$ non-relativistic electrons then $\Psi$ becomes a
+      If the system in question consists of $N$, non-relativistic, electrons then $\Psi$ becomes a
       function of $N$ position variables $\mathbf{r}_i$ and spin variables $\sigma_i$. The Hamiltonian,
       $\hat{H}$, may be decomposed into a kinetic energy term
       %
@@ -283,12 +283,20 @@
       It should be noted that for time-dependent systems this mapping is unique only up to the addition
       of an arbitrary time-dependent function, as this serves only to introduce a phase into the
       associated wave function $\Psi[\hat{V}_\mathrm{ext}]$ it can be safely ignored in all future
-      discussions.
+      discussions. For more on this see the discussion following Eq.~\eqref{eq:obsfunc1}.
+
+      In general, the time-dependent external potential will also be a functional of the initial state
+      of the system $\Psi_0$. For a system consisting of a single electron no such initial-state
+      dependence exists~\cite{initial1, initial1-erratum}, for two or more electrons the initial-state
+      dependence is not necessarily unique~\cite{initial2, initial2-re, initial2-rere, initial3}.
+      Fortunately, in most cases of interest initial-state dependence is not an issue. As an example
+      any system initially in the ground state, as is the case in this work, may appeal to the
+      Hohenberg-Kohn theorem to guarantee that any functionals depend uniquely on the initial state.
 
       We have formulated the density-potential mapping for an explicitly spin-dependent system, it
       then must be noted that the original existence theorems were not formulated in such general terms.
       Luckily, generalizations for both the stationary~\cite{spin-dep1, spin-dep2} and
-      time-dependent~\cite{td-spindep} to spin-polarized systems exist.
+      time-dependent~\cite{td-spindep} cases to spin-polarized systems exist.
 
    \end{section}
 
@@ -297,7 +305,7 @@
       In practice the correspondence between the density and potential is used to map the interacting
       many-body \textsc{sse} or \textsc{tdse} onto an auxiliary non-interacting system. The
       density-potential mappings discussed in the previous section allow one to rewrite the interacting
-      system in terms of an auxiliary system of non-interacting particles by described the functions
+      system in terms of an auxiliary system of non-interacting particles described by the functions
       $\varphi_{i\sigma}$ ($i = 1, \dots, N$) with
       %
       \begin{equation} \label{eq:dendef2}
@@ -326,10 +334,16 @@
       quantities $n_\uparrow$, $n_\downarrow$ are the spin-up/down one-particle densities defined by
       %
       \begin{equation} \label{eq:spinden}
-         n_\sigma = \sum\limits_{i=1}^{N} \left| \varphi_{i\sigma} \right|^2.
+         n_\sigma = \sum\limits_{i=1}^{N} \left| \varphi_{i\sigma} \right|^2,
+      \end{equation}
+      %
+      such that
+      %
+      \begin{equation} \label{eq:denconstraint}
+         n = n_\uparrow + n_\downarrow.
       \end{equation}
 
-      The potential in Eqs.~\eqref{eq:sks} and~\eqref{eq:tdks} is know as the Kohn-Sham potential. This
+      The potential in Eqs.~\eqref{eq:sks} and~\eqref{eq:tdks} is known as the Kohn-Sham potential. This
       potential may be simplified by splitting it into a series of less complex objects
       %
       \begin{equation} \label{eq:vks}
@@ -358,7 +372,7 @@
 
    \begin{section}{Observables \label{sec:obs}}
 
-      In the standard treatment of many body quantum mechanics there is a well established process for
+      In the standard treatment of many-body quantum mechanics there is a well established process for
       calculating observables from the full many body wave function describing the system. For any
       solution $\Psi$, unique up to a phase factor, of the \textsc{sse} or \textsc{tdse} and any
       observable $\hat{O}$ we immediately have the unique functional
@@ -367,7 +381,7 @@
          O[\Psi] = \braket{\Psi| \hat{O} | \Psi},
       \end{equation}
       %
-      so long as $\hat{O}$ contains no time derivative terms.
+      so long as $\hat{O}$ contains no time-derivative terms.
 
       The density-potential mappings of Sec.~\ref{sec:dft} provide the relation
       %
@@ -382,7 +396,7 @@
          n \mapsto \hat{V}_\mathrm{ext} \mapsto \Psi \mapsto O
       \end{equation}
       %
-      or, $O = O[n]$; the observable is a functional of the one-particle density.
+      or, $O = O[n]$.
 
       In principle all observables are functionals of the one-particle density. However, in practice the
       exact functional is only known in a handful of cases~\cite[p.\ 211-213]{obs_exac}.
@@ -397,7 +411,7 @@
          E[n] = \braket{\Psi[n] | \hat{H} | \Psi[n] }= T[n] + E_{ee}[n] + E_\mathrm{ext}[n]
       \end{equation}
       %
-      where the energies on the right hand side are the contributes from the constituent operators
+      where the energies on the right hand side are the contributions from the constituent operators
       Eq.~\eqref{eq:Top}--\eqref{eq:Vext}. Similarly, we may define the energy functional for the
       non-interacting, \textsc{ks}, system as
       %
@@ -411,7 +425,7 @@
          E_\mathrm{xc} = T - T_s + E_{ee} - E_\mathrm{H}.
       \end{equation}
       %
-      Finally making use of the fact that the ground-state one-particle density will minimize the action
+      Finally making use of the fact that the ground-state one-particle density will minimize the energy
       it follows that
       %
       \begin{equation} \label{eq:vxc-der}
@@ -424,7 +438,7 @@
 
       There are a few caveats to apply Eq.~\eqref{eq:vxc-der}. First, the functional is only defined
       for the set of ground-state $v$-representable densities, those densities which arise as
-      grounds-state solutions of the \textsc{sse} for some potential $v$. The second problem follows
+      ground-state solutions of the \textsc{sse} for some potential $v$. The second problem follows
       from the first, due to the fact that not all densities are $v$-representable~\cite{not-vrep1,
       not-vrep2, not-vrep3}, thus one must establish that the set of functions for which the functional
       is defined is dense enough to ensure the existence of the functional derivative.. For densities
@@ -443,7 +457,7 @@
       %
       In analogy to the ground state case the exchange correlation part of the action may be defined in
       terms of the difference between the actions for the interacting and non-interacting systems. We
-      then find at a stationary point that
+      then find at a stationary point:
       %
       \begin{equation} \label{eq:tdvxc-der}
          \frac{\delta A_\mathrm{xc}[n]}{\delta n_\sigma(\mathbf{r},t)}
@@ -454,18 +468,29 @@
       Eq.~\eqref{eq:qmact} does not distinguish the direction of time and thus its naive use may lead
       to violations of causality~\cite{tddft-causality}. The existence of functional derivatives has
       been established in a similar style as in the stationary case~\cite{td-welldef}. The problem of
-      which densities are $v$-representable has also been solve~\cite{td-vrep}. The causality problem
-      may be solve in several ways including extending the time domain to the Keldysh
+      which densities are $v$-representable has also been solved~\cite{td-vrep}. The causality problem
+      may be solved in several ways including extending the time domain to the Keldysh
       contour~\cite{caus-sol1} and relaxing the boundary condition on one end point of the time
       interval~\cite{caus-sol2}.
 
       The simplest explicit density functional is the local density approximation~\cite{ks-eq}
-      (\textsc{lda}). Taking things further one is led to the hierarchy of increasingly complex
+      (\textsc{lda}). At its simplest the \textsc{lda} approximates the energy functional of a general
+      system as that of the homogeneous electron gas (\textsc{heg})
+      %
+      \begin{equation} \label{eq:ldaE}
+         E^\textsc{lda}[n] = \int \mathrm{d}^3 r \, n(\mathbf{r}) \epsilon_\textsc{heg}(n),
+      \end{equation}
+      %
+      where $\epsilon_\textsc{heg}$ is the energy density of the \textsc{heg}, which is a function of
+      the density of the gas. Exchange contributions to $\epsilon_\textsc{heg}$ have been determined
+      analytically~\cite{heg}.
+
+      Taking things further one is led to the hierarchy of increasingly complex
       generalized gradient approximations and hybrid functionals~\cite{gga+}. For time-dependent systems
-      one may simply apply one of the many \textsc{dfT} functionals to arrive at an adiabatic
+      one may simply apply one of the many ground-state functionals to arrive at an adiabatic
       approximation. Going beyond the adiabatic approximation is possible, however such functionals are
       much more complex. As an example the fully time-dependent version of the \textsc{lda}, the local
-      deformation approximation~\cite{TDLDefA1, TDLDefA2} (\textsc{tdld}ef\textsc{a}).
+      deformation approximation~\cite{TDLDefA1, TDLDefA2} (\textsc{tdld}ef\textsc{a}) can be mentioned.
 
       \begin{subsection}{Optimized Potential Method \label{sec:opm}}
 
@@ -476,11 +501,12 @@
          derivations~\cite{opm1, opm2, opm3, opm4, opm5, opm-rev}.
 
          Without reproducing too many long equations one may use Eq.~\eqref{eq:vxc-der} and several
-         applications of the chain rule for functional derivatives to arrive at
+         applications of the chain rule for functional derivatives to arrive at ($c.c.$ denoting the
+         complex conjugate of the preceding term)
          %
          \begin{equation} \label{eq:opm1}
             \begin{split}
-               v^\sigma_\mathrm{xc} & = \int \mathrm{d}^3 r^\prime
+               v^\sigma_\mathrm{xc}(\mathbf{r}) & = \int \mathrm{d}^3 r^\prime
                   \frac{\delta v^\sigma_\mathrm{\textsc{ks}}(\mathbf{r^\prime})}
                        {\delta n_\sigma(\mathbf{r}) } \\
                                     & \times \sum\limits_{j} \int \mathrm{d}^3 r^{\prime\prime}
@@ -505,8 +531,8 @@
          \begin{equation} \label{eq:xfunc}
             \begin{split}
                A_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r},t)]
-                 = & E_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r})] \\
-                = & -\frac{1}{2} \sum\limits_\sigma \sum\limits_{j,k}
+                 = & \int \mathrm{d} t \, E_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r})] \\
+                = & -\frac{1}{2} \int \mathrm{d} t \, \sum\limits_\sigma \sum\limits_{j,k}
                     \int\mathrm{d}^3 r \mathrm{d}^3 r^\prime
                     \frac{ \varphi^*_{j\sigma}(\mathbf{r},t) \varphi^*_{k\sigma}(\mathbf{r}^\prime,t)
                    \varphi_{j\sigma}(\mathbf{r}^\prime,t) \varphi_{k\sigma}(\mathbf{r},t)}
@@ -525,7 +551,7 @@
          exist~\cite{kli1, kli2, kli3} they differ by only a term proportional to
          $\partial E_\mathrm{xc} / \partial \epsilon_k$ which, for functionals such as the exact
          exchange functional that do not depend on the \textsc{ks} eigenvalues, is not a problem. As one
-         might expect the \textsc{kli} approximation is also valid in the time-dependent
+         might expect the \textsc{kli} approximation is also applicable in the time-dependent
          regime~\cite{tdkli1, tdkli2, tdkli3}.
          
          For a wide range of systems \textsc{kli} and the full \textsc{opm} produce very similar
@@ -594,7 +620,7 @@
       As in~\cite{pbarhe} the correlation potential $v_\mathrm{c}$ will be approximated using a frozen
       correlation model. This potential is determined by inverting the Kohn-Sham scheme for the density
       of an accurate multi-configuration Hartree-Fock~\cite{mchf} (\textsc{mchf}) ground-state helium
-      wave function.
+      wave function. The details of this process can be found in~\cite{thesis, pbarhe}.
 
       Finally, the external potential can be specified. For a collision system in the semi-classical
       approximation this consists of the Coulomb potentials of the nuclear centres of the target and
@@ -611,7 +637,7 @@
       protons, and He\textsuperscript{2+} ions incident on helium atoms, thus $Q_T = 2$ and
       $Q_P = -1$, 1, and 2 respectively.
 
-      The \textsc{tdks} equation described above was solved with the basis generator method~\cite{bgm}
+      The \textsc{tdks} described above was solved with the basis generator method~\cite{bgm}
       (\textsc{bgm}) using a basis similar to the one employed in~\cite{keim-ihe}. As in~\cite{pbarhe}
       the basis rooted in an x-only description of the helium atom in~\cite{keim-ihe} is replaced by one
       that reflects the incorporation of the ground-state correlation potential. In the \textsc{bgm} we
@@ -645,7 +671,7 @@
 
       The discussion started in Sec.~\ref{sec:obs} may be elaborated upon by introducing the observables
       of interest for our ion-atom collision systems, the ionization and capture probabilities. For both
-      negative and positively charged projectiles we must consider the two pure ionization processes,
+      negatively and positively charged projectiles we must consider the two pure ionization processes,
       single ionization
       %
       \begin{equation} \label{eq:TI}
@@ -658,9 +684,8 @@
          A^z + \mathrm{He} \rightarrow A^z + \mathrm{He}^{2+} + 2e^-,
       \end{equation}
       %
-      where $A^z = \mathrm{H}^+$ or $p$ for protons, $A^z = \mathrm{He}^{2+}$, or $A^z =
-      \bar{\mathrm{H}}^-$ or $\bar{p}$, and assuming we exclude processes involving only excitation of
-      the target.
+      where $A^z = \mathrm{H}^+$ or $p$ for protons, $A^z = \mathrm{He}^{2+}$, or $A^z = \bar{p}$, and
+      assuming we exclude processes involving only excitation of the target.
 
       For positively charged projectiles additional processes involving capture must also be included.
       The three additional channels are single capture
@@ -719,7 +744,7 @@
       In the above expressions $T$, $P$ are disjoint regions containing the target and projectile,
       $I = \mathbb{R}^3\setminus(T \cup P)$, and $t_f$ is some time chosen far enough after the collision
       for the two nuclear centres to become independent. As the functional $\rho[n]$ is unknown these
-      exact expressions are of limited utility
+      exact expressions are of limited utility.
 
       By introducing the correlation integrals
       %
@@ -777,6 +802,15 @@
          \end{equation}
       \end{subequations}
 
+      With an appropriate choice of $t_f$ Eq.~\eqref{eq:pt} reduces to a sum over the occupations of the
+      bound states of the basis defined in Eq.~\eqref{eq:bgmbasis}. The single-centred \textsc{bgm}, as
+      opposed to the two-centred \textsc{BGM} discussed in Sec.\~ref{sec:pot}, basis contains no
+      explicit projectile states, thus one must first project the one-particle density onto an
+      appropriate set of projectile state (H or He ground state) in order to generate a sum over
+      projectile occupations analogous to that described for the target. The process of projecting onto
+      projectile states may lead to inaccuracies depending on how well the final state is represented by
+      a finite number of ground-state orbitals.
+
       The expressions for no, single, and double ionization in $\bar{p}$-He collisions presented
       in~\cite{pbarhe} may be recovered by setting $p_p = I^{PP}_\mathrm{c} = I^{TP}_\mathrm{c} = 0$.
       Being explicit we have
@@ -796,10 +830,10 @@
       \end{subequations}
 
       As in~\cite{pbarhe} we may proceed in one of two ways\footnote{A third model, the frozen
-      correlation model, was also discussed in~\cite{pbarhe} but was shown to essentially reproduce
-      \textsc{iem} results.}. The first and simplest method is to ignore correlation in the functionals
-      for observables. This is equivalent to setting $I^{V_1 V_2} = 0$ for $V_1,V_2 \in \{T,P\}$ and
-      leads to an independent electron model (\textsc{iem}) description
+      correlation model, was also discussed in~\cite{thesis, pbarhe} but was shown to essentially
+      reproduce \textsc{iem} results.}. The first and simplest method is to ignore correlation in the
+      functionals for observables. This is equivalent to setting $I^{V_1 V_2} = 0$ for $V_1,V_2 \in
+      \{T,P\}$ and leads to an independent electron model (\textsc{iem}) description
       %
       \begin{subequations} \label{eq:prob-iem}
          \begin{equation} \label{eq:ptt-iem}
@@ -833,7 +867,7 @@
       which are modelled by linear interpolations between the ground-state densities for the given
       centre, hydrogen or helium, with no, one, or two electrons bound. Labelling the various densities
       with a subscript denoting the number of bound electrons, for example the one-particle densities
-      will be $n_0$, $ n_1,$ and $n_2$ respectively, We then have
+      will be $n_0$, $ n_1,$ and $n_2$ respectively, we then have
       %
       \begin{equation} \label{eq:n1a}
          n^{A} (t_f) = \begin{cases}
@@ -860,7 +894,20 @@
       %
       for $V \in \{T,P\}$. 
 
-      The quantity $I_\mathrm{c}^{TT}$ will then be handled as it was in~\cite{pbarhe},
+      The quantity $I_\mathrm{c}^{TT}$ will then be handled, as it was in~\cite{thesis}
+      and~\cite{pbarhe}, by
+      %
+      \begin{equation} \label{eq:wbExplicit}
+         I_\mathrm{c}^{TT} = - \frac{1}{2} {p_T}^2 +
+         \begin{cases}
+            0 & N_T \leq 1 \\
+            \iint\limits_T \frac{\rho^A(\mathbf{r}_1, \mathbf{r}_2,t_f)}
+                    {n^{A}(\mathbf{r}_1,t_f) n^{A}(\mathbf{r}_1,t_f)}
+                    n(\mathbf{r}_1,t_f) n(\mathbf{r}_1,t_f) \mathrm{d}^3 r_1 \mathrm{d}^3 r_2
+            & N_T > 1.
+         \end{cases}
+      \end{equation}
+      %
       $I_\mathrm{c}^{PP}$ is treated analogously with constituent parts appropriately replaced by their
       projectile counterparts. $I_\mathrm{c}^{TP}$ must be handled with more care. As there is no clear
       generalization of the \textsc{wb} model to an explicit two-centre situation a different
@@ -935,7 +982,7 @@
       \end{equation}
 
       It can be shown that as the single-particle ionization probability ($p_I = 1 - p_P - p_T$)
-      approaches zero the upper and lower bounds converge. Additionally, In all cases he viable
+      approaches zero the upper and lower bounds converge. Additionally, In all cases the viable
       $I_\mathrm{c}^{TP}$ range is small. For $p$-He collisions the interval is at most approximately
       0.1 and is at least one order of magnitude less than this through the majority of the impact
       energy and parameter space considered. For the He\textsuperscript{2+}-He system the largest
@@ -973,19 +1020,18 @@
       $t_f$. The added complexity of the proton-helium collision system compared to that for
       antiproton-helium restricts the range through which the calculations may be run. Due to this fact
       an insufficient range of $t_f$ is available for averaging to produce a curve as smooth as in the
-      $\bar{p}$-He system (see Fig.~\ref{fig:he++}). More explicitly, letting $z_f = V t_f$ be the final
-      target-projectile separation for impact velocity $V$, $\bar{p}$-He collisions may be run to a
-      final separation of 45~a.u., whereas $p$-He collisions run to a maximum inter-centre distance of
-      around 35~a.u.
+      $\bar{p}$-He system. More explicitly, letting $z_f = V t_f$ be the final target-projectile
+      separation for impact velocity $V$, $\bar{p}$-He collisions may be run to a final separation of
+      45~a.u., whereas $p$-He collisions run to a maximum inter-centre distance of around 35~a.u.
       
       Figure~\ref{fig:poz}, which depicts the values of $p^{II}$ as a function of $z$ for a prototypical
       choice of impact energy and parameter, makes these more apparent. Also of note is that the
       variances increase by about a factor of two between each of the collision systems.
 
       We can get a sense of how well the adiabatic density approximates the true time-dependent density
-      at $t_f$ by considering there separation in function space between them. Owing to the fact that
-      one-particle densities are necessarily $L^1$ functions (i.e.\ integrable functions) it is most
-      natural to use the metric induced by the $L^1$-norm defined for any
+      at $t_f$ by considering their separation in function space. Owing to the fact that one-particle
+      densities are necessarily $L^1$ functions (i.e.\ integrable functions) it is most natural to use
+      the metric induced by the $L^1$-norm defined for any
       $f \in L^1\left(\mathbb{R}\right)$ by
       %
       \begin{equation} \label{eq:l1rorm}
@@ -994,13 +1040,13 @@
       %
       for measuring this distance.
       
-      Fig.~\ref{fig:l1} displays $\left| n(t_f) - n_A(t_f) \right|_1$, the
-      difference between the adiabatic ($n_A$) and exact ($n$) densities at the final time $t_f$ for the
-      antiproton-helium system\footnote{All integrals were performed with the aid of the \textsc{cuba} 
+      Fig.~\ref{fig:l1} displays $\left| n(t_f) - n_A(t_f) \right|_1$, the difference between the
+      adiabatic ($n_A$) and fully dynamic ($n$) densities at the final time $t_f$ for the
+      antiproton-helium system\footnote{All integrals were performed with the aid of the \textsc{cuba}
       numerical integration package~\cite{cuba}.}. While it is possible to perform such an analysis for
       the $p$-He system as well added complications brought on by having to deal with a two centred
       system make it much more difficult to produce and analyze such data. Intuitively one would expect
-      that the difference between the two densities would scale with the single-particle probability
+      that the difference between the two densities would should follow the single-particle probability
       $p_T$. This belief is supported by the easily derived relation 
       %
       \begin{equation} \label{eq:diff-bound}
@@ -1008,12 +1054,12 @@
       \end{equation}
       %
       While Fig.~\ref{fig:p-ic} (which will be discussed in next section) demonstrates monotonic
-      increase in $p_T = 1 - p$ with increasing impact parameter, a general trend for all impact
-      energies, Fig.~\ref{fig:l1} contains additional structures. Also of note is the minimum that
-      appears along the impact energy axis between 200 and 300~keV/amu. These unexpected features must
-      be attributed to the fact that $n_A$ contains only trivial angular dependence which makes a proper
-      description of excitation and partial removal of electronic density impossible. This provides
-      indications of the limitations of the \textsc{wb} model.
+      increase in $p_T$ with increasing impact parameter, a general trend for all impact energies,
+      Fig.~\ref{fig:l1} contains additional structures. Also of note is the minimum that appears along
+      the impact energy axis between 200 and 300~keV/amu. These unexpected features must be attributed
+      to the fact that $n_A$ contains only trivial angular dependence which makes a proper description
+      of excitation and partial removal of electronic density impossible. This provides indications of
+      the limitations of the \textsc{wb} model.
 
    \end{section}
 
@@ -1149,7 +1195,8 @@
          proton-helium collision results to an updated version (denser impact energy grid and larger
          range of averaging as described in Sec.~\ref{sec:phe2p-det}) of the antiproton-helium results
          of~\cite{pbarhe} and to experimental data. For a comparison with other theoretical work
-         see~\cite{pbarhe} and~\cite{new-pbarhe} ($\bar{p}$-He) and Sec.~\ref{sec:phe-res} ($p$-He).
+         see~\cite{thesis} (or~\cite{pbarhe}) and~\cite{new-pbarhe} ($\bar{p}$-He) and
+         Sec.~\ref{sec:phe-res} ($p$-He).
  
          For one-electron removal, Fig.~\ref{fig:he+}, the \textsc{wb} model provides an increase for
          both protons and antiprotons over the \textsc{iem} except at higher energies where the
@@ -1223,12 +1270,12 @@
          proton-helium collision calculations the single-particle capture probability, $p_P$, never
          rises above 1/2. Using Eqs.~\eqref{eq:n1a} and~\eqref{eq:p2a} in Eq.~\eqref{eq:ic} (i.e.\
          applying the \textsc{wb} model) it follows that $I^{PP}_\mathrm{c} = -2 {p_P}^2$, which implies
-         that $p_{PP} \equiv 0$. Due to the triviality of this result no plot has been displayed. The
-         \textsc{iem} so amplifies the double capture cross section that the \textsc{wb} model can be
-         considered in better agreement with experiment even though it is zero for all impact energies
-         and perceived as an improvement over \textsc{iem}.
+         that $p_{PP} \equiv 0$. Due to the triviality of this result no is displayed. The \textsc{iem}
+         so amplifies the double capture cross section that the \textsc{wb} model can be considered in
+         better agreement with experiment even though it is zero for all impact energies and perceived
+         as an improvement over \textsc{iem}.
 
-         Similar to double capture single-capture, Fig.~\ref{fig:phe-tp}, only depends on one
+         Similar to double capture, single capture, Fig.~\ref{fig:phe-tp}, only depends on one
          correlation integral. The \textsc{iem} provides fair agreement with the experimental data
          except that it underestimates the peak. This problem is corrected by the \textsc{wb} model
          which is in good agreement with experiment through most of the impact energy range considered.
@@ -1270,11 +1317,11 @@
          consistently below both \textsc{iem} and \textsc{wb}. The fact that the \textsc{iem} falls
          slightly below the \textsc{wb} results above 200~keV/amu points to a problem with the
          \textsc{wb} calculations. In this range the difficulty of separating target and projectile (the
-         projection problem) will naturally be emphasized as the relative errors due to the projection
-         problem grow. It would seem that these issues are compounded when the density is forced through
-         the additional machinery of the \textsc{wb} model. In this region it then becomes difficult to
-         determine to what extent discrepancies are due to dynamic vs.\ functional correlation effects
-         or issues of accuracy.
+         projection problem, see discussion following Eq.~\eqref{eq:prob-ic}) will naturally be
+         emphasized as the relative errors due to the projection problem grow. It would seem that these
+         issues are compounded when the density is forced through the additional machinery of the
+         \textsc{wb} model. In this region it then becomes difficult to determine to what extent
+         discrepancies are due to dynamic vs.\ functional correlation effects or issues of accuracy.
 
          Next we turn our attention to the results for double ionization in Fig.~\ref{fig:phe-ii}. The
          \textsc{wb} model improves results by reducing those of the \textsc{iem} at high energies.
@@ -1293,8 +1340,8 @@
          Sec.~\ref{sec:phe2p-det} the added complexity of the proton-helium collision system compared to
          that for antiproton-helium restricts the range through which the calculations may be run. Due
          to this fact an insufficient range of $t_f$ is available for averaging to produce a curve as
-         smooth as in the $\bar{p}$-He system (see Fig.~\ref{fig:he++}), resulting in the additional
-         structure in this region.
+         smooth as in the $\bar{p}$-He system (see Fig.~\ref{ifig:poz} and Fig.~\ref{fig:he++}),
+         resulting in the additional structure in this region.
         
          Above 300~keV/amu the \textsc{wb} model behaves in a manner consistent with that seen in
          $\bar{p}$-He collisions, lowering \textsc{iem} results into fair agreement with the data, then
@@ -1417,7 +1464,7 @@
          results of Gramlich et al.\ are in much better agreement with experiment. This region is
          precisely the range where capture is dominant and quite strong. As a result $p_T < 1/2$ for a
          significant portion of this range causing $I^{TT}_\mathrm{c} = -{p_T}^2$. A negative
-         $I^{TT}_\mathrm{c}$ will increase $p^{TI}$, luckily $I^{TP}_\mathrm{c}$ is enough to keep
+         $I^{TT}_\mathrm{c}$ will increase $p^{TI}$, luckily $I^{TP}_\mathrm{c}$ is enough to keep the
          \textsc{wb} results from exceeding those of the \textsc{iem}  [cf.\ Eq.~\eqref{eq:pti-ic}]. The
          lack of correlated calculations near the experimental maximum unfortunately means little can be
          concluded in this region of the curve.
