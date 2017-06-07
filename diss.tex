@@ -320,7 +320,7 @@
       \begin{equation} \label{eq:sks}
          \left( -\frac{\Delta}{2} + v^\sigma_\mathrm{\textsc{ks}}[n_\uparrow,
          n_\downarrow](\mathbf{r}) \right)
-          \varphi_{i\sigma}(\mathbf{r}) = \epsilon_i \varphi_{i \sigma}(\mathbf{r}),
+          \varphi_{i\sigma}(\mathbf{r}) = \epsilon_{i \sigma} \varphi_{i \sigma}(\mathbf{r}),
       \end{equation}
       %
       \begin{equation} \label{eq:tdks}
@@ -534,10 +534,40 @@
                  = & \int \mathrm{d} t \, E_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r})] \\
                 = & -\frac{1}{2} \int \mathrm{d} t \, \sum\limits_\sigma \sum\limits_{j,k}
                     \int\mathrm{d}^3 r \mathrm{d}^3 r^\prime
-                    \frac{ \varphi^*_{j\sigma}(\mathbf{r},t) \varphi^*_{k\sigma}(\mathbf{r}^\prime,t)
-                   \varphi_{j\sigma}(\mathbf{r}^\prime,t) \varphi_{k\sigma}(\mathbf{r},t)}
+                    \frac{ \varphi^*_{j\sigma}(\mathbf{r}^\prime,t)
+                           \varphi^*_{k\sigma}(\mathbf{r}^\prime,t)
+                           \varphi_{j\sigma}(\mathbf{r},t) \varphi_{k\sigma}(\mathbf{r},t)}
                    {\left| \mathbf{r} -\mathbf{r}^\prime \right|}.
             \end{split}
+         \end{equation}
+
+         The stationary version of the exchange-only \textsc{opm} will then follow from
+         Eqs.~\eqref{eq:opm1} and \eqref{eq:xfunc}. This may be expressed, adapting the notation
+         of~\cite{klieq}, as
+         %
+         \begin{equation} \label{eq:opmEq}
+            \sum\limits_j \int \mathrm{d}^3 r^\prime
+            \left[ v^\sigma_\mathrm{x}(\mathbf{r}^\prime)
+                 - \tilde{v}^\sigma_{j \mathrm{x}} (\mathbf{r}^\prime) \right]
+                 G_{j \sigma}(\mathbf{r}^\prime, \mathbf{r}) \varphi^*_{j \sigma} (\mathbf{r}^\prime)
+                 \varphi_{j \sigma} (\mathbf{r}) + c.c.,
+         \end{equation}
+         %
+         where $G_{j \sigma}$ are the Green's fucntions
+         %
+         \begin{equation}
+            G_{j \sigma}(\mathbf{r}, \mathbf{r}^\prime) = \sum\limits_k
+            \frac{\varphi_{k \sigma} (\mathbf{r}) \varphi^*_{j \sigma} (\mathbf{r}^\prime)}
+            {\epsilon_{k \sigma} - \epsilon_{j \sigma}}
+         \end{equation}
+         %
+         and
+         %
+         \begin{equation} \label{eq:tildev}
+            \tilde{v}^\sigma_{j \mathrm{x}} (\mathbf{r}) =  - \sum\limits_k \int \mathrm{d}^3 r^\prime
+               \frac{ \varphi^*_{j \sigma} (\mathbf{r}^\prime) \varphi^*_{k \sigma} (\mathbf{r}^\prime)
+                      \varphi^*_{k \sigma} (\mathbf{r}) }
+                      {\left| \mathbf{r} - \mathbf{r}^\prime \right| \varphi^*_{j \sigma} (\mathbf{r})}.
          \end{equation}
 
       \end{subsection}
@@ -545,34 +575,65 @@
       \begin{subsection}{The Krieger-Li-Iafrate Approximation \label{sec:kli}}
 
          Solving of the full \textsc{opm} integral equation can be quite difficult. To aid in this
-         process the Krieger-Li-Iafrate approximation~\cite{kli1} (\textsc{kli}) may be used. This
-         approximation turns the complex \textsc{opm} integral equation into a much simpler linear
-         system of equations. It should be noted that while several variations of the \textsc{kli}
-         exist~\cite{kli1, kli2, kli3} they differ by only a term proportional to
-         $\partial E_\mathrm{xc} / \partial \epsilon_k$ which, for functionals such as the exact
-         exchange functional that do not depend on the \textsc{ks} eigenvalues, is not a problem. As one
-         might expect the \textsc{kli} approximation is also applicable in the time-dependent
-         regime~\cite{tdkli1, tdkli2, tdkli3}.
+         process the Krieger-Li-Iafrate approximation~\cite{kli1} (\textsc{kli}) may be used. One can
+         think \textsc{kli} as a closure approximation where the complicated interactions between
+         orbitals are simplified by the introduction of an average energy difference
+         $\Delta \epsilon_\sigma \approx \epsilon_{k \sigma} - \epsilon_{j \sigma}$. Returning to the
+         exchange-only example introduced earlier this approximation causes Eq.~\eqref{eq:opmEq} to
+         become
+         %
+         \begin{equation} \label{eq:kliEq}
+            v_\mathrm{x}^\sigma(\mathrm{r}) =
+               \frac{\sum\limits_{j} \varphi^*_{j \sigma} (\mathbf{r}) \varphi_{j \sigma} (\mathbf{r})
+               \left[ v_{j \sigma}(\mathbf{r}) + \bar{v}^\sigma_{j \sigma} - \bar{v}_{i \sigma} \right] }
+               {n(\mathbf{r})},
+         \end{equation}
+         %
+         where
+         %
+         \begin{equation}
+            \bar{v}_{j \sigma} = \int \mathrm{d}^3 r \varphi^*_{j \sigma} (\mathbf{r})
+               \varphi_{j \sigma} (\mathbf{r}) v_{j \sigma} (\mathbf{r})
+         \end{equation}
+         %
+         and $\bar{v}^\sigma_{j \sigma}$ is defined similarly.
+
+         If one then multiplies both sides of Eq.~\eqref{eq:kliEq} by $\varphi^*_{l \sigma} (\mathbf{r})
+         \varphi_{l \sigma} (\mathbf{r})$ and integrates over $\mathrm{d}^3 r$ one is left with a set of
+         linear equations for $\bar{v}^\sigma_{l \sigma}$. This approximation turns the complex
+         \textsc{opm} integral equation into a much simpler linear system of equations.
+         
+         It should be noted that while several variations of the \textsc{kli} exist~\cite{kli1, kli2,
+         kli3} they differ by only a term proportional to $\partial E_\mathrm{xc} / \partial \epsilon_k$
+         which, for functionals such as the exact exchange functional that do not depend on the
+         \textsc{ks} eigenvalues, is not a problem. As one might expect the \textsc{kli} approximation
+         is also applicable in the time-dependent regime~\cite{tdkli1, tdkli2, tdkli3}.
          
          For a wide range of systems \textsc{kli} and the full \textsc{opm} produce very similar
-         results~\cite{opm-rev}. This is not to say that the \textsc{kli} is perfect, it is still an
-         approximation. For the purposes of this work we will highlight the failure of \textsc{kli} to
-         respect the zero-force theorem which may lead to autoexcitations~\cite{kli-zero-force}.
-
+         results~\cite{opm-rev}. The success of both \textsc{opm} and \textsc{kli} potentials is due in
+         part to the fact that both capture the correct asymptotics of the exchange potential
+         %
+         \begin{equation}
+            \lim\limits_{r \rightarrow \infty} v_\mathrm{x}^\sigma (\mathbf{r}) = -\frac{1}{r}.
+         \end{equation}
+ 
+         This is not to say that the \textsc{kli} is perfect, it is still an approximation. Both the
+         exact and \textsc{opm} exchange-correlation potentials satisfy
+         %
+         \begin{equation} \label{eq:zft}
+            \int \mathrm{d}^3 r n(\mathbf{r}, t) \nabla v^\sigma_\mathrm{xc}(\mathbf{r},t) = 0.
+         \end{equation}
+         %
+         This relation is often referred to as the zero-force theorem, the name coming from the obvious
+         interpretation that the force deriving from the exchange-correlation potential exerts no net
+         force on the electron cloud. An unfortunate consequence of the \textsc{kli} approximation is
+         that it can lead to violations of the zero-force theorem which, in turn, can lead to
+         auto-excitation~\cite{kli-zero-force}. This is particularly pertinent in collision systems
+         where spurious excitations may artificially enhance electron transfer processes.
+ 
       \end{subsection}
 
    \end{section}
-
-   \begin{itemize}
-
-      \item Cite/mention difference between $\hat{T}$ and $\hat{T}_s$?
-
-      \item Various applications:~\cite[p.\ 254]{dft-engel},
-         Various problems with TD-KLI:~\cite[p.\ 135-136]{tddft}.
-
-      \item {\color{red}{?`Should I add more detail?}} %nnnote
-
-   \end{itemize}
 
 \end{chapter}
 
@@ -1002,14 +1063,14 @@
             \includegraphics[width = \linewidth]{./images/poz.eps}
             \caption[Probabilities as a function of nuclear separation.]{$p^{II}$ as a
                      function of $z$ an impact energy of 50~keV and impact parameter of 1~a.u.:
-                     (a)~$p$-He, (b)~He\textsuperscript{2+}-He, (c)~$\bar{p}$-He. \label{fig:poz}}
+                     (a)~$\bar{p}$-He, (b)~$p$-He, (c)~He\textsuperscript{2+}-He. \label{fig:poz}}
          \end{minipage} \hspace{0.04\linewidth} %
          \begin{minipage}{.49\linewidth}
             
             \centering
             \includegraphics[width = \linewidth]{./images/dendiff.eps}
             \caption[Density difference]
-                   {$\left| n_A\left(t_f \right) - n\left(t_f\right)\right|_1$ for the antiproton
+                   {$\left| n_A(t_f) - n (t_f)\right|_1$ for the antiproton
                     helium collision system. \label{fig:l1}}
          \end{minipage}
       \end{figure}
@@ -1340,7 +1401,7 @@
          Sec.~\ref{sec:phe2p-det} the added complexity of the proton-helium collision system compared to
          that for antiproton-helium restricts the range through which the calculations may be run. Due
          to this fact an insufficient range of $t_f$ is available for averaging to produce a curve as
-         smooth as in the $\bar{p}$-He system (see Fig.~\ref{ifig:poz} and Fig.~\ref{fig:he++}),
+         smooth as in the $\bar{p}$-He system (see Fig.~\ref{fig:poz} and Fig.~\ref{fig:he++}),
          resulting in the additional structure in this region.
         
          Above 300~keV/amu the \textsc{wb} model behaves in a manner consistent with that seen in
