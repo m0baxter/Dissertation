@@ -306,11 +306,11 @@
       many-body \textsc{sse} or \textsc{tdse} onto an auxiliary non-interacting system. The
       density-potential mappings discussed in the previous section allow one to rewrite the interacting
       system in terms of an auxiliary system of non-interacting particles described by the functions
-      $\varphi_{i\sigma}$ ($i = 1, \dots, N$) with
+      $\varphi_{j\sigma}$ ($j = 1, \dots, N_\sigma$, $N = N_\uparrow + N_\downarrow$) with
       %
       \begin{equation} \label{eq:dendef2}
-         n = \sum\limits_{\sigma} \sum\limits_{i = 1}^N
-                           \left| \varphi_{i\sigma} \right|^2,
+         n = \sum\limits_{\sigma} \sum\limits_{j = 1}^{N_\sigma}
+                           \left| \varphi_{j\sigma} \right|^2,
       \end{equation}
       %
       where $n$ is the one-particle density of the fully interacting system. The orbitals $\varphi_i$
@@ -320,21 +320,21 @@
       \begin{equation} \label{eq:sks}
          \left( -\frac{\Delta}{2} + v^\sigma_\mathrm{\textsc{ks}}[n_\uparrow,
          n_\downarrow](\mathbf{r}) \right)
-          \varphi_{i\sigma}(\mathbf{r}) = \epsilon_{i \sigma} \varphi_{i \sigma}(\mathbf{r}),
+          \varphi_{i\sigma}(\mathbf{r}) = \epsilon_{j \sigma} \varphi_{j \sigma}(\mathbf{r}),
       \end{equation}
       %
       \begin{equation} \label{eq:tdks}
-         i \frac{\partial}{\partial t} \varphi_{i\sigma} = 
+         i \frac{\partial}{\partial t} \varphi_{j\sigma} = 
             \left( -\frac{\Delta}{2} +
             v^\sigma_\mathrm{\textsc{ks}}[n_\uparrow, n_\downarrow](\mathbf{r},t)
-            \right) \varphi_{i\sigma}(\mathbf{r},t),
+            \right) \varphi_{j\sigma}(\mathbf{r},t),
       \end{equation}
       %
       where the $\epsilon_i$ appearing in Eq.~\eqref{eq:sks} are the Kohn-Sham eigenvalues and the
       quantities $n_\uparrow$, $n_\downarrow$ are the spin-up/down one-particle densities defined by
       %
       \begin{equation} \label{eq:spinden}
-         n_\sigma = \sum\limits_{i=1}^{N} \left| \varphi_{i\sigma} \right|^2,
+         n_\sigma = \sum\limits_{j=1}^{N_\sigma} \left| \varphi_{j\sigma} \right|^2,
       \end{equation}
       %
       such that
@@ -548,7 +548,7 @@
          \begin{equation} \label{eq:opmEq}
             \sum\limits_j \int \mathrm{d}^3 r^\prime
             \left[ v^\sigma_\mathrm{x}(\mathbf{r}^\prime)
-                 - \tilde{v}^\sigma_{j \mathrm{x}} (\mathbf{r}^\prime) \right]
+                 - \tilde{v}_{j \sigma} (\mathbf{r}^\prime) \right]
                  G_{j \sigma}(\mathbf{r}^\prime, \mathbf{r}) \varphi^*_{j \sigma} (\mathbf{r}^\prime)
                  \varphi_{j \sigma} (\mathbf{r}) + c.c.,
          \end{equation}
@@ -564,7 +564,7 @@
          and
          %
          \begin{equation} \label{eq:tildev}
-            \tilde{v}^\sigma_{j \mathrm{x}} (\mathbf{r}) =  - \sum\limits_k \int \mathrm{d}^3 r^\prime
+            \tilde{v}_{j \sigma} (\mathbf{r}) =  - \sum\limits_k \int \mathrm{d}^3 r^\prime
                \frac{ \varphi^*_{j \sigma} (\mathbf{r}^\prime) \varphi^*_{k \sigma} (\mathbf{r}^\prime)
                       \varphi^*_{k \sigma} (\mathbf{r}) }
                       {\left| \mathbf{r} - \mathbf{r}^\prime \right| \varphi^*_{j \sigma} (\mathbf{r})}.
@@ -585,8 +585,8 @@
          \begin{equation} \label{eq:kliEq}
             v_\mathrm{x}^\sigma(\mathrm{r}) =
                \frac{\sum\limits_{j} \varphi^*_{j \sigma} (\mathbf{r}) \varphi_{j \sigma} (\mathbf{r})
-               \left[ v_{j \sigma}(\mathbf{r}) + \bar{v}^\sigma_{j \sigma} - \bar{v}_{i \sigma} \right] }
-               {n(\mathbf{r})},
+               \left[ v_{j \sigma}(\mathbf{r}) + \bar{v}_{j \sigma \mathrm{x}}
+                                               - \bar{v}_{i \sigma} \right]}{n(\mathbf{r})},
          \end{equation}
          %
          where
@@ -1852,6 +1852,8 @@
 
    \begin{itemize}
 
+      \item Mention the \textsc{tc-bgm}~\cite{tcbgm}.
+
       \item Determinental analysis~\cite{inc-prob}.
 
       \item Spline error bounds~\cite{spline-err}, numerical derivatives~\cite{numdiff1, numdiff2}
@@ -2024,4 +2026,3 @@
 \printbibliography[title=References] %nnnote: check references for accuracy.
 
 \end{document}
-
