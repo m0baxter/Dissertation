@@ -1630,7 +1630,7 @@
    (Sec.~\ref{sec:pot}) in which a procedure for calculating an accurate exchange potential within the
    x-only approximation is discussed. This is followed by a brief discussion of the method used to
    extract cross sections from the one-particle density (Sec.~\ref{sec:hephe-det}) before presenting
-   results in Sec.~\ref{sec:hephe-res}.
+   results in Sec.~\ref{sec:hephe-disc}.
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
 
@@ -1647,12 +1647,13 @@
       molecule with an internuclear distance $R_\mathrm{int}(t) = \sqrt{b^2 + z(t)^2}$, where $b$ and
       $z$ are the impact parameter and $z$ position of the projectile (as described in
       Chap.~\ref{chap:p-he2p-he}). The \textsc{dft} molecular structure package \texttt{DIAMOL} has been
-      designed precisely for such situations ({\color{red}{not sure how to cite this}}). If at each
-      time-step of the \texttt{BGM} (the software package which implements the \textsc{bgm}) the
-      time-dependent \textsc{ks}-orbitals, $\varphi_{\sigma j}(\mathbf{r},t)$ is fed into
-      \texttt{DIAMOL} the exchange-potential, $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j};t]$, may be
-      calculated at each $t$, effectively giving one the
-      time-dependent exchange-potential $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j}](t)$.
+      designed precisely for such situations\footnote{The details of \texttt{DIAMOL} may be found
+      in~\cite{diamol} and were provided by the authors via private communication}. If at each time-step
+      of the \texttt{BGM} (the software package which implements the \textsc{bgm}) the time-dependent
+      \textsc{ks}-orbitals, $\varphi_{\sigma j}(\mathbf{r},t)$ is fed into \texttt{DIAMOL} the
+      exchange-potential, $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j};t]$, may be calculated at each $t$,
+      effectively giving one the time-dependent exchange-potential
+      $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j}](t)$.
 
       Limitations of \texttt{DIMAOL} complicate this procedure. Whereas $\varphi_{\sigma j}$ have no
       enforced symmetry, \texttt{DIAMOL} assumes that the orbitals are cylindrically symmetric about the
@@ -1675,7 +1676,7 @@
          \tilde{\chi}^{00}_{ck} =
             \begin{cases}
                e^{i \mathbf{v}_T \cdot \mathbf{r}} {\chi}^{00}_{c k} & c = T, \\
-               e^{i \mathbf{v}_P \cdot \mathbf{r}} {\chi}^{00}_{c k} & c = p,
+               e^{i \mathbf{v}_P \cdot \mathbf{r}} {\chi}^{00}_{c k} & c = P,
             \end{cases}
       \end{equation}
       %
@@ -1766,7 +1767,7 @@
 
    \end{section}
 
-   \begin{section}{Results I Guess? \label{sec:hephe-res}}
+   \begin{section}{Results I Guess? \label{sec:hephe-disc}}
 
       \begin{subsection}{1\textit{s}-only Toy Model \label{sec:toy}}
 
@@ -1848,6 +1849,145 @@
 
       \end{subsection}
 
+      \begin{subsection}{Results \label{sec:hephe-res}}
+
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-111.eps}
+            \caption[Total Cross section for single ionization of the target in He\textsuperscrit{+}-He
+                     collisions.]
+                    {Total Cross section for single ionization of the target.
+                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                  (dotted line),
+                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
+                                  (dash-dotted line), and
+                                  \textsc{cdw-eis} of Miraglia \textit{et al}.~\cite{MG-10} (thin solid
+                                  line).
+                     Experimental: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
+                                   squares~\cite{DT-88}.
+                     \label{fig:cs111}}
+         \end{figure}
+ 
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-201.eps}
+            \caption[Total Cross section for single ionization of the projectile in
+                     He\textsuperscrit{+}-He collisions.]
+                    {Total Cross section for single ionization of the projectile.
+                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                  (dotted line),
+                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
+                                  (dash-dotted line), and
+                                  \textsc{ievm} of Sigaud \textit{et al}.~\cite{SM-03} (dash-dotted
+                                  line).
+                     Experimental: diamonds~\cite{Dub-89}. \label{fig:cs201}}
+         \end{figure}
+ 
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-120.eps}
+            \caption[Total Cross section for single capture to the projectile He\textsuperscrit{+}-He
+                     collisions.]
+                    {Total Cross section for single capture to the projectile.
+                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
+                                  line),
+                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
+                                  (dash-dotted line), and
+                                  \textsc{cdbw-4b} (post form) of Ghanbari-Adivi
+                                  \textit{et al}.~\cite{GAG15} (dashed line).
+                     Experimental: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
+                     \label{fig:cs120}}
+         \end{figure}
+ 
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-012.eps}
+            \caption[Total Cross section for double ionization of the target in He\textsuperscrit{+}-He
+                     collisions.]
+                    {Total Cross section for double ionization of the target.
+                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                  (dotted line).
+                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
+                                  (dash-dotted line).
+                     Experimental: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
+                                   squares~\cite{DT-88}. \label{fig:cs012}}
+         \end{figure}
+ 
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-021.eps}
+            \caption[Total Cross section for transfer ionization of the target in
+                     He\textsuperscrit{+}-He collisions.]
+                     {Total Cross section for transfer ionization of the target.
+                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                  (dotted line),
+                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
+                                  (dash-dotted line).
+                     Experimental: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
+                     \label{fig:cs021}}
+         \end{figure}
+
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-102.eps}
+            \caption[Total Cross section for simultaneous single ionization of the target and projectile
+                     in He\textsuperscrit{+}-He collisions.]
+                    {Total Cross section for simultaneous single ionization of the target and
+                     projectile.
+                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
+                                  line),
+                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
+                                  (dash-dotted line), and
+                                  \textsc{ievm} of Sigaud \textit{et al}.~\cite{SM-03} (thin solid line).
+                     Experimental: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}.
+                     \label{fig:cs102}}
+         \end{figure}
+ 
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-003.eps}
+            \caption[Total Cross section simultaneous double target and single projectile ionization in
+                     He\textsuperscrit{+}-He collisions.]
+                    {Total Cross section simultaneous double target and single projectile ionization.
+                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
+                                  line),
+                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
+                                  (dash-dotted line), and
+                                  \textsc{ievm} of Sigaud \textit{et al}.~\cite{SM-03} (thin solid line).
+                     Experimental: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}. \label{fig:cs003}}
+         \end{figure}
+
+         \begin{figure}[t]
+            \begin{minipage}{.49\linewidth}
+               
+               \centering
+               \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-300.eps}
+               \caption[Total Cross section for capture to the target in He\textsuperscrit{+}-He
+                        collisions.]
+                       {Total Cross section for capture to the target in He\textsuperscrit{+}-He
+                        collisions.
+                        Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
+                                  line),
+                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
+                                  (dash-dotted line). \label{fig:cs300}}
+            \end{minipage} \hspace{0.04\linewidth} %
+            \begin{minipage}{.49\linewidth}
+               
+               \centering
+               \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-030.eps}
+               \caption[Total Cross section for double capture to the projectile in
+                        He\textsuperscrit{+}-He]
+                       {Total Cross section for double capture to the projectile in
+                        He\textsuperscrit{+}-He.
+                        Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
+                                  line),
+                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
+                                  (dash-dotted line). \label{fig:cs030}}
+            \end{minipage}
+         \end{figure}
+
+      \end{subsection}
+
    \end{section}
 
    \begin{itemize}
@@ -1861,6 +2001,11 @@
       \item detailed balance~\cite[p.\ 143--152]{scattering}
 
       \item Antiscreening~\cite{as1, as2, as3, as4, as5}.
+
+      \item production of He\textsuperscript{-} is negligible~\cite{neghe-neg}.
+
+      \item He beams can be made with very little metastable He~\cite{metahe}
+            (thus very little He\textsuperscript{-} is produced).
 
       \item Experimental data:~\cite{BS58, HN78, HSE78, dCFdP88, DT-88, Dub-89, ASL91, FTFHLP-95,
             SSMSM-11}
@@ -2026,3 +2171,4 @@
 \printbibliography[title=References] %nnnote: check references for accuracy.
 
 \end{document}
+
