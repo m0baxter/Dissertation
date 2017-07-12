@@ -1613,17 +1613,17 @@
 \begin{chapter}{\texorpdfstring{He\textsuperscript{+}}{He+}-He Collisions \label{chap:hephe}}
 
    The investigations of the previous chapter began with the simplest possible multi-electron collision
-   system, one where a positively-charged projectile is incident on a helium like target. The situation
-   was then complicated by allowing the projectile to be negative, thus forcing one to consider electron
+   system, one where a negatively-charged projectile is incident on a helium like target. The situation
+   was then complicated by allowing the projectile to be positive, thus forcing one to consider electron
    transfer in addition to ionization processes.
 
    In this chapter the system of interest is expanded further by the inclusion of an active electron on
-   the projectile. More specifically, the remainder of this work concerns itself primarily with the
-   He-He\textsuperscript{+} collision system.
+   the projectile. More specifically, the remainder of this work concerns itself with the
+   He\textsuperscript{+}-He collision system.
 
-   While the external potential, $v_\mathrm{ext}$, maintains the form of Eq.~\eqref{eq:phe2p-ext} and the
+   While the external potential, $v_\mathrm{ext}$, maintains the form of Eq.~\eqref{eq:phe2p-ext}, the
    spin-polarized nature of the collision system means that the spin-free description utilized in the
-   previous chapter is no longer applicable, the full spin-dependent \textsc{tdks} presented in
+   previous chapter is no longer applicable, and the full spin-dependent \textsc{tdks} presented in
    Eq.~\eqref{eq:tdks} must be solved.
 
    The determination of a spin-dependent exchange-correlation potential forms the bulk of this chapter
@@ -1634,148 +1634,285 @@
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
 
-      An accurate exchange-potential is essential for a precise description of the
-      He\textsuperscript{+}-He collision system. The spin polarized nature of the system, which
-      emphasizes exchange effects (i.e manifestations of Fermi statistics), make this fact indisputable.
+      The one-particle density was determined by solving Eq.~\eqref{eq:tdks} using the two-centre basis
+      generator method~\cite{tcbgm} (\textsc{tc-bgm}). As mentioned above this relies upon the
+      specification of an exchange-correlation potential. While the correlation potential may be
+      ignored, that is the x-only approximation may be used (with some understanding of the
+      consequences), an accurate exchange potential is essential for a precise description of the
+      He\textsuperscript{+}-He collision system. The spin-polarized nature of the system, which
+      emphasizes exchange effects, makes this fact indisputable. To this end the \textsc{kli}
+      approximation to the \textsc{opm} was employed in the calculation of $v^\sigma_\mathrm{x}$.
 
-      As discussed in Sec.~\ref{sec:opm}, within the x-only approximation, the exchange-potential may be
-      determine exactly via the \textsc{opm}. As this process is prohibitively expensive the \textsc{kli}
-      approximation which, as has been mentioned in Sec.~\ref{sec:kli}, produces similar results was
-      used in its stead.
-
-      At any instant of time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic
-      molecule with an internuclear distance $R_\mathrm{int}(t) = \sqrt{b^2 + z(t)^2}$, where $b$ and
-      $z$ are the impact parameter and $z$ position of the projectile (as described in
-      Chap.~\ref{chap:p-he2p-he}). The \textsc{dft} molecular structure package \texttt{DIAMOL} has been
-      designed precisely for such situations\footnote{The details of \texttt{DIAMOL} may be found
-      in~\cite{diamol} and were provided by the authors via private communication}. If at each time-step
-      of the \texttt{BGM} (the software package which implements the \textsc{bgm}) the time-dependent
-      \textsc{ks}-orbitals, $\varphi_{\sigma j}(\mathbf{r},t)$ is fed into \texttt{DIAMOL} the
-      exchange-potential, $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j};t]$, may be calculated at each $t$,
-      effectively giving one the time-dependent exchange-potential
-      $v^{\sigma}_\mathrm{x}[\varphi_{\sigma j}](t)$.
-
-      Limitations of \texttt{DIMAOL} complicate this procedure. Whereas $\varphi_{\sigma j}$ have no
-      enforced symmetry, \texttt{DIAMOL} assumes that the orbitals are cylindrically symmetric about the
-      internuclear axis. To avoid conflicts only a cylindrically symmetric portion of the
-      \textsc{ks}-orbitals can be fed into \texttt{DIAMOL}. In order to describe a work around to this
-      problem one must first understand how the \textsc{ks}-orbitals are represented within the
-      \textsc{bgm}.
-
-      Each \textsc{ks}-orbital is represented as a sum
+      The ground-state density functional theory scheme of~\cite{diamol}\footnote{The details of this
+      implementation may be found in~\cite{diamol} and were provided by the authors via private
+      communication}has been adapted to calculate a time-dependent exchange potential. At any instant of
+      time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic quasi-molecule with
+      an internuclear distance $R(t) = \sqrt{b^2 + Z(t)^2}$, where $b$ and $Z$ are the impact parameter
+      and the $z$ position of the projectile as described below Eq.~\eqref{eq:phe2p-ext}. If at each
+      time-step of the \textsc{tc-bgm} the time-dependent Kohn-Sham orbitals,
+      $\varphi_{\sigma j}(\mathbf{r},t)$ are fed into the \textsc{kli} functional (ignoring self
+      consistency) an exchange potential, $v^{\sigma}_\mathrm{x}[ \{ \varphi_{\sigma^\prime j} \};t]$,
+      may be calculated at each $t$, effectively giving one the time-dependent exchange potential
+      $v^{\sigma}_\mathrm{x}[ \{ \varphi_{\sigma^\prime j} \}](t)$. The restriction of the \textsc{kli}
+      scheme of Ref.~\cite{diamol} to systems of cylindrical symmetry complicates this processes since
+      in general $\varphi_{j \sigma}$ will not exhibit any specific symmetry.
+      
+      In order to detail a solution to the symmetry problem a more thorough description of the
+      \textsc{tc-bgm} is necessary. Within the \textsc{tc-bgm} the Kohn-Sham (\textsc{ks}) orbitals are
+      represented in a non-orthogonal basis
       %
       \begin{equation} \label{eq:bgmexp}
-         \varphi_{\sigma j}(\mathbf{r},t) = \sum d_{c k L M}^{\sigma j} \tilde{\chi}^{LM}_{c k},
+         \varphi_{\sigma j}(\mathbf{r},t) = \sum\limits_{c \in \{P, T\}} \sum\limits_{k, L, M}
+                               d_{c k L}^{\sigma j}(t) \tilde{\chi}^{LM}_{c k}(\mathbf{r},t),
       \end{equation}
       %
-      where $c$ labels the centres, target ($T$) and projectile ($P$), and the remaining indices are
-      identical to the ones described in Eq.~\eqref{eq:bgmbasis}. The functions
-      $\tilde{\chi}^{00}_{c k}$ are given by
+      where
       %
       \begin{equation} \label{eq:etfbasis}
-         \tilde{\chi}^{00}_{ck} =
+         \tilde{\chi}^{L M}_{ck}(\mathbf{r},t) =
             \begin{cases}
-               e^{i \mathbf{v}_T \cdot \mathbf{r}} {\chi}^{00}_{c k} & c = T, \\
-               e^{i \mathbf{v}_P \cdot \mathbf{r}} {\chi}^{00}_{c k} & c = P,
+               e^{i \mathbf{v}_T \cdot \mathbf{r}} {\chi}^{L M}_{c k}(\mathbf{r},t) & c = T, \\[2ex]
+               e^{i \mathbf{v}_P \cdot \mathbf{r}} {\chi}^{L M}_{c k}(\mathbf{r},t) & c = P,
             \end{cases}
       \end{equation}
       %
-      where $\chi^{00}_{c k}$ are, once again, the eigenstates of the undisturbed centres, helium
-      \textsc{opm} ground-state orbitals on the target and hydrogen-like states on the projectile. The
-      difference is the inclusion of the  electron translation factors (\textsc{etf}).
-
-      Leaving aside the \textsc{etf}'s for the time being, it is immediately clear that the simplest way
-      to maintain cylindrical symmetry is to only pass the $1s$ contributions on each centre to
-      \texttt{DIAMOL}. We must then define the new orbitals
+      which are the basis functions with electron translation factors (\textsc{etf}) included. The basis
+      functions themselves are given by [similarly to the one-centre basis of Eq.~\eqref{eq:bgmbasis}]
       %
-      \begin{equation} \label{eq:1sonly}
-         \tilde{\varphi}_{\sigma j} = \tilde{d}^{\sigma j}_T \tilde{\chi}^{00}_{T1} +
-                                      \tilde{d}^{\sigma j}_P \tilde{\chi}^{00}_{P1},
+      \begin{equation} \label{eq:bgmbasis2}
+         \chi^{L}_{ck} (\mathbf{r},t)
+         = W_P( \mathbf{r},t, \epsilon_P)^L \chi^{0}_{ck} (\mathbf{r}),
       \end{equation}
       %
-      where the coefficients $\tilde{d}^{\sigma j}_c$ are defined in terms of the projection operator,
+      with
+      %
+      \begin{equation}
+         W_T(r,\epsilon_T) = \frac{1 - e^{-\epsilon_T r}}{r},
+      \end{equation}
+      %
+      and
+      %
+      \begin{equation}
+         W_P (\mathbf{r},t,\epsilon_P)
+         = \frac{1 - e^{-\epsilon_P|\mathbf{r}_T - \mathbf{R}(t)|}}{|\mathbf{r}_T - \mathbf{R}(t)|},
+      \end{equation}
+      %
+      where $\mathbf{r}_T$ represents the position vector with respect to the target centre.
+      
+      In Eq.~\eqref{eq:bgmbasis2} the functions $\chi^{00}_{ck}$ are the bound orbitals for the target
+      helium atom ($c = T$) and the projectile helium ion ($c = P$). Just like in the one-centred case
+      discussed in Sec.~\ref{sec:p-he2p-he-sys} the basis is simplified by including only states
+      generated from the projectile potential. The regularizer is once again set to $\epsilon_P = 1$.
+      The complete basis set used may be described in terms of the maximum $L$ value included for each
+      bound sub-shell, 1$s$-4$f$, in the basis. On each centre these were taken to be (0 0 1 1 1 2 2 2 2
+      2 2 3 3 3 3 3 3 3 3 3), for a total of 124 basis states.
+
+      It is clear from the above description that only the basis states corresponding to s-type orbitals
+      will make cylindrically symmetric contributions to the \textsc{ks}-orbitals. The simplest solution
+      is to only feed the 1s contributions into the \textsc{kli} functional. While higher s-states are
+      also admissible they will no longer represent the most occupied subshell meaning their inclusion
+      will do little to improve the accuracy of the description of a given orbital. Leaving out
+      \textsc{etf}s for the time being the orbitals will take the explicit form
+      %
+      \begin{equation} \label{eq:1sonly}
+         \varphi_{\sigma j}^{1s}(\mathbf{r},t) = a^{\sigma j}_T(t) \chi^{00}_{T1}(\mathbf{r},t)
+                                               + a^{\sigma j}_P(t) \chi^{00}_{P1}(\mathbf{r},t).
+      \end{equation}
+      %
+      The coefficients are the result of projecting the \textsc{ks}-orbitals onto the two-dimensional
+      subspace spanned by the target and projectile 1s-states
       %
       \begin{equation} \label{eq:proj}
-         \hat{P} = \sum\limits_{c_1, c_2 \in \{T,P\}} \tilde{S}^{-1}_{c_1 c_2}
-                                                      \ket{\tilde{\chi}^{00}_{c_1 1}}
-                                                      \bra{\tilde{\chi}^{00}_{c_2 1}}
+         \ket{\varphi^{1s}_{\sigma j}} = \hat{P} \ket{\varphi_{\sigma j}}
+                                       = \sum\limits_{c_1, c_2 \in \{T,P\}} \tilde{S}^{-1}_{c_1 c_2}
+                                                      \ket{\chi^{00}_{c_1 1}}
+                                                      \braket{\chi^{00}_{c_2 1}| \varphi_{\sigma j}}
       \end{equation}
       %
       with $\tilde{S}^{-1}_{c_1 c_2}$ the inverse of the overlap matrix
       %
-      \begin{equation}
-         \tilde{S}_{c_1 c_2} = \braket{\tilde{\chi}^{00}_{c_1 1} | \tilde{\chi}^{00}_{c_2 1}},
+      \begin{equation} \label{eq:overlap2d}
+         \tilde{S}_{c_1 c_2} = \braket{ \chi^{00}_{c_1 1} | \chi^{00}_{c_2 1} }.
       \end{equation}
       %
-      by
+      The coefficients are then determined to be
       %
-      \begin{equation} \label{eq:ceofproj}
-         \tilde{d}^{\sigma j}_c = \braket{\tilde{\chi}^{00}_{c 1} | \hat{P} |\tilde{\varphi}_{\sigma j}}.
+      \begin{equation} \label{eq:coef}
+         a^{\sigma j}_c = \sum\limits_{c_1, c_2 \in \{T,P\}} \sum\limits_{k = 1}^K
+                          \sum\limits_{l = 0}^L \tilde{S}^{-1}_{c c_1} S^{c_2 \, k \, l}_{c \, 1 \, 0}
+                             d^{\sigma j}_{c_2 k l},
       \end{equation}
+      %
+      with
+      %
+      \begin{equation} \label{eq:overlap}
+         S_{c_1 \, k_1 \, l_1 }^{c_2 \, k_2 \, l_2 } =
+            \braket{ \chi^{l_1 0}_{c_1 k_1} | \chi^{l_2 0}_{c_2 k_2} }
+      \end{equation}
+      %
+      the full overlap matrix.
 
-      It can be easily shown that the \textsc{etf}'s introduce addition asymmetries. Working in the
-      rotating centre of mass frame, the coordinate system used by \texttt{DIAMOL}, the \textsc{etf}'s
-      become
+      Returning to the question of the \textsc{etf}s, working in the rotating centre of mass frame in
+      which the $z$-direction points along the internuclear axis the \textsc{etf}s become
       %
       \begin{subequations} \label{eq:etf}
          \begin{equation} \label{eq:etfT}
             e^{i \mathbf{v}_T \cdot \mathbf{r}} =
-             e^{\frac{i v_\mathrm{rel}}{2} (x \sin \theta - z \cos \theta)},
+             e^{\frac{i V_\mathrm{rel}}{2} (x \sin \theta - z \cos \theta)},
          \end{equation}
          %
          \begin{equation} \label{eq:etfP}
             e^{i \mathbf{v}_P \cdot \mathbf{r}} =
-             e^{\frac{i v_\mathrm{rel}}{2} (z \cos \theta - x \sin \theta)},
+             e^{\frac{i V_\mathrm{rel}}{2} (z \cos \theta - x \sin \theta)},
          \end{equation}
       \end{subequations}
       %
-      where $v_\mathrm{rel}$ is the relative velocity of the centres and $\theta = \arctan b/z$. The
-      explicit $\phi$ dependence introduced by the $x$-components of the \textsc{etf}'s break
-      cylindrical symmetry (refer to Sec.~\ref{sec:prolate}). To preserve cylindrical symmetry there are
-      two options.
-      
-      The obvious first option is to ignore the \textsc{etf}'s or, equivalently, set them to 1. The
-      second option is to include only the $z$-components. It should be noted that as $z$ approaches 0
-      the two options become equivalent, thus any benefit derived from a partial \textsc{etf} will be
-      lost near the closet approach.
+      where $\theta = \arctan b/Z$ and $V_\mathrm{rel} = V$ is the relative velocity of the centres
+      [where $V$ is the velocity appearing below Eq.~\eqref{eq:phe2p-ext}]. If we now introduce a
+      two-centred coordinate system, placing the foci at the two nuclear centres it becomes clear that
+      the portion of the \textsc{etf}s containing $x$ violates the desired cylindrical symmetry (see
+      Sec.~\ref{sec:prolate}).
 
-      Any investigation of the impact of the \textsc{etf}'s is best carried out in an isolated
+      Two obvious solutions present themselves. First, one may simply ignore the \textsc{etf}s
+      completely. This would amount to passing the orbitals described by Eq.~\eqref{eq:1sonly} into
+      the \textsc{kli} functional. Alternatively the symmetry breaking portions of the \textsc{etf}s
+      may be dropped. In this case the full 1s-only \textsc{ks}-orbital becomes
+      %
+      \begin{equation} \label{eq:1sonlyetf}
+         \tilde{\varphi}_{\sigma j}^{1s} (\mathbf{r},t) =
+                       a^{\sigma j}_T (t)  e^{- \frac{i v_\mathrm{rel} z \cos \theta}{2}}
+                                           \chi^{0}_{T1} (\mathbf{r},t)
+                     + a^{\sigma j}_P (t)  e^{  \frac{i v_\mathrm{rel} z \cos \theta}{2}}
+                                           \chi^{0}_{P1} (\mathbf{r},t).
+      \end{equation}
+      %
+      This will offer at least some of the correction provided by the full \textsc{etf}. Unfortunately,
+      as the internuclear coordinate $Z(t)$ approaches zero (corresponding to $\theta = \frac{\pi}{2}$)
+      the partial \textsc{etf} will tend to one, meaning that when the target and projectile are at
+      their closest, the most active region of the collision, no \textsc{etf} will be present. 
+
+      Any investigation of the impact of the \textsc{etf}s is best carried out in an isolated
       environment. To achieve this we may introduce a no-response model. In such a model the initial
-      occupations of the orbitals passed to \texttt{DIAMOL} will be frozen and the full orbitals will
-      be propagated in the resulting potential. To be more concrete, if we have two spin-up and one
-      spin-down electron the coefficients be given the fixed values
+      occupations of the orbitals passed to the \textsc{kli} functional will be frozen and the full
+      orbitals will be propagated in the resulting potential. To be more concrete, if we have two
+      spin-up and one spin-down electron the coefficients be given the fixed values
       %
       \begin{equation} \label{eq:noresp}
-         \tilde{d}^{\uparrow 1}_T = \tilde{d}^{\uparrow 2}_P = \tilde{d}^{\downarrow 1}_T  = 1
+         \tilde{a}^{\uparrow 1}_T = \tilde{a}^{\uparrow 2}_P = \tilde{a}^{\downarrow 1}_T  = 1
          ~~~ \mbox{and} ~~~
-         \tilde{d}^{\uparrow 1}_P = \tilde{d}^{\uparrow 2}_T = \tilde{d}^{\downarrow 1}_P  = 0.
+         \tilde{a}^{\uparrow 1}_P = \tilde{a}^{\uparrow 2}_T = \tilde{a}^{\downarrow 1}_P  = 0.
       \end{equation}
       %
-      In this way the only phase information entering \texttt{DIAMOL} will arise directly from the
-      \textsc{etf}'s.
+      In this way the only phase information entering the exchange functional will arise directly from
+      the \textsc{etf}s.
 
-      Regardless of which orbitals are passed to \texttt{DIAMOL} it is important that the same orbitals
-      used to calculate $v_\mathrm{x}$ are used in the determination of $v_\mathrm{H}$. As one of the
-      primary functions of the exchange-potential is the  cancellation of the self-interaction present
-      in the Hartree potential they must both be constructed consistently with each other lest the
-      self-interaction remain. For this reason, and for ease of future discussion, we will define a
-      combine electron-electron potential
-      %
-      \begin{equation} \label{eq:vee}
-         v^\sigma_\mathrm{ee} = v^\sigma_\mathrm{x} + v_\mathrm{H}.
-      \end{equation}
+      Regardless of which option is chosen it is important that $v_\mathrm{H}$ be determined with the
+      same set of orbitals used in the calculation of $v_\mathrm{x}^\sigma$, preserving the precise
+      cancellation of the self interaction present in the Hartree potential.
 
    \end{section}
+
+   \begin{subsection}{Final-state analysis \label{sec:hephe-det}}
+
+      Of interest in any scattering problem is the probability of finding the system in some final state.
+      If we represent the state being considered as $\ket{f_1 \, f_2 \, f_3}$ and the initial state of
+      the system propagated to some final time $t_f$ by $\ket{\varphi_{ \uparrow 1} \,
+      \varphi_{\uparrow 2} \, \varphi_{\downarrow 1} (t_f)}$ the exclusive probability to find the
+      system in the given final state at time $t_f$ will be given by
+      %
+      \begin{equation} \label{eq:finalProb}
+         P_{f_1 f_2 f_3}(t_f) = \left| \braket{ f_1 \, f_2 \, f_3 | \varphi_{ \uparrow 1} \,
+                                       \varphi_{\uparrow 2} \, \varphi_{\downarrow 1} (t_f) } \right|^2.
+      \end{equation}
+      %
+      If one assumes that both the propagated and final states can be represented as a single Slater
+      determinant then the probability in question becomes
+      %
+      \begin{equation} \label{eq:detProb}
+         P_{f_1 f_2 f_3}(t_f) = \det \left[ \gamma_{f f^\prime}(t_f) \right],
+      \end{equation}
+      %
+      where $\gamma_{f f^\prime}$ is the one-particle density matrix
+      %
+      \begin{equation} \label{eq:denmat}
+         \gamma_{f f^\prime}(t_f) = \sum\limits_{\sigma} \sum\limits_{j = 1}^{N_\sigma}
+                               \braket{f | \varphi_{\sigma j}(t_f)}
+                               \braket{\varphi_{\sigma j}(t_f) | f^\prime},
+      \end{equation}
+      %
+      with the transition amplitudes $\braket{f | \varphi_{\sigma j}(t_f)} =
+      \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{\sigma j}(t_f)}$ (for some $k$, $l$, $c$, and properly
+      orthoganalized basis functions $\tilde{\chi}^{l0}_{c k}$) readily calculable from the dynamics. A
+      model of this type which ignores the functional correlations~\cite{p-he2p-he} is consistent with
+      an \textsc{iem} description.
+
+      Alternatively, one could consider the probability to explicitly measure the states of some subset
+      of the total number of particles. These so called inclusive probabilities can be expressed in
+      terms of determinants of submatrices of the density matrix~\cite{inc-prob}.
+ 
+      In the current problem we are interested in those probabilities which correspond to the possible
+      outcome channels of in the He\textsuperscript{+}-He collision system. The processes can be broadly
+      categorized into those that involve one active electron:
+      %
+      \begin{equation} \label{eq:tpi111}
+         \mathrm{He}^+ + \mathrm{He} \rightarrow \mathrm{He}^+ + \mathrm{He}^+ + e^-
+      \end{equation}
+      %
+      \begin{equation} \label{eq:tpi120}
+         \mathrm{He}^+ + \mathrm{He} \rightarrow \mathrm{He} + \mathrm{He}^+
+      \end{equation}
+      %
+      \begin{equation} \label{eq:tpi201}
+         \mathrm{He}^+ + \mathrm{He} \rightarrow \mathrm{He}^{2+} + \mathrm{He} + e^-,
+      \end{equation}
+      %
+      two active electrons:
+      %
+      \begin{equation} \label{eq:tpi012}
+         \mathrm{He}^+ + \mathrm{He} \rightarrow \mathrm{He}^+ + \mathrm{He}^{2+} + 2e^-
+      \end{equation}
+      %
+      \begin{equation} \label{eq:tpi102}
+         \mathrm{He}^+ + \mathrm{He} \rightarrow \mathrm{He}^{2+} + \mathrm{He}^+ + 2e^-
+      \end{equation}
+      %
+      \begin{equation} \label{eq:tpi021}
+         \mathrm{He}^+ + \mathrm{He} \rightarrow \mathrm{He} + \mathrm{He}^{2+} + e^-,
+      \end{equation}
+      %
+      and three active electrons:
+      \begin{equation} \label{eq:tpi003}
+         \mathrm{He}^+ + \mathrm{He} \rightarrow \mathrm{He}^{2+} + \mathrm{He}^{2+} + 3e^{-}.
+      \end{equation}
+      %
+      Additionally there is the channel where no charges are transferred and the two channels that result
+      in the production of He\textsuperscript{-}. Cross sections for the latter are known to be
+      negligible~\cite{metahe, neghe-neg}.
+
+      In such configurations we find $k$ particles on the projectile, $l$ particles in the continuum,
+      and $3 - k - l$ on the target ($0\leq k \leq 3$ and $0 \leq l \leq 3 - k$). The probabilities
+      $p_{kl}$ may be calculated in terms of sums of inclusive probabilities to find a given number of
+      particles in the bound states of the target and projectile by applying the machinery
+      of~\cite{inc-prob} (see for example~\cite{incEx, mitsuko12, gerald15}). With the probabilities in
+      hand the corresponding total cross section for each channel may then be calculated from (if we
+      ignore $\sigma_{10}$ which includes the elastic channel and must be treated with more care)
+      %
+      \begin{equation} \label{eq:cross}
+         \sigma_{kl} = 2 \pi \int_0^\infty b \, p_{kl}(b) \, \mathrm{d}b
+      \end{equation}
+      %
+      in a similar manner to that of Eq.~\eqref{eq:tcs}.
+
+   \end{subsection}
 
    \begin{section}{Results I Guess? \label{sec:hephe-disc}}
 
       \begin{subsection}{1\textit{s}-only Toy Model \label{sec:toy}}
 
-
          Before presenting the results for the full system some of the details of a simplified toy model
          will be discussed. In this model only the $1s$ target and projectile states are included in
          the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynmaics
-         code are the same as those passed into \texttt{DIAMOL}.
+         code are the same as those passed into the \textsc{kli} functional.
 
          A useful quantity to monitor is the norm of the one-particle density,
          %
@@ -1784,7 +1921,7 @@
          \end{equation}
          %
          Ionization having been excluded by construction within this model one should find $N(t) = 3$
-         for all time, major violations of this can only be associated with the \textsc{etf}'s.
+         for all time, major violations of this can only be associated with the \textsc{etf}s.
 
          \begin{figure}[t]
             \centering
@@ -1807,11 +1944,11 @@
          Figures~\ref{fig:toy20} and \ref{fig:toy1000} display $N$ as a function of $z$ for collisions
          with impact energy of 20~keV/amu and 1000~keV/amu respectively. Both calculations use an impact
          parameter of 1~a.u. While both the curves representing calculations including and excluding the
-         partial \textsc{etf}'s show sizable norm violations the inclusion of a partial \textsc{etf}
-         offers clear benefits. The \textsc{etf}'s reduce the overall size of the violations and reduce
+         partial \textsc{etf}s show sizable norm violations the inclusion of a partial \textsc{etf}
+         offers clear benefits. The \textsc{etf}s reduce the overall size of the violations and reduce
          the range of time over which these violations occur, this can bee seen most clearly in
          Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more slowly and
-         reattaches more quickly. Additionally including \textsc{etf}'s corrects the unexpected asymmetry
+         reattaches more quickly. Additionally including \textsc{etf}s corrects the unexpected asymmetry
          about $z = 0$~a.u.
 
          The slight loss of norm noticeable in the tails of all four curves is on the order of $0.002$.
@@ -1830,21 +1967,21 @@
          Each orbital in the above expression is normalized to 1 and takes the form
          %
          \begin{equation}
-            \varphi = d_T e^{i \mathbf{v}_T \cdot \mathbf{r}} \chi_T
-                    + d_P e^{-i \mathbf{v}_T \cdot \mathbf{r}} \chi_P.
+            \varphi = a_T e^{i \mathbf{v}_T \cdot \mathbf{r}} \chi_T
+                    + a_P e^{-i \mathbf{v}_T \cdot \mathbf{r}} \chi_P.
          \end{equation}
          %
          Every orbital then contributes
          %
          \begin{equation}
-            \int \mathrm{d}^3 r \, \left| \varphi \right|^2 = \left| d_T \right|^2 
-                                                            + \left| d_P \right|^2
-            + \Re \left[ {d_T}^* d_P \tilde{S}_{TP} \right]
+            \int \mathrm{d}^3 r \, \left| \varphi \right|^2 = \left| a_T \right|^2 
+                                                            + \left| a_P \right|^2
+            + \Re \left[ {a_T}^* a_P \tilde{S}_{TP} \right]
          \end{equation}
          %
          to $N$, where $\tilde{S}_{TP}$ are the matrix elements of the overlap matrix (including
-         \textsc{etf}'s). It can then be seen that norm violations are due to the fact that
-         \texttt{DIAMOL} cannot fully account for the overlaps of the \textsc{ks}-orbitals, a direct
+         \textsc{etf}s). It can then be seen that norm violations are due to the fact that
+         the \textsc{kli} cannot fully account for the overlaps of the \textsc{ks}-orbitals, a direct
          consequence of its inability to deal with non-cylindrically symmetric orbitals.
 
       \end{subsection}
@@ -1854,7 +1991,7 @@
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-111.eps}
-            \caption[Total Cross section for single ionization of the target in He\textsuperscrit{+}-He
+            \caption[Total Cross section for single ionization of the target in He\textsuperscript{+}-He
                      collisions.]
                     {Total Cross section for single ionization of the target.
                      Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
@@ -1872,7 +2009,7 @@
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-201.eps}
             \caption[Total Cross section for single ionization of the projectile in
-                     He\textsuperscrit{+}-He collisions.]
+                     He\textsuperscript{+}-He collisions.]
                     {Total Cross section for single ionization of the projectile.
                      Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
                                   (dotted line),
@@ -1886,7 +2023,7 @@
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-120.eps}
-            \caption[Total Cross section for single capture to the projectile He\textsuperscrit{+}-He
+            \caption[Total Cross section for single capture to the projectile He\textsuperscript{+}-He
                      collisions.]
                     {Total Cross section for single capture to the projectile.
                      Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
@@ -1902,7 +2039,7 @@
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-012.eps}
-            \caption[Total Cross section for double ionization of the target in He\textsuperscrit{+}-He
+            \caption[Total Cross section for double ionization of the target in He\textsuperscript{+}-He
                      collisions.]
                     {Total Cross section for double ionization of the target.
                      Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
@@ -1917,7 +2054,7 @@
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-021.eps}
             \caption[Total Cross section for transfer ionization of the target in
-                     He\textsuperscrit{+}-He collisions.]
+                     He\textsuperscript{+}-He collisions.]
                      {Total Cross section for transfer ionization of the target.
                      Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
                                   (dotted line),
@@ -1931,7 +2068,7 @@
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-102.eps}
             \caption[Total Cross section for simultaneous single ionization of the target and projectile
-                     in He\textsuperscrit{+}-He collisions.]
+                     in He\textsuperscript{+}-He collisions.]
                     {Total Cross section for simultaneous single ionization of the target and
                      projectile.
                      Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
@@ -1947,7 +2084,7 @@
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-003.eps}
             \caption[Total Cross section simultaneous double target and single projectile ionization in
-                     He\textsuperscrit{+}-He collisions.]
+                     He\textsuperscript{+}-He collisions.]
                     {Total Cross section simultaneous double target and single projectile ionization.
                      Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
                                   line),
@@ -1962,9 +2099,9 @@
                
                \centering
                \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-300.eps}
-               \caption[Total Cross section for capture to the target in He\textsuperscrit{+}-He
+               \caption[Total Cross section for capture to the target in He\textsuperscript{+}-He
                         collisions.]
-                       {Total Cross section for capture to the target in He\textsuperscrit{+}-He
+                       {Total Cross section for capture to the target in He\textsuperscript{+}-He
                         collisions.
                         Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
                                   line),
@@ -1976,9 +2113,9 @@
                \centering
                \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-030.eps}
                \caption[Total Cross section for double capture to the projectile in
-                        He\textsuperscrit{+}-He]
+                        He\textsuperscript{+}-He]
                        {Total Cross section for double capture to the projectile in
-                        He\textsuperscrit{+}-He.
+                        He\textsuperscript{+}-He.
                         Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
                                   line),
                                   p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
