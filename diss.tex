@@ -553,7 +553,7 @@
                  \varphi_{j \sigma} (\mathbf{r}) + c.c.,
          \end{equation}
          %
-         where $G_{j \sigma}$ are the Green's fucntions
+         where $G_{j \sigma}$ are the Green's functions
          %
          \begin{equation}
             G_{j \sigma}(\mathbf{r}, \mathbf{r}^\prime) = \sum\limits_k
@@ -1812,7 +1812,7 @@
 
    \end{section}
 
-   \begin{subsection}{Final-state analysis \label{sec:hephe-det}}
+   \begin{section}{Final-state analysis \label{sec:hephe-det}}
 
       Of interest in any scattering problem is the probability of finding the system in some final state.
       If we represent the state being considered as $\ket{f_1 \, f_2 \, f_3}$ and the initial state of
@@ -1842,7 +1842,7 @@
       %
       with the transition amplitudes $\braket{f | \varphi_{\sigma j}(t_f)} =
       \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{\sigma j}(t_f)}$ (for some $k$, $l$, $c$, and properly
-      orthoganalized basis functions $\tilde{\chi}^{l0}_{c k}$) readily calculable from the dynamics. A
+      orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$) readily calculable from the dynamics. A
       model of this type which ignores the functional correlations~\cite{p-he2p-he} is consistent with
       an \textsc{iem} description.
 
@@ -1903,7 +1903,7 @@
       %
       in a similar manner to that of Eq.~\eqref{eq:tcs}.
 
-   \end{subsection}
+   \end{section}
 
    \begin{section}{Results I Guess? \label{sec:hephe-disc}}
 
@@ -1911,7 +1911,7 @@
 
          Before presenting the results for the full system some of the details of a simplified toy model
          will be discussed. In this model only the $1s$ target and projectile states are included in
-         the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynmaics
+         the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynamics
          code are the same as those passed into the \textsc{kli} functional.
 
          A useful quantity to monitor is the norm of the one-particle density,
@@ -1936,24 +1936,20 @@
                \caption{$E_P = 1000~\mathrm{keV}/\mathrm{amu}$. \label{fig:toy1000}}
             \end{subfigure}
             \caption[Number of particles as a function of \textit{z} in 1\textit{s}-only toy model]
-                    {Number of particles as a function of $z$ in 1$s$-only toy model for $b = 1.0
+                    {Number of particles as a function of $z$ in 1$s$-only toy model for $b = 1.0~
                     \mathrm{a.u}$. In both panels; solid line: \textsc{etf} off, dashed line:
-                    \textsc{etf} on. \label{fig:toy}}
+                    partial \textsc{etf} on. \label{fig:toy}}
          \end{figure}
 
-         Figures~\ref{fig:toy20} and \ref{fig:toy1000} display $N$ as a function of $z$ for collisions
-         with impact energy of 20~keV/amu and 1000~keV/amu respectively. Both calculations use an impact
-         parameter of 1~a.u. While both the curves representing calculations including and excluding the
-         partial \textsc{etf}s show sizable norm violations the inclusion of a partial \textsc{etf}
-         offers clear benefits. The \textsc{etf}s reduce the overall size of the violations and reduce
-         the range of time over which these violations occur, this can bee seen most clearly in
-         Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more slowly and
+         Figures~\ref{fig:toy20} and \ref{fig:toy1000} display $N$ as a function of $z = Vt$ for
+         collisions with impact energy of 20~keV/amu and 1000~keV/amu respectively. Both calculations
+         use an impact parameter of 1~a.u. While both the curves representing calculations including and
+         excluding the partial \textsc{etf}s show sizable norm violations the inclusion of a partial
+         \textsc{etf} offers clear benefits. The \textsc{etf}s reduce the overall size of the violations
+         and reduce the range of time over which these violations occur. This can bee seen most clearly
+         in Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more slowly and
          reattaches more quickly. Additionally including \textsc{etf}s corrects the unexpected asymmetry
          about $z = 0$~a.u.
-
-         The slight loss of norm noticeable in the tails of all four curves is on the order of $0.002$.
-         One can consider the small violation as a limit on the accuracy of calculations. This error is
-         on the order of $0.06 \%$.
 
          The origins of the norm violations is easy to trace. According to Eq.~\eqref{eq:dendef2} the
          one-particle density may be written
@@ -1984,114 +1980,248 @@
          the \textsc{kli} cannot fully account for the overlaps of the \textsc{ks}-orbitals, a direct
          consequence of its inability to deal with non-cylindrically symmetric orbitals.
 
+         The slight loss of norm noticeable in the tails of all four curves is on the order of $0.002$.
+         One can consider the small violation as a limit on the accuracy of calculations. This error is
+         on the order of $0.06 \%$.
+
+      \end{subsection}
+
+      \begin{subsection}{Impact Parameter Dependence}
+
+         \begin{figure}[t]
+            \centering
+            \begin{subfigure}{.32\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/hephe-bs/hepheTrans10.eps}
+               \caption{$E_P = 10~\mathrm{keV}/\mathrm{amu}$. \label{fig:trans10}}
+            \end{subfigure}%
+            \begin{subfigure}{.32\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/hephe-bs/hepheTrans60.eps}
+               \caption{$E_P = 60~\mathrm{keV}/\mathrm{amu}$. \label{fig:trans60}}
+            \end{subfigure}
+            \begin{subfigure}{.32\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/hephe-bs/hepheTrans250.eps}
+               \caption{$E_P = 250~\mathrm{keV}/\mathrm{amu}$. \label{fig:trans250}}
+            \end{subfigure}
+            \caption[Single-particle transfer and ionization and probabilities in
+                     He\textsuperscript{+}-He collisions.]
+                    {Single-particle transfer and ionization and probabilities in
+                     He\textsuperscript{+}-He collisions at various impact energies. \label{fig:trans}}
+         \end{figure}
+
+         Before discussing the total cross section results we will present some of the lower level
+         features of the calculations. We will consider the single-particle probabilities for each
+         electron to ionize and to switch the nuclear centre to which it is bound. These probabilities
+         can be calculated from the transition amplitudes. As an example, if $\varphi_{\uparrow 1}$
+         begins initially on the target then the single-particle probability to ionize this electron can
+         be written
+         %
+         \begin{equation} \label{eq:ionprob}
+            p(\mathrm{He}(\uparrow_1) \rightarrow I ) =
+               \sum\limits_{c \in \{T,P\}} \sum\limits_{k=1}^K \sum\limits_{l = 1}^L
+               \left| \braket{ \tilde{\chi}^{l0}_{c k} | \varphi_{\uparrow 1}(t_f)} \right|^2
+         \end{equation}
+         %
+         and the single-particle probability to transfer to the projectile may be written
+         %
+         \begin{equation} \label{eq:transprob}
+            p(\mathrm{He}(\uparrow_1) \rightarrow \mathrm{He}^+) =
+               \sum\limits_{k=1}^K \left| \braket{ \tilde{\chi}^{00}_{P k} | \varphi_{\uparrow 1}(t_f)}
+                          \right|^2,
+         \end{equation}
+         %
+         where the probabilities are defined in terms of orthogonalized orbitals including full
+         \textsc{etf}s. These probabilities are presented for the response model including partial
+         \textsc{etf}s impact energies of 10, 60 and 250~keV/amu in Fig.~\ref{fig:trans}.
+
+         For low energy collisions capture processes can be seen to be dominant, this is clearly
+         depicted in Fiq.~\ref{fig:trans10} where the single-particle ionization probabilities are
+         negligible through the majority of impact parameters. In contrast, Fig.~\ref{fig:trans250}
+         shows the diminishing importance of capture over ionization as impact energies increase.
+         As one would expect the probability to ionize the more tightly bound He\textsuperscript{+}
+         electron is consistently less than for either of the He electrons. Also of note is the obvious
+         difference between the two He electrons, a clear reflection of the implementation of a
+         spin-dependent potential.
+
+         \begin{figure}[t]
+            \centering
+            \begin{subfigure}{.32\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/hephe-bs/pkl-E20.eps}
+               \caption{$E_P = 20~\mathrm{keV}/\mathrm{amu}$. \label{fig:pkl20}}
+            \end{subfigure}%
+            \begin{subfigure}{.32\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/hephe-bs/pkl-E500.eps}
+               \caption{$E_P = 500~\mathrm{keV}/\mathrm{amu}$. \label{fig:pkl500}}
+            \end{subfigure}
+            \begin{subfigure}{.32\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/hephe-bs/pkl-E600.eps}
+               \caption{$E_P = 600~\mathrm{keV}/\mathrm{amu}$. \label{fig:pkl600}}
+            \end{subfigure}
+            \caption[Impact parameter dependent probabilities for all outcome channels in
+                     He\textsuperscript{+}-He collisions]
+                    {Impact parameter dependent probabilities for all outcome channels in
+                     He\textsuperscript{+}-He collisions. Dashed portions of curves represent the region
+                     where only the spline interpolant is available. \label{fig:pkl}}
+         \end{figure}
+        
+         One last point must be mentioned before closing the discussion of impact parameter dependent
+         probabilities. Presented in Fig.~\ref{fig:pkl} are integrands of Eq.~\eqref{eq:cross} for
+         several impact energies, that is, impact parameter dependent probabilities for the outcome
+         channels of Eqs.~\eqref{eq:tpi111}-\eqref{eq:tpi003} (with the addition of $p_{00}$ and
+         $p_{30}$) times the impact parameter. For $E_p \leq$ 500~keV/amu the probabilities behave as
+         one would expect. However, above this level unphysical structures begin to emerge. As an
+         example the $p_{20}$ curve in Fig.~\ref{fig:pkl600} contains a large hump below 0.5~a.u.
+         
+         These are the result of numerical issues that, above imapact energies of 500~keV/amu, limit the
+         minimum possible impact parameter for which the calculations produce results from 0.1~a.u.\
+         below 500~keV/amu gradually to 0.8~a.u.\ at 1000~keV/amu. In Eq.~\eqref{eq:cross} the
+         integrand, $b \, p(b)$, is approximated by a cubic spline which is, in turn, integrated to
+         arrive at a cross section. The structure of the integrand means that so long as $p_{kl}(0)$ is
+         finite its value is irrelevant and we always know the integrand at $b = 0$. In the best
+         possible scenario the lower bound on the error of a cubic spline will scale to the fourth power
+         in the largest step between knots~\cite{spline-err}, for a spline $s_f$ interpolating a
+         function $f$ one has
+         %
+         \begin{equation} \label{eq:splineErr}
+            E(s_f) = \left| f - s_f \right|_\infty = \frac{5 \left| f^{4} \right|_\infty h^4}{384},
+         \end{equation}
+         %
+         where $h$ is the largest separation between grid points used in determining the spline amd
+         %
+         \begin{equation} \label{eq:supnorm}
+            | g |_\infty = \sup\limits_{x \in [a,b]} \{ |g(x)| \}.
+         \end{equation}
+         %
+         The step size factor in the error bound then increases from 0.0001 to 0.4096, an increase by an
+         approximate factor of 4000. It is this decrease in the accuracy of the interpolation which
+         results in the unphysical structures present in some outcome channels 500~keV/amu. The presence
+         of these structures are the reason for the lack of a data point at 1000~keV/amu in
+         Fig.~\ref{fig:cs201}.
+
       \end{subsection}
 
       \begin{subsection}{Results \label{sec:hephe-res}}
+         
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/netRecoil.eps}
+            \caption[Total cross section for net recoil ion production in He\textsuperscript{+}-He
+                     collisions.]
+                    {Total cross section for net recoil ion production in He\textsuperscript{+}-He
+                     collisions.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line),
+                                          n\textsc{etf} no response (dash-dotted line), and
+                                          \textsc{cmf} of Schenk and Kirchner~\cite{geraldDiss}
+                                          (thin solid line).
+                     Experimental data: squares~\cite{RGID85}. \label{fig:recoil}}
+         \end{figure}
 
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-111.eps}
-            \caption[Total Cross section for single ionization of the target in He\textsuperscript{+}-He
+            \caption[Total cross section for single ionization of the target in He\textsuperscript{+}-He
                      collisions.]
-                    {Total Cross section for single ionization of the target.
-                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                  (dotted line),
-                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
-                                  (dash-dotted line), and
-                                  \textsc{cdw-eis} of Miraglia \textit{et al}.~\cite{MG-10} (thin solid
-                                  line).
-                     Experimental: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
-                                   squares~\cite{DT-88}.
+                    {Total cross section for single ionization of the target.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line),
+                                          n\textsc{etf} no response (dash-dotted line), and
+                                          \textsc{cdw-eis} of Miraglia and Gravielle~\cite{MG-10}
+                                          (thin solid line).
+                     Experimental data: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
+                                        squares~\cite{DT-88}.
                      \label{fig:cs111}}
          \end{figure}
  
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-201.eps}
-            \caption[Total Cross section for single ionization of the projectile in
+            \caption[Total cross section for single ionization of the projectile in
                      He\textsuperscript{+}-He collisions.]
-                    {Total Cross section for single ionization of the projectile.
-                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                  (dotted line),
-                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
-                                  (dash-dotted line), and
-                                  \textsc{ievm} of Sigaud \textit{et al}.~\cite{SM-03} (dash-dotted
-                                  line).
-                     Experimental: diamonds~\cite{Dub-89}. \label{fig:cs201}}
+                    {Total cross section for single ionization of the projectile.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line),
+                                          n\textsc{etf} no response (dash-dotted line), and
+                                          \textsc{ievm} of Sigaud and Montenegro~\cite{SM-03}
+                                          (dash-dotted line).
+                     Experimental data: diamonds~\cite{Dub-89}. \label{fig:cs201}}
          \end{figure}
  
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-120.eps}
-            \caption[Total Cross section for single capture to the projectile He\textsuperscript{+}-He
+            \caption[Total cross section for single capture to the projectile He\textsuperscript{+}-He
                      collisions.]
-                    {Total Cross section for single capture to the projectile.
-                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
-                                  line),
-                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
-                                  (dash-dotted line), and
-                                  \textsc{cdbw-4b} (post form) of Ghanbari-Adivi
-                                  \textit{et al}.~\cite{GAG15} (dashed line).
-                     Experimental: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
+                    {Total cross section for single capture to the projectile.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line),
+                                          n\textsc{etf} no response (dash-dotted line), and
+                                          \textsc{cdbw-4b} (post form) of Ghanbari-Adivi
+                                          \textit{et al}.~\cite{GAG15} (dashed line).
+                     Experimental data: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
                      \label{fig:cs120}}
          \end{figure}
  
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-012.eps}
-            \caption[Total Cross section for double ionization of the target in He\textsuperscript{+}-He
+            \caption[Total cross section for double ionization of the target in He\textsuperscript{+}-He
                      collisions.]
-                    {Total Cross section for double ionization of the target.
-                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                  (dotted line).
-                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
-                                  (dash-dotted line).
-                     Experimental: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
-                                   squares~\cite{DT-88}. \label{fig:cs012}}
+                    {Total cross section for double ionization of the target.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line). p\textsc{etf} no response (dashed line), and
+                                          n\textsc{etf} no response (dash-dotted line).
+                     Experimental data: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
+                                        squares~\cite{DT-88}. \label{fig:cs012}}
          \end{figure}
  
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-021.eps}
-            \caption[Total Cross section for transfer ionization of the target in
+            \caption[Total cross section for transfer ionization of the target in
                      He\textsuperscript{+}-He collisions.]
-                     {Total Cross section for transfer ionization of the target.
-                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                  (dotted line),
-                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
-                                  (dash-dotted line).
-                     Experimental: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
+                     {Total cross section for transfer ionization of the target.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line), and
+                                          n\textsc{etf} no response (dash-dotted line).
+                     Experimental data: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
                      \label{fig:cs021}}
          \end{figure}
 
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-102.eps}
-            \caption[Total Cross section for simultaneous single ionization of the target and projectile
+            \caption[Total cross section for simultaneous single ionization of the target and projectile
                      in He\textsuperscript{+}-He collisions.]
-                    {Total Cross section for simultaneous single ionization of the target and
+                    {Total cross section for simultaneous single ionization of the target and
                      projectile.
-                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
-                                  line),
-                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
-                                  (dash-dotted line), and
-                                  \textsc{ievm} of Sigaud \textit{et al}.~\cite{SM-03} (thin solid line).
-                     Experimental: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line),
+                                          n\textsc{etf} no response (dash-dotted line), and
+                                          \textsc{ievm} of Sigaud and Montenegro~\cite{SM-03} (thin
+                                          solid line).
+                     Experimental data: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}.
                      \label{fig:cs102}}
          \end{figure}
  
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-003.eps}
-            \caption[Total Cross section simultaneous double target and single projectile ionization in
+            \caption[Total cross section simultaneous double target and single projectile ionization in
                      He\textsuperscript{+}-He collisions.]
-                    {Total Cross section simultaneous double target and single projectile ionization.
-                     Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
-                                  line),
-                                  p\textsc{etf} no response (dashed line), n\textsc{etf} no response
-                                  (dash-dotted line), and
-                                  \textsc{ievm} of Sigaud \textit{et al}.~\cite{SM-03} (thin solid line).
-                     Experimental: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}. \label{fig:cs003}}
+                    {Total cross section simultaneous double target and single projectile ionization.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line),
+                                          n\textsc{etf} no response (dash-dotted line), and
+                                          \textsc{ievm} of Sigaud and Montenegro~\cite{SM-03} (thin
+                                          solid line).
+                     Experimental data: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}.
+                     \label{fig:cs003}}
          \end{figure}
 
          \begin{figure}[t]
@@ -2099,29 +2229,44 @@
                
                \centering
                \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-300.eps}
-               \caption[Total Cross section for capture to the target in He\textsuperscript{+}-He
+               \caption[Total cross section for capture to the target in He\textsuperscript{+}-He
                         collisions.]
-                       {Total Cross section for capture to the target in He\textsuperscript{+}-He
+                       {Total cross section for capture to the target in He\textsuperscript{+}-He
                         collisions.
-                        Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
-                                  line),
-                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
-                                  (dash-dotted line). \label{fig:cs300}}
+                        Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                             (dotted line), p\textsc{etf} no response (dashed line), and
+                                             n\textsc{etf} no response (dash-dotted line).
+                        \label{fig:cs300}}
             \end{minipage} \hspace{0.04\linewidth} %
             \begin{minipage}{.49\linewidth}
                
                \centering
                \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-030.eps}
-               \caption[Total Cross section for double capture to the projectile in
+               \caption[Total cross section for double capture to the projectile in
                         He\textsuperscript{+}-He]
-                       {Total Cross section for double capture to the projectile in
+                       {Total cross section for double capture to the projectile in
                         He\textsuperscript{+}-He.
-                        Theoretical: p\textsc{etf} response (solid line), n\textsc{etf} response (dotted
-                                  line),
-                                  p\textsc{etf} no response (dashed line), and n\textsc{etf} no response
-                                  (dash-dotted line). \label{fig:cs030}}
+                        Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                             (dotted line), p\textsc{etf} no response (dashed line), and
+                                             n\textsc{etf} no response (dash-dotted line).
+                        \label{fig:cs030}}
             \end{minipage}
          \end{figure}
+         
+         In what follows all results obtained by propagating the full \textsc{ks} orbitals in a
+         potential generated from the 1s-only orbitals of Eq.~\eqref{eq:1sonly} that include no electron
+         translation factors will be designated by n\textsc{etf}. Those obtained by an application of
+         the same processes using the 1s-only orbitals, with partial \textsc{etf}s, of
+         Eq.~\eqref{eq:1sonlyetf} will be referred to as p\textsc{etf}. When a distinction is made
+         between response and no-response results the text refers to cross sections calculated using
+         either set of fully time-dependent 1s-only orbitals and those using the model described in the
+         text surrounding Eq.~\eqref{eq:noresp} respectively.
+         
+         Where available the results of the current work are compared with calculations of other groups.
+         It should be noted that only those calculations that describe the system quantum mechanically
+         were considered, that is to say works that employ approaches such as the classical trajectory
+         Monte Carlo method~\cite{GMZ17}, the over the barrier model~\cite{CC-07}, or the Bohr–Lindhard
+         model~\cite{DYC-08, DLZ-12}are not included.
 
       \end{subsection}
 
@@ -2129,11 +2274,11 @@
 
    \begin{itemize}
 
-      \item Mention the \textsc{tc-bgm}~\cite{tcbgm}.
+      \item Schenk and Kirchner or just Schenk?
 
-      \item Determinental analysis~\cite{inc-prob}.
+      \item discuss difference between response and no-response~\cite{microresp}
 
-      \item Spline error bounds~\cite{spline-err}, numerical derivatives~\cite{numdiff1, numdiff2}
+      \item numerical derivatives~\cite{numdiff1, numdiff2}
       
       \item detailed balance~\cite[p.\ 143--152]{scattering}
 
