@@ -31,7 +31,7 @@
 \usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage[toc,page]{appendix}
 
-\usepackage{showlabels}
+%\usepackage{showlabels}
 
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
@@ -101,7 +101,7 @@
    
    \vspace{3.5 cm}
    
-   \copyright Matthew Baxter, 2012.   
+   \copyright Matthew Baxter, Year.   
 
    \thispagestyle{empty}
 
@@ -1575,7 +1575,7 @@
          similar to that laid out by the proton-helium case: an increase in the \textsc{wb} over
          \textsc{iem}. This increase results in good agreement with experiment above 50~keV/amu. Unlike
          previous results the enhancement in cross section persists to low energies, where the
-         \textsc{wb} model overestimates the  measurements.
+         \textsc{wb} model overestimates the measurements.
 
          In the high energy region of the curve the \textsc{wb} model is in fair agreement with the
          \textsc{dw-4b} results of Jana et al. It would appear the effects of dynamic correlation may
@@ -2112,21 +2112,6 @@
  
          \begin{figure}[t]
             \centering
-            \includegraphics[width = \linewidth]{./images/hephe-cross/netRecoil.eps}
-            \caption[Total cross section for net recoil ion production in He\textsuperscript{+}-He
-                     collisions.]
-                    {Total cross section for net recoil ion production in He\textsuperscript{+}-He
-                     collisions.
-                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line),
-                                          n\textsc{etf} no response (dash-dotted line), and
-                                          \textsc{cmf} of Schenk and Kirchner~\cite{geraldDiss}
-                                          (thin solid line).
-                     Experimental data: squares~\cite{RGID85}. \label{fig:recoil}}
-         \end{figure}
-
-         \begin{figure}[t]
-            \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-111.eps}
             \caption[Total cross section for single ionization of the target in He\textsuperscript{+}-He
                      collisions.]
@@ -2229,7 +2214,6 @@
 
          \begin{figure}[t]
             \begin{minipage}{.49\linewidth}
-               
                \centering
                \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-300.eps}
                \caption[Total cross section for capture to the target in He\textsuperscript{+}-He
@@ -2242,7 +2226,6 @@
                         \label{fig:cs300}}
             \end{minipage} \hspace{0.04\linewidth} %
             \begin{minipage}{.49\linewidth}
-               
                \centering
                \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-030.eps}
                \caption[Total cross section for double capture to the projectile in
@@ -2255,7 +2238,22 @@
                         \label{fig:cs030}}
             \end{minipage}
          \end{figure}
-         
+
+         \begin{figure}[t]
+            \centering
+            \includegraphics[width = \linewidth]{./images/hephe-cross/netRecoil.eps}
+            \caption[Total cross section for net recoil ion production in He\textsuperscript{+}-He
+                     collisions.]
+                    {Total cross section for net recoil ion production in He\textsuperscript{+}-He
+                     collisions.
+                     Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
+                                          (dotted line), p\textsc{etf} no response (dashed line),
+                                          n\textsc{etf} no response (dash-dotted line), and
+                                          \textsc{cmf} of Schenk and Kirchner~\cite{geraldDiss}
+                                          (thin solid line).
+                     Experimental data: squares~\cite{RGID85}. \label{fig:recoil}}
+         \end{figure}
+        
          In what follows all results obtained by propagating the full \textsc{ks} orbitals in a
          potential generated from the 1s-only orbitals of Eq.~\eqref{eq:1sonly} that include no electron
          translation factors will be designated by n\textsc{etf}. Those obtained by an application of
@@ -2264,14 +2262,40 @@
          between response and no-response results the text refers to cross sections calculated using
          either set of fully time-dependent 1s-only orbitals and those using the model described in the
          text surrounding Eq.~\eqref{eq:noresp} respectively, when no distinction is made the text
-         refers simply to the respnse versions.
+         refers simply to the response versions.
 
          Where available the results of the current work are compared with calculations of other groups.
          It should be noted that only those calculations that describe the system quantum mechanically
          were considered, that is to say works that employ approaches such as the classical trajectory
          Monte Carlo method~\cite{GMZ17}, the over the barrier model~\cite{CC-07}, or the Bohr–Lindhard
          model~\cite{DYC-08, DLZ-12} are not included.
-         
+
+         We will begin our discussion of the total cross section results with a broad overview comparing
+         the response and no-response calculations. In general for the cross sections presented in
+         Figs.~\ref{fig:cs111} through \ref{fig:cs030} the response calculations produce values that are
+         noticeably lower with the exception of $\sigma_{01}$ and $\sigma_{00}$ (Figs.~\ref{fig:cs201}
+         and \ref{fig:cs300} respectively). Where the $\sigma_{01}$ no-response curve drops below the
+         response results would appear to coincide with a spike in the response $\sigma_{30}$ results
+         (Fig.~\ref{fig:cs030}). The artificial nature of the $\sigma_{00}$ channel makes determining
+         whether the lower result is desirable or not. The only other channel where the no-response
+         calculations are in better agreement with experiment is $\sigma_{02}$, Fig.~\ref{fig:cs102},
+         where lowering the results moves the response curve below experiment. The addition of response
+         effects causing a decrease in cross sections is a typical result, see for example
+         Ref.~\cite{microresp}.
+
+         As was mentioned above the primary purpose of the no-response model in the present context was
+         as a tes-tbed for isolating the \textsc{etf}s from other phase factors. If we consider only the
+         physical outcome channels a clear pattern emerges. For low impact energies the n\textsc{etf}
+         and p\textsc{etf} curves coincide, what one would expect as $v_\mathrm{rel}$ approaches zero.
+         As the impact energy increases a gap begins to open between the two sets of results. The only
+         exceptions to trend are $\sigma_{20}$, where the cross sections are likely too large for small
+         distinctions to be apparent, and $\sigma_{01}$ where the n\textsc{etf} and p\textsc{etf}
+         response curves are slightly erratic. Leaving aside this channel the tendencies of the response
+         and no-response models in the presence, or absence, of the partial \textsc{etf}s are
+         essentially identical. One can interpret this to mean that the differences between the
+         n\textsc{etf} and p\textsc{etf} results are primarily attributable to the \textsc{etf}s and not
+         the result of some unforeseen additional processes.
+
          We begin the discussion by considering the single target ionization process of
          Eq.~\eqref{eq:tpi111}. The results for this channel, $\sigma_{11}$ are presented in
          Fig.~\ref{fig:cs111}. Both n\textsc{etf} and p\textsc{etf} are in good agreement with
@@ -2383,7 +2407,7 @@
          and Montenegro it would seem to overlap with the results of the present work lending credence
          to the curve in the region below the cross section peak, where antiscreening cannot contribute.
          
-         Finally we will consider the sole three electron process, simultaneous double target and single
+         Next wee will consider the sole three electron process, simultaneous double target and single
          projectile ionization [Eq.~\eqref{eq:tpi003}]. The results, presented in Fig.~\ref{fig:cs003},
          again follow the general trends found in the previously discussed channels; overestimation of
          the cross section peak and a slightly better showing for the p\textsc{etf} model over the
@@ -2417,35 +2441,51 @@
          $\sigma_{20}$ however, as $\sigma_{30}$ is at worst an order of magnitude less than
          $\sigma_{20}$ it would provide only a small shift in the curve displayed in
          Fig.~\ref{fig:cs120}.
+
+         To close out this section we will consider the total cross section for net recoil ion
+         production. This quantity, presented in Fig.~\ref{fig:recoil}, may be calculated from
+         previously preseneted results
+         %
+         \begin{equation}
+            \sigma_{+} = \sigma_{11} + \sigma_{20} + \sigma_{02} + 2 \sigma_{12} + 2 \sigma_{21}
+                                     + 2 \sigma_{03} + 2 \sigma_{30}.
+         \end{equation}
+         %
+         Just as in the separate channels the response results are lower than those of the no-response
+         model for the majority of the impact energy range putting them in fair agreement with
+         experiment outside of the imtermediate energy range. No distinction between n\textsc{etf} and
+         p\textsc{etf} curves is discernible.
+
+         Also show in Fig.~\ref{fig:recoil} are the common mean field (\textsc{cmf}) results of Schenk
+         and Kirchner~\cite{geraldDiss} ({\color{red}{?`or just Schenk?}}). The \textsc{cmf} which is in
+         good agreement with experiment. The difference between the \textsc{cmf} results and those of
+         the current work can be traced to the overestimation of single capture (see discussion above
+         and Fig.~\ref{fig:cs120}). As was discussed in Ref.~\cite{geraldDiss} the \textsc{cmf} model
+         is very well suited for describing processes involving initial target electrons. One can see
+         this as evidence that the current work trades an excellent description of a single centre for a
+         a slightly less realistic description of both atomic centres.
  
       \end{subsection}
 
    \end{section}
 
-   \begin{itemize}
-
-      \item Schenk and Kirchner or just Schenk?
-
-      \item discuss difference between response and no-response~\cite{microresp}
-
-      \item numerical derivatives~\cite{numdiff1, numdiff2}
-      
-      \item detailed balance~\cite[p.\ 143--152]{scattering}
-
-      \item Antiscreening~\cite{as1, as2, as3, as4, as5}.
-
-      \item Experimental data:~\cite{BS58, HN78, HSE78, dCFdP88, DT-88, Dub-89, ASL91, FTFHLP-95,
-            SSMSM-11}
-
-      \item Other calculations: Monte Carlo~\cite{CC-07, GMZ17}, Bohr–Lindhard~\cite{DYC-08, DLZ-12},
-         independent event model~\cite{SM-03}, perturbation theory~\cite{BOC05, Mancev-07, MG-10,
-         GG-12b}.
-
-   \end{itemize}
 
 \end{chapter}
 
 \begin{chapter}{Conclusion \label{chap:con}}
+
+   Following the programme laid out in the introduction this work has presented investigations of an
+   increasingly complex series of ion-atom collisions systems. This journey ({\color{red}{more prosaic,
+   less lyric\dots}}) began with the relatively simple antiproton-helium system, continued with the
+   proton-helium and He\textsuperscript{2+}-He systems, and culminated in a discussion of the
+   He\textsuperscript{+}-He collision system. In the proceeding subsections more detailed and collision
+   specific conclusions will be offer for these investigates. Before embarking on a summary of
+   individual results it is, perhaps, necessary to emphasis one of the overarching themes of this work.
+   In every situation or results are competitive with the best models of others. In many cases our
+   results are the only ones which can consistently describe all outcome channels for a given process,
+   that is they produce some of the best results available without being focused on a specific process.
+   This certainly demonstrates the utility of density functional theory techniques over a fairly wide
+   range of systems.
 
    \begin{section}{\texorpdfstring{$p$}{p}-He and \texorpdfstring{He\textsuperscript{2+}}{He2+}-He
                    Collisions \label{sec:con-phe2p-he}}
@@ -2501,6 +2541,33 @@
    \end{section}
 
    \begin{section}{\texorpdfstring{He\textsuperscript{+}}{He+}-He Collisions \label{sec:con-hephe}}
+      
+      In this work we have presented an investigation of the He\textsuperscript{+}-He collision system
+      within  time-dependent spin-density functional theory under the constraints of the exchange-only
+      approximation. An accurate time-dependent exchange potential was determined through the application
+      of the \textsc{kli} approximation. Total cross section results for all physical outcome channels
+      were then offered in the approximate impact energy of range 10-1000~keV/amu for two models; one in
+      which electron translation factors were ignored and a second model where partial \textsc{etf}s
+      were used. The results of both models are in overall good agreement with experiment.
+
+      Without diminishing the results of this work it is necessary to highlight a few limitations and
+      where the results may be improved in future iterations. First, the restriction of the
+      implementation of the \textsc{kli} functional to systems of cylindrical symmetry is the impetus
+      for both the 1s-only approximation as well as the need to consider both the n\textsc{etf} and
+      p\textsc{etf} models. Future applications of the procedure laid out in this work would benefit
+      greatly from a fully three-dimensional implementation of the \textsc{kli} functional that makes no
+      symmetry assumptions.
+      
+      Comparisons of our results with the theoretical works of other groups points to the fact that the
+      calculations would also gain from the inclusion of correlation effects. Treating this x-only
+      version as a proof of concept there is nothing, apart from the added complexity of the
+      calculations, precluding the addition of dynamic correlation through the application of any number
+      of ground-state correlation functionals in the future. It should be noted that such a model would
+      still not offer a complete description of time-dependent correlation, it would, for example, lack
+      memory effects~\cite{tddft}. An added difficulty would be the inclusion of functional correlation
+      effects. In order to move beyond the \textsc{iem} single Slater determinant description of outcome
+      probabilities, one would have to adapt a model similar to that of Wilken and Bauer~\cite{wb} used
+      in Chap.~\ref{chap:p-he2p-he} (and Ref.~\cite{p-he2p-he}) to explicitly spin-polarized systems.
 
    \end{section}
 
