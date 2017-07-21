@@ -3,6 +3,7 @@
 \RequirePackage[l2tabu, orthodox]{nag}
 
 \documentclass[letterpaper, 11 pt]{report}
+%\documentclass[a5paper, 8 pt]{report}
 
 %\usepackage[sc]{mathpazo}
 %\linespread{1.05}
@@ -20,6 +21,7 @@
 \usepackage{ellipsis}
 \usepackage{microtype}
 \usepackage{graphicx}
+\usepackage{booktabs}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage[usenames,dvipsnames]{xcolor}
@@ -167,11 +169,10 @@
 
 \begin{chapter}{Introduction \label{chap:intro}}
 
-   Atomic collision systems are of interest both theoretically, on their own merits, and for there
-   potential in applications. In particular the He\textsuperscript-He collision system, a focus of a
-   large portion of the present work, is applicable in such diverse areas as fusion
-   reactors~\cite{fusion1, fusion2}, astrophysics~\cite{astro1, astro2}, and dark matter
-   detection~\cite{dmdet}.
+   Atomic collision systems are of interest both on their own merits, and for there potential in
+   applications. As a  particular the He\textsuperscript{+}-He collision system, a focus of a large
+   portion of the present work, is applicable in such diverse areas as fusion reactors~\cite{fusion1,
+   fusion2}, astrophysics~\cite{astro1, astro2}, and dark matter detection~\cite{dmdet}.
 
    From the point of view of theory, atomic collision systems are often explored as test-beds for
    few-electron quantum dynamics. A helium-like target, consisting of two electrons and a nucleus, and a
@@ -267,20 +268,20 @@
       $\hat{H}$, may be decomposed into a kinetic energy term
       %
       \begin{equation} \label{eq:Top} %nnnote: tfrac or normal frac?
-         \hat{T} = -\frac{1}{2} \sum\limits^{N}_{i=1} \Delta_i,
+         \hat{T} = -\frac{1}{2} \sum\limits^{N}_{j=1} \Delta_j,
       \end{equation}
       %
       an electron-electron term
       %
       \begin{equation} \label{eq:Vee} %nnnote: tfrac or normal frac?
-         \hat{V}_{ee} = \frac{1}{2} \sum\limits^{N}_{i \neq j}
-                        \frac{1}{\left| \mathbf{r}_i - \mathbf{r}_j \right|},
+         \hat{V}_{ee} = \frac{1}{2} \sum\limits^{N}_{k \neq j}
+                        \frac{1}{\left| \mathbf{r}_k - \mathbf{r}_j \right|},
       \end{equation}
       %
       and a, possibly, time-dependent external potential
       %
       \begin{equation} \label{eq:Vext}
-         \hat{V}_\mathrm{ext} = \sum\limits^{n}_{i = 1} v_\mathrm{ext} (\mathbf{r}_i, \sigma_i, t).
+         \hat{V}_\mathrm{ext} = \sum\limits^{n}_{j = 1} v_\mathrm{ext} (\mathbf{r}_j, \sigma_j, t).
       \end{equation}
       %
       The function $\hat{V}_\mathrm{ext}$ contains all of the one-body interactions, including the
@@ -289,9 +290,9 @@
       Given the one-particle electronic density
       %
       \begin{equation} \label{eq:dendef1}
-         n(\mathbf{r}, t) = N \sum\limits_{\sigma_i} \int \mathrm{d}^3 r_2 \dots \mathrm{d}^3 r_N
-                            \left| \Psi(\mathbf{r}, \sigma_1, \mathbf{r}_2, \sigma_2, \dots,
-                                   \mathbf{r}_N, \sigma_N) \right|^2
+         n(\mathbf{r}, t) = N \sum\limits_{\sigma_1 \dots \sigma_N} \int \mathrm{d}^3 r_2 \dots
+                              \mathrm{d}^3 r_N \left| \Psi(\mathbf{r}, \sigma_1, \mathbf{r}_2,
+                              \sigma_2, \dots, \mathbf{r}_N, \sigma_N) \right|^2
       \end{equation}
       %
       the Hohenberg–Kohn theorem~\cite{hk-theorem} in the stationary case and the Runge-Gross
@@ -343,7 +344,7 @@
       \begin{equation} \label{eq:sks}
          \left( -\frac{\Delta}{2} + v^\sigma_\mathrm{\textsc{ks}}[n_\uparrow,
          n_\downarrow](\mathbf{r}) \right)
-          \varphi_{i\sigma}(\mathbf{r}) = \epsilon_{j \sigma} \varphi_{j \sigma}(\mathbf{r}),
+          \varphi_{j\sigma}(\mathbf{r}) = \epsilon_{j \sigma} \varphi_{j \sigma}(\mathbf{r}),
       \end{equation}
       %
       \begin{equation} \label{eq:tdks}
@@ -422,7 +423,7 @@
       or, $O = O[n]$.
 
       In principle all observables are functionals of the one-particle density. However, in practice the
-      exact functional is only known in a handful of cases~\cite[p.\ 211-213]{obs_exac}.
+      exact functional is only known in a handful of cases~\cite[p.~211-213]{obs_exac}.
 
    \end{section}
 
@@ -553,8 +554,8 @@
          %
          \begin{equation} \label{eq:xfunc}
             \begin{split}
-               A_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r},t)]
-                 = & \int \mathrm{d} t \, E_\mathrm{x}[\varphi_{i\sigma}(\mathbf{r})] \\
+               A_\mathrm{x}[\varphi_{j\sigma}(\mathbf{r},t)]
+                 = & \int \mathrm{d} t \, E_\mathrm{x}[\varphi_{j\sigma}(\mathbf{r})] \\
                 = & -\frac{1}{2} \int \mathrm{d} t \, \sum\limits_\sigma \sum\limits_{j,k}
                     \int\mathrm{d}^3 r \mathrm{d}^3 r^\prime
                     \frac{ \varphi^*_{j\sigma}(\mathbf{r}^\prime,t)
@@ -615,7 +616,7 @@
          where
          %
          \begin{equation}
-            \bar{v}_{j \sigma} = \int \mathrm{d}^3 r \varphi^*_{j \sigma} (\mathbf{r})
+            \bar{v}_{j \sigma} = \int \mathrm{d}^3 r \, \varphi^*_{j \sigma} (\mathbf{r})
                \varphi_{j \sigma} (\mathbf{r}) v_{j \sigma} (\mathbf{r})
          \end{equation}
          %
@@ -644,7 +645,7 @@
          exact and \textsc{opm} exchange-correlation potentials satisfy
          %
          \begin{equation} \label{eq:zft}
-            \int \mathrm{d}^3 r n(\mathbf{r}, t) \nabla v^\sigma_\mathrm{xc}(\mathbf{r},t) = 0.
+            \int \mathrm{d}^3 r \, n(\mathbf{r}, t) \nabla v^\sigma_\mathrm{xc}(\mathbf{r},t) = 0.
          \end{equation}
          %
          This relation is often referred to as the zero-force theorem, the name coming from the obvious
@@ -833,7 +834,7 @@
       By introducing the correlation integrals
       %
       \begin{equation} \label{eq:ic}
-         I_\mathrm{c}^{V_1V_2} = \int_{V_1} \int_{V_2} \mathrm{d}^3r_1 \, \mathrm{d}^3r_2
+         I_\mathrm{c}^{V_1V_2} = \int_{V_1} \int_{V_2} \mathrm{d}^3r_1 \, \mathrm{d}^3r_2 \,
          g_\mathrm{c}(\mathrm{r}_1,\mathrm{r}_2,t_f) \, n(\mathbf{r}_1,t_f) \, n(\mathbf{r}_2,t_f),
       \end{equation}
       %
@@ -1196,15 +1197,15 @@
             \caption[Total cross section for one-electron removal from helium by protons and
                      antiprotons.]
                     {Total cross section for one-electron removal from helium by protons and
-                     antiprotons. Protons: dotted \textsc{iem}, dashed \textsc{wb} (theory);
+                     antiprotons. Protons: dotted \textsc{iem} and dashed \textsc{wb} (theory);
                      {\color{blue}{$\blacktriangle$}}~\cite{DTR84}, {\color{blue}{$+$}}~\cite{Sol62},
                      {\color{blue}{$\bullet$}}~\cite{SG89}, {\color{blue}{$\blacklozenge$}}~\cite{SG85},
                      {\color{blue}{$\blacktriangleright$}}~\cite{PM70},
                      {\color{blue}{$\blacktriangledown$}}~\cite{Wex64},
-                     {\color{blue}{$\blacksquare$}}~\cite{KAH84} (experiment).
-                     Antiprotons: dashed-dotted \textsc{iem}, solid \textsc{wb} (theory);
+                     and {\color{blue}{$\blacksquare$}}~\cite{KAH84} (experiment).
+                     Antiprotons: dashed-dotted \textsc{iem} and solid \textsc{wb} (theory);
                      {\color{red}{$\Box$}}~\cite{KKT08}, {\color{red}{$\circ$}}~\cite{HKM94},
-                     {\color{red}{$\times$}}~\cite{AHK90} (experiment). \label{fig:he+}}
+                     and {\color{red}{$\times$}}~\cite{AHK90} (experiment). \label{fig:he+}}
          \end{figure}
 
          \begin{figure}[t]
@@ -1213,15 +1214,15 @@
             \caption[Total cross section for two-electron removal from helium atoms as a function of
                      impact energy]
                     {Total cross section for two-electron removal from helium atoms as a function
-                     of impact energy. Protons: dotted \textsc{iem}, dashed \textsc{wb} (theory);
+                     of impact energy. Protons: dotted \textsc{iem} and dashed \textsc{wb} (theory);
                      {\color{blue}{$\blacktriangle$}}~\cite{DTR84}, {\color{blue}{$+$}}~\cite{Sol62},
                      {\color{blue}{$\bullet$}}~\cite{SG89},
                      {\color{blue}{$\blacklozenge$}}~\cite{SG85},
                     {\color{blue}{$\blacktriangleright$}}~\cite{PM70},
-                    {\color{blue}{$\blacktriangledown$}}~\cite{Wex64},
+                    {\color{blue}{$\blacktriangledown$}}~\cite{Wex64}, and
                     {\color{blue}{$\blacksquare$}}~\cite{KAH84} (experiment).
-                    Antiprotons: dashed-dotted \textsc{iem}, solid \textsc{wb} (theory);
-                    {\color{red}{$\circ$}}~\cite{HKM94}, {\color{red}{$\triangleleft$}}~\cite{KKT09}
+                    Antiprotons: dashed-dotted \textsc{iem} and solid \textsc{wb} (theory);
+                    {\color{red}{$\circ$}}~\cite{HKM94} and {\color{red}{$\triangleleft$}}~\cite{KKT09}
                        (experiment). \label{fig:he++}}
          \end{figure}
 
@@ -1339,7 +1340,7 @@
             \caption[Total cross section for single ionization of helium by proton impact.]
                     {Total cross section for single ionization of helium by proton impact.
                      Theoretical results: Slim et al.~\cite{SHBF-91},
-                     Winter~\cite{Winter-91}, D\'{i}az et al.~\cite{DMS-00}
+                     Winter~\cite{Winter-91}, and D\'{i}az et al.~\cite{DMS-00}
                      Experimental data: {\color{OliveGreen}{$\bullet$}}~\cite{SG89} and
                      {\color{blue}{$\blacklozenge$}}~\cite{SG85}. \label{fig:phe-ti}}
          \end{figure}
@@ -1476,10 +1477,10 @@
                      impact.]{Total cross section for single ionization of helium by
                      He\textsuperscript{2+} impact. Theoretical results: Gramlich
                      et al.~\cite{GGS-89}, Barna
-                     et al.~\cite{BTB-05}, Pindzola et al.~\cite{PRC-07}.
+                     et al.~\cite{BTB-05}, and Pindzola et al.~\cite{PRC-07}.
                      Experimental data: {\color{blue}{$\blacklozenge$}}~\cite{SG85},
                      {\color{OliveGreen}{$\bullet$}}~\cite{SG89},
-                     {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87},
+                     {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87}, and
                      {\color{GreenYellow}$\blacktriangle$}~\cite{KAH84}. \label{fig:he2phe-ti}}
          \end{figure}
 
@@ -1490,9 +1491,9 @@
                      impact.]{Total cross section for double ionization of helium by
                      He\textsuperscript{2+} impact. Theoretical results: Singal
                      et al.~\cite{SL-91}, Barna
-                     et al.~\cite{BTB-05}, Pindzola et al.~\cite{PRC-07}
+                     et al.~\cite{BTB-05}, and Pindzola et al.~\cite{PRC-07}
                      Experimental data: {\color{blue}{$\blacklozenge$}}~\cite{SG85},
-                     {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87},
+                     {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87}, and
                      {\color{GreenYellow}$\blacktriangle$}~\cite{KAH84}. \label{fig:he2phe-ii}}
          \end{figure}
 
@@ -1504,7 +1505,7 @@
                      He\textsuperscript{2+}-He Collisions. Theoretical results: Belki\'{c}
                      et al.~\cite{BMM-97}.
                      Experimental data: {\color{blue}{$\blacklozenge$}}~\cite{SG85},
-                     {\color{OliveGreen}{$\bullet$}}~\cite{SG89},
+                     {\color{OliveGreen}{$\bullet$}}~\cite{SG89}, and
                      {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87}. \label{fig:he2phe-ip}}
          \end{figure}
 
@@ -1517,7 +1518,7 @@
                      Jana et al.~\cite{JMP-15}.
                      Experimental data: {\color{blue}{$\blacklozenge$}}~\cite{SG85},
                      {\color{OliveGreen}{$\bullet$}}~\cite{SG89},
-                     {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87},
+                     {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87}, and
                      {\color{red}$\blacksquare$}~\cite{Rudd85}. \label{fig:he2phe-tp}}
          \end{figure}
 
@@ -1530,7 +1531,7 @@
                      Theoretical results: Fritsch~\cite{Fritsch-94} and Ghosh
                      et al.~\cite{GDMP-08}.
                      Experimental data: {\color{RedViolet}{$\blacktriangledown$}}~\cite{Dubois87},
-                     {\color{red}$\blacksquare$}~\cite{Rudd85}
+                     {\color{red}$\blacksquare$}~\cite{Rudd85}, and
                      {\color{TealBlue}$\times$}~\cite{SG74}. \label{fig:he2phe-pp}}
          \end{figure}
 
@@ -1675,10 +1676,12 @@
       time-step of the \textsc{tc-bgm} the time-dependent Kohn-Sham orbitals,
       $\varphi_{\sigma j}(\mathbf{r},t)$ are fed into the \textsc{kli} functional (ignoring self
       consistency) an exchange potential, $v^{\sigma}_\mathrm{x}[ \{ \varphi_{\sigma^\prime j} \};t]$,
-      may be calculated at each $t$, effectively giving one the time-dependent exchange potential
-      $v^{\sigma}_\mathrm{x}[ \{ \varphi_{\sigma^\prime j} \}](t)$. The restriction of the \textsc{kli}
-      scheme of Ref.~\cite{diamol} to systems of cylindrical symmetry complicates this processes since
-      in general $\varphi_{j \sigma}$ will not exhibit any specific symmetry.
+      is obtained\footnote{The normalization of the \textsc{kli} potential is chosen so that
+      $v_\mathrm{x}^\textsc{kli}(\mathbf{r},t) \xrightarrow{\vert \mathbf{r} \vert \to \infty} 0$.}. In
+      Ref.~\cite{diamol} the \textsc{kli} scheme has been implemented for eigenstates of a total
+      \textsc{ks} potential which is invariant against rotation around the internuclear axis. This
+      restriction complicates the use of the corresponding \textsc{kli} potential, since the present
+      $\varphi_{j \sigma}$ do not exhibit any specific symmetry.
 
       In order to detail a solution to the symmetry problem a more thorough description of the
       \textsc{tc-bgm} is necessary. Within the \textsc{tc-bgm} the Kohn-Sham (\textsc{ks}) orbitals are
@@ -1703,8 +1706,8 @@
       functions themselves are given by [similarly to the one-centre basis of Eq.~\eqref{eq:bgmbasis}]
       %
       \begin{equation} \label{eq:bgmbasis2}
-         \chi^{L}_{ck} (\mathbf{r},t)
-         = W_P( \mathbf{r},t, \epsilon_P)^L \chi^{0}_{ck} (\mathbf{r}),
+         \chi^{LM}_{ck} (\mathbf{r},t)
+         = W_P( \mathbf{r},t, \epsilon_P)^L W_T(r,\epsilon_T)^M \chi^{00}_{ck} (\mathbf{r}),
       \end{equation}
       %
       with
@@ -1727,8 +1730,19 @@
       discussed in Sec.~\ref{sec:p-he2p-he-sys} the basis is simplified by including only states
       generated from the projectile potential. The regularizer is once again set to $\epsilon_P = 1$.
       The complete basis set used may be described in terms of the maximum $L$ value included for each
-      bound sub-shell, 1$s$-4$f$, in the basis. On each centre these were taken to be (0 0 1 1 1 2 2 2 2
-      2 2 3 3 3 3 3 3 3 3 3), for a total of 124 basis states.
+      bound sub-shell, 1$s$-4$f$, indexed by $k$, in the basis. These values are listed in
+      Tab.~\ref{tab:basis} and total 124 basis states.
+
+      \begin{table}
+         \caption{Description of the \textsc{tc-bgm} basis expansion. \label{tab:basis}}
+         \begin{tabular}{lcccccccccccccccccccc}
+            \toprule
+            state            & 1s & 2s & 2p   & 3s & 3p   & 3d      & 4s & 4p     & 4d      & 4f \\
+            $k$              & 1  & 2  & 3, 4 & 5  & 6, 7 & 8{-}10  & 11 & 12, 13 & 14{-}16 & 17{-}20 \\
+            $L_\mathrm{max}$ & 0  & 0  & 1    & 1  & 2    & 2       & 2  & 3      & 3       & 3 \\
+            \bottomrule
+         \end{tabular}
+      \end{table}
 
       It is clear from the above description that only the basis states corresponding to s-type orbitals
       will make cylindrically symmetric contributions to the \textsc{ks}-orbitals. The simplest solution
@@ -1781,20 +1795,19 @@
       \begin{subequations} \label{eq:etf}
          \begin{equation} \label{eq:etfT}
             e^{i \mathbf{v}_T \cdot \mathbf{r}} =
-             e^{\frac{i V_\mathrm{rel}}{2} (x \sin \theta - z \cos \theta)},
+             e^{\frac{i V}{2} (x \sin \theta - z \cos \theta)},
          \end{equation}
          %
          \begin{equation} \label{eq:etfP}
             e^{i \mathbf{v}_P \cdot \mathbf{r}} =
-             e^{\frac{i V_\mathrm{rel}}{2} (z \cos \theta - x \sin \theta)},
+             e^{\frac{i V}{2} (z \cos \theta - x \sin \theta)},
          \end{equation}
       \end{subequations}
       %
-      where $\theta = \arctan b/Z$ and $V_\mathrm{rel} = V$ is the relative velocity of the centres
-      [where $V$ is the velocity appearing below Eq.~\eqref{eq:phe2p-ext}]. If we now introduce a
-      two-centred coordinate system, placing the foci at the two nuclear centres it becomes clear that
-      the portion of the \textsc{etf}s containing $x$ violates the desired cylindrical symmetry (see
-      Sec.~\ref{sec:prolate}).
+      where $\theta = \arctan b/Z$ and $V$ is the relative velocity of the centers, the same velocity
+      appearing below Eq.~\eqref{eq:phe2p-ext}. If we now introduce a two-centred coordinate system,
+      placing the foci at the two nuclear centres it becomes clear that the portion of the \textsc{etf}s
+      containing $x$ violates the desired cylindrical symmetry (see Sec.~\ref{sec:prolate}).
 
       Two obvious solutions present themselves. First, one may simply ignore the \textsc{etf}s
       completely. This would amount to passing the orbitals described by Eq.~\eqref{eq:1sonly} into
@@ -1803,10 +1816,8 @@
       %
       \begin{equation} \label{eq:1sonlyetf}
          \tilde{\varphi}_{\sigma j}^{1s} (\mathbf{r},t) =
-                       a^{\sigma j}_T (t)  e^{- \frac{i v_\mathrm{rel} z \cos \theta}{2}}
-                                           \chi^{0}_{T1} (\mathbf{r},t)
-                     + a^{\sigma j}_P (t)  e^{  \frac{i v_\mathrm{rel} z \cos \theta}{2}}
-                                           \chi^{0}_{P1} (\mathbf{r},t).
+                      a^{\sigma j}_T (t)  e^{-\frac{i V z \cos \theta}{2}} \chi^{0}_{T1} (\mathbf{r},t)
+                    + a^{\sigma j}_P (t)  e^{ \frac{i V z \cos \theta}{2}} \chi^{0}_{P1} (\mathbf{r},t).
       \end{equation}
       %
       This will offer at least some of the correction provided by the full \textsc{etf}. Unfortunately,
@@ -1863,11 +1874,11 @@
                                \braket{\varphi_{\sigma j}(t_f) | f^\prime},
       \end{equation}
       %
-      with the transition amplitudes $\braket{f | \varphi_{\sigma j}(t_f)} =
-      \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{\sigma j}(t_f)}$ (for some $k$, $l$, $c$, and properly
-      orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$) readily calculable from the dynamics. A
-      model of this type which ignores the functional correlations~\cite{p-he2p-he} is consistent with
-      an \textsc{iem} description.
+      with $f$ and $f`$ $\in \{f_1, f_2, f_3\}$, and the transition amplitudes $\braket{f |
+      \varphi_{\sigma j}(t_f)} = \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{\sigma j}(t_f)}$ (for some
+      $k$, $l$, $c$, and properly orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$) readily
+      calculable from the dynamics. A model of this type which ignores the functional
+      correlations~\cite{p-he2p-he} is consistent with an \textsc{iem} description.
 
       Alternatively, one could consider the probability to explicitly measure the states of some subset
       of the total number of particles. These so called inclusive probabilities can be expressed in
@@ -2042,7 +2053,7 @@
          be written
          %
          \begin{equation} \label{eq:ionprob}
-            p(\mathrm{He}(\uparrow_1) \rightarrow I ) =
+            p \left( \mathrm{He}(\uparrow_1) \rightarrow I \right) =
                \sum\limits_{c \in \{T,P\}} \sum\limits_{k=1}^K \sum\limits_{l = 1}^L
                \left| \braket{ \tilde{\chi}^{l0}_{c k} | \varphi_{\uparrow 1}(t_f)} \right|^2
          \end{equation}
@@ -2114,7 +2125,7 @@
          function $f$ one has
          %
          \begin{equation} \label{eq:splineErr}
-            E(s_f) = \left| f - s_f \right|_\infty \leq \frac{5 \left| f^{4} \right|_\infty h^4}{384},
+            E(s_f) = \left| f - s_f \right|_\infty \leq \frac{5 \left| f^{(4)} \right|_\infty h^4}{384},
          \end{equation}
          %
          where $h$ is the largest separation between grid points used in determining the spline amd
@@ -2140,8 +2151,8 @@
                      collisions.]
                     {Total cross section for single ionization of the target.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line),
-                                          n\textsc{etf} no response (dash-dotted line), and
+                                          (dotted line), p\textsc{etf} no-response (dashed line),
+                                          n\textsc{etf} no-response (dash-dotted line), and
                                           \textsc{cdw-eis} of Miraglia and Gravielle~\cite{MG-10}
                                           (thin solid line).
                      Experimental data: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
@@ -2156,8 +2167,8 @@
                      He\textsuperscript{+}-He collisions.]
                     {Total cross section for single ionization of the projectile.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line),
-                                          n\textsc{etf} no response (dash-dotted line), and
+                                          (dotted line), p\textsc{etf} no-response (dashed line),
+                                          n\textsc{etf} no-response (dash-dotted line), and
                                           \textsc{ievm} of Sigaud and Montenegro~\cite{SM-03}
                                           (dash-dotted line).
                      Experimental data: diamonds~\cite{Dub-89}. \label{fig:cs201}}
@@ -2170,8 +2181,8 @@
                      collisions.]
                     {Total cross section for single capture to the projectile.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line),
-                                          n\textsc{etf} no response (dash-dotted line), and
+                                          (dotted line), p\textsc{etf} no-response (dashed line),
+                                          n\textsc{etf} no-response (dash-dotted line), and
                                           \textsc{cdbw-4b} (post form) of Ghanbari-Adivi
                                           \textit{et al}.~\cite{GAG15} (dashed line).
                      Experimental data: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
@@ -2185,8 +2196,8 @@
                      collisions.]
                     {Total cross section for double ionization of the target.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line). p\textsc{etf} no response (dashed line), and
-                                          n\textsc{etf} no response (dash-dotted line).
+                                          (dotted line). p\textsc{etf} no-response (dashed line), and
+                                          n\textsc{etf} no-response (dash-dotted line).
                      Experimental data: diamonds~\cite{Dub-89}, circles~\cite{FTFHLP-95}, and
                                         squares~\cite{DT-88}. \label{fig:cs012}}
          \end{figure}
@@ -2198,8 +2209,8 @@
                      He\textsuperscript{+}-He collisions.]
                      {Total cross section for transfer ionization of the target.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line), and
-                                          n\textsc{etf} no response (dash-dotted line).
+                                          (dotted line), p\textsc{etf} no-response (dashed line), and
+                                          n\textsc{etf} no-response (dash-dotted line).
                      Experimental data: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
                      \label{fig:cs021}}
          \end{figure}
@@ -2212,8 +2223,8 @@
                     {Total cross section for simultaneous single ionization of the target and
                      projectile.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line),
-                                          n\textsc{etf} no response (dash-dotted line), and
+                                          (dotted line), p\textsc{etf} no-response (dashed line),
+                                          n\textsc{etf} no-response (dash-dotted line), and
                                           \textsc{ievm} of Sigaud and Montenegro~\cite{SM-03} (thin
                                           solid line).
                      Experimental data: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}.
@@ -2227,8 +2238,8 @@
                      He\textsuperscript{+}-He collisions.]
                     {Total cross section simultaneous double target and single projectile ionization.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line),
-                                          n\textsc{etf} no response (dash-dotted line), and
+                                          (dotted line), p\textsc{etf} no-response (dashed line),
+                                          n\textsc{etf} no-response (dash-dotted line), and
                                           \textsc{ievm} of Sigaud and Montenegro~\cite{SM-03} (thin
                                           solid line).
                      Experimental data: diamonds~\cite{Dub-89} and crosses~\cite{SSMSM-11}.
@@ -2244,8 +2255,8 @@
                        {Total cross section for capture to the target in He\textsuperscript{+}-He
                         collisions.
                         Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                             (dotted line), p\textsc{etf} no response (dashed line), and
-                                             n\textsc{etf} no response (dash-dotted line).
+                                             (dotted line), p\textsc{etf} no-response (dashed line), and
+                                             n\textsc{etf} no-response (dash-dotted line).
                         \label{fig:cs300}}
             \end{minipage} \hspace{0.04\linewidth} %
             \begin{minipage}{.49\linewidth}
@@ -2256,8 +2267,8 @@
                        {Total cross section for double capture to the projectile in
                         He\textsuperscript{+}-He.
                         Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                             (dotted line), p\textsc{etf} no response (dashed line), and
-                                             n\textsc{etf} no response (dash-dotted line).
+                                             (dotted line), p\textsc{etf} no-response (dashed line), and
+                                             n\textsc{etf} no-response (dash-dotted line).
                         \label{fig:cs030}}
             \end{minipage}
          \end{figure}
@@ -2270,8 +2281,8 @@
                     {Total cross section for net recoil ion production in He\textsuperscript{+}-He
                      collisions.
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
-                                          (dotted line), p\textsc{etf} no response (dashed line),
-                                          n\textsc{etf} no response (dash-dotted line), and
+                                          (dotted line), p\textsc{etf} no-response (dashed line),
+                                          n\textsc{etf} no-response (dash-dotted line), and
                                           \textsc{cmf} of Schenk and Kirchner~\cite{geraldDiss}
                                           (thin solid line).
                      Experimental data: squares~\cite{RGID85}. \label{fig:recoil}}
@@ -2361,7 +2372,12 @@
          one can easily determine $\sigma_{01}$ from their disclosed results. Their values seem to be in
          much better agreement with experiment in the high energy range than either n\textsc{etf} or
          p\textsc{etf} models. This can perhaps be explained by the presence of correlation in the
-         \textsc{ievm} calculations.
+         \textsc{ievm} calculations. As will be discussed in more detail below all of our models
+         underestimate $\sigma_{02}$ and $\sigma_{03}$ in this impact energy range. Keeping in mind that
+         $\sum p_{kl} = 1$ the increase in these channels resulting from the incorporation of
+         correlation effects, antiscreening in particular, would be drawn in part from the current
+         channel od focus $\sigma_{01}$ resulting in a decrease putting our results in better agreement
+         with both Sigaud and Montenegro and the experimental data.
 
          For the results of single electron capture to the projectile, the process of
          Eq.~\eqref{eq:tpi120} depicted in Fig.~\ref{fig:cs120}, both n\textsc{etf} and p\textsc{etf}
