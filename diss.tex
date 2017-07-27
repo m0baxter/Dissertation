@@ -33,7 +33,7 @@
 \usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage[toc,page]{appendix}
 
-%\usepackage{showlabels}
+\usepackage{showlabels}
 
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
@@ -557,8 +557,8 @@
                A_\mathrm{x}[\varphi_{j\sigma}(\mathbf{r},t)]
                  = & \int \mathrm{d} t \, E_\mathrm{x}[\varphi_{j\sigma}(\mathbf{r})] \\
                 = & -\frac{1}{2} \int \mathrm{d} t \, \sum\limits_\sigma \sum\limits_{j,k}
-                    \int\mathrm{d}^3 r \mathrm{d}^3 r^\prime
-                    \frac{ \varphi^*_{j\sigma}(\mathbf{r}^\prime,t)
+                    \int\mathrm{d}^3 r \mathrm{d}^3 r^\prime \\
+                   & \times \frac{ \varphi^*_{j\sigma}(\mathbf{r}^\prime,t)
                            \varphi^*_{k\sigma}(\mathbf{r}^\prime,t)
                            \varphi_{j\sigma}(\mathbf{r},t) \varphi_{k\sigma}(\mathbf{r},t)}
                    {\left| \mathbf{r} -\mathbf{r}^\prime \right|}.
@@ -1087,8 +1087,8 @@
             \includegraphics[width = \linewidth]{./images/poz.eps}
             \caption[Probabilities as a function of nuclear separation.]{$p^{II}$ as a
                      function of $z$ an impact energy of 50~keV and impact parameter of 1~a.u.:
-                     (a)~$\bar{p}$-He, (b)~$p$-He, (c)~He\textsuperscript{2+}-He. \label{fig:poz}}
-         \end{minipage} \hspace{0.04\linewidth} %
+                     (a) $\bar{p}$-He, (b) $p$-He, (c) He\textsuperscript{2+}-He. \label{fig:poz}}
+         \end{minipage} \hspace{0.009\linewidth} %
          \begin{minipage}{.49\linewidth}
 
             \centering
@@ -1756,8 +1756,8 @@
                                                + a^{\sigma j}_P(t) \chi^{00}_{P1}(\mathbf{r},t).
       \end{equation}
       %
-      The coefficients are the result of projecting the \textsc{ks}-orbitals onto the two-dimensional
-      subspace spanned by the target and projectile 1s-states
+      The coefficients, $a^{\sigma j}_c$, are the result of projecting the \textsc{ks}-orbitals onto the
+      two-dimensional subspace spanned by the target and projectile 1s-states
       %
       \begin{equation} \label{eq:proj}
          \ket{\varphi^{1s}_{\sigma j}} = \hat{P} \ket{\varphi_{\sigma j}}
@@ -1874,10 +1874,14 @@
                                \braket{\varphi_{\sigma j}(t_f) | f^\prime},
       \end{equation}
       %
-      with $f$ and $f`$ $\in \{f_1, f_2, f_3\}$, and the transition amplitudes $\braket{f |
-      \varphi_{\sigma j}(t_f)} = \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{\sigma j}(t_f)}$ (for some
-      $k$, $l$, $c$, and properly orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$) readily
-      calculable from the dynamics. A model of this type which ignores the functional
+      with $f$ and $f`$ $\in \{f_1, f_2, f_3\}$, and the transition amplitudes
+      %
+      \begin{equation}
+         \braket{f | \varphi_{\sigma j}(t_f)}
+         = \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{\sigma j}(t_f)}
+      \end{equation}
+      (for some $k$, $l$, $c$, and properly orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$)
+      readily calculable from the dynamics. A model of this type which ignores the functional
       correlations~\cite{p-he2p-he} is consistent with an \textsc{iem} description.
 
       Alternatively, one could consider the probability to explicitly measure the states of some subset
@@ -2258,7 +2262,7 @@
                                              (dotted line), p\textsc{etf} no-response (dashed line), and
                                              n\textsc{etf} no-response (dash-dotted line).
                         \label{fig:cs300}}
-            \end{minipage} \hspace{0.04\linewidth} %
+            \end{minipage} \hspace{0.009\linewidth} %
             \begin{minipage}{.49\linewidth}
                \centering
                \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-030.eps}
@@ -2595,7 +2599,9 @@
       for both the 1s-only approximation as well as the need to consider both the n\textsc{etf} and
       p\textsc{etf} models. Future applications of the procedure laid out in this work would benefit
       greatly from a fully three-dimensional implementation of the \textsc{kli} functional that makes no
-      symmetry assumptions.
+      symmetry assumptions. Failing this, it may be possible to express the \textsc{ks} orbitals in
+      terms of a multipole expansion. In this way more complex, symmetry respecting orbitals may be
+      obtained.
 
       Comparisons of our results with the theoretical works of other groups points to the fact that the
       calculations would also gain from the inclusion of correlation effects. Treating this x-only
@@ -2607,6 +2613,177 @@
       effects. In order to move beyond the \textsc{iem} single Slater determinant description of outcome
       probabilities, one would have to adapt a model similar to that of Wilken and Bauer~\cite{wb} used
       in Chap.~\ref{chap:p-he2p-he} (and Ref.~\cite{p-he2p-he}) to explicitly spin-polarized systems.
+
+      One may start by mimicing the construction presented in Sec.~\ref{sec:phe2p-obs} for a
+      three-particle state $\ket{\Psi(\mathbf{r}_1, \sigma_1, \mathbf{r}_2, \sigma_2, \mathbf{r}_3,
+      \sigma_3, t)}$. If we specify the He\textsuperscript{+}-He collision system this may be simplified
+      slightly
+      %
+      \begin{equation} \label{eq:state3e}
+         \ket{\Psi} = \ket{\psi(t)} \otimes \frac{\ket{\uparrow \uparrow \downarrow}
+                    +                  \ket{\uparrow \downarrow \uparrow}
+                    +                  \ket{\downarrow \uparrow \uparrow}}{\sqrt{3}},
+      \end{equation}
+      %
+      where
+      %
+      \begin{equation} \label{eq:orb}
+         \psi(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, t)
+            = \braket{\mathbf{r}_1 \, \mathbf{r}_2 \, \mathbf{r}_3 | \psi(t)}
+      \end{equation}
+      %
+      is some antisymmetric function. Once again we will need to define the single-particle
+      probabilities to find an electron on the target or the projectile
+      %
+      \begin{equation}
+         p_T = \frac{1}{3} \int_T n(\mathbf{r},t_f) \, \mathrm{d}^3 r
+      \end{equation}
+      %
+      and
+      %
+      \begin{equation}
+         p_P = \frac{1}{3} \int_P n(\mathbf{r},t_f) \, \mathrm{d}^3 r
+      \end{equation}
+      %
+      as well as two types of correlation integral, one that involves three-particle interations
+      %
+      \begin{equation}
+         I_\mathrm{c}^{V_1 V_2 V_3} = \int_{V_1} \int_{V_2} \int_{V_3}
+           \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3 \,
+           g^{(3)}_\mathrm{c}(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, t)
+           n(\mathbf{r}_1,t) n(\mathbf{r}_2,t) n(\mathbf{r}_3,t),
+      \end{equation}
+      %
+      \begin{equation}
+         g^{(3)}_\mathrm{c}(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, t) =
+            \frac{\rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t)}
+            {n(\mathbf{r}_1,t) n(\mathbf{r}_2,t) n(\mathbf{r}_3,t)} - \frac{1}{9}
+      \end{equation}
+      %
+      and a more familiar two-particle version
+      %
+      \begin{equation}
+         I_\mathrm{c}^{V_1 V_2} = \int_{V_1} \int_{V_2} \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \,
+         g^{(2)}_\mathrm{c}(\mathbf{r}_1, \mathbf{r}_2, t) n(\mathbf{r}_1,t) n(\mathbf{r}_2,t),
+      \end{equation}
+      %
+      \begin{equation}
+         g^{(2)}_\mathrm{c}(\mathbf{r}_1, \mathbf{r}_2, t) =
+         \frac{\rho_2(\mathbf{r}_1, \mathbf{r}_2, t)}
+         {n(\mathbf{r}_1,t) n(\mathbf{r}_2,t) } - \frac{1}{3}
+      \end{equation}
+      %
+      where $V_1$, $V_2$, and $V_3 \in \{T,P,I\}$, $\rho = 3|\psi|^2$, and $\rho_2 =
+      \int \mathrm{d}^3 r \rho$.
+
+      With these definitions established the ten outcome probabilities, $p_{kl}$, detailed in
+      Sec.~\ref{sec:hephe-det}
+      %
+      \begin{subequations}
+         \begin{equation}
+            p_{00} = \frac{1}{3} \int_T \int_T \int_T \rho(\mathbf{r}_1, \mathbf{r}_2,
+            \mathbf{r}_1, t_f) \, \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{01} = \int_T \int_T \int_I \rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t_f) \,
+            \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{02} = \int_T \int_I \int_I \rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t_f) \,
+            \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{03} = \frac{1}{3} \int_I \int_I \int_I \rho(\mathbf{r}_1, \mathbf{r}_2,
+            \mathbf{r}_1, t_f) \, \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{10} = \int_T \int_T \int_P \rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t_f) \,
+            \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{11} = \int_T \int_P \int_I \rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t_f) \,
+            \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{12} = \int_T \int_T \int_P \rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t_f) \,
+            \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{20} = \int_T \int_P \int_P \rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t_f) \,
+            \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{21} = \int_P \int_P \int_I \rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t_f) \,
+            \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+         %
+         \begin{equation}
+            p_{30} = \frac{1}{3} \int_P \int_P \int_P \rho(\mathbf{r}_1, \mathbf{r}_2,
+            \mathbf{r}_1, t_f) \, \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3,
+         \end{equation}
+      \end{subequations}
+      %
+      may be rewritten as
+      %
+      \begin{subequations}
+         \begin{equation}
+            p_{00} = {p_T}^3 + \frac{1}{3} I_\mathrm{c}^{TTT},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{01} = 3 {p_T}^2 (1- P_T -p_P) + I_\mathrm{c}^{TT} - I_\mathrm{c}^{TTT}
+                   - I_\mathrm{c}^{TTP},
+         \end{equation}
+         \begin{equation}
+            p_{02} = 3 p_T (1 - p_T - p_P)^2 - 2 I_\mathrm{c}^{TT} - 2 I_\mathrm{c}^{TP}
+                   + I_\mathrm{c}^{TTT} + 2 I_\mathrm{c}^{TTP} + I_\mathrm{c}^{TPP},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{03} = (1 - p_T - p_P)^3 + I_\mathrm{c}^{TT} + 3 I_\mathrm{c}^{TP} + I_\mathrm{c}^{PP}
+                   - \frac{1}{3} I_\mathrm{c}^{TTT} - I_\mathrm{c}^{TTP} - I_\mathrm{c}^{TPP}
+                   - \frac{1}{3} I_\mathrm{c}^{PPP},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{01} = 3{p_T}^2 p_P + I_\mathrm{c}^{TTP},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{11} = 3 p_T p_P (1 - p_T - p_P) + I_\mathrm{c}^{TP} - I_\mathrm{c}^{TTP}
+                   - I_\mathrm{c}^{TPP},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{12} = 3 p_P(1 - p_T - p_P)^2 - 2 I_\mathrm{c}^{TP} - 2 I_\mathrm{c}^{PP}
+                   + I_\mathrm{c}^{TTP} + 2 I_\mathrm{c}^{TPP} + I_\mathrm{c}^{PPP},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{20} = 3 p_T {p_P}^2 + I_\mathrm{c}^{TPP},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{21} = 3 {p_P}^2(1 - p_T - p_P) + I_\mathrm{c}^{PP} - I_\mathrm{c}^{TPP}
+                   - I_\mathrm{c}^{PPP},
+         \end{equation}
+         %
+         \begin{equation}
+            p_{30} = {p_P}^3 + \frac{1}{3} I_\mathrm{c}^{PPP}.
+         \end{equation}
+      \end{subequations}
+      %
+      The \textsc{wb} model would then need to be adapted to calculate the seven correlation integrals.
+      This process may be aided in part by realtions between the full three-particle density and its
+      various reductions (see for example Ref.~\cite{reduce}).
 
    \end{section}
 
