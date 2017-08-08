@@ -1,9 +1,10 @@
-%search for nnnote for things to resolve later.
 
 \RequirePackage[l2tabu, orthodox]{nag}
 
 \documentclass[letterpaper, 11 pt]{report}
-%\documentclass[a5paper, 8 pt]{report}
+%\documentclass[a5paper, 8 pt]{extreport}
+%\usepackage[a5paper, top = 1.0 in, bottom = 0.9 in]{geometry}
+%\usepackage[pass]{geometry}
 
 %\usepackage[sc]{mathpazo}
 %\linespread{1.05}
@@ -33,7 +34,7 @@
 \usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage[toc,page]{appendix}
 
-\usepackage{showlabels}
+%\usepackage{showlabels}
 
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
@@ -76,7 +77,7 @@
 
 \pagenumbering{alph}
 
-\begin{titlepage} %nnnote: fix this later.
+\begin{titlepage}
 
    \centering
 
@@ -267,13 +268,13 @@
       function of $N$ position variables $\mathbf{r}_i$ and spin variables $\sigma_i$. The Hamiltonian,
       $\hat{H}$, may be decomposed into a kinetic energy term
       %
-      \begin{equation} \label{eq:Top} %nnnote: tfrac or normal frac?
+      \begin{equation} \label{eq:Top}
          \hat{T} = -\frac{1}{2} \sum\limits^{N}_{j=1} \Delta_j,
       \end{equation}
       %
       an electron-electron term
       %
-      \begin{equation} \label{eq:Vee} %nnnote: tfrac or normal frac?
+      \begin{equation} \label{eq:Vee}
          \hat{V}_{ee} = \frac{1}{2} \sum\limits^{N}_{k \neq j}
                         \frac{1}{\left| \mathbf{r}_k - \mathbf{r}_j \right|},
       \end{equation}
@@ -661,7 +662,7 @@
 
 \end{chapter}
 
-\begin{chapter}{ Title\dots \label{chap:p-he2p-he}} %nnnote: change this title.
+\begin{chapter}{ Title\dots \label{chap:p-he2p-he}}
 
    Correlation enters \textsc{tddft} calculations in two distinct ways. First of these is dynamic
    correlation, those effects which emerge from a full time-dependent correlation potential. These are
@@ -1734,6 +1735,7 @@
       Tab.~\ref{tab:basis} and total 124 basis states.
 
       \begin{table}
+         \centering
          \caption{Description of the \textsc{tc-bgm} basis expansion. \label{tab:basis}}
          \begin{tabular}{lcccccccccccccccccccc}
             \toprule
@@ -2023,6 +2025,7 @@
          on the order of $0.06 \%$.
 
       \end{subsection}
+
 
       \begin{subsection}{Impact Parameter Dependence}
 
@@ -2867,6 +2870,36 @@
 
    \end{chapter}
 
+   \begin{chapter}{Visualizing the Time-dependent Potential}
+
+      If a picture is worth a thousand words then a thirty second long video at 24~fps is worth
+      approximatetly 720 thousand words. To this end this appendix presents a collection of animations
+      depicting the time evolution of the time-dependent \textsc{ks} potential. These videos may be
+      found online\footnote{\url{https://tinyurl.com/ybo3yhqd}}. AS these animations are largely self
+      explanitory and did not readily fit into the discussions presented in Chap.~\ref{chap:hephe} they
+      are presented here.
+
+      When visualizing the \textsc{ks} potential it is best consider only the electron-electron
+      contributions, that is to ignore the external potential. This is benificial because from the
+      perspective of the current work we are primarily interested in the performance of our
+      approximation to these portions of the potential. As the behaviour of internuclear potential is
+      well established tracking it is of little value. Additionally, the poles of the Couloumb potential
+      will drown out the electron electron effects. For these reasons we will concern ourselves with
+      just the electron-electron contributions
+      %
+      \begin{equation}
+         v_\mathrm{ee}^\sigma = v_\mathrm{x}^\sigma + v_\mathrm{H}.
+      \end{equation}
+      %
+
+      The the spin-dependent electron-electron potentials are best compared with the associated
+      spin-densities, $n_\sigma$ of Eq.~\eqref{eq:spinden}. In this way one can more easily under stand
+      the appearance and time evolution of $v_\mathrm{ee}^\sigma$. For example for
+      $v_\mathrm{ee}^\uparrow$ contain a single peak. This is due to the exact cancelation of self
+      interaction that is present on the projectile centre where initially only one electron resides.
+
+   \end{chapter}
+
 \end{appendices}
 
 \cleardoublepage
@@ -2875,7 +2908,7 @@
 
 \singlespacing
 
-\printbibliography[title=References] %nnnote: check references for accuracy.
+\printbibliography[title=References]
 
 \end{document}
 
