@@ -34,7 +34,7 @@
 \usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage[toc,page]{appendix}
 
-%\usepackage{showlabels}
+\usepackage{showlabels}
 
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
@@ -81,7 +81,9 @@
 
    \centering
 
-   {\Large Title\dots}
+   {\Huge Ion-Atom Collisions:}
+
+   {\large a time-dependent density-functional-theory perspective}
 
    \vspace{2 cm}
 
@@ -239,7 +241,7 @@
 \begin{chapter}{Density Functional Theory \label{chap:dft}}
 
    This chapter concerns itself with a brief introduction to the world of density-functional theory,
-   both ground-state~\cite{dft-engel} (\textsc{dft}) and time-dependent~\cite{tddft, marques-1}
+   both ground-state~\cite{dft-engel} (\textsc{dft}) and time-dependent~\cite{tddft, ullrich, marques-1}
    (\textsc{tddft}). This discussion begins with an overview  of various existence theorems central to
    density functional theory (Sec.~\ref{sec:dft}). Next the Kohn-Sham equations are introduced in
    Sec.~\ref{sec:ks}. More practical matters are considered when two of the main problems of density
@@ -250,9 +252,9 @@
 
    \begin{section}{\textsc{dft} and \textsc{tddft} Existence Theorems \label{sec:dft}}
 
-      In the standard treatment of many-body quantum mechanics a system is described by a wavefunction
-      $\Psi$ which, depending upon the situation, is determined by either the time-dependent,
-      non-relativistic, Schr\"{o}dinger equation (\textsc{tdse})
+      In the standard treatment of non-relativistic many-body quantum mechanics a system is described by
+      a wavefunction $\Psi$ which, depending upon the situation, is determined by either the
+      time-dependent Schr\"{o}dinger equation (\textsc{tdse})
       %
       \begin{equation} \label{eq:tdse}
          \hat{H}(t) \Psi(t) = i \frac{\mathrm{d} \Psi(t)}{\mathrm{d} t},
@@ -264,8 +266,8 @@
          \hat{H} \Psi = E \Psi.
       \end{equation}
       %
-      If the system in question consists of $N$, non-relativistic, electrons then $\Psi$ becomes a
-      function of $N$ position variables $\mathbf{r}_i$ and spin variables $\sigma_i$. The Hamiltonian,
+      If the system in question consists of $N$ electrons then $\Psi$ becomes a function of $N$ position
+      variables $\mathbf{r}_i$ and spin variables $\sigma_i = \uparrow,$ $\downarrow$. The Hamiltonian,
       $\hat{H}$, may be decomposed into a kinetic energy term
       %
       \begin{equation} \label{eq:Top}
@@ -306,7 +308,7 @@
       \end{equation}
       %
       It should be noted that for time-dependent systems this mapping is unique only up to the addition
-      of an arbitrary time-dependent function, as this serves only to introduce a phase into the
+      of an arbitrary time-dependent function. As this serves only to introduce a phase into the
       associated wave function $\Psi[\hat{V}_\mathrm{ext}]$ it can be safely ignored in all future
       discussions. For more on this see the discussion following Eq.~\eqref{eq:obsfunc1}.
 
@@ -340,7 +342,7 @@
       %
       where $n$ is the one-particle density of the fully interacting system. The orbitals $\varphi_i$
       are determined through the stationary or time-dependent Kohn-Sham equations~\cite{ks-eq,
-      spin-dep1, spin-dep3} (\textsc{sks}, \textsc{tdks} respectively)
+      spin-dep1, spin-dep3, tdks} (\textsc{sks}, \textsc{tdks} respectively)
       %
       \begin{equation} \label{eq:sks}
          \left( -\frac{\Delta}{2} + v^\sigma_\mathrm{\textsc{ks}}[n_\uparrow,
@@ -355,8 +357,8 @@
             \right) \varphi_{j\sigma}(\mathbf{r},t),
       \end{equation}
       %
-      where the $\epsilon_i$ appearing in Eq.~\eqref{eq:sks} are the Kohn-Sham eigenvalues and the
-      quantities $n_\uparrow$, $n_\downarrow$ are the spin-up/down one-particle densities defined by
+      where the $\epsilon_{j \sigma}$ appearing in Eq.~\eqref{eq:sks} are the Kohn-Sham eigenvalues and
+      the quantities $n_\uparrow$, $n_\downarrow$ are the spin-up/down one-particle densities defined by
       %
       \begin{equation} \label{eq:spinden}
          n_\sigma = \sum\limits_{j=1}^{N_\sigma} \left| \varphi_{j\sigma} \right|^2,
@@ -373,12 +375,12 @@
       %
       \begin{equation} \label{eq:vks}
          v^\sigma_\mathrm{\textsc{ks}}[n_\uparrow, n_\downarrow] = v_\mathrm{ext} + v_\mathrm{H}[n]
-            + v_\mathrm{xc}[n_\uparrow, n_\downarrow].
+            + v^\sigma_\mathrm{xc}[n_\uparrow, n_\downarrow].
       \end{equation}
       %
-      The first term in this expression is the external potential, which is essentially the same as the
-      potential $\hat{V}_\mathrm{ext}$ of Eqs.~\eqref{eq:sse} and~\eqref{eq:tdse}. The next term is
-      the Hartree screening potential
+      The first term in this expression is the external potential, which is the potential
+      $\hat{V}_\mathrm{ext}$ of Eqs.~\eqref{eq:sse} and~\eqref{eq:tdse} on the single-particle level.
+      The next term is the Hartree screening potential
       %
       \begin{equation} \label{eq:vh}
          v_\mathrm{H}(\mathbf{r},t) = \int \frac{n(\mathbf{r}^\prime, t)}
@@ -390,7 +392,7 @@
       convenience this is often further broken down into separate exchange and correlation potentials
       %
       \begin{equation} \label{eq:vxc}
-         v_\mathrm{xc} = v_\mathrm{x} + v_\mathrm{c}.
+         v^\sigma_\mathrm{xc} = v^\sigma_\mathrm{x} + v^\sigma_\mathrm{c}.
       \end{equation}
 
    \end{section}
@@ -398,7 +400,7 @@
    \begin{section}{Observables \label{sec:obs}}
 
       In the standard treatment of many-body quantum mechanics there is a well established process for
-      calculating observables from the full many body wave function describing the system. For any
+      calculating observables from the full many-body wave function describing the system. For any
       solution $\Psi$, unique up to a phase factor, of the \textsc{sse} or \textsc{tdse} and any
       observable $\hat{O}$ we immediately have the unique functional
       %
@@ -424,7 +426,9 @@
       or, $O = O[n]$.
 
       In principle all observables are functionals of the one-particle density. However, in practice the
-      exact functional is only known in a handful of cases~\cite[p.~211-213]{obs_exac}.
+      exact functional is only known in a handful of cases~\cite[p.~211-213]{obs_exac}. This discussion
+      will be made far more explicit in Sec.~\ref{sec:obs} where the difficulties of extracting
+      observables, total cross sections in this case, are described in detail.
 
    \end{section}
 
@@ -454,7 +458,8 @@
       it follows that
       %
       \begin{equation} \label{eq:vxc-der}
-         \frac{\delta E_\mathrm{xc}[n]}{\delta n(\mathbf{r})} = v_\mathrm{xc}[n](\mathbf{r}).
+         \frac{\delta E_\mathrm{xc}[n]}{\delta n_\sigma(\mathbf{r})}
+            = v^\sigma_\mathrm{xc}[n](\mathbf{r}).
       \end{equation}
       %
       The universality of the xc-functional~\cite{dft-engel} means that once an approximation to
@@ -464,9 +469,9 @@
       There are a few caveats to apply Eq.~\eqref{eq:vxc-der}. First, the functional is only defined
       for the set of ground-state $v$-representable densities, those densities which arise as
       ground-state solutions of the \textsc{sse} for some potential $v$. The second problem follows
-      from the first, due to the fact that not all densities are $v$-representable~\cite{not-vrep1,
-      not-vrep2, not-vrep3}, thus one must establish that the set of functions for which the functional
-      is defined is dense enough to ensure the existence of the functional derivative.. For densities
+      from the first. Due to the fact that not all densities are $v$-representable~\cite{not-vrep1,
+      not-vrep2, not-vrep3}, one must establish that the set of functions for which the functional is
+      defined is dense enough to ensure the existence of the functional derivative. For densities
       defined on a lattice~\cite{vrep-lat} as well as the general case~\cite{nonint1, nonint2,
       vrep-levy1, vrep-levy2, vrep-lieb, vrep-rev} both the issue of $v$-representability and the
       existence of the functional derivatives of the energy functional have been addressed.
@@ -513,9 +518,14 @@
       Taking things further one is led to the hierarchy of increasingly complex
       generalized gradient approximations and hybrid functionals~\cite{gga+}. For time-dependent systems
       one may simply apply one of the many ground-state functionals to arrive at an adiabatic
-      approximation. Going beyond the adiabatic approximation is possible, however such functionals are
-      much more complex. As an example the fully time-dependent version of the \textsc{lda}, the local
-      deformation approximation~\cite{TDLDefA1, TDLDefA2} (\textsc{tdld}ef\textsc{a}) can be mentioned.
+      approximation in which the xc-potential depends only on the instantaneous density. Going beyond
+      the adiabatic approximation is possible, however such functionals are much more complex. As an
+      example the fully time-dependent version of the \textsc{lda}, the local deformation
+      approximation~\cite{TDLDefA1, TDLDefA2} (\textsc{tdld}ef\textsc{a}) can be mentioned. A complete
+      description of the time-time dependent xc-potential is a complicated task. Such a model would need
+      to capture a wide range of phenomena. It has been shown that derivative
+      discontinuities~\cite{derDis} and memory effects (see, for instance, the discussions
+      in~\cite{tddft} and \cite{ullrich}) are important.
 
       \begin{subsection}{Optimized Potential Method \label{sec:opm}}
 
@@ -534,8 +544,8 @@
                v^\sigma_\mathrm{xc}(\mathbf{r}) & = \int \mathrm{d}^3 r^\prime
                   \frac{\delta v^\sigma_\mathrm{\textsc{ks}}(\mathbf{r^\prime})}
                        {\delta n_\sigma(\mathbf{r}) } \\
-                                    & \times \sum\limits_{j} \int \mathrm{d}^3 r^{\prime\prime}
-               \left\{ \left[
+                                    & \times \sum\limits_{j} \left\{ \int \mathrm{d}^3 r^{\prime\prime}
+                \left[
                \frac{\delta E_\mathrm{xc}}{\delta \varphi_{j\sigma}(\mathbf{r^{\prime\prime}}) }
                \frac{\delta \varphi_{j\sigma}(\mathbf{r^{\prime\prime}}) }
                     {\delta v^\sigma_\mathrm{\textsc{ks}}(\mathbf{r^{\prime}}) }
@@ -556,18 +566,18 @@
          \begin{equation} \label{eq:xfunc}
             \begin{split}
                A_\mathrm{x}[\varphi_{j\sigma}(\mathbf{r},t)]
-                 = & \int \mathrm{d} t \, E_\mathrm{x}[\varphi_{j\sigma}(\mathbf{r})] \\
+                 = & \int \mathrm{d} t \, E_\mathrm{x}[\varphi_{j\sigma}(\mathbf{r},t)] \\
                 = & -\frac{1}{2} \int \mathrm{d} t \, \sum\limits_\sigma \sum\limits_{j,k}
                     \int\mathrm{d}^3 r \mathrm{d}^3 r^\prime \\
                    & \times \frac{ \varphi^*_{j\sigma}(\mathbf{r}^\prime,t)
-                           \varphi^*_{k\sigma}(\mathbf{r}^\prime,t)
-                           \varphi_{j\sigma}(\mathbf{r},t) \varphi_{k\sigma}(\mathbf{r},t)}
+                           \varphi^*_{k\sigma}(\mathbf{r},t)
+                           \varphi_{j\sigma}(\mathbf{r},t) \varphi_{k\sigma}(\mathbf{r}^\prime,t)}
                    {\left| \mathbf{r} -\mathbf{r}^\prime \right|}.
             \end{split}
          \end{equation}
 
-         The stationary version of the exchange-only \textsc{opm} will then follow from
-         Eqs.~\eqref{eq:opm1} and \eqref{eq:xfunc}. This may be expressed, adapting the notation
+         After some work the stationary version of the exchange-only \textsc{opm} will then follow from
+         Eqs.~\eqref{eq:opm1} and \eqref{eq:xfunc}. The result may be expressed, adapting the notation
          of~\cite{klieq}, as
          %
          \begin{equation} \label{eq:opmEq}
@@ -575,14 +585,14 @@
             \left[ v^\sigma_\mathrm{x}(\mathbf{r}^\prime)
                  - \tilde{v}_{j \sigma} (\mathbf{r}^\prime) \right]
                  G_{j \sigma}(\mathbf{r}^\prime, \mathbf{r}) \varphi^*_{j \sigma} (\mathbf{r}^\prime)
-                 \varphi_{j \sigma} (\mathbf{r}) + c.c.,
+                 \varphi_{j \sigma} (\mathbf{r}) + c.c. = 0,
          \end{equation}
          %
          where $G_{j \sigma}$ are the Green's functions
          %
          \begin{equation}
-            G_{j \sigma}(\mathbf{r}, \mathbf{r}^\prime) = \sum\limits_k
-            \frac{\varphi_{k \sigma} (\mathbf{r}) \varphi^*_{j \sigma} (\mathbf{r}^\prime)}
+            G_{j \sigma}(\mathbf{r}, \mathbf{r}^\prime) = \sum\limits_{k \neq j}
+            \frac{\varphi_{k \sigma} (\mathbf{r}) \varphi^*_{k \sigma} (\mathbf{r}^\prime)}
             {\epsilon_{k \sigma} - \epsilon_{j \sigma}}
          \end{equation}
          %
@@ -591,7 +601,7 @@
          \begin{equation} \label{eq:tildev}
             \tilde{v}_{j \sigma} (\mathbf{r}) =  - \sum\limits_k \int \mathrm{d}^3 r^\prime
                \frac{ \varphi^*_{j \sigma} (\mathbf{r}^\prime) \varphi^*_{k \sigma} (\mathbf{r}^\prime)
-                      \varphi^*_{k \sigma} (\mathbf{r}) }
+                      \varphi_{k \sigma} (\mathbf{r}) }
                       {\left| \mathbf{r} - \mathbf{r}^\prime \right| \varphi^*_{j \sigma} (\mathbf{r})}.
          \end{equation}
 
@@ -601,27 +611,27 @@
 
          Solving of the full \textsc{opm} integral equation can be quite difficult. To aid in this
          process the Krieger-Li-Iafrate approximation~\cite{kli1} (\textsc{kli}) may be used. One can
-         think \textsc{kli} as a closure approximation where the complicated interactions between
+         think of \textsc{kli} as a closure approximation where the complicated interactions between
          orbitals are simplified by the introduction of an average energy difference
-         $\Delta \epsilon_\sigma \approx \epsilon_{k \sigma} - \epsilon_{j \sigma}$. Returning to the
-         exchange-only example introduced earlier this approximation causes Eq.~\eqref{eq:opmEq} to
-         become
+         $\Delta \epsilon_\sigma \approx \epsilon_{k \sigma} - \epsilon_{j \sigma}$ in the Green's
+         functions. Returning to the exchange-only example introduced earlier this approximation causes
+         Eq.~\eqref{eq:opmEq} to become
          %
          \begin{equation} \label{eq:kliEq}
             v_\mathrm{x}^\sigma(\mathrm{r}) =
                \frac{\sum\limits_{j} \varphi^*_{j \sigma} (\mathbf{r}) \varphi_{j \sigma} (\mathbf{r})
-               \left[ v_{j \sigma}(\mathbf{r}) + \bar{v}_{j \sigma \mathrm{x}}
-                                               - \bar{v}_{i \sigma} \right]}{n(\mathbf{r})},
+               \left[ \tilde{v}_{j \sigma}(\mathbf{r}) + \bar{v}_{j \sigma \mathrm{x}}
+                                               - \bar{v}_{j \sigma} \right]}{n(\mathbf{r})},
          \end{equation}
          %
          where
          %
          \begin{equation}
             \bar{v}_{j \sigma} = \int \mathrm{d}^3 r \, \varphi^*_{j \sigma} (\mathbf{r})
-               \varphi_{j \sigma} (\mathbf{r}) v_{j \sigma} (\mathbf{r})
+               \varphi_{j \sigma} (\mathbf{r}) \tilde{v}_{j \sigma} (\mathbf{r})
          \end{equation}
          %
-         and $\bar{v}^\sigma_{j \sigma}$ is defined similarly.
+         and $\bar{v}_{j \sigma \mathrm{x}}$ is defined similarly.
 
          If one then multiplies both sides of Eq.~\eqref{eq:kliEq} by $\varphi^*_{l \sigma} (\mathbf{r})
          \varphi_{l \sigma} (\mathbf{r})$ and integrates over $\mathrm{d}^3 r$ one is left with a set of
@@ -631,7 +641,7 @@
          It should be noted that while several variations of the \textsc{kli} exist~\cite{kli1, kli2,
          kli3} they differ by only a term proportional to $\partial E_\mathrm{xc} / \partial \epsilon_k$
          which, for functionals such as the exact exchange functional that do not depend on the
-         \textsc{ks} eigenvalues, is not a problem. As one might expect the \textsc{kli} approximation
+         \textsc{ks} eigenvalues does not contribute. As one might expect the \textsc{kli} approximation
          is also applicable in the time-dependent regime~\cite{tdkli1, tdkli2, tdkli3}.
 
          For a wide range of systems \textsc{kli} and the full \textsc{opm} produce very similar
@@ -662,7 +672,7 @@
 
 \end{chapter}
 
-\begin{chapter}{ Title\dots \label{chap:p-he2p-he}}
+\begin{chapter}{Bare Ion-Helium Collisions \label{chap:p-he2p-he}}
 
    Correlation enters \textsc{tddft} calculations in two distinct ways. First of these is dynamic
    correlation, those effects which emerge from a full time-dependent correlation potential. These are
@@ -676,13 +686,13 @@
    $p$-He, He\textsuperscript{2+}-He, as well as $\bar{p}$-He collisions are presented and discussed in
    Sec.~\ref{sec:phe2p-res}.
 
-   The analysis presented in this chapter closely follows that of~\cite{p-he2p-he}. Additionally, While
+   The analysis presented in this chapter closely follows that of~\cite{p-he2p-he}. Additionally, while
    some results for $\bar{p}$-He collision system are presented here the bulk of the theoretical
    underpinnings of this work are not as this represents work undertaken during the completion of the
-   author's Master's thesis~\cite{thesis}. The $\bar{p}$-He cross sections reproduced in the current
-   are an updated version of the previous results making use of the improved averaging scheme
-   (Sec.~\ref{sec:phe2p-det}) developed when investigating the $p$-He and He\textsuperscript{2+}-He
-   systems
+   author's Master's thesis~\cite{thesis}. The $\bar{p}$-He cross sections reproduced in this
+   dissertation are an updated version of the previous results making use of the improved averaging
+   scheme (Sec.~\ref{sec:phe2p-det}) developed when investigating the $p$-He and
+   He\textsuperscript{2+}-He systems.
 
    \begin{section}{Collision System \label{sec:p-he2p-he-sys}}
 
@@ -749,7 +759,9 @@
       Kohn-Sham system for the helium atom). In order to keep the number of states in the basis to a
       minimum and simplify the description only those states with $K = 0$ where included. This
       simplification has proved sufficient in the past~\cite{bgm-rev}. The remaining regularizer is set
-      to $\epsilon_P = 1$.
+      to $\epsilon_P = 1$. A more general two-centred version of the \textsc{bgm} (\textsc{tc-bgm})
+      which includes explicit basis states on both the target and the potential is also possible. The
+      full machinery of the two-centred will be discussed in the following chapter.
 
    \end{section}
 
@@ -890,16 +902,16 @@
 
       With an appropriate choice of $t_f$ Eq.~\eqref{eq:pt} reduces to a sum over the occupations of the
       bound states of the basis defined in Eq.~\eqref{eq:bgmbasis}. The single-centred \textsc{bgm}, as
-      opposed to the two-centred \textsc{BGM} discussed in Sec.\~ref{sec:pot}, basis contains no
-      explicit projectile states, thus one must first project the one-particle density onto an
+      opposed to the two-centred \textsc{BGM} discussed in Sec.~\ref{sec:pot}, basis contains no
+      explicit projectile states, thus one must first project the one-particle solutions onto an
       appropriate set of projectile state (H or He ground state) in order to generate a sum over
       projectile occupations analogous to that described for the target. The process of projecting onto
       projectile states may lead to inaccuracies depending on how well the final state is represented by
-      a finite number of ground-state orbitals.
+      a finite number of \textsc{bgm} basis states.
 
       The expressions for no, single, and double ionization in $\bar{p}$-He collisions presented
-      in~\cite{pbarhe} may be recovered by setting $p_p = I^{PP}_\mathrm{c} = I^{TP}_\mathrm{c} = 0$.
-      Being explicit we have
+      in~\cite{pbarhe} may be recovered by setting closing the capture channels, i.e.\
+      $p_p = I^{PP}_\mathrm{c} = I^{TP}_\mathrm{c} = 0$. Being explicit we have
       %
       \begin{subequations} \label{eq:prob-pbarhe}
          \begin{equation} \label{eq:ptt-pbarhe}
@@ -984,7 +996,7 @@
       and~\cite{pbarhe}, by
       %
       \begin{equation} \label{eq:wbExplicit}
-         I_\mathrm{c}^{TT} = - \frac{1}{2} {p_T}^2 +
+         I_\mathrm{c}^{TT} = - 2 {p_T}^2 +
          \begin{cases}
             0 & N_T \leq 1 \\
             \iint\limits_T \frac{\rho^A(\mathbf{r}_1, \mathbf{r}_2,t_f)}
@@ -1068,7 +1080,7 @@
       \end{equation}
 
       It can be shown that as the single-particle ionization probability ($p_I = 1 - p_P - p_T$)
-      approaches zero the upper and lower bounds converge. Additionally, In all cases the viable
+      approaches zero the upper and lower bounds converge. Additionally, in all cases the viable
       $I_\mathrm{c}^{TP}$ range is small. For $p$-He collisions the interval is at most approximately
       0.1 and is at least one order of magnitude less than this through the majority of the impact
       energy and parameter space considered. For the He\textsuperscript{2+}-He system the largest
@@ -1087,7 +1099,7 @@
             \centering
             \includegraphics[width = \linewidth]{./images/poz.eps}
             \caption[Probabilities as a function of nuclear separation.]{$p^{II}$ as a
-                     function of $z$ an impact energy of 50~keV and impact parameter of 1~a.u.:
+                     function of $z$, an impact energy of 50~keV, and impact parameter of 1~a.u.:
                      (a) $\bar{p}$-He, (b) $p$-He, (c) He\textsuperscript{2+}-He. \label{fig:poz}}
          \end{minipage} \hspace{0.009\linewidth} %
          \begin{minipage}{.49\linewidth}
@@ -1132,8 +1144,8 @@
       numerical integration package~\cite{cuba}.}. While it is possible to perform such an analysis for
       the $p$-He system as well added complications brought on by having to deal with a two centred
       system make it much more difficult to produce and analyze such data. Intuitively one would expect
-      that the difference between the two densities would should follow the single-particle probability
-      $p_T$. This belief is supported by the easily derived relation
+      that the difference between the two densities should follow the single-particle probability $p_T$.
+      This belief is supported by the easily derived relation
       %
       \begin{equation} \label{eq:diff-bound}
          \left| n(t_f) - n_A(t_f) \right|_1 \leq 4 p_T.
@@ -1354,12 +1366,11 @@
 
          We will begin the discussion of these results by considering double capture. For our
          proton-helium collision calculations the single-particle capture probability, $p_P$, never
-         rises above 1/2. Using Eqs.~\eqref{eq:n1a} and~\eqref{eq:p2a} in Eq.~\eqref{eq:ic} (i.e.\
-         applying the \textsc{wb} model) it follows that $I^{PP}_\mathrm{c} = -2 {p_P}^2$, which implies
-         that $p_{PP} \equiv 0$. Due to the triviality of this result no is displayed. The \textsc{iem}
-         so amplifies the double capture cross section that the \textsc{wb} model can be considered in
-         better agreement with experiment even though it is zero for all impact energies and perceived
-         as an improvement over \textsc{iem}.
+         rises above 1/2. From Eq.~\eqref{eq:wbExplicit} it follows that $I^{PP}_\mathrm{c} =
+         -2 {p_P}^2$, which implies that $p_{PP} \equiv 0$. Due to the triviality of this result no plot
+         is displayed. The \textsc{iem} so amplifies the double capture cross section that the
+         \textsc{wb} model can be considered in better agreement with experiment even though it is zero
+         for all impact energies and perceived as an improvement over \textsc{iem}.
 
          Similar to double capture, single capture, Fig.~\ref{fig:phe-tp}, only depends on one
          correlation integral. The \textsc{iem} provides fair agreement with the experimental data
@@ -1384,7 +1395,7 @@
          and the other calculations for energies above the peak is likely due to the dominance of the
          \textsc{mo} over the \textsc{ao} in the analysis~\cite{KL-86}. The result of this appears to be
          an overestimate of the coupling between centres leading to a slight overestimate of the cross
-         section at large energies.
+         section at high energies.
 
          Figure~\ref{fig:phe-ip} presents the results for transfer ionization. Once again the
          \textsc{wb} model offers an improvement over \textsc{iem} descriptions, lowering the cross
@@ -1398,16 +1409,16 @@
          calculation of Godunov et al.~\cite{Godunov-06} (on- and off-shell contributions included). Few
          correlated transfer ionization calculations exist. As a result conclusions for the quality of
          correlation below 100~keV/amu are difficult. One additional calculation was performed by
-         Belki\'{c} et al.~\cite{BM-11}. However, their data covers less of the desired impact
+         Belki\'{c} and Man\v{c}ev~\cite{BM-11}. However, their data covers less of the desired impact
          energy range and was thus excluded from Fig.~\ref{fig:phe-ip}. Godunov et al.\ are
          consistently below both \textsc{iem} and \textsc{wb}. The fact that the \textsc{iem} falls
          slightly below the \textsc{wb} results above 200~keV/amu points to a problem with the
-         \textsc{wb} calculations. In this range the difficulty of separating target and projectile (the
-         projection problem, see discussion following Eq.~\eqref{eq:prob-ic}) will naturally be
-         emphasized as the relative errors due to the projection problem grow. It would seem that these
-         issues are compounded when the density is forced through the additional machinery of the
-         \textsc{wb} model. In this region it then becomes difficult to determine to what extent
-         discrepancies are due to dynamic vs.\ functional correlation effects or issues of accuracy.
+         \textsc{wb} calculations. In this range the difficulty of separating target and projectile will
+         naturally be emphasized as the relative errors due to the projection problem grow (see
+         discussion following Eq.~\eqref{eq:prob-ic}). It would seem that these issues are compounded
+         when the density is forced through the additional machinery of the \textsc{wb} model. In this
+         region it then becomes difficult to determine to what extent discrepancies are due to dynamic
+         vs.\ functional correlation effects or issues of accuracy.
 
          Next we turn our attention to the results for double ionization in Fig.~\ref{fig:phe-ii}. The
          \textsc{wb} model improves results by reducing those of the \textsc{iem} at high energies.
@@ -1457,7 +1468,7 @@
          continuum description in their calculation~\cite{SHBF-91}.
 
          In the energy range shared with Winter the \textsc{wb} model appears to be in almost exact
-         agreement with experiment. Winter attributes much of his disagreement to his calculations not
+         agreement with experiment. Winter attributes much of his disagreement to his calculations' not
          fully accounting for channels beyond single capture and ionization~\cite{Winter-91}.
 
          The results of D\'{i}az et al.\ provide a similar level of agreement as the \textsc{wb} model.
@@ -1638,18 +1649,18 @@
 \begin{chapter}{\texorpdfstring{He\textsuperscript{+}}{He+}-He Collisions \label{chap:hephe}}
 
    The investigations of the previous chapter began with the simplest possible multi-electron collision
-   system, one where a negatively-charged projectile is incident on a helium like target. The situation
-   was then complicated by allowing the projectile to be positive, thus forcing one to consider electron
-   transfer in addition to ionization processes.
+   system, one where a negatively-charged projectile is incident on helium. The situation was then
+   complicated by allowing the projectile to be positive, thus forcing one to consider electron transfer
+   in addition to ionization processes.
 
    In this chapter the system of interest is expanded further by the inclusion of an active electron on
    the projectile. More specifically, the remainder of this work concerns itself with the
    He\textsuperscript{+}-He collision system.
 
    While the external potential, $v_\mathrm{ext}$, maintains the form of Eq.~\eqref{eq:phe2p-ext}, the
-   spin-polarized nature of the collision system means that the spin-free description utilized in the
-   previous chapter is no longer applicable, and the full spin-dependent \textsc{tdks} presented in
-   Eq.~\eqref{eq:tdks} must be solved.
+   spin-polarized nature of the collision system suggests that the spin-free description utilized in the
+   previous chapter should be replaced by the full spin-dependent \textsc{tdks} presented in
+   Eq.~\eqref{eq:tdks}.
 
    The determination of a spin-dependent exchange-correlation potential forms the bulk of this chapter
    (Sec.~\ref{sec:pot}) in which a procedure for calculating an accurate exchange potential within the
@@ -1659,22 +1670,20 @@
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
 
-      The one-particle density was determined by solving Eq.~\eqref{eq:tdks} using the two-centre basis
-      generator method~\cite{tcbgm} (\textsc{tc-bgm}). As mentioned above this relies upon the
-      specification of an exchange-correlation potential. While the correlation potential may be
-      ignored, that is the x-only approximation may be used (with some understanding of the
-      consequences), an accurate exchange potential is essential for a precise description of the
-      He\textsuperscript{+}-He collision system. The spin-polarized nature of the system, which
-      emphasizes exchange effects, makes this fact indisputable. To this end the \textsc{kli}
-      approximation to the \textsc{opm} was employed in the calculation of $v^\sigma_\mathrm{x}$.
+      While the correlation potential in Eq.~\ref{eq:tdks} may be ignored, that is the x-only
+      approximation may be used (with some understanding of the consequences), an accurate exchange
+      potential is essential for a precise description of the He\textsuperscript{+}-He collision
+      system. The spin-polarized nature of the system, which emphasizes exchange effects, makes this
+      fact indisputable. To this end the \textsc{kli} approximation to the \textsc{opm}
+      (see Sec.~\ref{sec:kli}) was employed in the calculation of $v^\sigma_\mathrm{x}$.
 
       The ground-state density functional theory scheme of~\cite{diamol}\footnote{The details of this
       implementation may be found in~\cite{diamol} and were provided by the authors via private
-      communication}has been adapted to calculate a time-dependent exchange potential. At any instant of
-      time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic quasi-molecule with
+      communication.} has been adapted to calculate a time-dependent exchange potential. At any instant
+      of time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic quasi-molecule with
       an internuclear distance $R(t) = \sqrt{b^2 + Z(t)^2}$, where $b$ and $Z$ are the impact parameter
       and the $z$ position of the projectile as described below Eq.~\eqref{eq:phe2p-ext}. If at each
-      time-step of the \textsc{tc-bgm} the time-dependent Kohn-Sham orbitals,
+      time-step of the propagation the time-dependent Kohn-Sham orbitals,
       $\varphi_{\sigma j}(\mathbf{r},t)$ are fed into the \textsc{kli} functional (ignoring self
       consistency) an exchange potential, $v^{\sigma}_\mathrm{x}[ \{ \varphi_{\sigma^\prime j} \};t]$,
       is obtained\footnote{The normalization of the \textsc{kli} potential is chosen so that
@@ -1685,8 +1694,8 @@
       $\varphi_{j \sigma}$ do not exhibit any specific symmetry.
 
       In order to detail a solution to the symmetry problem a more thorough description of the
-      \textsc{tc-bgm} is necessary. Within the \textsc{tc-bgm} the Kohn-Sham (\textsc{ks}) orbitals are
-      represented in a non-orthogonal basis
+      \textsc{tc-bgm}~\cite{tcbgm} is necessary. Within the \textsc{tc-bgm} the Kohn-Sham (\textsc{ks})
+      orbitals are represented in a non-orthogonal basis
       %
       \begin{equation} \label{eq:bgmexp}
          \varphi_{\sigma j}(\mathbf{r},t) = \sum\limits_{c \in \{P, T\}} \sum\limits_{k, L, M}
@@ -1708,23 +1717,24 @@
       %
       \begin{equation} \label{eq:bgmbasis2}
          \chi^{LM}_{ck} (\mathbf{r},t)
-         = W_P( \mathbf{r},t, \epsilon_P)^L W_T(r,\epsilon_T)^M \chi^{00}_{ck} (\mathbf{r}),
+         = W_P( \mathbf{r},t, \epsilon_P)^L W_T(\mathbf{r}_T,\epsilon_T)^M \chi^{00}_{ck}(\mathbf{r}),
       \end{equation}
       %
       with
       %
       \begin{equation}
-         W_T(r,\epsilon_T) = \frac{1 - e^{-\epsilon_T r}}{r},
+         W_T(\mathbf{r}_T,\epsilon_T) = \frac{1 - e^{-\epsilon_T r_T}}{r_t},
       \end{equation}
       %
       and
       %
       \begin{equation}
          W_P (\mathbf{r},t,\epsilon_P)
-         = \frac{1 - e^{-\epsilon_P|\mathbf{r}_T - \mathbf{R}(t)|}}{|\mathbf{r}_T - \mathbf{R}(t)|},
+         = \frac{1 - e^{-\epsilon_P|\mathbf{r} - \mathbf{R}(t)|}}{|\mathbf{r}_T - \mathbf{R}(t)|},
       \end{equation}
       %
-      where $\mathbf{r}_T$ represents the position vector with respect to the target centre.
+      where $\mathbf{r}_T$ represents the position vector with respect to the target centre and we are
+      working in the centre of mass frame where $\mathbf{R} = \mathbf{r}_T - \mathbf{r}_P$.
 
       In Eq.~\eqref{eq:bgmbasis2} the functions $\chi^{00}_{ck}$ are the bound orbitals for the target
       helium atom ($c = T$) and the projectile helium ion ($c = P$). Just like in the one-centred case
@@ -1885,7 +1895,17 @@
       \end{equation}
       (for some $k$, $l$, $c$, and properly orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$)
       readily calculable from the dynamics. A model of this type which ignores the functional
-      correlations~\cite{p-he2p-he} is consistent with an \textsc{iem} description.
+      correlations discussed in Sec.~\ref{sec:phe2p-obs} is consistent with an \textsc{iem} description.
+      Expressions similiar to Eq.~\eqref{eq:prob-iem} may be constructed in this context. The key to the
+      derivation comes from expressing the single-particle probabilities in terms of the transition
+      amplitudes, for example, $p_T$ may be written
+      %
+      \begin{equation} \label{eq:ptTrans}
+         p_T = \frac{1}{3} \sum\limits_{\sigma} \sum\limits_{j = 1}^{N_\sigma} \sum\limits_{k = 1}^{K}
+               \left| \braket{ \tilde{\chi}^{00}_{T k} | \varphi_{\sigma j}(t_f)}\right|^2,
+      \end{equation}
+      %
+      with $p_P$ and $p_I$ expressed similarly.
 
       Alternatively, one could consider the probability to explicitly measure the states of some subset
       of the total number of particles. These so called inclusive probabilities can be expressed in
@@ -1934,9 +1954,29 @@
       and $3 - k - l$ on the target ($0\leq k \leq 3$ and $0 \leq l \leq 3 - k$). The probabilities
       $p_{kl}$ may be calculated in terms of sums of inclusive probabilities to find a given number of
       particles in the bound states of the target and projectile by applying the machinery
-      of~\cite{inc-prob} (see for example~\cite{incEx, mitsuko12, gerald15}). With the probabilities in
-      hand the corresponding total cross section for each channel may then be calculated from (if we
-      ignore $\sigma_{10}$ which includes the elastic channel and must be treated with more care)
+      of~\cite{inc-prob} (see for example~\cite{incEx, mitsuko12, gerald15}). The probabilities of
+      interest take the form
+      %
+      \begin{equation} \label{eq:probGer1}
+         P^\prime_{kl} = \sum\limits_{\substack{f_1 < \dots < f_k \\ f \in \mathcal{P}}}
+                         \sum\limits_{\substack{f_{k+1} < \dots < f_{k+l} \\ f \in \mathcal{I}}}
+                         P_{f_1 \dots f_{f_{k+l}}},
+      \end{equation}
+      %
+      then one has
+      %
+      \begin{equation} \label{eq:probGer2}
+         p_{kl} = \sum\limits_{u = k}^N \sum\limits_{v = l}^{N-u} (-1)^{u - k + v -l}
+                   {{u}\choose{u-k}} {{v}\choose{l - v}} P^\prime_{uv}.
+      \end{equation}
+      %
+      In the above expression $\mathcal{P}$ and $\mathcal{I}$ are the set of states one the projectile
+      and in the continuum ($\tilde{\chi}^{00}_{Pk}$ and $\tilde{\chi}^{l0}_{ck}$, $l \neq 1$
+      respectively).
+
+      With the probabilities in hand the corresponding total cross section for each channel may then be
+      calculated from (if we ignore $\sigma_{10}$ which includes the elastic channel and must be treated
+      with more care)
       %
       \begin{equation} \label{eq:cross}
          \sigma_{kl} = 2 \pi \int_0^\infty b \, p_{kl}(b) \, \mathrm{d}b
@@ -1946,14 +1986,15 @@
 
    \end{section}
 
-   \begin{section}{Results I Guess? \label{sec:hephe-disc}}
+   \begin{section}{Results \label{sec:hephe-disc}}
 
       \begin{subsection}{1\textit{s}-only Toy Model \label{sec:toy}}
 
          Before presenting the results for the full system some of the details of a simplified toy model
          will be discussed. In this model only the $1s$ target and projectile states are included in
          the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynamics
-         code are the same as those passed into the \textsc{kli} functional.
+         code are the same as those passed into the \textsc{kli} functional except that the former
+         includes the full \textsc{etf}s while the latter can at most include partial \textsc{etf}s.
 
          A useful quantity to monitor is the norm of the one-particle density,
          %
@@ -1984,13 +2025,13 @@
 
          Figures~\ref{fig:toy20} and \ref{fig:toy1000} display $N$ as a function of $z = Vt$ for
          collisions with impact energy of 20~keV/amu and 1000~keV/amu respectively. Both calculations
-         use an impact parameter of 1~a.u. While both the curves representing calculations including and
-         excluding the partial \textsc{etf}s show sizable norm violations the inclusion of a partial
-         \textsc{etf} offers clear benefits. The \textsc{etf}s reduce the overall size of the violations
-         and reduce the range of time over which these violations occur. This can bee seen most clearly
-         in Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more slowly and
-         reattaches more quickly. Additionally including \textsc{etf}s corrects the unexpected asymmetry
-         about $z = 0$~a.u.
+         including and excluding the partial \textsc{etf}s use an impact parameter of 1~a.u and include
+         response. While both curves representing show sizable norm violations the inclusion of a
+         partial \textsc{etf} offers clear benefits. The \textsc{etf}s reduce the overall size of the
+         violations and reduce the range of time over which these violations occur. This can be seen
+         most clearly in Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more
+         slowly and reattaches more quickly. Additionally including \textsc{etf}s corrects the
+         unexpected asymmetry about $z = 0$~a.u.
 
          The origins of the norm violations is easy to trace. According to Eq.~\eqref{eq:dendef2} the
          one-particle density may be written
@@ -2013,7 +2054,7 @@
          \begin{equation}
             \int \mathrm{d}^3 r \, \left| \varphi \right|^2 = \left| a_T \right|^2
                                                             + \left| a_P \right|^2
-            + \Re \left[ {a_T}^* a_P \tilde{S}_{TP} \right]
+            + 2 \Re \left[ {a_T}^* a_P \tilde{S}_{TP} \right]
          \end{equation}
          %
          to $N$, where $\tilde{S}_{TP}$ are the matrix elements of the overlap matrix (including
@@ -2032,29 +2073,30 @@
 
          \begin{figure}[t]
             \centering
-            \begin{subfigure}{.32\textwidth}
+            \begin{subfigure}{.49\textwidth}
                \centering
                \includegraphics[width=\linewidth]{./images/hephe-bs/hepheTrans10.eps}
                \caption{$E_P = 10~\mathrm{keV}/\mathrm{amu}$. \label{fig:trans10}}
-            \end{subfigure}%
-            \begin{subfigure}{.32\textwidth}
+            \end{subfigure} \,
+            \begin{subfigure}{.49\textwidth}
                \centering
                \includegraphics[width=\linewidth]{./images/hephe-bs/hepheTrans60.eps}
                \caption{$E_P = 60~\mathrm{keV}/\mathrm{amu}$. \label{fig:trans60}}
             \end{subfigure}
-            \begin{subfigure}{.32\textwidth}
+
+            \begin{subfigure}{.49\textwidth}
                \centering
                \includegraphics[width=\linewidth]{./images/hephe-bs/hepheTrans250.eps}
                \caption{$E_P = 250~\mathrm{keV}/\mathrm{amu}$. \label{fig:trans250}}
             \end{subfigure}
             \caption[Single-particle transfer and ionization and probabilities in
                      He\textsuperscript{+}-He collisions.]
-                    {Single-particle transfer and ionization and probabilities in
+                    {Single-particle transfer and ionization probabilities in
                      He\textsuperscript{+}-He collisions at various impact energies. \label{fig:trans}}
          \end{figure}
 
          Before discussing the total cross section results we will present some of the lower level
-         features of the calculations. We will consider the single-particle probabilities for each
+         features of the full calculations. We will consider the single-particle probabilities for each
          electron to ionize and to switch the nuclear centre to which it is bound. These probabilities
          can be calculated from the transition amplitudes. As an example, if $\varphi_{\uparrow 1}$
          begins initially on the target then the single-particle probability to ionize this electron can
@@ -2076,7 +2118,11 @@
          %
          where the probabilities are defined in terms of orthogonalized orbitals including full
          \textsc{etf}s. These probabilities are presented for the response model including partial
-         \textsc{etf}s impact energies of 10, 60 and 250~keV/amu in Fig.~\ref{fig:trans}.
+         \textsc{etf}s at the impact energies of 10, 60 and 250~keV/amu in Fig.~\ref{fig:trans}. When a
+         distinction is made between response and no-response results the text refers to cross sections
+         calculated using either set of fully time-dependent 1s-only orbitals and those using the model
+         described in the text surrounding Eq.~\eqref{eq:noresp} respectively, when no distinction is
+         made the text refers simply to the response versions.
 
          For low energy collisions capture processes can be seen to be dominant, this is clearly
          depicted in Fiq.~\ref{fig:trans10} where the single-particle ionization probabilities are
@@ -2089,17 +2135,18 @@
 
          \begin{figure}[t]
             \centering
-            \begin{subfigure}{.32\textwidth}
+            \begin{subfigure}{.49\textwidth}
                \centering
                \includegraphics[width=\linewidth]{./images/hephe-bs/pkl-E20.eps}
                \caption{$E_P = 20~\mathrm{keV}/\mathrm{amu}$. \label{fig:pkl20}}
-            \end{subfigure}%
-            \begin{subfigure}{.32\textwidth}
+            \end{subfigure} \,
+            \begin{subfigure}{.49\textwidth}
                \centering
                \includegraphics[width=\linewidth]{./images/hephe-bs/pkl-E500.eps}
                \caption{$E_P = 500~\mathrm{keV}/\mathrm{amu}$. \label{fig:pkl500}}
             \end{subfigure}
-            \begin{subfigure}{.32\textwidth}
+
+            \begin{subfigure}{.49\textwidth}
                \centering
                \includegraphics[width=\linewidth]{./images/hephe-bs/pkl-E600.eps}
                \caption{$E_P = 600~\mathrm{keV}/\mathrm{amu}$. \label{fig:pkl600}}
@@ -2116,27 +2163,28 @@
          several impact energies, that is, impact parameter dependent probabilities for the outcome
          channels of Eqs.~\eqref{eq:tpi111}-\eqref{eq:tpi003} (with the addition of $p_{00}$ and
          $p_{30}$) times the impact parameter. For $E_p \leq$ 500~keV/amu the probabilities behave as
-         one would expect. However, above this level unphysical structures begin to emerge. As an
-         example the $p_{20}$ curve in Fig.~\ref{fig:pkl600} contains a large hump below 0.5~a.u.
+         one would expect. That is to say that the probabilities generally follow the relation $p(b)
+         \sim b^n e^{-a b}$ for some integer $n$ and positive real number $a$. However, above this level
+         unphysical structures begin to emerge. As an example the $p_{20}$ curve in
+         Fig.~\ref{fig:pkl600} contains a large hump below 0.5~a.u.
 
-         These are the result of numerical issues that, above imapact energies of 500~keV/amu, limit the
-         minimum possible impact parameter for which the calculations produce results from 0.1~a.u.\
-         below 500~keV/amu gradually to 0.8~a.u.\ at 1000~keV/amu. In Eq.~\eqref{eq:cross} the
-         integrand, $b \, p_{kl}(b)$, is approximated by a cubic spline which is, in turn, integrated to
-         arrive at a cross section. The structure of the integrand means that so long as $p_{kl}(0)$ is
-         finite its value is irrelevant and we always know the integrand at $b = 0$. In
-         Fig.~\ref{fig:pkl} The solid portion of each curve represents the region where the probability
-         may be determined at any point, the dashed sections represent the region where the spline
-         interpolates between $b = 0$ and the next lowest available impact parameter. In the best
-         possible scenario the lower bound on the error of a cubic spline will scale to the fourth power
-         in the largest step between knots~\cite{spline-err}, for a spline $s_f$ interpolating a
-         function $f$ one has
+         These are the result of numerical issues that limit the minimum possible impact parameter for
+         which the calculations produce results from 0.1~a.u.\ below 500~keV/amu gradually to 0.8~a.u.\
+         at 1000~keV/amu. In Eq.~\eqref{eq:cross} the integrand, $b \, p_{kl}(b)$, is approximated by a
+         cubic spline which is, in turn, integrated to arrive at a cross section. The structure of the
+         integrand means that so long as $p_{kl}(0)$ is finite its value is irrelevant and we always
+         know the integrand at $b = 0$. In Fig.~\ref{fig:pkl} the solid portion of each curve represents
+         the region where the probability may be determined at any point, the dashed sections represent
+         the region where the spline interpolates between $b = 0$ and the next lowest available impact
+         parameter. In the best possible scenario the lower bound on the error of a cubic spline will
+         scale to the fourth power in the largest step between knots~\cite{spline-err}, for a spline
+         $s_f$ interpolating a function $f$ one has
          %
          \begin{equation} \label{eq:splineErr}
             E(s_f) = \left| f - s_f \right|_\infty \leq \frac{5 \left| f^{(4)} \right|_\infty h^4}{384},
          \end{equation}
          %
-         where $h$ is the largest separation between grid points used in determining the spline amd
+         where $h$ is the largest separation between grid points used in determining the spline and
          %
          \begin{equation} \label{eq:supnorm}
             | g |_\infty = \sup\limits_{x \in [a,b]} \{ |g(x)| \}.
@@ -2144,9 +2192,9 @@
          %
          The step size factor in the error bound then increases from 0.0001 to 0.4096, an increase by an
          approximate factor of 4000. It is this decrease in the accuracy of the interpolation which
-         results in the unphysical structures present in some outcome channels 500~keV/amu. The presence
-         of these structures are the reason for the lack of a data point at 1000~keV/amu in
-         Fig.~\ref{fig:cs201}.
+         results in the unphysical structures present in some outcome channels above 500~keV/amu. The
+         presence of these structures are the reason for the lack of a data point at 800~keV/amu in
+         Fig.~\ref{fig:cs201}, despite values having been calculated.
 
       \end{subsection}
 
@@ -2300,11 +2348,7 @@
          potential generated from the 1s-only orbitals of Eq.~\eqref{eq:1sonly} that include no electron
          translation factors will be designated by n\textsc{etf}. Those obtained by an application of
          the same processes using the 1s-only orbitals, with partial \textsc{etf}s, of
-         Eq.~\eqref{eq:1sonlyetf} will be referred to as p\textsc{etf}. When a distinction is made
-         between response and no-response results the text refers to cross sections calculated using
-         either set of fully time-dependent 1s-only orbitals and those using the model described in the
-         text surrounding Eq.~\eqref{eq:noresp} respectively, when no distinction is made the text
-         refers simply to the response versions.
+         Eq.~\eqref{eq:1sonlyetf} will be referred to as p\textsc{etf}.
 
          Where available the results of the current work are compared with calculations of other groups.
          It should be noted that only those calculations that describe the system quantum mechanically
@@ -2319,11 +2363,11 @@
          and \ref{fig:cs300} respectively). Where the $\sigma_{01}$ no-response curve drops below the
          response results would appear to coincide with a spike in the response $\sigma_{30}$ results
          (Fig.~\ref{fig:cs030}). The artificial nature of the $\sigma_{00}$ channel makes determining
-         whether the lower result is desirable or not. The only other channel where the no-response
-         calculations are in better agreement with experiment is $\sigma_{02}$, Fig.~\ref{fig:cs102},
-         where lowering the results moves the response curve below experiment. The addition of response
-         effects causing a decrease in cross sections is a typical result, see for example
-         Ref.~\cite{microresp}.
+         whether the lower result is desirable or not difficult. The only other channeli, apart from
+         $\sigma_{00}$, where the no-response calculations are in better agreement with experiment is
+         $\sigma_{02}$, Fig.~\ref{fig:cs102}, where lowering the results moves the response curve below
+         experiment. The addition of response effects causing a decrease in cross sections is a typical
+         result, see for example Ref.~\cite{microresp}.
 
          As was mentioned above the primary purpose of the no-response model in the present context was
          as a tes-tbed for isolating the \textsc{etf}s from other phase factors. If we consider only the
