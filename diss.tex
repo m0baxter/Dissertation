@@ -34,6 +34,8 @@
 \usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage[toc,page]{appendix}
 
+\usepackage{stix}
+
 \usepackage{showlabels}
 
 %change link colours:
@@ -122,19 +124,19 @@
    \pagenumbering{roman}
    \setcounter{page}{2}
 
-   A recent model to describe electron correlations in time-dependent density functional theory (TDDFT)
-   studies of antiproton-helium collisions is extended to deal with positively charged projectiles.
-   The main complication is that a positively-charged projectile can capture electrons in addition to
-   ionizing them to the continuum. As a consequence, within the TDDFT framework one needs to consider
-   three, instead of just one, correlation integrals ($I_\mathrm{c}$'s) when formally expressing the
-   probabilities for the one- and two-electron processes in terms of the density. We discuss
-   an extension of an adiabatic model for $I_\mathrm{c}$ to a two-centered system. Total cross sections
-   for single ionization, double ionization, single capture, transfer ionization, and double capture are
-   presented for both the proton-helium and He\textsuperscript{2+}-He collisions for impact energies in
-   the approximate range 10-1000 keV/amu. One- and two-electron removal cross sections are also
-   presented for the $p$-He system with a comparison to updated antiproton-helium results. Our results,
-   while mixed, demonstrate the relative importance of dynamic and functional correlation in a TDDFT
-   description of collision processes.
+   A recent model to describe electron correlations in time-dependent density functional theory
+   (\textsc{tddft}) studies of antiproton-helium collisions is extended to deal with positively charged
+   projectiles. The main complication is that a positively-charged projectile can capture electrons in
+   addition to ionizing them to the continuum. As a consequence, within the TDDFT framework one needs to
+   consider three, instead of just one, correlation integrals ($I_\mathrm{c}$'s) when formally
+   expressing the probabilities for the one- and two-electron processes in terms of the density. We
+   discuss an extension of an adiabatic model for $I_\mathrm{c}$ to a two-centered system. Total cross
+   sections for single ionization, double ionization, single capture, transfer ionization, and double
+   capture are presented for both the proton-helium and He\textsuperscript{2+}-He collisions for impact
+   energies in the approximate range 10-1000 keV/amu. One- and two-electron removal cross sections are
+   also presented for the $p$-He system with a comparison to updated antiproton-helium results. Our
+   results, while mixed, demonstrate the relative importance of dynamic and functional correlation in a
+   \textsc{tddft} description of collision processes.
 
    Additionally theoretical total cross section results for all ionization/capture processes in the
    He\textsuperscript{+}-He collision system are presented in the approximate impact energy range
@@ -2200,6 +2202,46 @@
 
       \begin{subsection}{Results \label{sec:hephe-res}}
 
+         In what follows all results obtained by propagating the full \textsc{ks} orbitals in a
+         potential generated from the 1s-only orbitals of Eq.~\eqref{eq:1sonly} that include no electron
+         translation factors will be designated by n\textsc{etf}. Those obtained by an application of
+         the same processes using the 1s-only orbitals, with partial \textsc{etf}s, of
+         Eq.~\eqref{eq:1sonlyetf} will be referred to as p\textsc{etf}.
+
+         Where available the results of the current work are compared with calculations of other groups.
+         It should be noted that only those calculations that describe the system quantum mechanically
+         were considered, that is to say works that employ approaches such as the classical trajectory
+         Monte Carlo method~\cite{GMZ17}, the over the barrier model~\cite{CC-07}, or the Bohr–Lindhard
+         model~\cite{DYC-08, DLZ-12} are not included.
+
+         We will begin our discussion of the total cross section results with a broad overview comparing
+         the response and no-response calculations. In general for the cross sections presented in
+         Figs.~\ref{fig:cs111} through \ref{fig:cs030} the response calculations produce values that are
+         noticeably lower with the exception of $\sigma_{01}$ and $\sigma_{00}$ (Figs.~\ref{fig:cs201}
+         and \ref{fig:cs300} respectively). Where the $\sigma_{01}$ no-response curve drops below the
+         response results would appear to coincide with a spike in the response $\sigma_{30}$ results
+         (Fig.~\ref{fig:cs030}). The artificial nature of the $\sigma_{00}$ channel makes determining
+         whether the lower result is desirable or not difficult. The only other channel, apart from
+         $\sigma_{00}$, where the no-response calculations are in better agreement with experiment is
+         $\sigma_{02}$, Fig.~\ref{fig:cs102}, where lowering the results moves the response curve below
+         experiment. The addition of response effects causing a decrease in cross sections is a typical
+         result, see for example Ref.~\cite{microresp}.
+
+         As was mentioned above the primary purpose of the no-response model in the present context was
+         as a test-bed for isolating the \textsc{etf}s from other phase factors. If we consider only the
+         physical outcome channels, i.e.\ exclude $\sigma_{00}$ and $\sigma_{03}$, a clear pattern
+         emerges. For low impact energies the n\textsc{etf} and p\textsc{etf} curves coincide, what one
+         would expect as $V$ approaches zero. As the impact energy increases a gap begins to open
+         between the two sets of results. The only exceptions to this trend are $\sigma_{20}$
+         (Fig.~\ref{fig:cs120}), where the cross sections are likely too large for small distinctions to
+         be apparent, and $\sigma_{01}$ (Fig.~\ref{fig:cs201}) where the n\textsc{etf} and p\textsc{etf}
+         response curves are slightly erratic. Leaving aside this channel the tendencies of the response
+         and no-response models in the presence, or absence, of the partial \textsc{etf}s are
+         essentially identical. From the discussion in Sec.~\ref{sec:toy} it is clear that the
+         \textsc{etf}s have no effect on $v_\mathrm{H}$ in the no-response model. One can interpret this
+         to mean that the differences between the n\textsc{etf} and p\textsc{etf} results are primarily
+         attributable to the \textsc{etf}s and not the result of some unforeseen additional processes.
+
          \begin{figure}[t]
             \centering
             \includegraphics[width = \linewidth]{./images/hephe-cross/HepHe-111.eps}
@@ -2339,56 +2381,16 @@
                      Theoretical results: p\textsc{etf} response (solid line), n\textsc{etf} response
                                           (dotted line), p\textsc{etf} no-response (dashed line),
                                           n\textsc{etf} no-response (dash-dotted line), and
-                                          \textsc{cmf} of Schenk and Kirchner~\cite{geraldDiss}
-                                          (thin solid line).
+                                          \textsc{cmf} of Schenk~\cite{geraldDiss}
+                                          (thin dotted line).
                      Experimental data: squares~\cite{RGID85}. \label{fig:recoil}}
          \end{figure}
 
-         In what follows all results obtained by propagating the full \textsc{ks} orbitals in a
-         potential generated from the 1s-only orbitals of Eq.~\eqref{eq:1sonly} that include no electron
-         translation factors will be designated by n\textsc{etf}. Those obtained by an application of
-         the same processes using the 1s-only orbitals, with partial \textsc{etf}s, of
-         Eq.~\eqref{eq:1sonlyetf} will be referred to as p\textsc{etf}.
-
-         Where available the results of the current work are compared with calculations of other groups.
-         It should be noted that only those calculations that describe the system quantum mechanically
-         were considered, that is to say works that employ approaches such as the classical trajectory
-         Monte Carlo method~\cite{GMZ17}, the over the barrier model~\cite{CC-07}, or the Bohr–Lindhard
-         model~\cite{DYC-08, DLZ-12} are not included.
-
-         We will begin our discussion of the total cross section results with a broad overview comparing
-         the response and no-response calculations. In general for the cross sections presented in
-         Figs.~\ref{fig:cs111} through \ref{fig:cs030} the response calculations produce values that are
-         noticeably lower with the exception of $\sigma_{01}$ and $\sigma_{00}$ (Figs.~\ref{fig:cs201}
-         and \ref{fig:cs300} respectively). Where the $\sigma_{01}$ no-response curve drops below the
-         response results would appear to coincide with a spike in the response $\sigma_{30}$ results
-         (Fig.~\ref{fig:cs030}). The artificial nature of the $\sigma_{00}$ channel makes determining
-         whether the lower result is desirable or not difficult. The only other channeli, apart from
-         $\sigma_{00}$, where the no-response calculations are in better agreement with experiment is
-         $\sigma_{02}$, Fig.~\ref{fig:cs102}, where lowering the results moves the response curve below
-         experiment. The addition of response effects causing a decrease in cross sections is a typical
-         result, see for example Ref.~\cite{microresp}.
-
-         As was mentioned above the primary purpose of the no-response model in the present context was
-         as a tes-tbed for isolating the \textsc{etf}s from other phase factors. If we consider only the
-         physical outcome channels a clear pattern emerges. For low impact energies the n\textsc{etf}
-         and p\textsc{etf} curves coincide, what one would expect as $v_\mathrm{rel}$ approaches zero.
-         As the impact energy increases a gap begins to open between the two sets of results. The only
-         exceptions to trend are $\sigma_{20}$, where the cross sections are likely too large for small
-         distinctions to be apparent, and $\sigma_{01}$ where the n\textsc{etf} and p\textsc{etf}
-         response curves are slightly erratic. Leaving aside this channel the tendencies of the response
-         and no-response models in the presence, or absence, of the partial \textsc{etf}s are
-         essentially identical. One can interpret this to mean that the differences between the
-         n\textsc{etf} and p\textsc{etf} results are primarily attributable to the \textsc{etf}s and not
-         the result of some unforeseen additional processes.
-
-         We begin the discussion by considering the single target ionization process of
-         Eq.~\eqref{eq:tpi111}. The results for this channel, $\sigma_{11}$ are presented in
-         Fig.~\ref{fig:cs111}. Both n\textsc{etf} and p\textsc{etf} are in good agreement with
-         experiment throughout the full range of impact energies. As impact energy increases a slight
-         gap opens between the two. This trend is, as one would expect, due to the fact that
-         \textsc{etf}s should become more relevant as the relative velocity between target and
-         projectile increases. The slightly lower values for the p\textsc{etf} version above 200~keV/amu
+         We now discuss the comparison of our response results with experimental data and other
+         calculations by considering the single target ionization process of Eq.~\eqref{eq:tpi111}. The
+         results for this channel, $\sigma_{11}$ are presented in Fig.~\ref{fig:cs111}. Both
+         n\textsc{etf} and p\textsc{etf} are in good agreement with experiment throughout the full range
+         of impact energies. The slightly lower values for the p\textsc{etf} version above 200~keV/amu
          make it a better fit to experiment. The underestimation of both curves below the peak
          corresponds almost exactly with the region where $\sigma_{20}$ results begin to rise above the
          experimental results (see Fig.~\ref{fig:cs120}).
@@ -2404,13 +2406,13 @@
 
          Next, we consider the results for $\sigma_{01}$ [Eq.~\eqref{eq:tpi201}] shown in
          Fig.~\ref{fig:cs201}. As with the previous channel both n\textsc{etf} and p\textsc{etf} results
-         are in reasonable agreement with the experiment where it is available. Also continuing the
-         trend seen in the $\sigma_{11}$ results both models begin essentially equal at low impact
-         energies and separate as $E_P$ increases. Both models begin to over estimate the data above the
-         peak around 200~keV/amu. Once again the slightly lower p\textsc{etf} results are in better
-         agreement with experiment. The slight unphysical structures in the curves below 40~keV/amu seem
-         to correspond with the peaks of the $\sigma_{00}$ channel (not pictured here). This issue will
-         be discussed in greater detail below.
+         are in reasonable agreement with the experiment where it is available. Also following the
+         general trend described above both models begin essentially equal at low impact energies and
+         separate as $E_P$ increases. Both models begin to over estimate the data above the peak around
+         200~keV/amu. Once again the slightly lower p\textsc{etf} results are in better agreement with
+         experiment. The slight unphysical structures in the curves below 40~keV/amu seem to correspond
+         with the peaks of the $\sigma_{00}$ channel. This issue will be discussed in greater detail
+         below.
 
          These calculations have been compared with the independent event model (\textsc{ievm}) results
          of Sigaud and Montenegro~\cite{SM-03}. While they do not directly report $\sigma_{01}$ they do
@@ -2427,9 +2429,9 @@
          \textsc{ievm} calculations. As will be discussed in more detail below all of our models
          underestimate $\sigma_{02}$ and $\sigma_{03}$ in this impact energy range. Keeping in mind that
          $\sum p_{kl} = 1$ the increase in these channels resulting from the incorporation of
-         correlation effects, antiscreening in particular, would be drawn in part from the current
-         channel od focus $\sigma_{01}$ resulting in a decrease putting our results in better agreement
-         with both Sigaud and Montenegro and the experimental data.
+         correlation effects, so-called antiscreening in particular, would be drawn in part from the
+         current channel of focus $\sigma_{01}$ resulting in a decrease putting our results in better
+         agreement with both Sigaud and Montenegro and the experimental data.
 
          For the results of single electron capture to the projectile, the process of
          Eq.~\eqref{eq:tpi120} depicted in Fig.~\ref{fig:cs120}, both n\textsc{etf} and p\textsc{etf}
@@ -2445,8 +2447,8 @@
          The latter explanation may provide a more satisfying solution to this problem. One would expect
          that capture processes should be dominated by the contributions of slow and close collisions.
          The regions where the n/p\textsc{etf} models start to diverge from experiment is approximately
-         the region where both models begin to diverge in other channels [see for example $\sigma_{12}$
-         in Fig.~\ref{fig:cs012}], that is the lowest energies where \textsc{etf}s are important.
+         the region where both models begin to diverge in other channels (see for example $\sigma_{12}$
+         in Fig.~\ref{fig:cs012}), that is the lowest energies where \textsc{etf}s are important.
          Additionally they begin to agree with experiment once the cross sections begin to rapidly
          approach zero, for fast collisions. This would seem to be an indication that correct
          \textsc{etf}s are important for capture processes (a fact that should be at least intuitively
@@ -2467,7 +2469,7 @@
          the p\textsc{etf} model's marginally lower results above 100~keV/amu. Both models seem to shift
          the peak in the cross section to higher impact energy than experiment would suggest is correct.
          As one would expect from an \textsc{iem} the two models exaggerate double ionization, see for
-         example Refsi.~\cite{pbarhe-rev, p-he2p-he}. As there are no previous works fitting the
+         example Refs.~\cite{pbarhe-rev, p-he2p-he}. As there are no previous works fitting the
          conditions for inclusion listed earlier little else can be concluded about the results of the
          present work.
 
@@ -2492,11 +2494,11 @@
          Montenegro claim to capture the effects of antiscreening, the direct interaction between target
          and projectile electrons, which becomes increasingly important for projectile ionization
          processes at larger impact energies. As the results of the current work are those of an
-         independent electron model (\textsc{iem}) they make no effort to capture any correlation
-         effects. Sigaud and Montenegro's efforts to capture antiscreening see their results fall within
-         experiment for their entire extent. Encouragingly, if one were to extend the curve of Sigaud
-         and Montenegro it would seem to overlap with the results of the present work lending credence
-         to the curve in the region below the cross section peak, where antiscreening cannot contribute.
+         \textsc{iem} they make no effort to capture any correlation effects. Sigaud and Montenegro's
+         efforts to capture antiscreening see their results fall within experiment for their entire
+         extent. Encouragingly, if one were to extend the curve of Sigaud and Montenegro it would seem
+         to overlap with the results of the present work lending credence to the curve in the region
+         below the cross section peak, where antiscreening cannot contribute.
 
          Next wee will consider the sole three electron process, simultaneous double target and single
          projectile ionization [Eq.~\eqref{eq:tpi003}]. The results, presented in Fig.~\ref{fig:cs003},
@@ -2512,14 +2514,20 @@
          In addition to the outcome channels discussed above there are three further processes. One,
          $\sigma_{10}$, has been left out as it involves no charge transfer. The other two,
          $\sigma_{00}$ and $\sigma_{30}$, involve all three electrons bound to either the target or the
-         projectile which are displayed in Figs.~\ref{fig:cs300} and \ref{fig:cs030}. As was pointed out
+         projectile and are displayed in Figs.~\ref{fig:cs300} and \ref{fig:cs030}. As was pointed out
          earlier these channels should not be considered due to the fact that the production cross
-         sections for these configurations should be negligible. While modeling the initial and final
-         states of the system as single Slater determinants accounts for Pauli exclusion which precludes
-         all three electrons from occupying the ground state there is nothing in the model to stop
-         additional electrons from capturing and remaining in excited states. The only recourse, short
-         of implementing a model which contains at least some functional correlation, is to artificially
-         redistribute the probability from $p_{00}$ and $p_{30}$ into other channels.
+         sections for these configurations should be negligible, unfortunately in our results they are
+         not. While modelling the initial and final states of the system as single Slater determinants
+         accounts for Pauli exclusion which precludes all three electrons from occupying the ground
+         state there is nothing in the model to stop additional electrons from capturing and remaining
+         in excited states. Keeping in mind that this model is simply an example of an \textsc{IEM},
+         albeit a sophisticated one, the probabilities for these unphysical channels will behave in a
+         predictable manner $p_{00} \sim {p_T}^3$ and $p_{30} \sim {p_P}^3$. The inclusion of functional
+         correlation should, in principle, provide an offset. An exaggerated example of this is
+         provided in Chap.~\ref{chap:p-he2p-he} where a \textsc{wb} type model could potentially cause
+         both channels to be zero. The only recourse, short of implementing a model which contains at
+         least some functional correlation, is to artificially redistribute the probability from
+         $p_{00}$ and $p_{30}$ into other channels.
 
          Two options immediately present themselves. The first possibility is to feed the extra
          probability into the corresponding ionization channels. In other words, $p_{00}$ and $p_{30}$
@@ -2535,7 +2543,7 @@
 
          To close out this section we will consider the total cross section for net recoil ion
          production. This quantity, presented in Fig.~\ref{fig:recoil}, may be calculated from
-         previously preseneted results
+         previously presented results
          %
          \begin{equation}
             \sigma_{+} = \sigma_{11} + \sigma_{20} + \sigma_{02} + 2 \sigma_{12} + 2 \sigma_{21}
@@ -2548,13 +2556,15 @@
          p\textsc{etf} curves is discernible.
 
          Also show in Fig.~\ref{fig:recoil} are the common mean field (\textsc{cmf}) results of Schenk
-         and Kirchner~\cite{geraldDiss} ({\color{red}{?`or just Schenk?}}). The \textsc{cmf} which is in
-         good agreement with experiment. The difference between the \textsc{cmf} results and those of
-         the current work can be traced to the overestimation of single capture (see discussion above
-         and Fig.~\ref{fig:cs120}). As was discussed in Ref.~\cite{geraldDiss} the \textsc{cmf} model
-         is very well suited for describing processes involving initial target electrons. One can see
-         this as evidence that the current work trades an excellent description of a single centre for a
-         a slightly less realistic description of both atomic centres.
+         and Kirchner~\cite{geraldDiss}. The \textsc{cmf} which is in good agreement with experiment.
+         The difference between the \textsc{cmf} results and those of the current work can be traced to
+         the overestimation of single capture (see discussion above and Fig.~\ref{fig:cs120}). As was
+         discussed in Ref.~\cite{geraldDiss} the \textsc{cmf} model is very well suited for describing
+         processes involving initial target electrons. This in large part due to the fact that in the
+         \textsc{cmf} both target and projectile electrons are propagated with the same Hamiltonian,
+         that of the target. One can see this as evidence that the current work trades an excellent
+         description of a single centre for a slightly less realistic description of both atomic
+         centres.
 
       \end{subsection}
 
@@ -2566,17 +2576,16 @@
 \begin{chapter}{Conclusion \label{chap:con}}
 
    Following the programme laid out in the introduction this work has presented investigations of an
-   increasingly complex series of ion-atom collisions systems. This journey ({\color{red}{more prosaic,
-   less lyric\dots}}) began with the relatively simple antiproton-helium system, continued with the
-   proton-helium and He\textsuperscript{2+}-He systems, and culminated in a discussion of the
-   He\textsuperscript{+}-He collision system. In the proceeding subsections more detailed and collision
-   specific conclusions will be offer for these investigates. Before embarking on a summary of
-   individual results it is, perhaps, necessary to emphasis one of the overarching themes of this work.
-   In every situation or results are competitive with the best models of others. In many cases our
-   results are the only ones which can consistently describe all outcome channels for a given process,
-   that is they produce some of the best results available without being focused on a specific process.
-   This certainly demonstrates the utility of density functional theory techniques over a fairly wide
-   range of systems.
+   increasingly complex series of ion-atom collisions systems. This journey began with the relatively
+   simple antiproton-helium system, continued with the proton-helium and He\textsuperscript{2+}-He
+   systems, and culminated in a discussion of the He\textsuperscript{+}-He collision system. In the
+   proceeding subsections more detailed and collision specific conclusions will be offer for these
+   investigations. Before embarking on a summary of individual results it is, perhaps, necessary to
+   emphasize one of the overarching themes of this work. In most situations our results are competitive
+   with the best models of others. In many cases our results are the only ones which can consistently
+   describe all outcome channels for a given collision system, that is they produce some of the best
+   results available without being focused on a specific process. This certainly demonstrates the
+   utility of density functional theory techniques over a fairly wide range of systems.
 
    \begin{section}{\texorpdfstring{$p$}{p}-He and \texorpdfstring{He\textsuperscript{2+}}{He2+}-He
                    Collisions \label{sec:con-phe2p-he}}
@@ -2611,11 +2620,11 @@
 
       The opening of the capture channels introduces additional complications into the \textsc{wb}
       model. First, it accentuates some of the short comings of the underlying dynamic calculation.
-      Barring improvement in the projection of the time-dependent single-particle solutions onto
-      projectile states the base level accuracy of the method is essentially fixed (especially at low
-      impact energies). One could take this as more confirmation that no single calculation is yet
-      capable of covering vast tracts of impact energy space~\cite{LRV-14}. In this regard our results
-      cover more channels, over a larger energy range than most.
+      While some gains may be made by rerunning these calculations using the full \textsc{tc-bgm} the
+      base level accuracy of the method is essentially fixed (especially at low impact energies). One
+      could take this as more confirmation that no single calculation is yet capable of covering vast
+      tracts of impact energy space~\cite{LRV-14}. In this regard our results cover more channels, over
+      a larger energy range than most.
 
       Second, the \textsc{wb} model itself appears to distribute probabilities among the six outcome
       channels in unphysical ways (for example causing double and transfer ionization in $p$-He
@@ -2633,12 +2642,12 @@
 
    \begin{section}{\texorpdfstring{He\textsuperscript{+}}{He+}-He Collisions \label{sec:con-hephe}}
 
-      In this work we have presented an investigation of the He\textsuperscript{+}-He collision system
-      within  time-dependent spin-density functional theory under the constraints of the exchange-only
-      approximation. An accurate time-dependent exchange potential was determined through the application
-      of the \textsc{kli} approximation. Total cross section results for all physical outcome channels
-      were then offered in the approximate impact energy of range 10-1000~keV/amu for two models; one in
-      which electron translation factors were ignored and a second model where partial \textsc{etf}s
+      The He\textsuperscript{+}-He collision system was investigated within  time-dependent spin-density
+      functional theory under the constraints of the exchange-only approximation. An accurate
+      time-dependent exchange potential was determined through the application of the \textsc{kli}
+      approximation. Total cross section results for all physical outcome channels were then offered in
+      the approximate impact energy of range 10-1000~keV/amu for two models; one in which electron
+      translation factors were ignored and a second model where partial \textsc{etf}s
       were used. The results of both models are in overall good agreement with experiment.
 
       Without diminishing the results of this work it is necessary to highlight a few limitations and
@@ -2659,60 +2668,180 @@
       still not offer a complete description of time-dependent correlation, it would, for example, lack
       memory effects~\cite{tddft}. An added difficulty would be the inclusion of functional correlation
       effects. In order to move beyond the \textsc{iem} single Slater determinant description of outcome
-      probabilities, one would have to adapt a model similar to that of Wilken and Bauer~\cite{wb} used
-      in Chap.~\ref{chap:p-he2p-he} (and Ref.~\cite{p-he2p-he}) to explicitly spin-polarized systems.
+      probabilities, one would have to adapt a model, preferably one that avoids the problems of the
+      model of Wilken and Bauer~\cite{wb} used in Chap.~\ref{chap:p-he2p-he} (and Ref.~\cite{p-he2p-he})
+      to explicitly spin-polarized systems. A starting point for such a model is outlined in
+      Appendix~\ref{chap:moreIc}.
 
-      One may start by mimicing the construction presented in Sec.~\ref{sec:phe2p-obs} for a
-      three-particle state $\ket{\Psi(\mathbf{r}_1, \sigma_1, \mathbf{r}_2, \sigma_2, \mathbf{r}_3,
-      \sigma_3, t)}$. If we specify the He\textsuperscript{+}-He collision system this may be simplified
-      slightly
-      %
-      \begin{equation} \label{eq:state3e}
-         \ket{\Psi} = \ket{\psi(t)} \otimes \frac{\ket{\uparrow \uparrow \downarrow}
-                    +                  \ket{\uparrow \downarrow \uparrow}
-                    +                  \ket{\downarrow \uparrow \uparrow}}{\sqrt{3}},
-      \end{equation}
-      %
-      where
-      %
-      \begin{equation} \label{eq:orb}
-         \psi(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, t)
-            = \braket{\mathbf{r}_1 \, \mathbf{r}_2 \, \mathbf{r}_3 | \psi(t)}
-      \end{equation}
-      %
-      is some antisymmetric function. Once again we will need to define the single-particle
-      probabilities to find an electron on the target or the projectile
+
+   \end{section}
+
+\end{chapter}
+
+\begin{appendices}
+
+   \begin{chapter}{Coordinate Systems \label{chap:coords}}
+
+      This appendix contains the fundamentals of some non-rectangular coordinate systems used in the
+      text. This discussion focuses on the lesser know coordinate systems. For more detail the reader
+      is referred to any mathematical handbook for physics, for example~\cite{coord1, coord2}.
+
+      \begin{section}{Elliptical Coordinates \label{sec:elliptic}}
+
+         \begin{figure}[t]
+            \centering
+            \begin{subfigure}{.5\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/appendix/xieta.eps}
+               \caption{$\xi$-$\eta$ space. \label{fig:xieta}}
+            \end{subfigure}%
+            \begin{subfigure}{.5\textwidth}
+               \centering
+               \includegraphics[width=\linewidth]{./images/appendix/eliptical.eps}
+               \caption{$x$-$y$ space. \label{fig:xy}}
+            \end{subfigure}
+            \caption[Coordinate chart of elliptical coordinates]{The coordinate mapping of
+                     Eq.~\eqref{eq:elipdef} is demonstrated by the correspondence between
+                     coloured grid lines.\label{fig:elliptic}}
+         \end{figure}
+
+         Elliptical coordinates are formed by the intersection of series of confocal ellipses and
+         hyperbole. If we let $(\xi, \eta)$ denote the elliptic and hyperbolic grid lines and $a > 0$
+         their focal length we can cover the plane with two charts. The first is given by
+         %
+         \begin{equation} \label{eq:elipdef}
+            \left\{
+            \begin{array}{l}
+               x   = a \xi \eta \\
+               y^2 = a \left( \xi^2 - 1 \right) \left( 1 - \eta^2 \right),
+            \end{array}
+            \right.
+         \end{equation}
+         %
+         while the second is defined similarly and covers the lower half space ($(\xi,\eta) \mapsto
+         (x,-y)$). Both charts are defined for $(\xi,\eta) \in [1, \infty] \times [-1,1]$.
+
+         This mapping is demonstrated in Fig.~\ref{fig:elliptic}. The coloured lines in the left panel
+         represent a selection of $\xi$ (blues and greens) and $\eta$ (reds and oranges) grid lines.
+         Grid lines are mapped by Eq.~\eqref{eq:elipdef} to lines of corresponding colour in the right
+         panel.
+
+      \end{section}
+
+      \begin{section}{Prolate Spheroidal Coordinates \label{sec:prolate}}
+
+         Prolate spheroidal coordinates are a three-dimensional coordinate system that result from
+         rotating the upper half space elliptical coordinates (defined in the proceeding section) around
+         the line running through the co-foci of the elliptic and hyperbolic grid lines.
+
+         While several conventions exist, throughout this work prolate spheroidal coordinates are
+         defined as
+         %
+         \begin{equation} \label{eq:psc}
+            \left\{
+            \begin{array}{l}
+               x = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \sin \phi, \\
+               y = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \cos \phi, \\
+               z = a \xi \eta,
+            \end{array}
+            \right.
+         \end{equation}
+         %
+         for $(\xi, \eta, \phi) \in [1, \infty) \times [-1,1] \times [0,2\pi)$.
+
+         One says that a function $f: \mathbb{R}^3 \rightarrow \mathbf{R}$ is cylindrically symmetric if
+         it has no $\phi$ dependence, i.e.\ if $f(\xi,\eta,\phi) = f(\xi,\eta)$.
+
+      \end{section}
+
+   \end{chapter}
+
+   \begin{chapter}{Visualizing the Time-dependent Potential \label{sec:visual}}
+
+      If a picture is worth a thousand words then a thirty second long video at 24~fps is worth
+      approximatetly 720 thousand words. To this end this appendix presents a collection of animations
+      depicting the time evolution of the time-dependent \textsc{ks} potential. These videos may be
+      found online\footnote{\url{https://tinyurl.com/ybo3yhqd}}. AS these animations are largely self
+      explanitory and did not readily fit into the discussions presented in Chap.~\ref{chap:hephe} they
+      are presented here.
+
+      When visualizing the \textsc{ks} potential it is best consider only the electron-electron
+      contributions, that is to ignore the external potential. This is benificial because from the
+      perspective of the current work we are primarily interested in the performance of our
+      approximation to these portions of the potential. As the behaviour of internuclear potential is
+      well established tracking it is of little value. Additionally, the poles of the Couloumb potential
+      will drown out the electron electron effects. For these reasons we will concern ourselves with
+      just the electron-electron contributions
       %
       \begin{equation}
-         p_T = \frac{1}{3} \int_T n(\mathbf{r},t_f) \, \mathrm{d}^3 r
+         v_\mathrm{ee}^\sigma = v_\mathrm{x}^\sigma + v_\mathrm{H}.
+      \end{equation}
+
+      The the spin-dependent electron-electron potentials are best compared with the associated
+      spin-densities, $n_\sigma$ of Eq.~\eqref{eq:spinden} genereted from the $1s$-only orbitals in
+      the p\textsc{etf} model. In this way one can more easily under stand the appearance and time
+      evolution of $v_\mathrm{ee}^\sigma$. For example for $v_\mathrm{ee}^\uparrow$ contain a single
+      peak. This is due to the exact cancelation of self interaction that is present on the projectile
+      centre where initially only one electron resides.
+
+   \end{chapter}
+
+   \begin{chapter}{Three-Electron Correlation \\ Integrals \label{chap:moreIc}}
+
+      The process of deriving three-electron versions of the equations presented in
+      Sec.~\ref{sec:phe2p-obs} begins as it did in the two electron state with the full $N$-body wave
+      function. Unlike in the former case the wave function is not readily split into spatial and spin
+      components. On is then forced to work with the function $\Psi(\mathbf{r}_1, \sigma_1, \mathbf{r}_2,
+      \sigma_2, \mathbf{r}_3, \sigma_3, t)$. Our notation may be simplified by introducing a combined
+      spatial-spin coordinates $\mathbf{x}_j = (\mathbf{r}_j, \sigma_j)$ and a combined integral
+      operator
+      %
+      \begin{equation} \label{eq:combInt}
+         \fint_V \mathrm{d}^3x = \sum\limits_{\sigma = \uparrow, \downarrow} \int_V \mathrm{d}^3 r.
+      \end{equation}
+
+
+      With a slight modification to the definition of the one-particle density
+      %
+      \begin{equation} \label{eq:xDen}
+         n(\mathbf{x}) = N \fint \mathrm{d}^3 x_2 \dots \mathrm{d}^3 x_N
+            \left| \Psi( \mathbf{x}, \mathbf{x}_2, \sigma_2, \dots, \mathbf{r}_N, \sigma_3, t) \right|^2
+      \end{equation}
+      %
+      the single-particle probabilities to find an electron on the target or the projectile may be
+      obtained
+      %
+      \begin{equation}
+         p_T = \frac{1}{3} \fint_T n(\mathbf{r},t_f) \, \mathrm{d}^3 r
       \end{equation}
       %
       and
       %
       \begin{equation}
-         p_P = \frac{1}{3} \int_P n(\mathbf{r},t_f) \, \mathrm{d}^3 r
+         p_P = \frac{1}{3} \fint_P n(\mathbf{r},t_f) \, \mathrm{d}^3 r.
       \end{equation}
       %
-      as well as two types of correlation integral, one that involves three-particle interations
+      In addition to these probabilities we will define two varieties of correlation integral, one that
+      involves three-particle interactions
       %
       \begin{equation}
-         I_\mathrm{c}^{V_1 V_2 V_3} = \int_{V_1} \int_{V_2} \int_{V_3}
-           \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \mathrm{d}^3 r_3 \,
-           g^{(3)}_\mathrm{c}(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, t)
-           n(\mathbf{r}_1,t) n(\mathbf{r}_2,t) n(\mathbf{r}_3,t),
+         I_\mathrm{c}^{V_1 V_2 V_3} = \fint_{V_1} \fint_{V_2} \fint_{V_3}
+           \mathrm{d}^3 x_1 \mathrm{d}^3 x_2 \mathrm{d}^3 x_3 \,
+           g^{(3)}_\mathrm{c}(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3, t)
+           n(\mathbf{x}_1,t) n(\mathbf{x}_2,t) n(\mathbf{x}_3,t),
       \end{equation}
       %
       \begin{equation}
-         g^{(3)}_\mathrm{c}(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_3, t) =
-            \frac{\rho(\mathbf{r}_1, \mathbf{r}_2, \mathbf{r}_1, t)}
-            {n(\mathbf{r}_1,t) n(\mathbf{r}_2,t) n(\mathbf{r}_3,t)} - \frac{1}{9}
+         g^{(3)}_\mathrm{c}(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3, t) =
+            \frac{\rho(\mathbf{x}_1, \mathbf{x}_2, \mathbf{x}_3, t)}
+            {n(\mathbf{x}_1,t) n(\mathbf{x}_2,t) n(\mathbf{x}_3,t)} - \frac{1}{9}
       \end{equation}
       %
       and a more familiar two-particle version
       %
       \begin{equation}
-         I_\mathrm{c}^{V_1 V_2} = \int_{V_1} \int_{V_2} \mathrm{d}^3 r_1 \mathrm{d}^3 r_2 \,
-         g^{(2)}_\mathrm{c}(\mathbf{r}_1, \mathbf{r}_2, t) n(\mathbf{r}_1,t) n(\mathbf{r}_2,t),
+         I_\mathrm{c}^{V_1 V_2} = \fint_{V_1} \fint_{V_2} \mathrm{d}^3 x_1 \mathrm{d}^3 x_2 \,
+         g^{(2)}_\mathrm{c}(\mathbf{x}_1, \mathbf{x}_2, t) n(\mathbf{x}_1,t) n(\mathbf{x}_2,t),
       \end{equation}
       %
       \begin{equation}
@@ -2832,116 +2961,6 @@
       The \textsc{wb} model would then need to be adapted to calculate the seven correlation integrals.
       This process may be aided in part by realtions between the full three-particle density and its
       various reductions (see for example Ref.~\cite{reduce}).
-
-   \end{section}
-
-\end{chapter}
-
-\begin{appendices}
-
-   \begin{chapter}{Coordinate Systems \label{chap:coords}}
-
-      This appendix contains the fundamentals of some non-rectangular coordinate systems used in the
-      text. This discussion focuses on the lesser know coordinate systems. For more detail the reader
-      is referred to any mathematical handbook for physics, for example~\cite{coord1, coord2}.
-
-      \begin{section}{Elliptical Coordinates \label{sec:elliptic}}
-
-         \begin{figure}[t]
-            \centering
-            \begin{subfigure}{.5\textwidth}
-               \centering
-               \includegraphics[width=\linewidth]{./images/appendix/xieta.eps}
-               \caption{$\xi$-$\eta$ space. \label{fig:xieta}}
-            \end{subfigure}%
-            \begin{subfigure}{.5\textwidth}
-               \centering
-               \includegraphics[width=\linewidth]{./images/appendix/eliptical.eps}
-               \caption{$x$-$y$ space. \label{fig:xy}}
-            \end{subfigure}
-            \caption[Coordinate chart of elliptical coordinates]{The coordinate mapping of
-                     Eq.~\eqref{eq:elipdef} is demonstrated by the correspondence between
-                     coloured grid lines.\label{fig:elliptic}}
-         \end{figure}
-
-         Elliptical coordinates are formed by the intersection of series of confocal ellipses and
-         hyperbole. If we let $(\xi, \eta)$ denote the elliptic and hyperbolic grid lines and $a > 0$
-         their focal length we can cover the plane with two charts. The first is given by
-         %
-         \begin{equation} \label{eq:elipdef}
-            \left\{
-            \begin{array}{l}
-               x   = a \xi \eta \\
-               y^2 = a \left( \xi^2 - 1 \right) \left( 1 - \eta^2 \right),
-            \end{array}
-            \right.
-         \end{equation}
-         %
-         while the second is defined similarly and covers the lower half space ($(\xi,\eta) \mapsto
-         (x,-y)$). Both charts are defined for $(\xi,\eta) \in [1, \infty] \times [-1,1]$.
-
-         This mapping is demonstrated in Fig.~\ref{fig:elliptic}. The coloured lines in the left panel
-         represent a selection of $\xi$ (blues and greens) and $\eta$ (reds and oranges) grid lines.
-         Grid lines are mapped by Eq.~\eqref{eq:elipdef} to lines of corresponding colour in the right
-         panel.
-
-      \end{section}
-
-      \begin{section}{Prolate Spheroidal Coordinates \label{sec:prolate}}
-
-         Prolate spheroidal coordinates are a three-dimensional coordinate system that result from
-         rotating the upper half space elliptical coordinates (defined in the proceeding section) around
-         the line running through the co-foci of the elliptic and hyperbolic grid lines.
-
-         While several conventions exist, throughout this work prolate spheroidal coordinates are
-         defined as
-         %
-         \begin{equation} \label{eq:psc}
-            \left\{
-            \begin{array}{l}
-               x = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \sin \phi, \\
-               y = a \sqrt{(\xi^2 - 1)(1 - \eta^2)} \cos \phi, \\
-               z = a \xi \eta,
-            \end{array}
-            \right.
-         \end{equation}
-         %
-         for $(\xi, \eta, \phi) \in [1, \infty) \times [-1,1] \times [0,2\pi)$.
-
-         One says that a function $f: \mathbb{R}^3 \rightarrow \mathbf{R}$ is cylindrically symmetric if
-         it has no $\phi$ dependence, i.e.\ if $f(\xi,\eta,\phi) = f(\xi,\eta)$.
-
-      \end{section}
-
-   \end{chapter}
-
-   \begin{chapter}{Visualizing the Time-dependent Potential \label{sec:visual}}
-
-      If a picture is worth a thousand words then a thirty second long video at 24~fps is worth
-      approximatetly 720 thousand words. To this end this appendix presents a collection of animations
-      depicting the time evolution of the time-dependent \textsc{ks} potential. These videos may be
-      found online\footnote{\url{https://tinyurl.com/ybo3yhqd}}. AS these animations are largely self
-      explanitory and did not readily fit into the discussions presented in Chap.~\ref{chap:hephe} they
-      are presented here.
-
-      When visualizing the \textsc{ks} potential it is best consider only the electron-electron
-      contributions, that is to ignore the external potential. This is benificial because from the
-      perspective of the current work we are primarily interested in the performance of our
-      approximation to these portions of the potential. As the behaviour of internuclear potential is
-      well established tracking it is of little value. Additionally, the poles of the Couloumb potential
-      will drown out the electron electron effects. For these reasons we will concern ourselves with
-      just the electron-electron contributions
-      %
-      \begin{equation}
-         v_\mathrm{ee}^\sigma = v_\mathrm{x}^\sigma + v_\mathrm{H}.
-      \end{equation}
-
-      The the spin-dependent electron-electron potentials are best compared with the associated
-      spin-densities, $n_\sigma$ of Eq.~\eqref{eq:spinden} genereted from the $1s$-only orbitals in
-      the p\textsc{etf} model. In this way one can more easily under stand the appearance and time
-      evolution of $v_\mathrm{ee}^\sigma$. For example for $v_\mathrm{ee}^\uparrow$ contain a single
-      peak. This is due to the exact cancelation of self interaction that is present on the projectile
-      centre where initially only one electron resides.
 
    \end{chapter}
 
