@@ -185,7 +185,7 @@
 
 \begin{chapter}{Introduction \label{chap:intro}}
 
-   Atomic collision systems are of interest both on their own merits, and for there potential in
+   Atomic collision systems are of interest both on their own merits, and for their potential in
    applications. As a  particular the He\textsuperscript{+}-He collision system, a focus of a large
    portion of the present work, is applicable in such diverse areas as fusion reactors~\cite{fusion1,
    fusion2}, astrophysics~\cite{astro1, astro2}, and dark matter detection~\cite{dmdet}.
@@ -197,7 +197,7 @@
    With a negative projectile the collision may be treated as an effective one-centred system which
    involves electron excitation and ionization.
 
-   One might envision more complex systems by simply increasing the number of electrons on the target
+   One might envision more complex systems by simply increasing the number of electrons on the target,
    however, a more useful course is to replace the negatively charged projectile with one that is
    positively charged. With a positive projectile one must consider electron transfer in addition to
    ionization processes.
@@ -208,7 +208,7 @@
 
    This chain of accruing complexity essentially describes the path of this work in which a series of
    increasingly involved collision systems are investigated. This sequence begins with a negative
-   projectile with an antiproton-helium system. Following this two systems, proton-helium
+   projectile, that is with an antiproton-helium system. Following this two systems, proton-helium
    (\textit{p}-He) and fully stripped helium ions on helium (He\textsuperscript{2+}-He), involving
    positively charged projectiles are investigated. Finally, singly charged helium ions incident on
    helium atoms (He\textsuperscript{+}-He), a system which contains one electron on the projectile and
@@ -216,20 +216,51 @@
 
    Solving the Schr\"{o}dinger equation describing a system of more than two particles is
    computationally taxing, even for a small number of particles (three or more). Thus, the so called
-   few-body problem, tests the limits of current computational power.
+   few-body problem, tests the limits of current computational power. As an example, recently Gainullin
+   and Sonkin presented a method for directly solving the time-dependent Schr\"{o}dinger
+   equation~\cite{gpuCalc}. In this work the authors performed a benchmark proton-helium collision
+   calculation. With code running on 16 \textsc{gpu}s their their single electron calculation was
+   completed in 16 hours. The authors then make the claim that similar performance for a two-electron
+   system would require access to 1000 \textsc{gpu}s.
 
-   In the standard treatment of many-body quantum mechanics there is a well-established process for
-   calculating observables from the full many-body wave function describing the system. In
-   time-dependent density functional theory~\cite{tddft, ullrich} (\textsc{tddft}) one does not
-   necessarily know the full wave function, instead one works with the one-particle density. This
-   method is, in principle, just as accurate as the standard wave function treatment while, at the
-   same time being far more computationally efficient.
+   Perhaps the next best option for obtaining tackling a many-body system is the close-coupling
+   method~\cite{ccRev}. Rather then determine the $N$-body wave function directly this method relies on
+   a truncated basis expansion to approximate the exact wave function. A balance must then be found
+   between numerical accuracy and computational intensity. As one increases the number of included basis
+   states the approximation will approach the exact solution, however, the effort required to achieve
+   determine a solution also approaches that of a direct calculation.
 
-   One down side is that, unlike in standard quantum mechanics, observables are not readily calculable,
-   as they are from the many-electron wave function. While the Runge-Gross theorem~\cite{rgt} guarantees
-   that all observables are expressible as functionals of the one-particle density, exact expressions
-   are only available in a limited number of cases~\cite{obs_exac}. In most situations one is then
-   forced to work with approximate observable functionals.
+   A popular alternative comes from perturbation theory. One makes use of the Born series to describe
+   the wave function at some final time long after the collision in terms of free particle states. A
+   general feature of perturbative methods is that they have a limited range of applicability. The
+   Born series is generally convergent at high energies and for weak interactions (in the context of
+   ion-atom collisions this means low charge-state projectiles). These methods can be improved and
+   extended into the intermediate energy regime by clever choices for the unperturbed
+   states~\cite{perRev1, perRev2}.
+
+   Another alternative the classical trajectory Monte Carlo method (\textsc{ctmc})~\cite{ctmcRev}. In
+   the \textsc{ctmc} multiple calculations are performed where particles are evolved according the
+   classical Hamiltonian with initial conditions randomly selected from a distribution, usually one
+   describing the quantum mechanical initial state. The primary failing of this method is its classical
+   nature, the, \textsc{ctmc} is fundamentally incapable of capturing purely quantum mechanical
+   phenomena such as tunnelling and exchange.
+
+   Time-dependent density functional theory~\cite{tddft, ullrich} (\textsc{tddft}), the method of choice
+   of the current work, attempts to provide a solution to all  of the problems inherent in the above
+   mentioned methods. By reformulating the $N$-body problem in terms of the one-particle density rather
+   than the $N$-electron wave function the problem is effectively reduced to the complexity of a single
+   particle calculation. Additionally as the reformulation is theoretically exact it avoids the
+   restricted applicability of perturbative methods. While it may seem strange that all of the
+   complexity of the $N$-body wave function can be captured by a single particle quantity like the
+   one-particle density \textsc{tddft} has been successfully applied to a wide range of problems
+   {\color{red}{list applications and refssss}}.
+
+   While useful \textsc{tddft} is not with out its own drawbacks. One down side is that, unlike in
+   standard quantum mechanics, observables are not readily calculable, as they are from the
+   many-electron wave function. While the Runge-Gross theorem~\cite{rgt} guarantees that all observables
+   are expressible as functionals of the one-particle density, exact expressions are only available in a
+   limited number of cases~\cite{obs_exac}. In most situations one is then forced to work with
+   approximate observable functionals.
 
    Additionally, when working within the context of \textsc{tddft} one typically determines the
    one-particle density via an auxiliary system of non-interacting particles. To obtain this a new
@@ -248,6 +279,12 @@
    results and conclusions of this work are given in Chap.~\ref{chap:con}.
 
    Atomic units ($\hbar = m_e = e = 1$) are used throughout unless otherwise stated.
+
+   \begin{itemize}
+
+      \item applications of tddft:
+
+   \end{itemize}
 
 \end{chapter}
 
