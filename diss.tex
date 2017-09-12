@@ -37,7 +37,7 @@
 \usepackage[toc,page]{appendix}
 
 
-\usepackage{showlabels}
+%\usepackage{showlabels}
 
 \widowpenalty=10000
 \clubpenalty=10000
@@ -252,39 +252,38 @@
    particle calculation. Additionally as the reformulation is theoretically exact it avoids the
    restricted applicability of perturbative methods. While it may seem strange that all of the
    complexity of the $N$-body wave function can be captured by a single particle quantity like the
-   one-particle density \textsc{tddft} has been successfully applied to a wide range of problems
-   {\color{red}{list applications and refssss}}.
+   one-particle density \textsc{tddft} has been successfully applied to a wide range of problems. Most
+   obviously given the title of this dissertation \textsc{tddft} has been applied to ion-atom
+   collisions~\cite{bgm-rev}, many of the same techniques of this realm can be applied to the related
+   field of laser interactions with ions and molecules~\cite{laserRev}. \textsc{tddft} has also been
+   used to determine properties of extended solids (e.g.\ ionic crystals)~\cite{extRev} and of complex
+   organic and inorganic molecules~\cite{qcRev}.
 
    While useful \textsc{tddft} is not with out its own drawbacks. One down side is that, unlike in
    standard quantum mechanics, observables are not readily calculable, as they are from the
    many-electron wave function. While the Runge-Gross theorem~\cite{rgt} guarantees that all observables
    are expressible as functionals of the one-particle density, exact expressions are only available in a
    limited number of cases~\cite{obs_exac}. In most situations one is then forced to work with
-   approximate observable functionals.
+   approximate observable functionals. Chapter~\ref{chap:p-he2p-he} of this work largely concerns itself
+   with an investigation of the observable problem using antiproton-, proton-, and
+   He\textsuperscript{+2}-He collision systems as test-beds. Here a correlation integral model~\cite{wb}
+   that was adapted to describe single-centred collision problems~\cite{pbarhe} is extended to
+   characterize two-centred systems.
 
    Additionally, when working within the context of \textsc{tddft} one typically determines the
    one-particle density via an auxiliary system of non-interacting particles. To obtain this a new
    potential, the Kohn-Sham potential (\textsc{ks}), which encodes the interacting system into the
    language of non-interacting particles, must be introduced. As with the observables, mentioned above,
    this potential is an unknown functional of the one-particle density and, as such, must also be
-   approximated. These issues will be laid out in greater detail in Chap.~\ref{chap:dft} where the
-   relevant \textsc{dft} background material is presented.
-
-   This discussion is followed in Chap.~\ref{chap:p-he2p-he} where the antiproton-, proton-, and
-   He\textsuperscript{+2}-He collision systems are investigated. The chapter focuses on exploring the
-   observable problem through an application of a correlation integral model~\cite{wb} to the
-   aforementioned collision systems. The second of the main problems of \textsc{dft} is explored in
+   approximated. This, the second of the main problems of \textsc{dft} is explored in
    Chap.~\ref{chap:hephe} where a procedure for accurately approximating the Kohn-Sham potential is
-   implemented and applied to the He\textsuperscript{+}-He collision system. Finally, A summary of the
-   results and conclusions of this work are given in Chap.~\ref{chap:con}.
+   implemented and applied to the He\textsuperscript{+}-He collision system.
+
+   These issues will be laid out in greater detail in Chap.~\ref{chap:dft} where the relevant
+   \textsc{dft} background material is presented. Finally, A summary of the results and conclusions of
+   this work are given in Chap.~\ref{chap:con}.
 
    Atomic units ($\hbar = m_e = e = 1$) are used throughout unless otherwise stated.
-
-   \begin{itemize}
-
-      \item applications of tddft:
-
-   \end{itemize}
 
 \end{chapter}
 
@@ -809,9 +808,10 @@
       Kohn-Sham system for the helium atom). In order to keep the number of states in the basis to a
       minimum and simplify the description only those states with $K = 0$ where included. This
       simplification has proved sufficient in the past~\cite{bgm-rev}. The remaining regularizer is set
-      to $\epsilon_P = 1$. A more general two-centred version of the \textsc{bgm} (\textsc{tc-bgm})
-      which includes explicit basis states on both the target and the potential is also possible. The
-      full machinery of the two-centred will be discussed in the following chapter.
+      to $\epsilon_P = 1$ and the basis chosen was similar to that of~\cite{keim-ihe}. A more general
+      two-centred version of the \textsc{bgm} (\textsc{tc-bgm}) which includes explicit basis states on
+      both the target and the potential is also possible. The full machinery of the two-centred will be
+      discussed in the following chapter.
 
    \end{section}
 
@@ -1235,7 +1235,7 @@
       interested in some of the calculations excluded from these comparisons there exist a plethora of
       independent electron, independent event, or related models~\cite{SLD-83, DMR-84, SLD-85, GM-86,
       CM-87, GM-87, JLF-89, DC-90, DC-91a, DC-91b, DG-91, SKG-91, SL-91, Kuang-92, MLC-93, CM-94,
-      CSR-95, BDM-96, MBGH-97, McCartney-97, Mccartney-99, GAMRF-02, GFS-02, AMRF-04, BLMC-04, FRBJG-06,
+      CSR-95, BDM-96, MBGH-97, McCartney-97, McCartney-99, GAMRF-02, GFS-02, AMRF-04, BLMC-04, FRBJG-06,
       FJG-07, GIFK-08, ZK-09, G-11, LFG-11, GG-12a}, classical trajectory Monte Carlo
       calculations~\cite{ZM-85, OWM-86, MO-87, WO-88, MS-89, Cohen-96, TH-96, MMTH-02, DAKW-04, GEP-09},
       and other classical statistical models such as the Bohr-Lindhard model~\cite{DYC-08,Ding-12} for
@@ -1716,7 +1716,8 @@
    (Sec.~\ref{sec:pot}) in which a procedure for calculating an accurate exchange potential within the
    x-only approximation is discussed. This is followed by a brief discussion of the method used to
    extract cross sections from the one-particle density (Sec.~\ref{sec:hephe-det}) before presenting
-   results in Sec.~\ref{sec:hephe-disc}.
+   results in Sec.~\ref{sec:hephe-disc}. This chapter can be seen as an extended version of the work
+   presented in~\cite{hephe}.
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
 
