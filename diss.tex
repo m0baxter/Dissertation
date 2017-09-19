@@ -37,7 +37,7 @@
 \usepackage[toc,page]{appendix}
 
 
-%\usepackage{showlabels}
+\usepackage{showlabels}
 
 \widowpenalty=10000
 \clubpenalty=10000
@@ -130,31 +130,31 @@
 
    \onehalfspacing
 
-   Time-dependent density functional theory (\textsc{tdft}) is an alternate formulation of $N$-body
-   quantum mechanics which allows one to describe a system via the single-particle density, $n$, rather
-   than the full $N$-body wave function. While this reformulation is in theory exact in practice it
-   necessitates at least two approximations. First, the exchange-correlation potential which encodes the
-   two-particle interactions present in the time-dependent Schr\"{o}dinger equation into the language
-   of the single-particle description is not precisely know. Even if one had perfect knowledge of this
-   potential a further approximation would be required when attempting to extract the values of
-   observables as the exact relation between the one-particle density and most observables of interest
-   is also unknown.
+   Time-dependent density functional theory (\textsc{tddft}) is an alternate formulation of
+   time-dependent $N$-body quantum mechanics which allows one to describe a system via the
+   single-particle density, $n$, rather than the full $N$-body wave function. While this reformulation
+   is in theory exact in practice it necessitates at least two approximations. First, the
+   exchange-correlation potential which encodes the two-particle interactions present in the
+   time-dependent Schr\"{o}dinger equation into the language of the single-particle description is not
+   precisely know. Even if one had perfect knowledge of this potential a further approximation would be
+   required when attempting to extract the values of observables as the exact relation between the
+   one-particle density and most observables of interest is also unknown.
 
    This dissertation investigates these issues using ion-atom collision systems as a test-bed. First,
    the observable problem is explored in antiproton-helium, proton-helium, and He\textsuperscript{2+}-He
    collision systems. Total cross sections for all charge transfer processes in these systems, the
    observables of choice in the present situation, are determined using a two centred extension of a
-   correlation-integral model.
+   correlation-integral model that was originally applied to one centred situations.
 
    Following this theoretical total cross section results for all ionization/capture processes in the
    He\textsuperscript{+}-He collision system are presented in the approximate impact energy range
-   10-1000~keV/amu. Calculations were performed within the framework of time-dependent spin-density
-   functional theory (a spin-dependent extension of \textsc{tddft}). These cross sections are used as a
-   bench mark to test an accurate exchange-correlation potential generated via the Krieger-Li-Iafrate
-   approximation applied within the exchange-only limit (correlation is ignored). The results of two
-   models, one where electron translation factors in the orbitals used to calculate the potential are
-   ignored and another where partial electron translation factors are included, are compared with
-   available experimental data as well as a selection of previous theoretical calculations.
+   10-1000~keV/amu. Calculations were performed within the framework of a spin-dependent extension of
+   \textsc{tddft}. These cross sections are used as a bench mark to test an accurate
+   exchange-correlation potential generated via the Krieger-Li-Iafrate approximation applied within the
+   exchange-only limit in which correlation is ignored. The results of two models, one where electron
+   translation factors in the orbitals used to calculate the potential are ignored and another where
+   partial electron translation factors are included, are compared with available experimental data as
+   well as a selection of previous theoretical calculations.
 
 \end{abstract}
 
@@ -302,7 +302,7 @@
    \begin{section}{\textsc{dft} and \textsc{tddft} Existence Theorems \label{sec:dft}}
 
       In the standard treatment of non-relativistic many-body quantum mechanics a system is described by
-      a wavefunction $\Psi$ which, depending upon the situation, is determined by either the
+      a wave function $\Psi$ which, depending upon the situation, is determined by either the
       time-dependent Schr\"{o}dinger equation (\textsc{tdse})
       %
       \begin{equation} \label{eq:tdse}
@@ -389,9 +389,9 @@
                            \left| \varphi_{j\sigma} \right|^2,
       \end{equation}
       %
-      where $n$ is the one-particle density of the fully interacting system. The orbitals $\varphi_i$
-      are determined through the stationary or time-dependent Kohn-Sham equations~\cite{ks-eq,
-      spin-dep1, spin-dep3, tdks} (\textsc{sks}, \textsc{tdks} respectively)
+      where $n$ is the one-particle density of the fully interacting system. The orbitals
+      $\varphi_{j\sigma}$ are determined through the stationary or time-dependent Kohn-Sham
+      equations~\cite{ks-eq, spin-dep1, spin-dep3, tdks} (\textsc{sks}, \textsc{tdks} respectively)
       %
       \begin{equation} \label{eq:sks}
          \left( -\frac{\Delta}{2} + v^\sigma_\mathrm{\textsc{ks}}[n_\uparrow,
@@ -427,9 +427,8 @@
             + v^\sigma_\mathrm{xc}[n_\uparrow, n_\downarrow].
       \end{equation}
       %
-      The first term in this expression is the external potential, which is the potential
-      $\hat{V}_\mathrm{ext}$ of Eqs.~\eqref{eq:sse} and~\eqref{eq:tdse} on the single-particle level.
-      The next term is the Hartree screening potential
+      The first term in this expression is the external potential (see the right hand side of
+      Eq.~\ref{eq:Vext}). The next term is the Hartree screening potential
       %
       \begin{equation} \label{eq:vh}
          v_\mathrm{H}(\mathbf{r},t) = \int \frac{n(\mathbf{r}^\prime, t)}
@@ -476,7 +475,7 @@
 
       In principle all observables are functionals of the one-particle density. However, in practice the
       exact functional is only known in a handful of cases~\cite[p.~211-213]{obs_exac}. This discussion
-      will be made far more explicit in Sec.~\ref{sec:obs} where the difficulties of extracting
+      will be made far more explicit in Sec.~\ref{sec:phe2p-obs} where the difficulties of extracting
       observables, total cross sections in this case, are described in detail.
 
    \end{section}
@@ -626,8 +625,8 @@
          \end{equation}
 
          After some work the stationary version of the exchange-only \textsc{opm} will then follow from
-         Eqs.~\eqref{eq:opm1} and \eqref{eq:xfunc}. The result may be expressed, adapting the notation
-         of~\cite{klieq}, as
+         Eq.~\eqref{eq:opm1} and the Fock exchange energy in Eq.~\eqref{eq:xfunc}. The result may be
+         expressed, adapting the notation of~\cite{klieq}, as
          %
          \begin{equation} \label{eq:opmEq}
             \sum\limits_j \int \mathrm{d}^3 r^\prime
@@ -810,7 +809,8 @@
       simplification has proved sufficient in the past~\cite{bgm-rev}. The remaining regularizer is set
       to $\epsilon_P = 1$ and the basis chosen was similar to that of~\cite{keim-ihe}. A more general
       two-centred version of the \textsc{bgm} (\textsc{tc-bgm}) which includes explicit basis states on
-      both the target and the potential is also possible. The full machinery of the two-centred will be
+      both the target and the potential is also possible. The full machinery of the two-centred version
+      will be
       discussed in the following chapter.
 
    \end{section}
@@ -952,15 +952,15 @@
 
       With an appropriate choice of $t_f$ Eq.~\eqref{eq:pt} reduces to a sum over the occupations of the
       bound states of the basis defined in Eq.~\eqref{eq:bgmbasis}. The single-centred \textsc{bgm}, as
-      opposed to the two-centred \textsc{BGM} discussed in Sec.~\ref{sec:pot}, basis contains no
+      opposed to the two-centred \textsc{bgm} discussed in Sec.~\ref{sec:pot}, basis contains no
       explicit projectile states, thus one must first project the one-particle solutions onto an
-      appropriate set of projectile state (H or He ground state) in order to generate a sum over
+      appropriate set of projectile states (H or He bound states) in order to generate a sum over
       projectile occupations analogous to that described for the target. The process of projecting onto
       projectile states may lead to inaccuracies depending on how well the final state is represented by
       a finite number of \textsc{bgm} basis states.
 
       The expressions for no, single, and double ionization in $\bar{p}$-He collisions presented
-      in~\cite{pbarhe} may be recovered by setting closing the capture channels, i.e.\
+      in~\cite{pbarhe} may be recovered by closing the capture channels, i.e.\ setting
       $p_p = I^{PP}_\mathrm{c} = I^{TP}_\mathrm{c} = 0$. Being explicit we have
       %
       \begin{subequations} \label{eq:prob-pbarhe}
@@ -1721,7 +1721,7 @@
 
    \begin{section}{Calculating the x-Potential \label{sec:pot}}
 
-      While the correlation potential in Eq.~\ref{eq:tdks} may be ignored, that is the x-only
+      While the correlation potential in Eq.~\eqref{eq:tdks} may be ignored, that is the x-only
       approximation may be used (with some understanding of the consequences), an accurate exchange
       potential is essential for a precise description of the He\textsuperscript{+}-He collision
       system. The spin-polarized nature of the system, which emphasizes exchange effects, makes this
@@ -1735,8 +1735,8 @@
       an internuclear distance $R(t) = \sqrt{b^2 + Z(t)^2}$, where $b$ and $Z$ are the impact parameter
       and the $z$ position of the projectile as described below Eq.~\eqref{eq:phe2p-ext}. If at each
       time-step of the propagation the time-dependent Kohn-Sham orbitals,
-      $\varphi_{\sigma j}(\mathbf{r},t)$ are fed into the \textsc{kli} functional (ignoring self
-      consistency) an exchange potential, $v^{\sigma}_\mathrm{x}[ \{ \varphi_{\sigma^\prime j} \};t]$,
+      $\varphi_{j \sigma}(\mathbf{r},t)$ are fed into the \textsc{kli} functional (ignoring self
+      consistency) an exchange potential, $v^{\sigma}_\mathrm{x}[ \{ \varphi_{j \sigma^\prime} \};t]$,
       is obtained\footnote{The normalization of the \textsc{kli} potential is chosen so that
       $v_\mathrm{x}^\textsc{kli}(\mathbf{r},t) \xrightarrow{\vert \mathbf{r} \vert \to \infty} 0$.}. In
       Ref.~\cite{diamol} the \textsc{kli} scheme has been implemented for eigenstates of a total
@@ -1749,7 +1749,7 @@
       orbitals are represented in a non-orthogonal basis
       %
       \begin{equation} \label{eq:bgmexp}
-         \varphi_{\sigma j}(\mathbf{r},t) = \sum\limits_{c \in \{P, T\}} \sum\limits_{k, L, M}
+         \varphi_{j \sigma}(\mathbf{r},t) = \sum\limits_{c \in \{P, T\}} \sum\limits_{k, L, M}
                                d_{c k L}^{\sigma j}(t) \tilde{\chi}^{LM}_{c k}(\mathbf{r},t),
       \end{equation}
       %
@@ -1774,7 +1774,7 @@
       with
       %
       \begin{equation}
-         W_T(\mathbf{r}_T,\epsilon_T) = \frac{1 - e^{-\epsilon_T r_T}}{r_t},
+         W_T(\mathbf{r}_T,\epsilon_T) = \frac{1 - e^{-\epsilon_T r_T}}{r_T},
       \end{equation}
       %
       and
@@ -1815,7 +1815,7 @@
       \textsc{etf}s for the time being the orbitals will take the explicit form
       %
       \begin{equation} \label{eq:1sonly}
-         \varphi_{\sigma j}^{1s}(\mathbf{r},t) = a^{\sigma j}_T(t) \chi^{00}_{T1}(\mathbf{r},t)
+         \varphi_{j \sigma}^{1s}(\mathbf{r},t) = a^{\sigma j}_T(t) \chi^{00}_{T1}(\mathbf{r},t)
                                                + a^{\sigma j}_P(t) \chi^{00}_{P1}(\mathbf{r},t).
       \end{equation}
       %
@@ -1823,10 +1823,10 @@
       two-dimensional subspace spanned by the target and projectile 1s-states
       %
       \begin{equation} \label{eq:proj}
-         \ket{\varphi^{1s}_{\sigma j}} = \hat{P} \ket{\varphi_{\sigma j}}
+         \ket{\varphi^{1s}_{j \sigma}} = \hat{P} \ket{\varphi_{j \sigma}}
                                        = \sum\limits_{c_1, c_2 \in \{T,P\}} \tilde{S}^{-1}_{c_1 c_2}
                                                       \ket{\chi^{00}_{c_1 1}}
-                                                      \braket{\chi^{00}_{c_2 1}| \varphi_{\sigma j}}
+                                                      \braket{\chi^{00}_{c_2 1}| \varphi_{j \sigma}}
       \end{equation}
       %
       with $\tilde{S}^{-1}_{c_1 c_2}$ the inverse of the overlap matrix
@@ -1901,7 +1901,8 @@
       \end{equation}
       %
       In this way the only phase information entering the exchange functional will arise directly from
-      the \textsc{etf}s.
+      the \textsc{etf}s. The Calculation in which the coefficients are obtained from Eq.~\eqref{eq:coef}
+      will be referred to as the response model in the following.
 
       Regardless of which option is chosen it is important that $v_\mathrm{H}$ be determined with the
       same set of orbitals used in the calculation of $v_\mathrm{x}^\sigma$, preserving the precise
@@ -1917,13 +1918,13 @@
 
       Of interest in any scattering problem is the probability of finding the system in some final state.
       If we represent the state being considered as $\ket{f_1 \, f_2 \, f_3}$ and the initial state of
-      the system propagated to some final time $t_f$ by $\ket{\varphi_{ \uparrow 1} \,
-      \varphi_{\uparrow 2} \, \varphi_{\downarrow 1} (t_f)}$ the exclusive probability to find the
+      the system propagated to some final time $t_f$ by $\ket{\varphi_{1 \uparrow} \,
+      \varphi_{2 \uparrow} \, \varphi_{1 \downarrow} (t_f)}$ the exclusive probability to find the
       system in the given final state at time $t_f$ will be given by
       %
       \begin{equation} \label{eq:finalProb}
-         P_{f_1 f_2 f_3}(t_f) = \left| \braket{ f_1 \, f_2 \, f_3 | \varphi_{ \uparrow 1} \,
-                                       \varphi_{\uparrow 2} \, \varphi_{\downarrow 1} (t_f) } \right|^2.
+         P_{f_1 f_2 f_3}(t_f) = \left| \braket{ f_1 \, f_2 \, f_3 | \varphi_{1 \uparrow} \,
+                                       \varphi_{2 \uparrow} \, \varphi_{1 \downarrow} (t_f) } \right|^2.
       \end{equation}
       %
       If one assumes that both the propagated and final states can be represented as a single Slater
@@ -1937,27 +1938,26 @@
       %
       \begin{equation} \label{eq:denmat}
          \gamma_{f f^\prime}(t_f) = \sum\limits_{\sigma} \sum\limits_{j = 1}^{N_\sigma}
-                               \braket{f | \varphi_{\sigma j}(t_f)}
-                               \braket{\varphi_{\sigma j}(t_f) | f^\prime},
+                               \braket{f | \varphi_{j \sigma}(t_f)}
+                               \braket{\varphi_{j \sigma}(t_f) | f^\prime},
       \end{equation}
       %
       with $f$ and $f`$ $\in \{f_1, f_2, f_3\}$, and the transition amplitudes
       %
       \begin{equation}
-         \braket{f | \varphi_{\sigma j}(t_f)}
-         = \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{\sigma j}(t_f)}
+         \braket{f | \varphi_{j \sigma}(t_f)}
+         = \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{j \sigma}(t_f)}
       \end{equation}
       (for some $k$, $l$, $c$, and properly orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$)
-      readily calculable from the dynamics. A model of this type which ignores the functional
-      correlations discussed in Sec.~\ref{sec:phe2p-obs} is consistent with an \textsc{iem} description,
-      An example of such a description is provided in Appendix~\ref{chap:moreIc} (in particular
-      Eq.~\eqref{eq:iem3}). Expressions similiar to Eq.~\eqref{eq:prob-iem} may be constructed in this
+      readily calculable from the dynamics.
+
+      Expressions similiar to Eq.~\eqref{eq:prob-iem} may be constructed in this
       context. The key to the derivation comes from expressing the single-particle probabilities in
       terms of the transition amplitudes, for example, $p_T$ may be written
       %
       \begin{equation} \label{eq:ptTrans}
          p_T = \frac{1}{3} \sum\limits_{\sigma} \sum\limits_{j = 1}^{N_\sigma} \sum\limits_{k = 1}^{K}
-               \left| \braket{ \tilde{\chi}^{00}_{T k} | \varphi_{\sigma j}(t_f)}\right|^2,
+               \left| \braket{ \tilde{\chi}^{00}_{T k} | \varphi_{j \sigma}(t_f)}\right|^2,
       \end{equation}
       %
       with $p_P$ and $p_I$ expressed similarly.
@@ -2026,8 +2026,10 @@
       \end{equation}
       %
       In the above expression $\mathcal{P}$ and $\mathcal{I}$ are the set of states one the projectile
-      and in the continuum ($\tilde{\chi}^{00}_{Pk}$ and $\tilde{\chi}^{l0}_{ck}$, $l \neq 1$
-      respectively).
+      and in the continuum ($\tilde{\chi}^{00}_{Pk}$ and $\tilde{\chi}^{l0}_{ck}$, $l \neq 0$
+      respectively). A model of this type which ignores the functional correlations discussed in
+      Sec.~\ref{sec:phe2p-obs} is consistent with an \textsc{iem} description. An example of such a
+      description is provided in Appendix~\ref{chap:moreIc}, in particular Eq.~\eqref{eq:iem3}.
 
       With the probabilities in hand the corresponding total cross section for each channel may then be
       calculated from (if we ignore $\sigma_{10}$ which includes the elastic channel and must be treated
@@ -2049,7 +2051,7 @@
          will be discussed. In this model only the $1s$ target and projectile states are included in
          the \textsc{bgm} basis. In this way one can ensure that the orbitals propagated by the dynamics
          code are the same as those passed into the \textsc{kli} functional except that the former
-         includes the full \textsc{etf}s while the latter can at most include partial \textsc{etf}s.
+         include the full \textsc{etf}s while the latter can at most include partial \textsc{etf}s.
 
          A useful quantity to monitor is the norm of the one-particle density,
          %
@@ -2081,20 +2083,20 @@
          Figures~\ref{fig:toy20} and \ref{fig:toy1000} display $N$ as a function of $z = Vt$ for
          collisions with impact energy of 20~keV/amu and 1000~keV/amu respectively. Both calculations
          including and excluding the partial \textsc{etf}s use an impact parameter of 1~a.u and include
-         response. While both curves representing show sizable norm violations the inclusion of a
-         partial \textsc{etf} offers clear benefits. The \textsc{etf}s reduce the overall size of the
-         violations and reduce the range of time over which these violations occur. This can be seen
-         most clearly in Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more
-         slowly and reattaches more quickly. Additionally including \textsc{etf}s corrects the
-         unexpected asymmetry about $z = 0$~a.u.
+         response. While both curves show sizable norm violations the inclusion of a partial
+         \textsc{etf} offers clear benefits. The \textsc{etf}s reduce the overall size of the violations
+         and reduce the range of time over which these violations occur. This can be seen most clearly
+         in Fig.~\ref{fig:toy20} where the dashed curve detaches from the $N = 3$ line more slowly and
+         reattaches more quickly. Additionally including \textsc{etf}s corrects the unexpected asymmetry
+         about $z = 0$~a.u.
 
          The origins of the norm violations is easy to trace. According to Eq.~\eqref{eq:dendef2} the
          one-particle density may be written
          %
          \begin{equation} \label{eq:toyden}
-            n(\mathbf{r},t) = \left| \varphi_{\uparrow 1}\right|^2
-                            + \left| \varphi_{\uparrow 2}\right|^2
-                            + \left| \varphi_{\downarrow 1}\right|^2.
+            n(\mathbf{r},t) = \left| \varphi_{1 \uparrow}\right|^2
+                            + \left| \varphi_{2 \uparrow}\right|^2
+                            + \left| \varphi_{1 \downarrow}\right|^2.
          \end{equation}
          %
          Each orbital in the above expression is normalized to 1 and takes the form
@@ -2152,21 +2154,21 @@
          Before discussing the total cross section results we will present some of the lower level
          features of the full calculations. We will consider the single-particle probabilities for each
          electron to ionize and to switch the nuclear centre to which it is bound. These probabilities
-         can be calculated from the transition amplitudes. As an example, if $\varphi_{\uparrow 1}$
+         can be calculated from the transition amplitudes. As an example, if $\varphi_{1 \uparrow}$
          begins initially on the target then the single-particle probability to ionize this electron can
          be written
          %
          \begin{equation} \label{eq:ionprob}
             p \left( \mathrm{He}(\uparrow_1) \rightarrow I \right) =
                \sum\limits_{c \in \{T,P\}} \sum\limits_{k=1}^K \sum\limits_{l = 1}^L
-               \left| \braket{ \tilde{\chi}^{l0}_{c k} | \varphi_{\uparrow 1}(t_f)} \right|^2
+               \left| \braket{ \tilde{\chi}^{l0}_{c k} | \varphi_{1 \uparrow}(t_f)} \right|^2
          \end{equation}
          %
          and the single-particle probability to transfer to the projectile may be written
          %
          \begin{equation} \label{eq:transprob}
             p(\mathrm{He}(\uparrow_1) \rightarrow \mathrm{He}^+) =
-               \sum\limits_{k=1}^K \left| \braket{ \tilde{\chi}^{00}_{P k} | \varphi_{\uparrow 1}(t_f)}
+               \sum\limits_{k=1}^K \left| \braket{ \tilde{\chi}^{00}_{P k} | \varphi_{1 \uparrow}(t_f)}
                           \right|^2,
          \end{equation}
          %
@@ -2218,8 +2220,8 @@
          channels of Eqs.~\eqref{eq:tpi111}-\eqref{eq:tpi003} (with the addition of $p_{00}$ and
          $p_{30}$) times the impact parameter. For $E_p \leq$ 500~keV/amu the probabilities behave as
          one would expect. That is to say that the probabilities generally follow the relation $p(b)
-         \sim b^n e^{-a b}$ for some integer $n$ and positive real number $a$. However, above this level
-         unphysical structures begin to emerge. As an example the $p_{20}$ curve in
+         \sim b^{a_1}e^{-a_2 b}$ for some positive real numbers $a_1$ and $a_2$. However, above this
+         level unphysical structures begin to emerge. As an example the $p_{20}$ curve in
          Fig.~\ref{fig:pkl600} contains a large hump below 0.5~a.u.
 
          These are the result of numerical issues that limit the minimum possible impact parameter for
@@ -2296,16 +2298,18 @@
                \caption{$Z(t) = 40~\mathrm{a.u.}$. \label{fig:upF}}
             \end{subfigure}
             \caption[Spin-up electron-electron potential]
-                    {Spin-up electron-electron potential compared with the spin-down component of the
+                    {Spin-up electron-electron potential compared with the spin-up component of the
                     one-particle density intially (a), at closest approach (b), and finally.
                     The parameters of the calculation are $E_P = 50~\mathrm{keV/amu}$ and
                     $b = 1.0~\mathrm{a.u.}$ \label{fig:upPlots}}
          \end{figure}
 
-         If a picture is worth a thousand words then a thirty second long video at 24~fps is worth
-         approximatetly 720 thousand words. To this end this appendix presents a collection of animations
-         depicting the time evolution of the time-dependent \textsc{ks} potential. These videos may be
-         found online\footnote{\url{https://tinyurl.com/ybo3yhqd}}.
+         A considerable amount of information regarding the dynamics of the collision processes may be
+         glean from an inspection of the \textsc{ks}-potential. If a picture is worth a thousand words
+         then a thirty second long video at 24~fps is worth approximatetly 720 thousand words. To this
+         end this subsection presents a collection of animations depicting the time evolution of the
+         time-dependent \textsc{ks} potential. These videos may be found
+         online\footnote{\url{https://tinyurl.com/ybo3yhqd}}.
 
          When visualizing the \textsc{ks} potential it is best to consider only the electron-electron
          contributions, that is to ignore the external potential. This is beneficial because from the
@@ -2327,11 +2331,11 @@
          projectile centre where initially only one electron resides.
 
          Figures \ref{fig:dnPlots} and \ref{fig:upPlots} show a sample of several frames taken from the
-         animation for an collision with an impact energy of 50~keV/amu and impact parameter of 1.0~a.u.
+         animation for a collision with an impact energy of 50~keV/amu and impact parameter of 1.0~a.u.
          These figures depict the collisions process at the initial separation (Figs.~\ref{fig:dnI} and
          \ref{fig:upI}), at closest approach (Figs.~\ref{fig:dnC} and \ref{fig:upC}), and at the final
          time step (Figs.~\ref{fig:dnF} and \ref{fig:upF}). The arrangement of the collision system is
-         easily determine by combining the initial spin-up and spin-down frames. Both of the density
+         easily determined by combining the initial spin-up and spin-down frames. Both of the density
          plots have peaks on the left while only the spin-up density has a peak on the right clearly
          demonstrating that the target is on the left side of the figures (as these plots are presented
          in the rotating centre of mass frame the target and projectile remain on one side of the plane
@@ -2343,7 +2347,7 @@
          contains two distinct maxima.
 
          The spin-up channels appear less active. This can be through the fact that up to closest
-         approach the size and shape of the two peaks appear unchanged, only their possistions are
+         approach the size and shape of the two peaks appear unchanged, only their positions are
          noticably different. In the final frame a decernable loss of norm from both centres is
          apparent. This may be seen as evidence that the Pauli exclusion promised by the x-potential is
          performing as advertised.
@@ -2352,7 +2356,7 @@
 
       \end{subsection}
 
-      \begin{subsection}{Results \label{sec:hephe-res}}
+      \begin{subsection}{Cross Section Results \label{sec:hephe-res}}
 
          In what follows all results obtained by propagating the full \textsc{ks} orbitals in a
          potential generated from the 1s-only orbitals of Eq.~\eqref{eq:1sonly} that include no electron
@@ -2707,16 +2711,15 @@
          experiment outside of the imtermediate energy range. No distinction between n\textsc{etf} and
          p\textsc{etf} curves is discernible.
 
-         Also show in Fig.~\ref{fig:recoil} are the common mean field (\textsc{cmf}) results of Schenk
-         and Kirchner~\cite{geraldDiss}. The \textsc{cmf} which is in good agreement with experiment.
-         The difference between the \textsc{cmf} results and those of the current work can be traced to
-         the overestimation of single capture (see discussion above and Fig.~\ref{fig:cs120}). As was
-         discussed in Ref.~\cite{geraldDiss} the \textsc{cmf} model is very well suited for describing
-         processes involving initial target electrons. This in large part due to the fact that in the
-         \textsc{cmf} both target and projectile electrons are propagated with the same Hamiltonian,
-         that of the target. One can see this as evidence that the current work trades an excellent
-         description of a single centre for a slightly less realistic description of both atomic
-         centres.
+         Also shown in Fig.~\ref{fig:recoil} are the common mean field (\textsc{cmf}) results of
+         Schenk~\cite{geraldDiss}, which are in good agreement with experiment. The difference between
+         the \textsc{cmf} results and those of the current work can be traced to the overestimation of
+         single capture (see discussion above and Fig.~\ref{fig:cs120}). As was discussed in
+         Ref.~\cite{geraldDiss} the \textsc{cmf} model is very well suited for describing processes
+         involving initial target electrons. This in large part due to the fact that in the \textsc{cmf}
+         both target and projectile electrons are propagated with the same Hamiltonian, that of the
+         target. One can see this as evidence that the current work trades an excellent description of a
+         single centre for a slightly less realistic description of both atomic centres.
 
       \end{subsection}
 
@@ -2724,13 +2727,13 @@
 
 \end{chapter}
 
-\begin{chapter}{Conclusion \label{chap:con}}
+\begin{chapter}{Conclusions \label{chap:con}}
 
    Following the programme laid out in the introduction this work has presented investigations of an
    increasingly complex series of ion-atom collisions systems. This journey began with the relatively
    simple antiproton-helium system, continued with the proton-helium and He\textsuperscript{2+}-He
    systems, and culminated in a discussion of the He\textsuperscript{+}-He collision system. In the
-   proceeding subsections more detailed and collision specific conclusions will be offer for these
+   proceeding subsections more detailed and collision specific conclusions will be offered for these
    investigations. Before embarking on a summary of individual results it is, perhaps, necessary to
    emphasize one of the overarching themes of this work. In most situations our results are competitive
    with the best models of others. In many cases our results are the only ones which can consistently
@@ -2907,7 +2910,7 @@
 
    \end{chapter}
 
-   \begin{chapter}{The Calculation (bad title) \label{chap:calcdeets}}
+   \begin{chapter}{Computational Aspects \label{chap:calcdeets}}
 
       In this appendix details of the code used to calculate the results presented in
       Sec.~\ref{sec:hephe-disc} are presented. This code is an amalgam of several components. These
@@ -2918,20 +2921,20 @@
       run.
 
       Both \texttt{BGM} and \texttt{DIAMOL} are mature stand-alone programs. While this makes them well
-      suited to preforming their intended function it also makes them somewhat less adaptable. With this
+      suited to performing their intended function it also makes them somewhat less adaptable. With this
       in mind the design philosophy behind the development of a hybrid code proceeded from a desire to
       modify the existing code as little as possible. Essentially the only modifications made to the
       \texttt{DIAMOL} were to replace a subroutine which calculates the \textsc{ks}-orbitals with one
-      which reads the orbitals from a file output by \texttt{BGM}. Similarly the \texttt{BGm} was
+      which reads the orbitals from a file output by \texttt{BGM}. Similarly the \texttt{BGM} was
       altered to output orbitals to be fed into \texttt{DIAMOL} and to read in potentials output by
       \texttt{DIAMOL}. Additionally execution control was added to \texttt{BGM} which causes it to pause
       and wait for a signal to proceed at each time step, this allows time for a new potential to be
-      calculate as necessary.
+      calculated as necessary.
 
-      These pieces are monitored and controlled by \texttt{hephe.py}. This script servers several
+      These pieces are monitored and controlled by \texttt{hephe.py}. This script serves several
       purposes. First, it sets up the input files needed by \texttt{BGM} and launches two child threads.
       Each thread contains an instance of \texttt{BGM}, one for the spin-up electrons and another for
-      spin-down. As These run \texttt{hephe.py} monitors their outputs for a flag which denotes that
+      spin-down. As these run \texttt{hephe.py} monitors their outputs for a flag which indicates that
       they are ready to receive a new potential. At this point the \texttt{BGM} instances are paused
       and input files needed for \texttt{DIAMOL} are generated from their outputs. Once \texttt{DIAMOL}
       has completed its execution the \texttt{BGM} threads are resumed. In this way the
@@ -2944,10 +2947,10 @@
       The process of deriving three-electron versions of the equations presented in
       Sec.~\ref{sec:phe2p-obs} begins as it did in the two electron state with the full $N$-body wave
       function. Unlike in the former case the wave function is not readily split into spatial and spin
-      components. On is then forced to work with the function $\Psi(\mathbf{r}_1, \sigma_1, \mathbf{r}_2,
-      \sigma_2, \mathbf{r}_3, \sigma_3, t)$. Our notation may be simplified by introducing a combined
-      spatial-spin coordinates $\mathbf{x}_j = (\mathbf{r}_j, \sigma_j)$ and a combined integral
-      operator
+      components. One is then forced to work with the function $\Psi(\mathbf{r}_1, \sigma_1,
+      \mathbf{r}_2, \sigma_2, \mathbf{r}_3, \sigma_3, t)$. Our notation may be simplified by
+      introducing combined spatial-spin coordinates $\mathbf{x}_j = (\mathbf{r}_j, \sigma_j)$ and a
+      combined integral operator
       %
       \begin{equation} \label{eq:combInt}
          \fint_V \mathrm{d}^3x = \sum\limits_{\sigma = \uparrow, \downarrow} \int_V \mathrm{d}^3 r.
@@ -3111,8 +3114,8 @@
          \end{equation}
       \end{subequations}
 
-      Just like in the two electron case the \textsc{iem} model may be recovered by setting all
-      correlation integrals to zero. One finds
+      Just like in the two-electron case the \textsc{iem} may be recovered by setting all correlation
+      integrals to zero. One finds
       %
       \begin{subequations} \label{eq:iem3}
          \begin{equation}
@@ -3158,7 +3161,7 @@
       %
       Moving beyond an \textsc{iem} description may prove difficult. The failings of the \textsc{wb}
       model, discussed in Chap.~\ref{chap:p-he2p-he}, essentially preclude its application in this more
-      complex setting. Any new model envisioned may be aided in part by realtions between the full
+      complex setting. Any new model envisioned may be aided in part by relations between the full
       three-particle density and its various reductions (see for example Ref.~\cite{reduce}).
 
    \end{chapter}
