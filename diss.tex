@@ -37,7 +37,7 @@
 \usepackage[toc,page]{appendix}
 
 
-\usepackage{showlabels}
+%\usepackage{showlabels}
 
 \widowpenalty=10000
 \clubpenalty=10000
@@ -210,40 +210,41 @@
    increasingly involved collision systems are investigated. This sequence begins with a negative
    projectile, that is with an antiproton-helium system. Following this two systems, proton-helium
    (\textit{p}-He) and fully stripped helium ions on helium (He\textsuperscript{2+}-He), involving
-   positively charged projectiles are investigated. Finally, singly charged helium ions incident on
-   helium atoms (He\textsuperscript{+}-He), a system which contains one electron on the projectile and
+   positively charged projectiles are investigated. Finally, a singly charged helium ion incident on
+   a helium atom (He\textsuperscript{+}-He), a system which contains one electron on the projectile and
    two on the target, was studied.
 
    Solving the Schr\"{o}dinger equation describing a system of more than two particles is
    computationally taxing, even for a small number of particles (three or more). Thus, the so called
    few-body problem, tests the limits of current computational power. As an example, recently Gainullin
    and Sonkin presented a method for directly solving the time-dependent Schr\"{o}dinger
-   equation~\cite{gpuCalc}. In this work the authors performed a benchmark proton-helium collision
-   calculation. With code running on 16 \textsc{gpu}s their their single electron calculation was
-   completed in 16 hours. The authors then make the claim that similar performance for a two-electron
-   system would require access to 1000 \textsc{gpu}s.
+   equation~\cite{gpuCalc}. In this work the authors performed a benchmark proton-hydrogen collision
+   calculation. With code running on 16 \textsc{gpu}s their single electron calculation was completed in
+   16 hours. The authors then make the claim that similar performance for a two-electron system would
+   require access to 1000 \textsc{gpu}s.
 
-   Perhaps the next best option for obtaining tackling a many-body system is the close-coupling
+   Perhaps the next best option for tackling a many-body system is the close-coupling
    method~\cite{ccRev}. Rather then determine the $N$-body wave function directly this method relies on
    a truncated basis expansion to approximate the exact wave function. A balance must then be found
    between numerical accuracy and computational intensity. As one increases the number of included basis
-   states the approximation will approach the exact solution, however, the effort required to achieve
-   determine a solution also approaches that of a direct calculation.
+   states the approximation will approach the exact solution provided the basis used is complete,
+   however, the effort required to achieve a solution also approaches that of a direct calculation.
 
    A popular alternative comes from perturbation theory. One makes use of the Born series to describe
-   the wave function at some final time long after the collision in terms of free particle states. A
-   general feature of perturbative methods is that they have a limited range of applicability. The
-   Born series is generally convergent at high energies and for weak interactions (in the context of
-   ion-atom collisions this means low charge-state projectiles). These methods can be improved and
-   extended into the intermediate energy regime by clever choices for the unperturbed
-   states~\cite{perRev1, perRev2}.
+   the transition matrix with respect to free-particle states which represent the collision system at
+   asymptotic times before and after the collision. A general feature of perturbative methods is that
+   they have a limited range of applicability. The Born series is generally convergent at high energies
+   and for weak interactions (in the context of ion-atom collisions this means low charge-state
+   projectiles). These methods can be improved and extended into the intermediate energy regime by
+   clever choices for the unperturbed states~\cite{perRev1, perRev2} (i.e.\ by using distorted instead
+   of plane waves).
 
-   Another alternative the classical trajectory Monte Carlo method (\textsc{ctmc})~\cite{ctmcRev}. In
-   the \textsc{ctmc} multiple calculations are performed where particles are evolved according the
+   Another alternative is the classical trajectory Monte Carlo method (\textsc{ctmc})~\cite{ctmcRev}. In
+   the \textsc{ctmc} multiple calculations are performed where particles are evolved according to the
    classical Hamiltonian with initial conditions randomly selected from a distribution, usually one
-   describing the quantum mechanical initial state. The primary failing of this method is its classical
-   nature, the, \textsc{ctmc} is fundamentally incapable of capturing purely quantum mechanical
-   phenomena such as tunnelling and exchange.
+   describing the quantum mechanical initial state in coordinate or momentum space. The primary failing
+   of this method is its classical nature, the, \textsc{ctmc} is fundamentally incapable of capturing
+   purely quantum mechanical phenomena such as tunnelling and exchange.
 
    Time-dependent density functional theory~\cite{tddft, ullrich} (\textsc{tddft}), the method of choice
    of the current work, attempts to provide a solution to all  of the problems inherent in the above
@@ -255,33 +256,33 @@
    one-particle density \textsc{tddft} has been successfully applied to a wide range of problems. Most
    obviously given the title of this dissertation \textsc{tddft} has been applied to ion-atom
    collisions~\cite{bgm-rev}, many of the same techniques of this realm can be applied to the related
-   field of laser interactions with ions and molecules~\cite{laserRev}. \textsc{tddft} has also been
-   used to determine properties of extended solids (e.g.\ ionic crystals)~\cite{extRev} and of complex
-   organic and inorganic molecules~\cite{qcRev}.
+   field of laser interactions with atoms and molecules (see for example Chapters 24 and 25 in
+   Ref.~\cite{tddft}. \textsc{tddft} has also been used to determine properties of extended solids
+   (e.g.\ ionic crystals)~\cite{extRev} and of complex organic and inorganic molecules~\cite{qcRev}.
 
    While useful \textsc{tddft} is not with out its own drawbacks. One down side is that, unlike in
    standard quantum mechanics, observables are not readily calculable, as they are from the
    many-electron wave function. While the Runge-Gross theorem~\cite{rgt} guarantees that all observables
    are expressible as functionals of the one-particle density, exact expressions are only available in a
    limited number of cases~\cite{obs_exac}. In most situations one is then forced to work with
-   approximate observable functionals. Chapter~\ref{chap:p-he2p-he} of this work largely concerns itself
-   with an investigation of the observable problem using antiproton-, proton-, and
-   He\textsuperscript{+2}-He collision systems as test-beds. Here a correlation integral model~\cite{wb}
-   that was adapted to describe single-centred collision problems~\cite{pbarhe} is extended to
-   characterize two-centred systems.
+   approximate observable functionals.
 
    Additionally, when working within the context of \textsc{tddft} one typically determines the
    one-particle density via an auxiliary system of non-interacting particles. To obtain this a new
    potential, the Kohn-Sham potential (\textsc{ks}), which encodes the interacting system into the
    language of non-interacting particles, must be introduced. As with the observables, mentioned above,
    this potential is an unknown functional of the one-particle density and, as such, must also be
-   approximated. This, the second of the main problems of \textsc{dft} is explored in
-   Chap.~\ref{chap:hephe} where a procedure for accurately approximating the Kohn-Sham potential is
-   implemented and applied to the He\textsuperscript{+}-He collision system.
+   approximated.
 
-   These issues will be laid out in greater detail in Chap.~\ref{chap:dft} where the relevant
-   \textsc{dft} background material is presented. Finally, A summary of the results and conclusions of
-   this work are given in Chap.~\ref{chap:con}.
+   This dissertation addresses both issues in the context of ion-atom collisions. The relevant
+   \textsc{dft} background is presnented in Chap.~\ref{chap:dft}. Chapter~\ref{chap:p-he2p-he} of this
+   work largely concerns itself with an investigation of the observable problem using antiproton-,
+   proton-, and He\textsuperscript{2+}-He collision systems as test-beds. Here a correlation integral
+   model~\cite{wb} that was adapted to describe single-centred collision problems~\cite{pbarhe} is
+   extended to characterize two-centred systems. The second of the main problems of \textsc{dft} is
+   explored in Chap.~\ref{chap:hephe} where a procedure for accurately approximating the Kohn-Sham
+   potential is implemented and applied to the He\textsuperscript{+}-He collision system. Finally, a
+   summary of the results and conclusions of this work are given in Chap.~\ref{chap:con}.
 
    Atomic units ($\hbar = m_e = e = 1$) are used throughout unless otherwise stated.
 
@@ -2009,27 +2010,35 @@
       and $3 - k - l$ on the target ($0\leq k \leq 3$ and $0 \leq l \leq 3 - k$). The probabilities
       $p_{kl}$ may be calculated in terms of sums of inclusive probabilities to find a given number of
       particles in the bound states of the target and projectile by applying the machinery
-      of~\cite{inc-prob} (see for example~\cite{incEx, mitsuko12, gerald15}). The probabilities of
-      interest take the form
+      of~\cite{inc-prob} (see for example~\cite{incEx, mitsuko12, gerald15}). In order to avoid the use
+      of continuum states the probabilities of interest are determined indirectly through the
+      probabilties $p^\prime_{jk}$ of finding $j$ electron on the target and $k$ electron on the
+      projectile. These take the form
       %
       \begin{equation} \label{eq:probGer1}
-         P^\prime_{kl} = \sum\limits_{\substack{f_1 < \dots < f_k \\ f \in \mathcal{P}}}
-                         \sum\limits_{\substack{f_{k+1} < \dots < f_{k+l} \\ f \in \mathcal{I}}}
-                         P_{f_1 \dots f_{f_{k+l}}},
+         P^{\prime\prime}_{jk} = \sum\limits_{\substack{f_1 < \dots < f_j \\ f \in \mathcal{T}}}
+                         \sum\limits_{\substack{f_{j+1} < \dots < f_{j+k} \\ f \in \mathcal{P}}}
+                         P_{f_1 \dots f_{f_{j+k}}},
       \end{equation}
       %
       then one has
       %
       \begin{equation} \label{eq:probGer2}
-         p_{kl} = \sum\limits_{u = k}^N \sum\limits_{v = l}^{N-u} (-1)^{u - k + v -l}
-                   {{u}\choose{u-k}} {{v}\choose{l - v}} P^\prime_{uv}.
+         p^\prime_{jk} = \sum\limits_{u = j}^N \sum\limits_{v = k}^{N-u} (-1)^{u - j + v -k}
+                   {{u}\choose{u-k}} {{v}\choose{k - v}} P^\prime_{uv},
       \end{equation}
       %
-      In the above expression $\mathcal{P}$ and $\mathcal{I}$ are the set of states one the projectile
-      and in the continuum ($\tilde{\chi}^{00}_{Pk}$ and $\tilde{\chi}^{l0}_{ck}$, $l \neq 0$
-      respectively). A model of this type which ignores the functional correlations discussed in
-      Sec.~\ref{sec:phe2p-obs} is consistent with an \textsc{iem} description. An example of such a
-      description is provided in Appendix~\ref{chap:moreIc}, in particular Eq.~\eqref{eq:iem3}.
+      With the probabilities of interest then given by
+      %
+      \begin{equation}
+         p_{kl} = p^\prime_{N - k - l \, k}.
+      \end{equation}
+      %
+      In the above expression $\mathcal{T}$ and $\mathcal{P}$ are the set of states one the target
+      and in on the projectile ($\tilde{\chi}^{00}_{Tk}$ and $\tilde{\chi}^{00}_{Pk}$ respectively). A
+      model of this type which ignores the functional correlations discussed in Sec.~\ref{sec:phe2p-obs}
+      is consistent with an \textsc{iem} description. An example of such a description is provided in
+      Appendix~\ref{chap:moreIc}, in particular Eq.~\eqref{eq:iem3}.
 
       With the probabilities in hand the corresponding total cross section for each channel may then be
       calculated from (if we ignore $\sigma_{10}$ which includes the elastic channel and must be treated
