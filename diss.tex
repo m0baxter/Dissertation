@@ -136,7 +136,7 @@
    is in theory exact in practice it necessitates at least two approximations. First, the
    exchange-correlation potential which encodes the two-particle interactions present in the
    time-dependent Schr\"{o}dinger equation into the language of the single-particle description is not
-   precisely know. Even if one had perfect knowledge of this potential a further approximation would be
+   precisely known. Even if one had perfect knowledge of this potential a further approximation would be
    required when attempting to extract the values of observables as the exact relation between the
    one-particle density and most observables of interest is also unknown.
 
@@ -239,7 +239,7 @@
    clever choices for the unperturbed states~\cite{perRev1, perRev2} (i.e.\ by using distorted instead
    of plane waves).
 
-   Another alternative is the classical trajectory Monte Carlo method (\textsc{ctmc})~\cite{ctmcRev}. In
+   Another alternative is the classical trajectory Monte Carlo method~\cite{ctmcRev} (\textsc{ctmc}). In
    the \textsc{ctmc} multiple calculations are performed where particles are evolved according to the
    classical Hamiltonian with initial conditions randomly selected from a distribution, usually one
    describing the quantum mechanical initial state in coordinate or momentum space. The primary failing
@@ -275,7 +275,7 @@
    approximated.
 
    This dissertation addresses both issues in the context of ion-atom collisions. The relevant
-   \textsc{dft} background is presnented in Chap.~\ref{chap:dft}. Chapter~\ref{chap:p-he2p-he} of this
+   \textsc{dft} background is presented in Chap.~\ref{chap:dft}. Chapter~\ref{chap:p-he2p-he} of this
    work largely concerns itself with an investigation of the observable problem using antiproton-,
    proton-, and He\textsuperscript{2+}-He collision systems as test-beds. Here a correlation integral
    model~\cite{wb} that was adapted to describe single-centred collision problems~\cite{pbarhe} is
@@ -2314,7 +2314,7 @@
          \end{figure}
 
          A considerable amount of information regarding the dynamics of the collision processes may be
-         glean from an inspection of the \textsc{ks}-potential. If a picture is worth a thousand words
+         gleaned from an inspection of the \textsc{ks}-potential. If a picture is worth a thousand words
          then a thirty second long video at 24~fps is worth approximatetly 720 thousand words. To this
          end this subsection presents a collection of animations depicting the time evolution of the
          time-dependent \textsc{ks} potential. These videos may be found
@@ -2720,7 +2720,7 @@
          experiment outside of the imtermediate energy range. No distinction between n\textsc{etf} and
          p\textsc{etf} curves is discernible.
 
-         Also shown in Fig.~\ref{fig:recoil} are the common mean field (\textsc{cmf}) results of
+         Also depicted in Fig.~\ref{fig:recoil} are the common mean field (\textsc{cmf}) results of
          Schenk~\cite{geraldDiss}, which are in good agreement with experiment. The difference between
          the \textsc{cmf} results and those of the current work can be traced to the overestimation of
          single capture (see discussion above and Fig.~\ref{fig:cs120}). As was discussed in
@@ -2912,7 +2912,7 @@
          %
          for $(\xi, \eta, \phi) \in [1, \infty) \times [-1,1] \times [0,2\pi)$.
 
-         One says that a function $f: \mathbb{R}^3 \rightarrow \mathbf{R}$ is cylindrically symmetric if
+         One says that a function $f: \mathbb{R}^3 \rightarrow \mathbb{R}$ is cylindrically symmetric if
          it has no $\phi$ dependence, i.e.\ if $f(\xi,\eta,\phi) = f(\xi,\eta)$.
 
       \end{section}
@@ -2926,13 +2926,13 @@
       consist primarily of the code base developed for carrying out \textsc{tc-bgm} collision
       calculations, here referred to as \texttt{BGM}, the ground-state \textsc{dft} structure code,
       \texttt{DIAMOL}, which can be used to produce a \textsc{ks}-potential for a given arrangement of a
-      diatomic molecule, and a short program, \texttt{hephe.py} which manages the execution of a single
+      diatomic molecule, and a short programme, \texttt{hephe.py} which manages the execution of a single
       run.
 
-      Both \texttt{BGM} and \texttt{DIAMOL} are mature stand-alone programs. While this makes them well
-      suited to performing their intended function it also makes them somewhat less adaptable. With this
-      in mind the design philosophy behind the development of a hybrid code proceeded from a desire to
-      modify the existing code as little as possible. Essentially the only modifications made to the
+      Both \texttt{BGM} and \texttt{DIAMOL} are mature stand-alone programmes. While this makes them
+      well suited to performing their intended function it also makes them somewhat less adaptable. With
+      this in mind the design philosophy behind the development of a hybrid code proceeded from a desire
+      to modify the existing code as little as possible. Essentially the only modifications made to the
       \texttt{DIAMOL} were to replace a subroutine which calculates the \textsc{ks}-orbitals with one
       which reads the orbitals from a file output by \texttt{BGM}. Similarly the \texttt{BGM} was
       altered to output orbitals to be fed into \texttt{DIAMOL} and to read in potentials output by
