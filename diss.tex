@@ -140,16 +140,16 @@
    required when attempting to extract the values of observables as the exact relation between the
    one-particle density and most observables of interest is also unknown.
 
-   This dissertation investigates these issues using ion-atom collision systems as a test-bed. First,
+   This dissertation investigates these issues using ion-atom collision systems as a testbed. First,
    the observable problem is explored in antiproton-helium, proton-helium, and He\textsuperscript{2+}-He
    collision systems. Total cross sections for all charge transfer processes in these systems, the
-   observables of choice in the present situation, are determined using a two centred extension of a
-   correlation-integral model that was originally applied to one centred situations.
+   observables of choice in the present situation, are determined using a two-centred extension of a
+   correlation-integral model that was originally applied to single-centred situations.
 
    Following this theoretical total cross section results for all ionization/capture processes in the
    He\textsuperscript{+}-He collision system are presented in the approximate impact energy range
    10-1000~keV/amu. Calculations were performed within the framework of a spin-dependent extension of
-   \textsc{tddft}. These cross sections are used as a bench mark to test an accurate
+   \textsc{tddft}. These cross sections are used as a benchmark to test an accurate
    exchange-correlation potential generated via the Krieger-Li-Iafrate approximation applied within the
    exchange-only limit in which correlation is ignored. The results of two models, one where electron
    translation factors in the orbitals used to calculate the potential are ignored and another where
@@ -190,7 +190,7 @@
    portion of the present work, is applicable in such diverse areas as fusion reactors~\cite{fusion1,
    fusion2}, astrophysics~\cite{astro1, astro2}, and dark matter detection~\cite{dmdet}.
 
-   From the point of view of theory, atomic collision systems are often explored as test-beds for
+   From the point of view of theory, atomic collision systems are often explored as testbeds for
    few-electron quantum dynamics. A helium-like target, consisting of two electrons and a nucleus, and a
    bare projectile represent the archetypal few-electron collision system. The simplest example of such
    a system uses an antiproton, the negatively charged antiparticle of the proton, as the projectile.
@@ -233,11 +233,11 @@
    A popular alternative comes from perturbation theory. One makes use of the Born series to describe
    the transition matrix with respect to free-particle states which represent the collision system at
    asymptotic times before and after the collision. A general feature of perturbative methods is that
-   they have a limited range of applicability. The Born series is generally convergent at high energies
-   and for weak interactions (in the context of ion-atom collisions this means low charge-state
-   projectiles). These methods can be improved and extended into the intermediate energy regime by
-   clever choices for the unperturbed states~\cite{perRev1, perRev2} (i.e.\ by using distorted instead
-   of plane waves).
+   they have a limited range of applicability. The Born computable series is generally convergent at
+   high energies and for weak interactions (in the context of ion-atom collisions this means low
+   charge-state projectiles). These methods can be improved and extended into the intermediate energy
+   regime by clever choices for the unperturbed states~\cite{perRev1, perRev2} (i.e.\ by using distorted
+   instead of plane waves).
 
    Another alternative is the classical trajectory Monte Carlo method~\cite{ctmcRev} (\textsc{ctmc}). In
    the \textsc{ctmc} multiple calculations are performed where particles are evolved according to the
@@ -249,21 +249,21 @@
    Time-dependent density functional theory~\cite{tddft, ullrich} (\textsc{tddft}), the method of choice
    of the current work, attempts to provide a solution to all  of the problems inherent in the above
    mentioned methods. By reformulating the $N$-body problem in terms of the one-particle density rather
-   than the $N$-electron wave function the problem is effectively reduced to the complexity of a single
-   particle calculation. Additionally as the reformulation is theoretically exact it avoids the
+   than the $N$-electron wave function the problem is effectively reduced to the complexity of a
+   single-particle calculation. Additionally as the reformulation is theoretically exact it avoids the
    restricted applicability of perturbative methods. While it may seem strange that all of the
    complexity of the $N$-body wave function can be captured by a single particle quantity like the
    one-particle density \textsc{tddft} has been successfully applied to a wide range of problems. Most
    obviously given the title of this dissertation \textsc{tddft} has been applied to ion-atom
    collisions~\cite{bgm-rev}, many of the same techniques of this realm can be applied to the related
    field of laser interactions with atoms and molecules (see for example Chapters 24 and 25 in
-   Ref.~\cite{tddft}. \textsc{tddft} has also been used to determine properties of extended solids
+   Ref.~\cite{tddft}). \textsc{tddft} has also been used to determine properties of extended solids
    (e.g.\ ionic crystals)~\cite{extRev} and of complex organic and inorganic molecules~\cite{qcRev}.
 
-   While useful \textsc{tddft} is not with out its own drawbacks. One down side is that, unlike in
-   standard quantum mechanics, observables are not readily calculable, as they are from the
-   many-electron wave function. While the Runge-Gross theorem~\cite{rgt} guarantees that all observables
-   are expressible as functionals of the one-particle density, exact expressions are only available in a
+   While useful \textsc{tddft} is not without its own drawbacks. One downside is that, unlike in
+   standard quantum mechanics, observables are not readily calculable as they are from the many-electron
+   wave function. While the Runge-Gross theorem~\cite{rgt} guarantees that all observables are
+   expressible as functionals of the one-particle density, exact expressions are only available in a
    limited number of cases~\cite{obs_exac}. In most situations one is then forced to work with
    approximate observable functionals.
 
@@ -277,14 +277,14 @@
    This dissertation addresses both issues in the context of ion-atom collisions. The relevant
    \textsc{dft} background is presented in Chap.~\ref{chap:dft}. Chapter~\ref{chap:p-he2p-he} of this
    work largely concerns itself with an investigation of the observable problem using antiproton-,
-   proton-, and He\textsuperscript{2+}-He collision systems as test-beds. Here a correlation integral
+   proton-, and He\textsuperscript{2+}-He collision systems as testbeds. Here a correlation integral
    model~\cite{wb} that was adapted to describe single-centred collision problems~\cite{pbarhe} is
    extended to characterize two-centred systems. The second of the main problems of \textsc{dft} is
    explored in Chap.~\ref{chap:hephe} where a procedure for accurately approximating the Kohn-Sham
    potential is implemented and applied to the He\textsuperscript{+}-He collision system. Finally, a
    summary of the results and conclusions of this work are given in Chap.~\ref{chap:con}.
 
-   Atomic units ($\hbar = m_e = e = 1$) are used throughout unless otherwise stated.
+   Atomic units ($\hbar = m_e = e = 4 \pi \epsilon_0 = 1$) are used throughout unless otherwise stated.
 
 \end{chapter}
 
@@ -293,10 +293,10 @@
    This chapter concerns itself with a brief introduction to the world of density-functional theory,
    both ground-state~\cite{dft-engel} (\textsc{dft}) and time-dependent~\cite{tddft, ullrich, marques-1}
    (\textsc{tddft}). This discussion begins with an overview  of various existence theorems central to
-   density functional theory (Sec.~\ref{sec:dft}). Next the Kohn-Sham equations are introduced in
+   density functional theory (Sec.~\ref{sec:dft}). Next, the Kohn-Sham equations are introduced in
    Sec.~\ref{sec:ks}. More practical matters are considered when two of the main problems of density
    functional theory, the observable problem (Sec.~\ref{sec:obs}) and the determination of the
-   exchange-correlation potential (Sec.~\ref{sec:xcpot}) are introduced. The discussion of the
+   exchange-correlation potential (Sec.~\ref{sec:xcpot}) are presented. The discussion of the
    xc-potential is focused on the optimized potential method (Sec.~\ref{sec:opm}) and the
    Krieger-Li-Iafrate approximation (Sec.~\ref{sec:kli}).
 
@@ -489,7 +489,7 @@
          E[n] = \braket{\Psi[n] | \hat{H} | \Psi[n] }= T[n] + E_{ee}[n] + E_\mathrm{ext}[n]
       \end{equation}
       %
-      where the energies on the right hand side are the contributions from the constituent operators
+      where the energies on the right-hand side are the contributions from the constituent operators
       Eq.~\eqref{eq:Top}--\eqref{eq:Vext}. Similarly, we may define the energy functional for the
       non-interacting, \textsc{ks}, system as
       %
@@ -534,7 +534,7 @@
             \braket{\Psi[n] |i\frac{\partial}{\partial t} -\hat{H}(t) | \Psi[n]}.
       \end{equation}
       %
-      In analogy to the ground state case the exchange correlation part of the action may be defined in
+      In analogy to the ground-state case the exchange-correlation part of the action may be defined in
       terms of the difference between the actions for the interacting and non-interacting systems. We
       then find at a stationary point:
       %
@@ -687,11 +687,18 @@
          linear equations for $\bar{v}^\sigma_{l \sigma}$. This approximation turns the complex
          \textsc{opm} integral equation into a much simpler linear system of equations.
 
-         It should be noted that while several variations of the \textsc{kli} exist~\cite{kli1, kli2,
-         kli3} they differ by only a term proportional to $\partial E_\mathrm{xc} / \partial \epsilon_k$
-         which, for functionals such as the exact exchange functional that do not depend on the
-         \textsc{ks} eigenvalues does not contribute. As one might expect the \textsc{kli} approximation
-         is also applicable in the time-dependent regime~\cite{tdkli1, tdkli2, tdkli3}.
+         It should be noted that while several variations of the \textsc{kli} method exist~\cite{kli1,
+         kli2, kli3} they differ by only a term proportional to $\partial E_\mathrm{xc} / \partial
+         \epsilon_k$ which, for functionals such as the exact exchange functional that do not depend on
+         the \textsc{ks} eigenvalues does not contribute. Of particular interest is the method of
+         Ref.~\cite{kli2} where the the \textsc{kli} is obtained from the exact \textsc{opm} equation by
+         neglecting certain higher order terms (i.e.\ if these terms are added to Eq.~\eqref{eq:kliEq}
+         the exact \textsc{opm} is recovered). Later in this same work the authors incorporate an
+         approximation to these higher order terms, the inclusion of which covers much of the difference
+         between \textsc{kli} and the full \textsc{opm}, however even this approximation to the
+         neglected portion of \textsc{opm} is rarely included in practice. As one might expect the
+         \textsc{kli} approximation is also applicable in the time-dependent regime~\cite{tdkli1,
+         tdkli2, tdkli3}.
 
          For a wide range of systems \textsc{kli} and the full \textsc{opm} produce very similar
          results~\cite{opm-rev}. The success of both \textsc{opm} and \textsc{kli} potentials is due in
@@ -726,10 +733,10 @@
    Correlation enters \textsc{tddft} calculations in two distinct ways. First of these is dynamic
    correlation, those effects which emerge from a full time-dependent correlation potential. These are
    precisely the effects we ignore through the use of the frozen correlation model which is discussed
-   along side a description of the collision systems of interest in Sec.~\ref{sec:p-he2p-he-sys}.
+   alongside a description of the collision systems of interest in Sec.~\ref{sec:p-he2p-he-sys}.
 
    The second source of correlation comes from the density functional
-   used in the determination of observables. This so called functional correlation is the main focus of
+   used in the determination of observables. This so-called functional correlation is the main focus of
    this chapter. The exploration of this topic begins in Sec.~\ref{sec:phe2p-obs} were several
    observable functional approximations are introduced. The results of application of these models to
    $p$-He, He\textsuperscript{2+}-He, as well as $\bar{p}$-He collisions are presented and discussed in
@@ -737,7 +744,7 @@
 
    The analysis presented in this chapter closely follows that of~\cite{p-he2p-he}. Additionally, while
    some results for $\bar{p}$-He collision system are presented here the bulk of the theoretical
-   underpinnings of this work are not as this represents work undertaken during the completion of the
+   underpinnings of this work are not, as this represents work undertaken during the completion of the
    author's Master's thesis~\cite{thesis}. The $\bar{p}$-He cross sections reproduced in this
    dissertation are an updated version of the previous results making use of the improved averaging
    scheme (Sec.~\ref{sec:phe2p-det}) developed when investigating the $p$-He and
@@ -780,7 +787,20 @@
       $\mathbf{R}(t) = (b,0,V t)$ is the straight-line trajectory of the projectile with velocity $V$ and
       impact parameter (distance of closest approach) $b$. In the current work we consider antiprotons,
       protons, and He\textsuperscript{2+} ions incident on helium atoms, thus $Q_T = 2$ and
-      $Q_P = -1$, 1, and 2 respectively.
+      $Q_P = -1$, 1, and 2 respectively. Above impact energies of 1~keV/amu where the nuclear motion is
+      well represented by a stright line this so called semi-classical approximation may be safely
+      employed~\cite{bgm-rev}.
+
+      Having spent a few words addressing concerns at the lower end of our impact energy range it is
+      only logical to turn ones eye to the other extreme. The largest impact energy considered in this
+      work, 2000~keV/amu, corresponds to an impact velocity $V \approx 9$~a.u. With the speed of lighit
+      $c = 137$~a.u.\ a Lorentz factor $\gamma$ may be determined
+      %
+      \begin{equation} \label{eq:lorentz}
+         \gamma = \left( 1 - \frac{V^2}{c^2} \right)^{-\frac{1}{2}} \approx 1.0027,
+      \end{equation}
+      %
+      putting us safely in the non-relativistic regime.
 
       The \textsc{tdks} described above was solved with the basis generator method~\cite{bgm}
       (\textsc{bgm}) using a basis similar to the one employed in~\cite{keim-ihe}. As in~\cite{pbarhe}
@@ -811,8 +831,27 @@
       to $\epsilon_P = 1$ and the basis chosen was similar to that of~\cite{keim-ihe}. A more general
       two-centred version of the \textsc{bgm} (\textsc{tc-bgm}) which includes explicit basis states on
       both the target and the potential is also possible. The full machinery of the two-centred version
-      will be
-      discussed in the following chapter.
+      will be discussed in the following chapter.
+
+      Before closing this section we will return a final time to the discussion of relativistic effects,
+      this time in regards to the atomic orbitals. The primary effect of relativity on the orbitals is
+      to contract or expand the orbitals. To lowest order in $1/c^2$ the change in average of the
+      possition operator for a relativistic hydrogen-like orbital follow the relation (see, for example,
+      Ref.~\cite{relorb})
+      %
+      \begin{equation} \label{eq:radDiff}
+         \left< \mathbf{r} \right>_\mathrm{rel}
+       - \left< \mathbf{r} \right>_\mathrm{nonrel} \propto \frac{Q n}{c^2 \kappa},
+      \end{equation}
+      %
+      where $\kappa = j + 1/2$ wih total angular momentum quantum number $j$ and $Q$ the atomic charge.
+      For the orbitals considered in this work $n$ never exceeds 4, $Q$ is at most 2, and $\kappa$ is
+      either 1/2, for spin single states, or 1 for atoms containing one (or three) electrons. All of
+      this means that at worst the orbital distortion is on the order of $10^{-4}$, and while the
+      expression only holds for hydrogen-like orbitals the exact expression for a multi-electron atom
+      does not disagree in a signifigant way~\cite{relorb}. With all this said it has been explicitly
+      demonstrated that relativistic effects are negligible for helium collisions within the impact
+      energy range considered in this work~\cite{relCollision}.
 
    \end{section}
 
@@ -1136,7 +1175,7 @@
       0.1 and is at least one order of magnitude less than this through the majority of the impact
       energy and parameter space considered. For the He\textsuperscript{2+}-He system the largest
       interval is around 0.25. The gap remains on this order for a much larger range of the impact
-      energies considered. As mentioned above the interval width approaches zero rapidly as impact
+      energies considered. As mentioned above the interval width approaches zero rapidly as the impact
       parameter increases. Thus there is little actual choice available for the value of
       $I_\mathrm{c}^{TP}$, and not much is lost by always choosing the midpoint of this interval.
 
@@ -1167,15 +1206,15 @@
       density persist after the collision process has completed if the Kohn-Sham potential is explicitly
       density dependent. Due to this fact the values of observables must be averaged over some range of
       $t_f$. The added complexity of the proton-helium collision system compared to that for
-      antiproton-helium restricts the range through which the calculations may be run. Due to this fact
+      antiproton-helium restricts the range through which the calculations may be run. As a result
       an insufficient range of $t_f$ is available for averaging to produce a curve as smooth as in the
       $\bar{p}$-He system. More explicitly, letting $z_f = V t_f$ be the final target-projectile
       separation for impact velocity $V$, $\bar{p}$-He collisions may be run to a final separation of
-      45~a.u., whereas $p$-He collisions run to a maximum inter-centre distance of around 35~a.u.
+      45~a.u., whereas $p$-He collisions run to a maximum inter-nuclear distance of around 35~a.u.
 
       Figure~\ref{fig:poz}, which depicts the values of $p^{II}$ as a function of $z$ for a prototypical
-      choice of impact energy and parameter, makes these more apparent. Also of note is that the
-      variances increase by about a factor of two between each of the collision systems.
+      choice of impact energy and parameter, makes these differences more apparent. Also of note is that
+      the variances increase by about a factor of two between each of the collision systems.
 
       We can get a sense of how well the adiabatic density approximates the true time-dependent density
       at $t_f$ by considering their separation in function space. Owing to the fact that one-particle
@@ -1193,7 +1232,7 @@
       adiabatic ($n_A$) and fully dynamic ($n$) densities at the final time $t_f$ for the
       antiproton-helium system\footnote{All integrals were performed with the aid of the \textsc{cuba}
       numerical integration package~\cite{cuba}.}. While it is possible to perform such an analysis for
-      the $p$-He system as well added complications brought on by having to deal with a two centred
+      the $p$-He system as well, added complications brought on by having to deal with a two-centred
       system make it much more difficult to produce and analyze such data. Intuitively one would expect
       that the difference between the two densities should follow the single-particle probability $p_T$.
       This belief is supported by the easily derived relation
@@ -1205,7 +1244,7 @@
       While Fig.~\ref{fig:p-ic} (which will be discussed in next section) demonstrates monotonic
       increase in $p_T$ with increasing impact parameter, a general trend for all impact energies,
       Fig.~\ref{fig:l1} contains additional structures. Also of note is the minimum that appears along
-      the impact energy axis between 200 and 300~keV/amu. These unexpected features must be attributed
+      the impact-energy axis between 200 and 300~keV/amu. These unexpected features must be attributed
       to the fact that $n_A$ contains only trivial angular dependence which makes a proper description
       of excitation and partial removal of electronic density impossible. This provides indications of
       the limitations of the \textsc{wb} model.
@@ -1230,11 +1269,11 @@
 
       The figures presented below were generated with several criteria in mind. First, a minimal number
       of older calculations was selected with the aim of covering as much of the impact energy range as
-      possible while avoiding over burdening the figures with multiple overlapping curves. Second, works
+      possible while avoiding overburdening the figures with multiple overlapping curves. Second, works
       chosen must be the product of calculations that go beyond an \textsc{iem} description of the
       collision process with preference given to fully correlated two-electron calculations. If one is
       interested in some of the calculations excluded from these comparisons there exist a plethora of
-      independent electron, independent event, or related models~\cite{SLD-83, DMR-84, SLD-85, GM-86,
+      independent-electron, independent-event, or related models~\cite{SLD-83, DMR-84, SLD-85, GM-86,
       CM-87, GM-87, JLF-89, DC-90, DC-91a, DC-91b, DG-91, SKG-91, SL-91, Kuang-92, MLC-93, CM-94,
       CSR-95, BDM-96, MBGH-97, McCartney-97, McCartney-99, GAMRF-02, GFS-02, AMRF-04, BLMC-04, FRBJG-06,
       FJG-07, GIFK-08, ZK-09, G-11, LFG-11, GG-12a}, classical trajectory Monte Carlo
@@ -1328,16 +1367,16 @@
 
          At 200~keV/amu the results for both $p$ and $I^{TT}_\mathrm{c}$ become similar; at lower
          energies (i.e., 20~keV/amu) there are significant differences for proton and antiproton
-         collisions. In this range the single-removal probability for antiprotons decays swiftly with
-         rising impact parameter. On the other hand, the single-particle removal probability in low
-         energy proton-helium collisions remains appreciable over a much larger range. Such impact
+         collisions. In this range the single-removal probability for antiproton impact decays swiftly
+         with rising impact parameter. On the other hand, the single-particle removal probability in
+         low-energy proton-helium collisions remains appreciable over a much larger range. Such impact
          parameter profiles are a signature of electron capture which is the dominant electron removal
          process at lower impact energies. This behaviour is mirrored by that of $I^{TT}_\mathrm{c}$.
 
-         A final feature of note is the spike in both antiproton curves at low impact parameter. In this
-         region the antiproton passes through the charge density of the helium atom. Such close
+         A final feature of note is the spike in both antiproton curves at small impact parameter. In
+         this region the antiproton passes through the charge density of the helium atom. Such close
          approaches result in destabilization of the electron binding and very efficient
-         ionization~\cite{pbarhe-rev}
+         ionization~\cite{pbarhe-rev}.
 
          Figures~\ref{fig:he+} and~\ref{fig:he++} present the total cross sections for one- and
          two-electron removal as functions of impact energy. These plots compare only the current
@@ -1360,7 +1399,7 @@
          experiment through the entire range explored the proton-helium results still differ notably
          below impact energies of 100~keV/amu. This is an indication that the \textsc{wb} model begins
          to display problems as capture becomes more important. These issues will be discussed in
-         greater detail in the proceeding subsections.
+         greater detail in the subsequent subsections.
 
       \end{subsection}
 
@@ -1415,7 +1454,7 @@
          compared to experiment as well as a selection of previous theoretical studies of $p$-He
          collisions that do account for electron correlation effects.
 
-         We will begin the discussion of these results by considering double capture. For our
+         We will the discussion of these results by considering double capture. For our
          proton-helium collision calculations the single-particle capture probability, $p_P$, never
          rises above 1/2. From Eq.~\eqref{eq:wbExplicit} it follows that $I^{PP}_\mathrm{c} =
          -2 {p_P}^2$, which implies that $p_{PP} \equiv 0$. Due to the triviality of this result no plot
@@ -1431,22 +1470,22 @@
          single capture is expressed as the \textsc{iem} result plus a correction coming solely from
          $I^{TP}_\mathrm{c}$ [cf.\ Eq.~\eqref{eq:ptp-ic}]. Also presented in Fig.~\ref{fig:phe-tp} are
          the atomic orbital (\textsc{ao}) molecular orbital (\textsc{mo}) matching results of Kimura et
-         al.~\cite{KL-86} and the post form, which includes explicit dynamic correlation contributions,
-         of the four-body distorted-wave (\textsc{dw-4b}) results of Jana et al.~\cite{JMP-15}. It
-         should be noted that what Jana et al.\ call dynamic correlation while not identical to
-         \textsc{tddft} dynamic correlation (a time-dependent correlation potential $v_\mathrm{c}$) is
-         the analogue in two-electron calculations and ultimately both should describe the same effects.
-         The \textsc{dw-4b} and \textsc{wb} models agree quite well above impact energies of 40~keV/amu.
-         Below this they begin to deviate, with the \textsc{dw-4b} results remaining in better agreement
-         with experiment (excluding the lower extremes of the data where the perturbative nature of the
-         \textsc{dw-4b} model likely causes it to become less reliable). The opening of a gap between
-         these two calculations coincides precisely with the increased role of dynamic correlation as
-         impact energies decrease. This trend continues with the results of Kimura et al.\ throughout
-         the remainder of the impact energy range. The discrepancy between the \textsc{ao-mo} results
-         and the other calculations for energies above the peak is likely due to the dominance of the
-         \textsc{mo} over the \textsc{ao} in the analysis~\cite{KL-86}. The result of this appears to be
-         an overestimate of the coupling between centres leading to a slight overestimate of the cross
-         section at high energies.
+         al.~\cite{KL-86} (\textsc{ao-mo}) and the post form, which includes explicit dynamic
+         correlation contributions, of the four-body distorted-wave (\textsc{dw-4b}) results of Jana et
+         al.~\cite{JMP-15}. It should be noted that what Jana et al.\ call dynamic correlation. while
+         not identical to \textsc{tddft} dynamic correlation (a time-dependent correlation potential
+         $v_\mathrm{c}$) is the analogue in two-electron calculations and ultimately both should
+         describe the same effects. The \textsc{dw-4b} and \textsc{wb} models agree quite well above
+         impact energies of 40~keV/amu. Below this they begin to deviate, with the \textsc{dw-4b}
+         results remaining in better agreement with experiment (excluding the lower extremes of the data
+         where the perturbative nature of the \textsc{dw-4b} model likely causes it to become less
+         reliable). The opening of a gap between these two calculations coincides precisely with the
+         increased role of dynamic correlation as impact energies decrease. This trend continues with
+         the results of Kimura et al.\ throughout the remainder of the impact energy range. The
+         discrepancy between the \textsc{ao-mo} results and the other calculations for energies above
+         the peak is likely due to the dominance of the \textsc{mo} over the \textsc{ao} in the
+         analysis~\cite{KL-86}. The result of this appears to be an overestimate of the coupling between
+         centres leading to a slight overestimate of the cross section at high energies.
 
          Figure~\ref{fig:phe-ip} presents the results for transfer ionization. Once again the
          \textsc{wb} model offers an improvement over \textsc{iem} descriptions, lowering the cross
@@ -1501,7 +1540,7 @@
          400 and 1000~keV/amu. Below this range the issue of final state stability causes a sizable
          disagreement between the two. Above this range issues with how the \textsc{wb} model
          distributes probabilities between channels force  the double ionization cross section to become
-         smaller then is physical far too quickly.
+         smaller than is physical far too quickly.
 
          Finally we consider our single ionization results depicted in Fig.~\ref{fig:phe-ti}. The
          \textsc{wb} model corrects the discrepancy between the peaks of the \textsc{iem} and
@@ -1510,7 +1549,7 @@
          probability to the overestimated double ionization maximum around 35~keV/amu.
 
          For this channel enough previous calculations exist to cover almost all of our impact energy
-         range. These include the coupled channel calculations of Slim et al.~\cite{SHBF-91} and
+         range. These include the coupled-channel calculations of Slim et al.~\cite{SHBF-91} and
          Winter~\cite{Winter-91} as well as the convergent frozen-correlation approximation
          (\textsc{cfca}) of D\'{i}az et al.~\cite{DMS-00}. Slim et al.\ obtain better agreement with
          experiment in the range 25--50~keV/amu. This is likely due to the overestimation of transfer
@@ -1518,7 +1557,7 @@
          better, this is likely due to what Slim et al.\ describe as the effects of an incomplete
          continuum description in their calculation~\cite{SHBF-91}.
 
-         In the energy range shared with Winter the \textsc{wb} model appears to be in almost exact
+         In the energy range covered by Winter the \textsc{wb} model appears to be in almost exact
          agreement with experiment. Winter attributes much of his disagreement to his calculations' not
          fully accounting for channels beyond single capture and ionization~\cite{Winter-91}.
 
@@ -1603,19 +1642,19 @@
          along with an assortment of previous, correlated theoretical calculations. As with our
          proton-helium results single ionization (Fig.~\ref{fig:phe-ti}) in both the \textsc{iem} and
          \textsc{wb} model are quite similar excluding an energy range around the maximum where the
-         \textsc{wb} increases the cross section significantly. In both cases the peak appears to be
-         shifted to a slightly lower impact energy compared to the measurements. Similar behaviour below
-         100~keV/amu see the pair falling above experiment. Depicted along side the current results in
-         Fig.~\ref{fig:he2phe-ti} are the previous calculations of Gramlich et al.~\cite{GGS-89}, Barna
-         et al.~\cite{BTB-05}, and Pindzola et al.~\cite{PRC-07}. At the high end of the energy range
-         explored all results are in agreement. At lower energies (approximately 15--80~keV/amu) the
-         results of Gramlich et al.\ are in much better agreement with experiment. This region is
-         precisely the range where capture is dominant and quite strong. As a result $p_T < 1/2$ for a
-         significant portion of this range causing $I^{TT}_\mathrm{c} = -{p_T}^2$. A negative
-         $I^{TT}_\mathrm{c}$ will increase $p^{TI}$, luckily $I^{TP}_\mathrm{c}$ is enough to keep the
-         \textsc{wb} results from exceeding those of the \textsc{iem}  [cf.\ Eq.~\eqref{eq:pti-ic}]. The
-         lack of correlated calculations near the experimental maximum unfortunately means little can be
-         concluded in this region of the curve.
+         \textsc{wb} model increases the cross section significantly. In both cases the peak appears to
+         be shifted to a slightly lower impact energy compared to the measurements. Similar behaviour
+         below 100~keV/amu see the pair falling above experiment. Depicted alongside the current results
+         in Fig.~\ref{fig:he2phe-ti} are the previous coupled-channel calculations of Gramlich et
+         al.~\cite{GGS-89}, Barna et al.~\cite{BTB-05}, and Pindzola et al.~\cite{PRC-07}. At the high
+         end of the energy range explored all results are in agreement. At lower energies (approximately
+         15--80~keV/amu) the results of Gramlich et al.\ are in much better agreement with experiment.
+         This region is precisely the range where capture is dominant and quite strong. As a result
+         $p_T < 1/2$ for a significant portion of this range causing $I^{TT}_\mathrm{c} = -{p_T}^2$. A
+         negative $I^{TT}_\mathrm{c}$ will increase $p^{TI}$, luckily $I^{TP}_\mathrm{c}$ is enough to
+         keep the \textsc{wb} results from exceeding those of the \textsc{iem} [cf.\
+         Eq.~\eqref{eq:pti-ic}]. The lack of correlated calculations near the experimental maximum
+         unfortunately means little can be concluded in this region of the curve.
 
          The \textsc{wb} results for double ionization, Fig.~\ref{fig:he2phe-ii}, display the familiar
          pattern seen in both antiproton and proton collisions, namely, fair agreement with experiment
@@ -1628,17 +1667,17 @@
          the $p$-He results there are slight fluctuations in the He\textsuperscript{2+}-He \textsc{wb}
          results due to instabilities in the dynamics.
 
-         As above Barna et al.\ and Pindzola et al.\ support the high energy \textsc{wb}
-         results. Fig.~\ref{fig:he2phe-ii} also includes the results of Singal et al., while
-         not a two-electron calculation it incorporates a modified single-particle potential designed to
-         account for the increased difficulty of ionizing two electrons. If nothing else these results
-         confirm the placement of the position of the \textsc{iem} cross section maximum. This confirms
-         the belief that the \textsc{wb} model becomes less dependable at lower energies.
+         As above Barna et al.\ and Pindzola et al.\ support the high-energy \textsc{wb}
+         results. Fig.~\ref{fig:he2phe-ii} also includes the results of Singal et al.: while not a
+         two-electron calculation it incorporates a modified single-particle potential designed to
+         account for the increased difficulty of ionizing two electrons. These results confirm the
+         location of the \textsc{iem} cross section maximum. This confirms the belief that the
+         \textsc{wb} model becomes less dependable at lower energies.
 
          Unlike for the proton-helium system double ionization and transfer ionization,
          Fig.~\ref{fig:he2phe-ip}, are not identical. The increased role of capture due to the deeper
          potential well of the He\textsuperscript{2+} projectile has the important consequence of
-         allowing the $p_P$ to rise above the critical one half threshold. As a result
+         allowing the probability $p_P$ to rise above the critical one half threshold. As a result
          $I^{PP}_\mathrm{c}$ is no longer trivial, and the bounds defining $I^{TP}_\mathrm{c}$ vary more
          freely. The \textsc{wb} model reduces \textsc{iem} results through most of the impact energy
          range. A slight over-reduction occurs to the left of the peak. Below 20~keV/amu the results
@@ -1648,26 +1687,26 @@
 
          Much like the $p$-He system few calculations exist beyond the level of the \textsc{iem} for the
          transfer ionization channel. Presented is the post form of the four-body continuum
-         distorted-wave  approximation results of Belki\'{c} et al.~\cite{BMM-97}. As mentioned above
-         the post form includes explicit dynamic correlation. At the extremes of the energy range
-         Belki\'{c} et al. are in better agreement with experiment, as the \textsc{wb} and \textsc{iem}
-         slightly exaggerate the cross section (similar to the $p$-He results). These discrepancies
-         become larger as the peak is approached from above. It is difficult to ascertain how much of
-         this widening gap between our \textsc{wb} results and Belki\'{c} et al.'s calculation is a
-         result of the increased importance of dynamic correlation. Certainly this is the primary
-         difference down to 80~keV/amu, below which point the perturbative calculation appears to break
-         down making it of less utility for the current purpose.
+         distorted-wave  approximation results of Belki\'{c} et al.~\cite{BMM-97}. The post form
+         includes explicit dynamic correlation. At the extremes of the energy range Belki\'{c} et al.\
+         are in better agreement with experiment, as the \textsc{wb} and \textsc{iem} slightly
+         exaggerate the cross section (similar to the $p$-He results). These discrepancies become larger
+         as the peak is approached from above. It is difficult to ascertain how much of this widening
+         gap between our \textsc{wb} results and Belki\'{c} et al.'s calculation is a result of the
+         increased importance of dynamic correlation. Certainly this is the primary difference down to
+         80~keV/amu, below which point the perturbative calculation appears to break down making it less
+         useful for the current purpose.
 
          Single capture cross sections, presented in Fig.~\ref{fig:he2phe-tp}, also follow a pattern
          similar to that laid out by the proton-helium case: an increase in the \textsc{wb} over
-         \textsc{iem}. This increase results in good agreement with experiment above 50~keV/amu. Unlike
-         previous results the enhancement in cross section persists to low energies, where the
-         \textsc{wb} model overestimates the measurements.
+         \textsc{iem} results. This increase results in good agreement with experiment above 50~keV/amu.
+         Unlike previous results the enhancement in cross section persists to low energies, where the
+         \textsc{wb} model overestimates the measured values.
 
-         In the high energy region of the curve the \textsc{wb} model is in fair agreement with the
+         In the high-energy region of the curve the \textsc{wb} model is in fair agreement with the
          \textsc{dw-4b} results of Jana et al. It would appear the effects of dynamic correlation may
          account for the slight underestimation of the \textsc{wb} model to the right of the maximum.
-         Below the peak the coupled channel results of Fritsch~\cite{Fritsch-94} lend credence to the
+         Below the peak the coupled-channel results of Fritsch~\cite{Fritsch-94} lend credence to the
          experimental data. The failure of both the \textsc{wb} and \textsc{iem} models to agree with
          these results (and by extension experiment) may point to a possible failure of the underlying
          dynamic calculation in separating the target, projectile and ionizing regions ($T$, $P$ and
@@ -1685,11 +1724,12 @@
          (\textsc{bccis-4b}) results of Ghosh et al.~\cite{GDMP-08}. For the highest energies presented
          Ghosh et al.\ support the results of the \textsc{iem} over those of the \textsc{wb} model. In
          this region the same factors that force the $p$-He \textsc{wb} double capture channel to be
-         identically zero force cross sections above 125~keV/amu into triviality. Below this limit Ghosh
-         et al.\ begin to fall more in line with the \textsc{wb} results. As the results of Fritsch
-         enter the picture in the lower portion of the energy range the \textsc{wb} model appears to be
-         favoured, the gap between Fritsch and the \textsc{wb} being less than that between \textsc{iem}
-         and Fritsch. The remaining discrepancy may be due once again to dynamic correlation effects.
+         identically zero force cross sections above 125~keV/amu into triviality. Below this limit the
+         data of Ghosh et al.\ begin to fall more in line with the \textsc{wb} results. As the results
+         of Fritsch enter the picture in the lower portion of the energy range the \textsc{wb} model
+         appears to be favoured, the gap between Fritsch and the \textsc{wb} being less than that
+         between \textsc{iem} and Fritsch. The remaining discrepancy may be due once again to dynamic
+         correlation effects.
 
       \end{subsection}
 
@@ -1786,7 +1826,7 @@
       \end{equation}
       %
       where $\mathbf{r}_T$ represents the position vector with respect to the target centre and we are
-      working in the centre of mass frame where $\mathbf{R} = \mathbf{r}_T - \mathbf{r}_P$.
+      working in the centre-of-mass frame where $\mathbf{R} = \mathbf{r}_T - \mathbf{r}_P$.
 
       In Eq.~\eqref{eq:bgmbasis2} the functions $\chi^{00}_{ck}$ are the bound orbitals for the target
       helium atom ($c = T$) and the projectile helium ion ($c = P$). Just like in the one-centred case
@@ -1853,7 +1893,7 @@
       %
       the full overlap matrix.
 
-      Returning to the question of the \textsc{etf}s, working in the rotating centre of mass frame in
+      Returning to the question of the \textsc{etf}s, working in the rotating centre-of-mass frame in
       which the $z$-direction points along the internuclear axis the \textsc{etf}s become
       %
       \begin{subequations} \label{eq:etf}
@@ -1887,7 +1927,7 @@
       This will offer at least some of the correction provided by the full \textsc{etf}. Unfortunately,
       as the internuclear coordinate $Z(t)$ approaches zero (corresponding to $\theta = \frac{\pi}{2}$)
       the partial \textsc{etf} will tend to one, meaning that when the target and projectile are at
-      their closest, the most active region of the collision, no \textsc{etf} will be present.
+      their closest, i.e.\ in the most active region of the collision, no \textsc{etf} will be present.
 
       Any investigation of the impact of the \textsc{etf}s is best carried out in an isolated
       environment. To achieve this we may introduce a no-response model. In such a model the initial
@@ -1902,7 +1942,7 @@
       \end{equation}
       %
       In this way the only phase information entering the exchange functional will arise directly from
-      the \textsc{etf}s. The Calculation in which the coefficients are obtained from Eq.~\eqref{eq:coef}
+      the \textsc{etf}s. The calculation in which the coefficients are obtained from Eq.~\eqref{eq:coef}
       will be referred to as the response model in the following.
 
       Regardless of which option is chosen it is important that $v_\mathrm{H}$ be determined with the
@@ -1928,8 +1968,8 @@
                                        \varphi_{2 \uparrow} \, \varphi_{1 \downarrow} (t_f) } \right|^2.
       \end{equation}
       %
-      If one assumes that both the propagated and final states can be represented as a single Slater
-      determinant then the probability in question becomes
+      If one assumes that both the propagated and final states can be represented as single Slater
+      determinants then the probability in question becomes
       %
       \begin{equation} \label{eq:detProb}
          P_{f_1 f_2 f_3}(t_f) = \det \left[ \gamma_{f f^\prime}(t_f) \right],
@@ -1943,7 +1983,7 @@
                                \braket{\varphi_{j \sigma}(t_f) | f^\prime},
       \end{equation}
       %
-      with $f$ and $f`$ $\in \{f_1, f_2, f_3\}$, and the transition amplitudes
+      with $f$ and $f^\prime$ $\in \{f_1, f_2, f_3\}$, and the transition amplitudes
       %
       \begin{equation}
          \braket{f | \varphi_{j \sigma}(t_f)}
@@ -2393,7 +2433,7 @@
          result, see for example Ref.~\cite{microresp}.
 
          As was mentioned above the primary purpose of the no-response model in the present context was
-         as a test-bed for isolating the \textsc{etf}s from other phase factors. If we consider only the
+         as a testbed for isolating the \textsc{etf}s from other phase factors. If we consider only the
          physical outcome channels, i.e.\ exclude $\sigma_{00}$ and $\sigma_{03}$, a clear pattern
          emerges. For low impact energies the n\textsc{etf} and p\textsc{etf} curves coincide, what one
          would expect as $V$ approaches zero. As the impact energy increases a gap begins to open
