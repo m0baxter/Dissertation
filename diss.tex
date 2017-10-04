@@ -788,7 +788,7 @@
       impact parameter (distance of closest approach) $b$. In the current work we consider antiprotons,
       protons, and He\textsuperscript{2+} ions incident on helium atoms, thus $Q_T = 2$ and
       $Q_P = -1$, 1, and 2 respectively. Above impact energies of 1~keV/amu where the nuclear motion is
-      well represented by a stright line this so called semi-classical approximation may be safely
+      well represented by a straight line this so called semi-classical approximation may be safely
       employed~\cite{bgm-rev}.
 
       Having spent a few words addressing concerns at the lower end of our impact energy range it is
@@ -1989,8 +1989,9 @@
          \braket{f | \varphi_{j \sigma}(t_f)}
          = \braket{\tilde{\chi}^{l0}_{c k} | \varphi_{j \sigma}(t_f)}
       \end{equation}
-      (for some $k$, $l$, $c$, and properly orthogonalized basis functions $\tilde{\chi}^{l0}_{c k}$)
-      readily calculable from the dynamics.
+      %
+      are readily calculable from the dynamics (for some $k$, $l$, $c$, and properly orthogonalized basis
+      functions $\tilde{\chi}^{l0}_{c k}$).
 
       Expressions similiar to Eq.~\eqref{eq:prob-iem} may be constructed in this
       context. The key to the derivation comes from expressing the single-particle probabilities in
@@ -2065,7 +2066,7 @@
       %
       \begin{equation} \label{eq:probGer2}
          p^\prime_{jk} = \sum\limits_{u = j}^N \sum\limits_{v = k}^{N-u} (-1)^{u - j + v -k}
-                   {{u}\choose{u-k}} {{v}\choose{k - v}} P^\prime_{uv},
+                   {{u}\choose{u-k}} {{v}\choose{k - v}} P^\prime_{uv}.
       \end{equation}
       %
       With the probabilities of interest then given by
@@ -2074,21 +2075,22 @@
          p_{kl} = p^\prime_{N - k - l \, k}.
       \end{equation}
       %
-      In the above expression $\mathcal{T}$ and $\mathcal{P}$ are the set of states one the target
-      and in on the projectile ($\tilde{\chi}^{00}_{Tk}$ and $\tilde{\chi}^{00}_{Pk}$ respectively). A
+      In the above expression $\mathcal{T}$ and $\mathcal{P}$ are the set of states on the target
+      and on the projectile ($\tilde{\chi}^{00}_{Tk}$ and $\tilde{\chi}^{00}_{Pk}$ respectively). A
       model of this type which ignores the functional correlations discussed in Sec.~\ref{sec:phe2p-obs}
       is consistent with an \textsc{iem} description. An example of such a description is provided in
       Appendix~\ref{chap:moreIc}, in particular Eq.~\eqref{eq:iem3}.
 
       With the probabilities in hand the corresponding total cross section for each channel may then be
-      calculated from (if we ignore $\sigma_{10}$ which includes the elastic channel and must be treated
-      with more care)
+      calculated from
       %
       \begin{equation} \label{eq:cross}
          \sigma_{kl} = 2 \pi \int_0^\infty b \, p_{kl}(b) \, \mathrm{d}b
       \end{equation}
       %
-      in a similar manner to that of Eq.~\eqref{eq:tcs}.
+      in a similar manner to that of Eq.~\eqref{eq:tcs}. It must be kept in mind that the above
+      expression does not apply fo we $\sigma_{10}$ which includes the elastic channel and must be
+      treated with more care.
 
    \end{section}
 
@@ -2109,7 +2111,7 @@
          \end{equation}
          %
          Ionization having been excluded by construction within this model one should find $N(t) = 3$
-         for all time, major violations of this can only be associated with the \textsc{etf}s.
+         for all time. ~ajor violations of this can only be associated with the \textsc{etf}s.
 
          \begin{figure}[t]
             \centering
@@ -2165,8 +2167,9 @@
          %
          to $N$, where $\tilde{S}_{TP}$ are the matrix elements of the overlap matrix (including
          \textsc{etf}s). It can then be seen that norm violations are due to the fact that
-         the \textsc{kli} cannot fully account for the overlaps of the \textsc{ks}-orbitals, a direct
-         consequence of its inability to deal with non-cylindrically symmetric orbitals.
+         the \textsc{kli} implementation cannot fully account for the overlaps of the
+         \textsc{ks}-orbitals, a direct consequence of its inability to deal with non-cylindrically
+         symmetric orbitals.
 
          The slight loss of norm noticeable in the tails of all four curves is on the order of $0.002$.
          One can consider the small violation as a limit on the accuracy of calculations. This error is
@@ -2174,7 +2177,7 @@
 
       \end{subsection}
 
-      \begin{subsection}{Impact Parameter Dependence}
+      \begin{subsection}{Impact Parameter Dependence \label{sec:hephepb}}
 
          \begin{figure}[t]
             \centering
@@ -2200,12 +2203,12 @@
                      He\textsuperscript{+}-He collisions at various impact energies. \label{fig:trans}}
          \end{figure}
 
-         Before discussing the total cross section results we will present some of the lower level
-         features of the full calculations. We will consider the single-particle probabilities for each
-         electron to ionize and to switch the nuclear centre to which it is bound. These probabilities
-         can be calculated from the transition amplitudes. As an example, if $\varphi_{1 \uparrow}$
-         begins initially on the target then the single-particle probability to ionize this electron can
-         be written
+         Before discussing the total cross section results we present some of the lower level features
+         of the full calculations. We consider the single-particle probabilities for each electron to
+         ionize and to switch the nuclear centre to which it is bound. These probabilities can be
+         calculated from the transition amplitudes. As an example, if $\varphi_{1 \uparrow}$ begins
+         initially on the target then the single-particle probability to ionize this electron can be
+         written
          %
          \begin{equation} \label{eq:ionprob}
             p \left( \mathrm{He}(\uparrow_1) \rightarrow I \right) =
@@ -2226,12 +2229,12 @@
          \textsc{etf}s at the impact energies of 10, 60 and 250~keV/amu in Fig.~\ref{fig:trans}. When a
          distinction is made between response and no-response results the text refers to cross sections
          calculated using either set of fully time-dependent 1s-only orbitals and those using the model
-         described in the text surrounding Eq.~\eqref{eq:noresp} respectively, when no distinction is
+         described in the text surrounding Eq.~\eqref{eq:noresp} respectively. When no distinction is
          made the text refers simply to the response versions.
 
-         For low energy collisions capture processes can be seen to be dominant, this is clearly
+         For low-energy collisions capture processes can be seen to be dominant, this is clearly
          depicted in Fiq.~\ref{fig:trans10} where the single-particle ionization probabilities are
-         negligible through the majority of impact parameters. In contrast, Fig.~\ref{fig:trans250}
+         negligible for the majority of impact parameters. In contrast, Fig.~\ref{fig:trans250}
          shows the diminishing importance of capture over ionization as impact energies increase.
          As one would expect the probability to ionize the more tightly bound He\textsuperscript{+}
          electron is consistently less than for either of the He electrons. Also of note is the obvious
@@ -2299,7 +2302,8 @@
          approximate factor of 4000. It is this decrease in the accuracy of the interpolation which
          results in the unphysical structures present in some outcome channels above 500~keV/amu. The
          presence of these structures are the reason for the lack of a data point at 800~keV/amu in
-         Fig.~\ref{fig:cs201}, despite values having been calculated.
+         Fig.~\ref{fig:cs201}, despite values having been calculated. These structures become most
+         apparent in the inset to Fig.~\ref{fig:cs120}.
 
       \end{subsection}
 
@@ -2372,10 +2376,10 @@
             v_\mathrm{ee}^\sigma = v_\mathrm{x}^\sigma + v_\mathrm{H}.
          \end{equation}
 
-         The the spin-dependent electron-electron potentials are best shown along with the associated
-         spin-densities, $n_\sigma$ of Eq.~\eqref{eq:spinden} genereted from the $1s$-only orbitals in
+         The spin-dependent electron-electron potentials are best shown along with the associated
+         spin-densities, $n_\sigma$ of Eq.~\eqref{eq:spinden} generated from the $1s$-only orbitals in
          the p\textsc{etf} model. In this way one can more easily understand the appearance and time
-         evolution of $v_\mathrm{ee}^\sigma$. For example, $v_\mathrm{ee}^\uparrow$ contain a single
+         evolution of $v_\mathrm{ee}^\sigma$. For example, $v_\mathrm{ee}^\uparrow$ contains a single
          peak. This is due to the exact cancelation of self interaction that is present on the
          projectile centre where initially only one electron resides.
 
@@ -2385,10 +2389,10 @@
          \ref{fig:upI}), at closest approach (Figs.~\ref{fig:dnC} and \ref{fig:upC}), and at the final
          time step (Figs.~\ref{fig:dnF} and \ref{fig:upF}). The arrangement of the collision system is
          easily determined by combining the initial spin-up and spin-down frames. Both of the density
-         plots have peaks on the left while only the spin-up density has a peak on the right clearly
-         demonstrating that the target is on the left side of the figures (as these plots are presented
+         plots have peaks on the left, while only the spin-up density has a peak on the right clearly
+         demonstrating that the target is on the left side of the figures. As these plots are presented
          in the rotating centre of mass frame the target and projectile remain on one side of the plane
-         with the internuclear axis as normal).
+         with the internuclear axis as normal.
 
          At closest approach in Fig.~\ref{fig:dnC} one may already see a
          second peak developing on the projectile as some of the norm is transfered between the collsion
@@ -2397,7 +2401,7 @@
 
          The spin-up channels appear less active. This can be through the fact that up to closest
          approach the size and shape of the two peaks appear unchanged, only their positions are
-         noticably different. In the final frame a decernable loss of norm from both centres is
+         noticably different. In the final frame a perceptible loss of norm from both centres is
          apparent. This may be seen as evidence that the Pauli exclusion promised by the x-potential is
          performing as advertised.
 
@@ -2424,13 +2428,15 @@
          Figs.~\ref{fig:cs111} through \ref{fig:cs030} the response calculations produce values that are
          noticeably lower with the exception of $\sigma_{01}$ and $\sigma_{00}$ (Figs.~\ref{fig:cs201}
          and \ref{fig:cs300} respectively). Where the $\sigma_{01}$ no-response curve drops below the
-         response results would appear to coincide with a spike in the response $\sigma_{30}$ results
+         response results appear to coincide with a spike in the response $\sigma_{30}$ results
          (Fig.~\ref{fig:cs030}). The artificial nature of the $\sigma_{00}$ channel makes determining
          whether the lower result is desirable or not difficult. The only other channel, apart from
          $\sigma_{00}$, where the no-response calculations are in better agreement with experiment is
          $\sigma_{02}$, Fig.~\ref{fig:cs102}, where lowering the results moves the response curve below
-         experiment. The addition of response effects causing a decrease in cross sections is a typical
-         result, see for example Ref.~\cite{microresp}.
+         experiment. The addition of response effects causing a decrease in charge-transfer cross
+         sections is a typical result, see for example Ref.~\cite{microresp}. In general, response
+         effects result in a transfer of of probability into the elastic channel, enhancing
+         $\sigma_{10}$.
 
          As was mentioned above the primary purpose of the no-response model in the present context was
          as a testbed for isolating the \textsc{etf}s from other phase factors. If we consider only the
@@ -2438,7 +2444,7 @@
          emerges. For low impact energies the n\textsc{etf} and p\textsc{etf} curves coincide, what one
          would expect as $V$ approaches zero. As the impact energy increases a gap begins to open
          between the two sets of results. The only exceptions to this trend are $\sigma_{20}$
-         (Fig.~\ref{fig:cs120}), where the cross sections are likely too large for small distinctions to
+         (Fig.~\ref{fig:cs120}), where the cross sections are likely too large for small fluctuations to
          be apparent, and $\sigma_{01}$ (Fig.~\ref{fig:cs201}) where the n\textsc{etf} and p\textsc{etf}
          response curves are slightly erratic. Leaving aside this channel the tendencies of the response
          and no-response models in the presence, or absence, of the partial \textsc{etf}s are
@@ -2489,6 +2495,7 @@
                                           \textsc{cdbw-4b} (post form) of Ghanbari-Adivi
                                           \textit{et al}.~\cite{GAG15} (dashed line).
                      Experimental data: diamonds~\cite{Dub-89} and circles~\cite{FTFHLP-95}.
+                     Inset presents the same data on a log-log scale.
                      \label{fig:cs120}}
          \end{figure}
 
@@ -2592,17 +2599,17 @@
          \end{figure}
 
          We now discuss the comparison of our response results with experimental data and other
-         calculations by considering the single target ionization process of Eq.~\eqref{eq:tpi111}. The
-         results for this channel, $\sigma_{11}$ are presented in Fig.~\ref{fig:cs111}. Both
-         n\textsc{etf} and p\textsc{etf} are in good agreement with experiment throughout the full range
-         of impact energies. The slightly lower values for the p\textsc{etf} version above 200~keV/amu
-         make it a better fit to experiment. The underestimation of both curves below the peak
-         corresponds almost exactly with the region where $\sigma_{20}$ results begin to rise above the
-         experimental results (see Fig.~\ref{fig:cs120}).
+         calculations by considering pure single ionization of the target, the process of
+         Eq.~\eqref{eq:tpi111}. The results for this channel, $\sigma_{11}$ are presented in
+         Fig.~\ref{fig:cs111}. Both n\textsc{etf} and p\textsc{etf} are in good agreement with
+         experiment throughout the full range of impact energies. The slightly lower values for the
+         p\textsc{etf} version above 200~keV/amu make it a better fit to experiment. The underestimation
+         of both curves below the peak corresponds almost exactly with the region where $\sigma_{20}$
+         results begin to rise above the experimental results (see Fig.~\ref{fig:cs120}).
 
          Also displayed in Fig.~\ref{fig:cs111} are the continuum-distorted-wave eikonal-initial-state
          approximation (\textsc{cdw-eis}) results of Miraglia and Gravielle~\cite{MG-10}. These results
-         seem to compliment the results of the present work through the majority of the impact energy
+         seem to complement the results of the present work through the majority of the impact energy
          range. One notable exception to this is the slightly higher cross section maximum however. As
          there is a fairly large spread in the experimental data around this region it is difficult to
          say which is more accurate. The results of Miraglia and Gravielle also begin to diverge as one
@@ -2612,8 +2619,8 @@
          Next, we consider the results for $\sigma_{01}$ [Eq.~\eqref{eq:tpi201}] shown in
          Fig.~\ref{fig:cs201}. As with the previous channel both n\textsc{etf} and p\textsc{etf} results
          are in reasonable agreement with the experiment where it is available. Also following the
-         general trend described above both models begin essentially equal at low impact energies and
-         separate as $E_P$ increases. Both models begin to over estimate the data above the peak around
+         general trend described above both models become essentially equal at low impact energies and
+         separate as $E_P$ increases. Both models begin to overestimate the data above the peak around
          200~keV/amu. Once again the slightly lower p\textsc{etf} results are in better agreement with
          experiment. The slight unphysical structures in the curves below 40~keV/amu seem to correspond
          with the peaks of the $\sigma_{00}$ channel. This issue will be discussed in greater detail
@@ -2629,25 +2636,27 @@
          \end{equation}
          %
          one can easily determine $\sigma_{01}$ from their disclosed results. Their values seem to be in
-         much better agreement with experiment in the high energy range than either n\textsc{etf} or
+         much better agreement with experiment in the high-energy range than either the n\textsc{etf} or
          p\textsc{etf} models. This can perhaps be explained by the presence of correlation in the
          \textsc{ievm} calculations. As will be discussed in more detail below all of our models
          underestimate $\sigma_{02}$ and $\sigma_{03}$ in this impact energy range. Keeping in mind that
          $\sum p_{kl} = 1$ the increase in these channels resulting from the incorporation of
          correlation effects, so-called antiscreening in particular, would be drawn in part from the
-         current channel of focus $\sigma_{01}$ resulting in a decrease putting our results in better
-         agreement with both Sigaud and Montenegro and the experimental data.
+         current channel of focus $\sigma_{01}$ resulting in a decrease, putting our results and theirs
+         in better agreement with both Sigaud and Montenegro and the experimental data.
 
          For the results of single electron capture to the projectile, the process of
          Eq.~\eqref{eq:tpi120} depicted in Fig.~\ref{fig:cs120}, both n\textsc{etf} and p\textsc{etf}
          models are essential identical. This is what one would hope for as they are in good agreement
-         with experiment in the entire range of impact energies. A possible explanation of the slight
-         discrepancy between theory and experiment in the 50-150~keV/amu interval is offered by a
-         comparison with the four-body Coulomb–Born distorted wave approximation (\textsc{cdbw-4b})
-         results of Ghanbari-Adivi \textit{et al}.~\cite{GAG15}. The correlation effects included in
-         this model may point to the slight rise in cross section being related to the fact that we have
-         employed an \textsc{iem} approximation. Alternatively, the rise may be due to a failure of the
-         partial \textsc{etf}.
+         with experiment in the entire range of impact energies, keeping in mind that the unphysical
+         structures resulting from a lack of low impact parameter data for collisions with impact
+         energies above 500~keV/amu (discussed in Sec.~\ref{sec:hephepb}) are exagerated by the log-log
+         scale of the inset plot. A possible explanation of the slight discrepancy between theory and
+         experiment in the 50-150~keV/amu interval is offered by a comparison with the four-body
+         Coulomb–Born distorted wave approximation (\textsc{cdbw-4b}) results of Ghanbari-Adivi
+         \textit{et al}.~\cite{GAG15}. The correlation effects included in this model may point to the
+         slight rise in cross section being related to the fact that we have employed an \textsc{iem}
+         approximation. Alternatively, the rise may be due to a failure of the partial \textsc{etf}.
 
          The latter explanation may provide a more satisfying solution to this problem. One would expect
          that capture processes should be dominated by the contributions of slow and close collisions.
@@ -2705,14 +2714,14 @@
          to overlap with the results of the present work lending credence to the curve in the region
          below the cross section peak, where antiscreening cannot contribute.
 
-         Next wee will consider the sole three electron process, simultaneous double target and single
+         Next we consider the sole three electron process, simultaneous double target and single
          projectile ionization [Eq.~\eqref{eq:tpi003}]. The results, presented in Fig.~\ref{fig:cs003},
          again follow the general trends found in the previously discussed channels; overestimation of
          the cross section peak and a slightly better showing for the p\textsc{etf} model over the
          results of the n\textsc{etf} model. Unlike for previous channels our results are in better
-         agreement with experiment than those of Sigaud and Montenegro which over estimate the cross
+         agreement with experiment than those of Sigaud and Montenegro which overestimate the cross
          sections to a greater extent and over a larger impact energy range. As in previous channels the
-         under estimation of our cross sections at larger impact energies may be attributed to
+         underestimation of our cross sections at larger impact energies may be attributed to
          correlation effects, in particular, to antiscreening which  Sigaud and Montenegro seem to
          exaggerate in this channel.
 
@@ -2721,24 +2730,24 @@
          $\sigma_{00}$ and $\sigma_{30}$, involve all three electrons bound to either the target or the
          projectile and are displayed in Figs.~\ref{fig:cs300} and \ref{fig:cs030}. As was pointed out
          earlier these channels should not be considered due to the fact that the production cross
-         sections for these configurations should be negligible, unfortunately in our results they are
-         not. While modelling the initial and final states of the system as single Slater determinants
-         accounts for Pauli exclusion which precludes all three electrons from occupying the ground
-         state there is nothing in the model to stop additional electrons from capturing and remaining
-         in excited states. Keeping in mind that this model is simply an example of an \textsc{IEM},
-         albeit a sophisticated one, the probabilities for these unphysical channels will behave in a
-         predictable manner $p_{00} \sim {p_T}^3$ and $p_{30} \sim {p_P}^3$. The inclusion of functional
-         correlation should, in principle, provide an offset. An exaggerated example of this is
-         provided in Chap.~\ref{chap:p-he2p-he} where a \textsc{wb} type model could potentially cause
-         both channels to be zero. The only recourse, short of implementing a model which contains at
-         least some functional correlation, is to artificially redistribute the probability from
+         sections for these configurations should be negligible, but unfortunately in our results they
+         are not. While modelling the initial and final states of the system as single Slater
+         determinants accounts for Pauli exclusion which precludes all three electrons from occupying
+         the ground state there is nothing in the model to stop additional electrons from being captured
+         and remaining in excited states. Keeping in mind that this model is simply an example of an
+         \textsc{IEM}, albeit a sophisticated one, the probabilities for these unphysical channels will
+         behave in a predictable manner $p_{00} \sim {p_T}^3$ and $p_{30} \sim {p_P}^3$. The inclusion
+         of functional correlation should, in principle, provide an offset. An exaggerated example of
+         this is provided in Chap.~\ref{chap:p-he2p-he} where a \textsc{wb} type model could potentially
+         cause both channels to be zero. The only recourse, short of implementing a model which contains
+         at least some functional correlation, is to artificially redistribute the probability from
          $p_{00}$ and $p_{30}$ into other channels.
 
          Two options immediately present themselves. The first possibility is to feed the extra
          probability into the corresponding ionization channels. In other words, $p_{00}$ and $p_{30}$
          would augment $p_{01}$ and $p_{21}$ respectively. With the peak in $\sigma_{30}$ approximately
          matching that of $\sigma_{21}$ in both position and magnitude this solution would lead to a
-         doubling of the over estimation present in the $\sigma_{21}$ channel. A similar issue would
+         doubling of the overestimation present in the $\sigma_{21}$ channel. A similar issue would
          arise in the lower impact energy range of the $\sigma_{01}$ curve. This leaves one with the
          second option, to put the extra probability from $p_{00}$ into $p_{10}$ and feed $p_{30}$ into
          $p_{20}$. The only effect this could have on the presented results would be to increase
@@ -2782,7 +2791,7 @@
    increasingly complex series of ion-atom collisions systems. This journey began with the relatively
    simple antiproton-helium system, continued with the proton-helium and He\textsuperscript{2+}-He
    systems, and culminated in a discussion of the He\textsuperscript{+}-He collision system. In the
-   proceeding subsections more detailed and collision specific conclusions will be offered for these
+   following subsections more detailed and collision specific conclusions will be offered for these
    investigations. Before embarking on a summary of individual results it is, perhaps, necessary to
    emphasize one of the overarching themes of this work. In most situations our results are competitive
    with the best models of others. In many cases our results are the only ones which can consistently
@@ -2799,11 +2808,11 @@
       and transfer ionization as well as single and double capture. In order to incorporate electron
       capture processes into the \textsc{wb} model two additional correlation integrals, one centred on
       the projectile ($I^{PP}_\mathrm{c}$) and the other two-centred ($I^{TP}_\mathrm{c}$), were
-      introduced. While $I^{PP}_\mathrm{c}$ was dealt with using straight forward modification of the
+      introduced. While $I^{PP}_\mathrm{c}$ was dealt with using straightforward modification of the
       original \textsc{wb} model. $I^{TP}_\mathrm{c}$ was determined based on the values of the other
-      correlation integrals and the single particle probabilities, $p_T$ and $p_P$. The use of this
-      model was justified by the favourable $p$-He results for single capture that depend on only
-      $I^{TP}_\mathrm{c}$ explicitly.
+      correlation integrals and the single-particle probabilities, $p_T$ and $p_P$. The use of this
+      model was justified by the favourable $p$-He results for single capture that depend explicitly
+      only on $I^{TP}_\mathrm{c}$.
 
       For the majority of the channels investigated the \textsc{wb} model represents a clear improvement
       over \textsc{iem}  results, the most notable exceptions being the double ionization results at low
@@ -2822,10 +2831,10 @@
       more difficult.
 
       The opening of the capture channels introduces additional complications into the \textsc{wb}
-      model. First, it accentuates some of the short comings of the underlying dynamic calculation.
+      model. First, it accentuates some of the shortcomings of the underlying dynamic calculation.
       While some gains may be made by rerunning these calculations using the full \textsc{tc-bgm} the
       base level accuracy of the method is essentially fixed (especially at low impact energies). One
-      could take this as more confirmation that no single calculation is yet capable of covering vast
+      could take this as further confirmation that no single calculation is yet capable of covering vast
       tracts of impact energy space~\cite{LRV-14}. In this regard our results cover more channels, over
       a larger energy range than most.
 
@@ -2837,8 +2846,8 @@
       Another source of poor probability partitioning is the model chosen for $I^{TP}_\mathrm{c}$ which,
       as mentioned above, causes $p_{II} = p_{IP}$. Regardless of the provenance of these issues further
       applications of the \textsc{wb} model in the context of capture are inadvisable. This should,
-      however, not be interpreted as a criticism of correlation-integral models in general merely a
-      reflection of the \textsc{wb} model's apparent limitations. Work in this vein can be made easier
+      however, not be interpreted as a criticism of correlation-integral models in general it is merely
+      a reflection of the \textsc{wb} model's apparent limitations. Work in this vein can be made easier
       provided more correlated two-electron calculations become available.
 
    \end{section}
@@ -2849,7 +2858,7 @@
       functional theory under the constraints of the exchange-only approximation. An accurate
       time-dependent exchange potential was determined through the application of the \textsc{kli}
       approximation. Total cross section results for all physical outcome channels were then offered in
-      the approximate impact energy of range 10-1000~keV/amu for two models; one in which electron
+      the approximate impact energy range of 10-1000~keV/amu for two models; one in which electron
       translation factors were ignored and a second model where partial \textsc{etf}s
       were used. The results of both models are in overall good agreement with experiment.
 
@@ -2885,7 +2894,7 @@
    \begin{chapter}{Coordinate Systems \label{chap:coords}}
 
       This appendix contains the fundamentals of some non-rectangular coordinate systems used in the
-      text. This discussion focuses on the lesser know coordinate systems. For more detail the reader
+      text. This discussion focuses on lesser known coordinate systems. For more detail the reader
       is referred to any mathematical handbook for physics, for example~\cite{coord1, coord2}.
 
       \begin{section}{Elliptical Coordinates \label{sec:elliptic}}
