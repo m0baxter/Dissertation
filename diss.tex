@@ -107,7 +107,9 @@
 
    \textsc{toronto ontario}
 
-   Month Year
+   \vspace{1 cm}
+
+   November, 2017
 
    \vspace{3.5 cm}
 
@@ -185,9 +187,10 @@
 \begin{chapter}{Introduction \label{chap:intro}}
 
    Atomic collision systems are of interest both on their own merits, and for their potential in
-   applications. As a  particular the He\textsuperscript{+}-He collision system, a focus of a large
-   portion of the present work, is applicable in such diverse areas as fusion reactors~\cite{fusion1,
-   fusion2}, astrophysics~\cite{astro1, astro2}, and dark matter detection~\cite{dmdet}.
+   applications. As a  particular example the He\textsuperscript{+}-He collision system, a focus of a
+   large portion of the present work, is applicable in such diverse areas as fusion
+   reactors~\cite{fusion1, fusion2}, astrophysics~\cite{astro1, astro2}, and dark matter
+   detection~\cite{dmdet}.
 
    From the point of view of theory, atomic collision systems are often explored as testbeds for
    few-electron quantum dynamics. A helium-like target, consisting of two electrons and a nucleus, and a
@@ -215,7 +218,7 @@
 
    Solving the Schr\"{o}dinger equation describing a system of more than two particles is
    computationally taxing, even for a small number of particles (three or more). Thus, the so called
-   few-body problem, tests the limits of current computational power. As an example, recently Gainullin
+   few-body problem tests the limits of current computational power. As an example, recently Gainullin
    and Sonkin presented a method for directly solving the time-dependent Schr\"{o}dinger
    equation~\cite{gpuCalc}. In this work the authors performed a benchmark proton-hydrogen collision
    calculation. With code running on 16 \textsc{gpu}s their single electron calculation was completed in
@@ -252,9 +255,9 @@
    single-particle calculation. Additionally as the reformulation is theoretically exact it avoids the
    restricted applicability of perturbative methods. While it may seem strange that all of the
    complexity of the $N$-body wave function can be captured by a single particle quantity like the
-   one-particle density \textsc{tddft} has been successfully applied to a wide range of problems. Most
+   one-particle density \textsc{tddft}, has been successfully applied to a wide range of problems. Most
    obviously given the title of this dissertation \textsc{tddft} has been applied to ion-atom
-   collisions~\cite{bgm-rev}, many of the same techniques of this realm can be applied to the related
+   collisions~\cite{bgm-rev}. Many of the same techniques of this realm can be applied to the related
    field of laser interactions with atoms and molecules (see for example Chapters 24 and 25 in
    Ref.~\cite{tddft}). \textsc{tddft} has also been used to determine properties of extended solids
    (e.g.\ ionic crystals)~\cite{extRev} and of complex organic and inorganic molecules~\cite{qcRev}.
@@ -367,7 +370,7 @@
       dependence is not necessarily unique~\cite{initial2, initial2-re, initial2-rere, initial3}.
       Fortunately, in most cases of interest initial-state dependence is not an issue. As an example
       any system initially in the ground state, as is the case in this work, may appeal to the
-      Hohenberg-Kohn theorem to guarantee that any functionals depend uniquely on the initial state.
+      Hohenberg-Kohn theorem to guarantee that functionals depend uniquely on the initial state.
 
       We have formulated the density-potential mapping for an explicitly spin-dependent system, it
       then must be noted that the original existence theorems were not formulated in such general terms.
@@ -730,7 +733,7 @@
 \begin{chapter}{Bare Ion-Helium Collisions \label{chap:p-he2p-he}}
 
    Correlation enters \textsc{tddft} calculations in two distinct ways. First of these is dynamic
-   correlation, those effects which emerge from a full time-dependent correlation potential. These are
+   correlation, those effects which emerge from a fully time-dependent correlation potential. These are
    precisely the effects we ignore through the use of the frozen correlation model which is discussed
    alongside a description of the collision systems of interest in Sec.~\ref{sec:p-he2p-he-sys}.
 
@@ -845,7 +848,7 @@
       %
       where $\kappa = j + 1/2$ wih total angular momentum quantum number $j$ and $Q$ the atomic charge.
       For the orbitals considered in this work $n$ never exceeds 4, $Q$ is at most 2, and $\kappa$ is
-      either 1/2, for spin single states, or 1 for atoms containing one (or three) electrons. All of
+      either 1/2, for spin singlet states, or 1 for atoms containing one (or three) electrons. All of
       this means that at worst the orbital distortion is on the order of $10^{-4}$, and while the
       expression only holds for hydrogen-like orbitals the exact expression for a multi-electron atom
       does not disagree in a signifigant way~\cite{relorb}. With all this said it has been explicitly
@@ -1452,7 +1455,7 @@
          compared to experiment as well as a selection of previous theoretical studies of $p$-He
          collisions that do account for electron correlation effects.
 
-         We will the discussion of these results by considering double capture. For our
+         We will begin the discussion of these results by considering double capture. For our
          proton-helium collision calculations the single-particle capture probability, $p_P$, never
          rises above 1/2. From Eq.~\eqref{eq:wbExplicit} it follows that $I^{PP}_\mathrm{c} =
          -2 {p_P}^2$, which implies that $p_{PP} \equiv 0$. Due to the triviality of this result no plot
@@ -1470,7 +1473,7 @@
          the atomic orbital (\textsc{ao}) molecular orbital (\textsc{mo}) matching results of Kimura et
          al.~\cite{KL-86} (\textsc{ao-mo}) and the post form, which includes explicit dynamic
          correlation contributions, of the four-body distorted-wave (\textsc{dw-4b}) results of Jana et
-         al.~\cite{JMP-15}. It should be noted that what Jana et al.\ call dynamic correlation. while
+         al.~\cite{JMP-15}. It should be noted that what Jana et al.\ call dynamic correlation while
          not identical to \textsc{tddft} dynamic correlation (a time-dependent correlation potential
          $v_\mathrm{c}$) is the analogue in two-electron calculations and ultimately both should
          describe the same effects. The \textsc{dw-4b} and \textsc{wb} models agree quite well above
@@ -1497,8 +1500,8 @@
          calculation of Godunov et al.~\cite{Godunov-06} (on- and off-shell contributions included). Few
          correlated transfer ionization calculations exist. As a result conclusions for the quality of
          correlation below 100~keV/amu are difficult. One additional calculation was performed by
-         Belki\'{c} and Man\v{c}ev~\cite{BM-11}. However, their data covers less of the desired impact
-         energy range and was thus excluded from Fig.~\ref{fig:phe-ip}. Godunov et al.\ are
+         Belki\'{c} and Man\v{c}ev~\cite{BM-11}. However, their data cover less of the desired impact
+         energy range and were thus excluded from Fig.~\ref{fig:phe-ip}. Godunov et al.\ are
          consistently below both \textsc{iem} and \textsc{wb}. The fact that the \textsc{iem} falls
          slightly below the \textsc{wb} results above 200~keV/amu points to a problem with the
          \textsc{wb} calculations. In this range the difficulty of separating target and projectile will
@@ -1665,12 +1668,12 @@
          the $p$-He results there are slight fluctuations in the He\textsuperscript{2+}-He \textsc{wb}
          results due to instabilities in the dynamics.
 
-         As above Barna et al.\ and Pindzola et al.\ support the high-energy \textsc{wb}
-         results. Fig.~\ref{fig:he2phe-ii} also includes the results of Singal et al.: while not a
-         two-electron calculation it incorporates a modified single-particle potential designed to
-         account for the increased difficulty of ionizing two electrons. These results confirm the
-         location of the \textsc{iem} cross section maximum. This confirms the belief that the
-         \textsc{wb} model becomes less dependable at lower energies.
+         As above the two-electron calculations by Barna et al.\ and Pindzola et al.\ support the
+         high-energy \textsc{wb} results. Fig.~\ref{fig:he2phe-ii} also includes the results of Singal
+         et al.: while not a two-electron calculation it incorporates a modified single-particle
+         potential designed to account for the increased difficulty of ionizing two electrons. These
+         results confirm the location of the \textsc{iem} cross section maximum. This confirms the
+         belief that the \textsc{wb} model becomes less dependable at lower energies.
 
          Unlike for the proton-helium system double ionization and transfer ionization,
          Fig.~\ref{fig:he2phe-ip}, are not identical. The increased role of capture due to the deeper
@@ -1768,7 +1771,7 @@
       (see Sec.~\ref{sec:kli}) was employed in the calculation of $v^\sigma_\mathrm{x}$.
 
       The ground-state density functional theory scheme of~\cite{diamol}\footnote{The details of this
-      implementation may be found in~\cite{diamol} and were provided by the authors via private
+      implementation may be found in~\cite{diamol}. The code was provided by the authors via private
       communication.} has been adapted to calculate a time-dependent exchange potential. At any instant
       of time, $t$, the He\textsuperscript{+}-He system may be regarded as a diatomic quasi-molecule with
       an internuclear distance $R(t) = \sqrt{b^2 + Z(t)^2}$, where $b$ and $Z$ are the impact parameter
@@ -2109,7 +2112,7 @@
          \end{equation}
          %
          Ionization having been excluded by construction within this model one should find $N(t) = 3$
-         for all time. ~ajor violations of this can only be associated with the \textsc{etf}s.
+         for all time. Major violations of this can only be associated with the \textsc{etf}s.
 
          \begin{figure}[t]
             \centering
@@ -2393,9 +2396,9 @@
          with the internuclear axis as normal.
 
          At closest approach in Fig.~\ref{fig:dnC} one may already see a
-         second peak developing on the projectile as some of the norm is transfered between the collsion
-         centres. This interpretation is cemented in Fig.~\ref{fig:dnF} where the one-particle density
-         contains two distinct maxima.
+         second peak developing on the projectile as some of the norm is transfered between the
+         collision centres. This interpretation is cemented in Fig.~\ref{fig:dnF} where the one-particle
+         density contains two distinct maxima.
 
          The spin-up channels appear less active. This can be through the fact that up to closest
          approach the size and shape of the two peaks appear unchanged, only their positions are
@@ -2645,10 +2648,10 @@
 
          For the results of single electron capture to the projectile, the process of
          Eq.~\eqref{eq:tpi120} depicted in Fig.~\ref{fig:cs120}, both n\textsc{etf} and p\textsc{etf}
-         models are essential identical. This is what one would hope for as they are in good agreement
+         models are essentially identical. This is what one would hope for as they are in good agreement
          with experiment in the entire range of impact energies, keeping in mind that the unphysical
          structures resulting from a lack of low impact parameter data for collisions with impact
-         energies above 500~keV/amu (discussed in Sec.~\ref{sec:hephepb}) are exagerated by the log-log
+         energies above 500~keV/amu (discussed in Sec.~\ref{sec:hephepb}) are exaggerated by the log-log
          scale of the inset plot. A possible explanation of the slight discrepancy between theory and
          experiment in the 50-150~keV/amu interval is offered by a comparison with the four-body
          Coulomb–Born distorted wave approximation (\textsc{cdbw-4b}) results of Ghanbari-Adivi
@@ -2876,12 +2879,13 @@
       calculations, precluding the addition of dynamic correlation through the application of any number
       of ground-state correlation functionals in the future. It should be noted that such a model would
       still not offer a complete description of time-dependent correlation, it would, for example, lack
-      memory effects~\cite{tddft}. An added difficulty would be the inclusion of functional correlation
-      effects. In order to move beyond the \textsc{iem} single Slater determinant description of outcome
-      probabilities, one would have to adapt a model, preferably one that avoids the problems of the
-      model of Wilken and Bauer~\cite{wb} used in Chap.~\ref{chap:p-he2p-he} (and Ref.~\cite{p-he2p-he})
-      to explicitly spin-polarized systems. A starting point for such a model is outlined in
-      Appendix~\ref{chap:moreIc}.
+      memory effects~\cite{tddft}, it should then be clear that even an adiabatically exact potential
+      could not produce ccompletely accurate dynamics~\cite{adiabaticNoGood}. An added difficulty would
+      be the inclusion of functional correlation effects. In order to move beyond the \textsc{iem}
+      single Slater determinant description of outcome probabilities, one would have to adapt a model,
+      preferably one that avoids the problems of the model of Wilken and Bauer~\cite{wb} used in
+      Chap.~\ref{chap:p-he2p-he} (and Ref.~\cite{p-he2p-he}) to explicitly spin-polarized systems. A
+      starting point for such a model is outlined in Appendix~\ref{chap:moreIc}.
 
    \end{section}
 
@@ -2915,7 +2919,7 @@
          \end{figure}
 
          Elliptical coordinates are formed by the intersection of series of confocal ellipses and
-         hyperbole. If we let $(\xi, \eta)$ denote the elliptic and hyperbolic grid lines and $a > 0$
+         hyperboles. If we let $(\xi, \eta)$ denote the elliptic and hyperbolic grid lines and $a > 0$
          their focal length we can cover the plane with two charts. The first is given by
          %
          \begin{equation} \label{eq:elipdef}
@@ -2993,8 +2997,12 @@
       spin-down. As these run \texttt{hephe.py} monitors their outputs for a flag which indicates that
       they are ready to receive a new potential. At this point the \texttt{BGM} instances are paused
       and input files needed for \texttt{DIAMOL} are generated from their outputs. Once \texttt{DIAMOL}
-      has completed its execution the \texttt{BGM} threads are resumed. In this way the
-      \textsc{ks}-orbitals are propagated in a time-dependent potential.
+      has completed its execution the \texttt{BGM} threads are resumed. The \texttt{BGM} proceeds by
+      expanding the \textsc{ks}-orbitals in the basis described in Sec.~\ref{sec:pot}, the resulting
+      coupled-channel equations are then solved using the Livermore solver~\cite{dlsode1, dlsode2} which
+      employs either an Adams method (predictor-corrector) in the case of stiff systems or a backward
+      differentiation formula in the case of non-stiff systems. In this way the \textsc{ks}-orbitals are
+      propagated in a time-dependent potential.
 
    \end{chapter}
 
