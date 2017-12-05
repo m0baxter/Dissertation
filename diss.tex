@@ -1,7 +1,7 @@
 
 \RequirePackage[l2tabu, orthodox]{nag}
 
-\documentclass[letterpaper, 11 pt]{report}
+\documentclass[letterpaper, 11 pt, twoside]{report}
 %\documentclass[a5paper, 8 pt]{extreport}
 %\usepackage[a5paper, top = 1.0 in, bottom = 0.9 in]{geometry}
 %\usepackage[pass]{geometry}
@@ -115,6 +115,8 @@
 
 \end{titlepage}
 
+\thispagestyle{empty}
+
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
@@ -123,7 +125,7 @@
 
    \thispagestyle{plain}
    \pagenumbering{roman}
-   \setcounter{page}{2}
+   \setcounter{page}{4}
 
    \onehalfspacing
 
@@ -155,30 +157,34 @@
 
 \end{abstract}
 
+\newpage
+\phantom{1}
+\thispagestyle{empty}
+
 \singlespacing
 
-\setcounter{page}{3}
-
-\cleardoublepage
+\pagenumbering{roman}
+\setcounter{page}{5}
 \phantomsection
 \addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
-\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 
-\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 
 \newpage
+\phantom{blank}
+\thispagestyle{empty}
 
 \pagenumbering{arabic}
+\setcounter{page}{1}
 
-\onehalfspacing  %spacing here
+\onehalfspacing
 
 \begin{chapter}{Introduction \label{chap:intro}}
 
@@ -2782,6 +2788,9 @@
 
 \end{chapter}
 
+\newpage
+\phantom{12}
+
 \begin{chapter}{Conclusions \label{chap:con}}
 
    Following the programme laid out in the introduction this work has presented investigations of an
@@ -2888,6 +2897,9 @@
 \end{chapter}
 
 \begin{appendices}
+
+   \newpage
+   \phantom{jksdvjklcdvjkl}
 
    \begin{chapter}{Coordinate Systems \label{chap:coords}}
 
