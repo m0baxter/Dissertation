@@ -36,11 +36,6 @@
 \usepackage[colorlinks, breaklinks=true]{hyperref}
 \usepackage[toc,page]{appendix}
 
-%remove latter:
-%\usepackage{showlabels}
-%\widowpenalty=10000
-%\clubpenalty=10000
-
 %change link colours:
 \hypersetup{ linktocpage, colorlinks=true, linkcolor=blue,
              citecolor=blue, filecolor=blue, urlcolor=blue }
@@ -111,6 +106,7 @@
 
    November, 2017
 
+   %\vspace{1 cm}
    \vspace{3.5 cm}
 
    \copyright Matthew Baxter, Year (\textsc{CC BY} 4.0).
@@ -1505,8 +1501,8 @@
          consistently below both \textsc{iem} and \textsc{wb}. The fact that the \textsc{iem} falls
          slightly below the \textsc{wb} results above 200~keV/amu points to a problem with the
          \textsc{wb} calculations. In this range the difficulty of separating target and projectile will
-         naturally be emphasized as the relative errors due to the projection problem grow (see
-         discussion following Eq.~\eqref{eq:prob-ic}). It would seem that these issues are compounded
+         naturally be emphasized as the relative errors due to the projection problem grow [see
+         discussion following Eq.~\eqref{eq:prob-ic}]. It would seem that these issues are compounded
          when the density is forced through the additional machinery of the \textsc{wb} model. In this
          region it then becomes difficult to determine to what extent discrepancies are due to dynamic
          vs.\ functional correlation effects or issues of accuracy.
@@ -2212,7 +2208,7 @@
          written
          %
          \begin{equation} \label{eq:ionprob}
-            p \left( \mathrm{He}(\uparrow_1) \rightarrow I \right) =
+            p \left[ \mathrm{He}(\uparrow_1) \rightarrow I \right] =
                \sum\limits_{c \in \{T,P\}} \sum\limits_{k=1}^K \sum\limits_{l = 1}^L
                \left| \braket{ \tilde{\chi}^{l0}_{c k} | \varphi_{1 \uparrow}(t_f)} \right|^2
          \end{equation}
@@ -2220,7 +2216,7 @@
          and the single-particle probability to transfer to the projectile may be written
          %
          \begin{equation} \label{eq:transprob}
-            p(\mathrm{He}(\uparrow_1) \rightarrow \mathrm{He}^+) =
+            p \left[ \mathrm{He}(\uparrow_1) \rightarrow \mathrm{He}^+ \right] =
                \sum\limits_{k=1}^K \left| \braket{ \tilde{\chi}^{00}_{P k} | \varphi_{1 \uparrow}(t_f)}
                           \right|^2,
          \end{equation}
