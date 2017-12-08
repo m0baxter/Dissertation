@@ -245,7 +245,7 @@
    the \textsc{ctmc} multiple calculations are performed where particles are evolved according to the
    classical Hamiltonian with initial conditions randomly selected from a distribution, usually one
    describing the quantum mechanical initial state in coordinate or momentum space. The primary failing
-   of this method is its classical nature, the, \textsc{ctmc} is fundamentally incapable of capturing
+   of this method is its classical nature: the \textsc{ctmc} is fundamentally incapable of capturing
    purely quantum mechanical phenomena such as tunnelling and exchange.
 
    Time-dependent density functional theory~\cite{tddft, ullrich} (\textsc{tddft}), the method of choice
@@ -255,7 +255,7 @@
    single-particle calculation. Additionally as the reformulation is theoretically exact it avoids the
    restricted applicability of perturbative methods. While it may seem strange that all of the
    complexity of the $N$-body wave function can be captured by a single particle quantity like the
-   one-particle density \textsc{tddft}, has been successfully applied to a wide range of problems. Most
+   one-particle density, \textsc{tddft} has been successfully applied to a wide range of problems. Most
    obviously given the title of this dissertation \textsc{tddft} has been applied to ion-atom
    collisions~\cite{bgm-rev}. Many of the same techniques of this realm can be applied to the related
    field of laser interactions with atoms and molecules (see for example Chapters 24 and 25 in
@@ -2879,7 +2879,7 @@
       calculations, precluding the addition of dynamic correlation through the application of any number
       of ground-state correlation functionals in the future. It should be noted that such a model would
       still not offer a complete description of time-dependent correlation, it would, for example, lack
-      memory effects~\cite{tddft}, it should then be clear that even an adiabatically exact potential
+      memory effects~\cite{tddft}. It should then be clear that even an adiabatically exact potential
       could not produce ccompletely accurate dynamics~\cite{adiabaticNoGood}. An added difficulty would
       be the inclusion of functional correlation effects. In order to move beyond the \textsc{iem}
       single Slater determinant description of outcome probabilities, one would have to adapt a model,
@@ -3000,8 +3000,8 @@
       has completed its execution the \texttt{BGM} threads are resumed. The \texttt{BGM} proceeds by
       expanding the \textsc{ks}-orbitals in the basis described in Sec.~\ref{sec:pot}, the resulting
       coupled-channel equations are then solved using the Livermore solver~\cite{dlsode1, dlsode2} which
-      employs either an Adams method (predictor-corrector) in the case of stiff systems or a backward
-      differentiation formula in the case of non-stiff systems. In this way the \textsc{ks}-orbitals are
+      employs either an Adams method (predictor-corrector) in the case of non-stiff systems or a backward
+      differentiation formula in the case of stiff systems. In this way the \textsc{ks}-orbitals are
       propagated in a time-dependent potential.
 
    \end{chapter}
